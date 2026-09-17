@@ -1,0 +1,599 @@
+{
+    "id": 11886,
+    "showCodeHonor": false,
+    "showNDA": false,
+    "timeLimitInMinutes": 15,
+    "timeWarningInMinutes": 1,
+    "shuffleAnswers": true,
+    "unlimitedAttempts": true,
+    "allowedAttempts": 1,
+    "showReview": true,
+    "showReviewAfterSubmitting": true,
+    "showAnswers": true,
+    "showWelcomePage": false,
+    "welcomePageContent": null,
+    "hasTimedSections": false,
+    "showIndependentSections": false,
+    "questions": [{
+            "id": 65491,
+            "customId": "PE1_Q1_ITEM_1",
+            "question": "<p>Python is an example of:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246936,
+                    "option": "<p>a high-level programming language<\/p>"
+                }, {
+                    "id": 246937,
+                    "option": "<p>a machine language<\/p>"
+                }, {
+                    "id": 246938,
+                    "option": "<p>a natural language<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3086
+        }, {
+            "id": 65492,
+            "customId": "PE1_Q1_ITEM_2",
+            "question": "<p>A complete set of known commands is called:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246939,
+                    "option": "<p>an instruction list<\/p>"
+                }, {
+                    "id": 246940,
+                    "option": "<p>a machine list<\/p>"
+                }, {
+                    "id": 246941,
+                    "option": "<p>a low-level list<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3086
+        }, {
+            "id": 65493,
+            "customId": "PE1_Q1_ITEM_3",
+            "question": "<p>What is a source code?<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246942,
+                    "option": "<p>A program written in a high-level programming language<\/p>"
+                }, {
+                    "id": 246943,
+                    "option": "<p>Machine code executed by computers<\/p>"
+                }, {
+                    "id": 246944,
+                    "option": "<p>Another name for a source file<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3086
+        }, {
+            "id": 65494,
+            "customId": "PE1_Q1_ITEM_4",
+            "question": "<p>What do you call a computer program which directly executes instructions written in a programming language?<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246945,
+                    "option": "<p>An interpreter<\/p>"
+                }, {
+                    "id": 246946,
+                    "option": "<p>A compiler<\/p>"
+                }, {
+                    "id": 246947,
+                    "option": "<p>A translator<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3086
+        }, {
+            "id": 65495,
+            "customId": "PE1_Q1_ITEM_5",
+            "question": "<p>What Python version is covered in this course?<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246948,
+                    "option": "<p>Python 3<\/p>"
+                }, {
+                    "id": 246949,
+                    "option": "<p>Python 2<\/p>"
+                }, {
+                    "id": 246950,
+                    "option": "<p>Python 1<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3086
+        }, {
+            "id": 65496,
+            "customId": "PE1_Q1_ITEM_6",
+            "question": "<p>What is CPython?<\/p>\n\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246951,
+                    "option": "<p>The default implementation of the Python programming language<\/p>"
+                }, {
+                    "id": 246952,
+                    "option": "<p>Another name for Cython, a superset of the Python programming language<\/p>"
+                }, {
+                    "id": 246953,
+                    "option": "<p>A compiled language used to perform high-level programming functions<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3086
+        }, {
+            "id": 65497,
+            "customId": "PE1_Q1_ITEM_7",
+            "question": "<p>What is IDLE?<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246954,
+                    "option": "<p>An acronym that stands for Integrated Development and Learning Environment for Python<\/p>"
+                }, {
+                    "id": 246955,
+                    "option": "<p>A version of Python<\/p>"
+                }, {
+                    "id": 246956,
+                    "option": "<p>An acronym that stands for Interactive Development and Learning Extension<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3086
+        }, {
+            "id": 65498,
+            "customId": "PE1_Q1_ITEM_8",
+            "question": "<p>What do you call a tool that lets you launch your code step-by-step and inspect it at each moment of execution?<\/p>\n\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246957,
+                    "option": "<p>A debugger<\/p>"
+                }, {
+                    "id": 246958,
+                    "option": "<p>An editor<\/p>"
+                }, {
+                    "id": 246959,
+                    "option": "<p>A console<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3086
+        }, {
+            "id": 65499,
+            "customId": "PE1_Q1_ITEM_9",
+            "question": "<p>How did Python, the programming language, get its name?<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246960,
+                    "option": "<p>Guido van Rossum named it to honor Monty Python's Flying Circus, a BBC comedy series popular in the 1970s<\/p>"
+                }, {
+                    "id": 246961,
+                    "option": "<p>Guido van Rossum named it after the Pythonidae - a family of large, nonvenomous snakes<\/p>"
+                }, {
+                    "id": 246962,
+                    "option": "<p>Guido van Rossum named it to honor Python of Catana, a dramatic poet of the time of Alexander the Great<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3086
+        }, {
+            "id": 65500,
+            "customId": "PE1_Q1_ITEM__10",
+            "question": "<p>Which one of the following is an example of a Python file extension?<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246963,
+                    "option": "<p>py<\/p>"
+                }, {
+                    "id": 246964,
+                    "option": "<p>p<\/p>"
+                }, {
+                    "id": 246965,
+                    "option": "<p>pi<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3086
+        }
+    ],
+    "sections": [{
+            "id": 3086,
+            "name": "PE1 -- Module 1 Quiz",
+            "passingThreshold": null,
+            "showSectionPage": false,
+            "showReview": false,
+            "timeLimitInMinutes": 0,
+            "timeWarningInMinutes": 0,
+            "numberOfQuestions": 10,
+            "questions": [{
+                    "id": 65491,
+                    "customId": "PE1_Q1_ITEM_1",
+                    "question": "<p>Python is an example of:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246936,
+                            "option": "<p>a high-level programming language<\/p>"
+                        }, {
+                            "id": 246937,
+                            "option": "<p>a machine language<\/p>"
+                        }, {
+                            "id": 246938,
+                            "option": "<p>a natural language<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3086
+                }, {
+                    "id": 65492,
+                    "customId": "PE1_Q1_ITEM_2",
+                    "question": "<p>A complete set of known commands is called:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246939,
+                            "option": "<p>an instruction list<\/p>"
+                        }, {
+                            "id": 246940,
+                            "option": "<p>a machine list<\/p>"
+                        }, {
+                            "id": 246941,
+                            "option": "<p>a low-level list<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3086
+                }, {
+                    "id": 65493,
+                    "customId": "PE1_Q1_ITEM_3",
+                    "question": "<p>What is a source code?<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246942,
+                            "option": "<p>A program written in a high-level programming language<\/p>"
+                        }, {
+                            "id": 246943,
+                            "option": "<p>Machine code executed by computers<\/p>"
+                        }, {
+                            "id": 246944,
+                            "option": "<p>Another name for a source file<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3086
+                }, {
+                    "id": 65494,
+                    "customId": "PE1_Q1_ITEM_4",
+                    "question": "<p>What do you call a computer program which directly executes instructions written in a programming language?<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246945,
+                            "option": "<p>An interpreter<\/p>"
+                        }, {
+                            "id": 246946,
+                            "option": "<p>A compiler<\/p>"
+                        }, {
+                            "id": 246947,
+                            "option": "<p>A translator<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3086
+                }, {
+                    "id": 65495,
+                    "customId": "PE1_Q1_ITEM_5",
+                    "question": "<p>What Python version is covered in this course?<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246948,
+                            "option": "<p>Python 3<\/p>"
+                        }, {
+                            "id": 246949,
+                            "option": "<p>Python 2<\/p>"
+                        }, {
+                            "id": 246950,
+                            "option": "<p>Python 1<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3086
+                }, {
+                    "id": 65496,
+                    "customId": "PE1_Q1_ITEM_6",
+                    "question": "<p>What is CPython?<\/p>\n\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246951,
+                            "option": "<p>The default implementation of the Python programming language<\/p>"
+                        }, {
+                            "id": 246952,
+                            "option": "<p>Another name for Cython, a superset of the Python programming language<\/p>"
+                        }, {
+                            "id": 246953,
+                            "option": "<p>A compiled language used to perform high-level programming functions<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3086
+                }, {
+                    "id": 65497,
+                    "customId": "PE1_Q1_ITEM_7",
+                    "question": "<p>What is IDLE?<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246954,
+                            "option": "<p>An acronym that stands for Integrated Development and Learning Environment for Python<\/p>"
+                        }, {
+                            "id": 246955,
+                            "option": "<p>A version of Python<\/p>"
+                        }, {
+                            "id": 246956,
+                            "option": "<p>An acronym that stands for Interactive Development and Learning Extension<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3086
+                }, {
+                    "id": 65498,
+                    "customId": "PE1_Q1_ITEM_8",
+                    "question": "<p>What do you call a tool that lets you launch your code step-by-step and inspect it at each moment of execution?<\/p>\n\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246957,
+                            "option": "<p>A debugger<\/p>"
+                        }, {
+                            "id": 246958,
+                            "option": "<p>An editor<\/p>"
+                        }, {
+                            "id": 246959,
+                            "option": "<p>A console<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3086
+                }, {
+                    "id": 65499,
+                    "customId": "PE1_Q1_ITEM_9",
+                    "question": "<p>How did Python, the programming language, get its name?<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246960,
+                            "option": "<p>Guido van Rossum named it to honor Monty Python's Flying Circus, a BBC comedy series popular in the 1970s<\/p>"
+                        }, {
+                            "id": 246961,
+                            "option": "<p>Guido van Rossum named it after the Pythonidae - a family of large, nonvenomous snakes<\/p>"
+                        }, {
+                            "id": 246962,
+                            "option": "<p>Guido van Rossum named it to honor Python of Catana, a dramatic poet of the time of Alexander the Great<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3086
+                }, {
+                    "id": 65500,
+                    "customId": "PE1_Q1_ITEM__10",
+                    "question": "<p>Which one of the following is an example of a Python file extension?<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246963,
+                            "option": "<p>py<\/p>"
+                        }, {
+                            "id": 246964,
+                            "option": "<p>p<\/p>"
+                        }, {
+                            "id": 246965,
+                            "option": "<p>pi<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3086
+                }
+            ],
+            "showTutorial": false,
+            "tutorial": null
+        }
+    ],
+    "token": null,
+    "lastStableState": [],
+    "launchPresentationReturnUrl": null,
+    "fullScreenExitLimit": null,
+    "windowExitLimit": null,
+    "noInternetLimit": null,
+    "screenshotLimit": null,
+    "webcamDetectionLimit": null,
+    "wrongGazeDirectionDurationLimit": null,
+    "silentDetectionsEnabled": false,
+    "aceEditorMode": "ace\/mode\/python",
+    "showCalculator": false,
+    "showScratchpad": false,
+    "photosTaken": false,
+    "recordVideo": false,
+    "recordAudio": false,
+    "recordScreen": false,
+    "allowNoRecording": null,
+    "showScore": true,
+    "showTutorials": false,
+    "testingProgramId": false,
+    "micRequired": false,
+    "classId": null,
+    "domain": "course_65",
+    "locale": "en"
+}

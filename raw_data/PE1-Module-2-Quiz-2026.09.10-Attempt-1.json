@@ -1,0 +1,599 @@
+{
+    "id": 11888,
+    "showCodeHonor": false,
+    "showNDA": false,
+    "timeLimitInMinutes": 15,
+    "timeWarningInMinutes": 1,
+    "shuffleAnswers": true,
+    "unlimitedAttempts": true,
+    "allowedAttempts": 1,
+    "showReview": true,
+    "showReviewAfterSubmitting": true,
+    "showAnswers": true,
+    "showWelcomePage": false,
+    "welcomePageContent": null,
+    "hasTimedSections": false,
+    "showIndependentSections": false,
+    "questions": [{
+            "id": 65501,
+            "customId": "PE1_Q2_ITEM_1",
+            "question": "<p>The <strong>escape character<\/strong> owes its name to the fact that it:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246966,
+                    "option": "<p>changes the meaning of the character next to it<\/p>"
+                }, {
+                    "id": 246967,
+                    "option": "<p>cannot be caught due to its high speed<\/p>"
+                }, {
+                    "id": 246968,
+                    "option": "<p>escapes from source files into the computer memory<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3087
+        }, {
+            "id": 65502,
+            "customId": "PE1_Q2_ITEM_2",
+            "question": "<p>The meaning of the <strong>positional parameter<\/strong> is determined by its:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246969,
+                    "option": "<p>position<\/p>"
+                }, {
+                    "id": 246970,
+                    "option": "<p>appearance<\/p>"
+                }, {
+                    "id": 246971,
+                    "option": "<p>name<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3087
+        }, {
+            "id": 65503,
+            "customId": "PE1_Q2_ITEM_3",
+            "question": "<p>The most important difference between integer and floating-point numbers lies in the fact that:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246972,
+                    "option": "<p>they are stored differently in the computer memory<\/p>"
+                }, {
+                    "id": 246973,
+                    "option": "<p>they cannot be used simultaneously<\/p>"
+                }, {
+                    "id": 246974,
+                    "option": "<p>integers cannot be literals, while floats can<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3087
+        }, {
+            "id": 65504,
+            "customId": "PE1_Q2_ITEM_4",
+            "question": "<p>The <code >0x<\/code> prefix means that the number after it is denoted as:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246975,
+                    "option": "<p>a hexadecimal<\/p>"
+                }, {
+                    "id": 246976,
+                    "option": "<p>an octal<\/p>"
+                }, {
+                    "id": 246977,
+                    "option": "<p>a decimal<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3087
+        }, {
+            "id": 65505,
+            "customId": "PE1_Q2_ITEM_5",
+            "question": "<p>The <code >\/\/<\/code> operator:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246978,
+                    "option": "<p>performs integer division<\/p>"
+                }, {
+                    "id": 246979,
+                    "option": "<p>performs regular division<\/p>"
+                }, {
+                    "id": 246980,
+                    "option": "<p>does not exist<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3087
+        }, {
+            "id": 65506,
+            "customId": "PE1_Q2_ITEM_6",
+            "question": "<p>The result of the following addition:<\/p>\n<code >123 + 0.0<\/code>\n<br>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246981,
+                    "option": "<p>is equal to <code >123.0<\/code><\/p>"
+                }, {
+                    "id": 246982,
+                    "option": "<p>is equal to <code >123<\/code><\/p>"
+                }, {
+                    "id": 246983,
+                    "option": "<p>cannot be evaluated<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3087
+        }, {
+            "id": 65507,
+            "customId": "PE1_Q2_ITEM_7",
+            "question": "<p>Only one of the following statements is <u>true<\/u> - which one?<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246984,
+                    "option": "<p>multiplication precedes addition<\/p>"
+                }, {
+                    "id": 246985,
+                    "option": "<p>addition precedes multiplication<\/p>"
+                }, {
+                    "id": 246986,
+                    "option": "<p>neither statement can be evaluated<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3087
+        }, {
+            "id": 65508,
+            "customId": "PE1_Q2_ITEM_8",
+            "question": "<p>Right-sided binding means that the following expression:<\/p>\n<code >1 ** 2 ** 3<\/code>\n<br>\n<br>\n<p>will be evaluated:<\/p>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246987,
+                    "option": "<p>from right to left<\/p>"
+                }, {
+                    "id": 246988,
+                    "option": "<p>from left to right<\/p>"
+                }, {
+                    "id": 246989,
+                    "option": "<p>in random order<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3087
+        }, {
+            "id": 65509,
+            "customId": "PE1_Q2_ITEM_9",
+            "question": "<p>A <strong>keyword<\/strong> is a word that:  (Select <u>two<\/u> answers)<\/p>",
+            "type": "Multiple Choice",
+            "htmlType": "checkbox",
+            "optionsText": null,
+            "options": [{
+                    "id": 246990,
+                    "option": "<p>cannot be used as a variable name<\/p>"
+                }, {
+                    "id": 246991,
+                    "option": "<p>cannot be used as a function name<\/p>"
+                }, {
+                    "id": 246992,
+                    "option": "<p>is the most important word in the whole program<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3087
+        }, {
+            "id": 65510,
+            "customId": "PE1_Q2_ITEM_10",
+            "question": "<p>A value returned by the <code >input()<\/code> function is:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 246993,
+                    "option": "<p>a string<\/p>"
+                }, {
+                    "id": 246994,
+                    "option": "<p>an integer<\/p>"
+                }, {
+                    "id": 246995,
+                    "option": "<p>a float<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3087
+        }
+    ],
+    "sections": [{
+            "id": 3087,
+            "name": "PE1 -- Module 2 Quiz",
+            "passingThreshold": null,
+            "showSectionPage": false,
+            "showReview": false,
+            "timeLimitInMinutes": 0,
+            "timeWarningInMinutes": 0,
+            "numberOfQuestions": 10,
+            "questions": [{
+                    "id": 65501,
+                    "customId": "PE1_Q2_ITEM_1",
+                    "question": "<p>The <strong>escape character<\/strong> owes its name to the fact that it:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246966,
+                            "option": "<p>changes the meaning of the character next to it<\/p>"
+                        }, {
+                            "id": 246967,
+                            "option": "<p>cannot be caught due to its high speed<\/p>"
+                        }, {
+                            "id": 246968,
+                            "option": "<p>escapes from source files into the computer memory<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3087
+                }, {
+                    "id": 65502,
+                    "customId": "PE1_Q2_ITEM_2",
+                    "question": "<p>The meaning of the <strong>positional parameter<\/strong> is determined by its:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246969,
+                            "option": "<p>position<\/p>"
+                        }, {
+                            "id": 246970,
+                            "option": "<p>appearance<\/p>"
+                        }, {
+                            "id": 246971,
+                            "option": "<p>name<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3087
+                }, {
+                    "id": 65503,
+                    "customId": "PE1_Q2_ITEM_3",
+                    "question": "<p>The most important difference between integer and floating-point numbers lies in the fact that:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246972,
+                            "option": "<p>they are stored differently in the computer memory<\/p>"
+                        }, {
+                            "id": 246973,
+                            "option": "<p>they cannot be used simultaneously<\/p>"
+                        }, {
+                            "id": 246974,
+                            "option": "<p>integers cannot be literals, while floats can<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3087
+                }, {
+                    "id": 65504,
+                    "customId": "PE1_Q2_ITEM_4",
+                    "question": "<p>The <code >0x<\/code> prefix means that the number after it is denoted as:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246975,
+                            "option": "<p>a hexadecimal<\/p>"
+                        }, {
+                            "id": 246976,
+                            "option": "<p>an octal<\/p>"
+                        }, {
+                            "id": 246977,
+                            "option": "<p>a decimal<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3087
+                }, {
+                    "id": 65505,
+                    "customId": "PE1_Q2_ITEM_5",
+                    "question": "<p>The <code >\/\/<\/code> operator:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246978,
+                            "option": "<p>performs integer division<\/p>"
+                        }, {
+                            "id": 246979,
+                            "option": "<p>performs regular division<\/p>"
+                        }, {
+                            "id": 246980,
+                            "option": "<p>does not exist<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3087
+                }, {
+                    "id": 65506,
+                    "customId": "PE1_Q2_ITEM_6",
+                    "question": "<p>The result of the following addition:<\/p>\n<code >123 + 0.0<\/code>\n<br>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246981,
+                            "option": "<p>is equal to <code >123.0<\/code><\/p>"
+                        }, {
+                            "id": 246982,
+                            "option": "<p>is equal to <code >123<\/code><\/p>"
+                        }, {
+                            "id": 246983,
+                            "option": "<p>cannot be evaluated<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3087
+                }, {
+                    "id": 65507,
+                    "customId": "PE1_Q2_ITEM_7",
+                    "question": "<p>Only one of the following statements is <u>true<\/u> - which one?<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246984,
+                            "option": "<p>multiplication precedes addition<\/p>"
+                        }, {
+                            "id": 246985,
+                            "option": "<p>addition precedes multiplication<\/p>"
+                        }, {
+                            "id": 246986,
+                            "option": "<p>neither statement can be evaluated<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3087
+                }, {
+                    "id": 65508,
+                    "customId": "PE1_Q2_ITEM_8",
+                    "question": "<p>Right-sided binding means that the following expression:<\/p>\n<code >1 ** 2 ** 3<\/code>\n<br>\n<br>\n<p>will be evaluated:<\/p>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246987,
+                            "option": "<p>from right to left<\/p>"
+                        }, {
+                            "id": 246988,
+                            "option": "<p>from left to right<\/p>"
+                        }, {
+                            "id": 246989,
+                            "option": "<p>in random order<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3087
+                }, {
+                    "id": 65509,
+                    "customId": "PE1_Q2_ITEM_9",
+                    "question": "<p>A <strong>keyword<\/strong> is a word that:  (Select <u>two<\/u> answers)<\/p>",
+                    "type": "Multiple Choice",
+                    "htmlType": "checkbox",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246990,
+                            "option": "<p>cannot be used as a variable name<\/p>"
+                        }, {
+                            "id": 246991,
+                            "option": "<p>cannot be used as a function name<\/p>"
+                        }, {
+                            "id": 246992,
+                            "option": "<p>is the most important word in the whole program<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3087
+                }, {
+                    "id": 65510,
+                    "customId": "PE1_Q2_ITEM_10",
+                    "question": "<p>A value returned by the <code >input()<\/code> function is:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 246993,
+                            "option": "<p>a string<\/p>"
+                        }, {
+                            "id": 246994,
+                            "option": "<p>an integer<\/p>"
+                        }, {
+                            "id": 246995,
+                            "option": "<p>a float<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3087
+                }
+            ],
+            "showTutorial": false,
+            "tutorial": null
+        }
+    ],
+    "token": null,
+    "lastStableState": [],
+    "launchPresentationReturnUrl": null,
+    "fullScreenExitLimit": null,
+    "windowExitLimit": null,
+    "noInternetLimit": null,
+    "screenshotLimit": null,
+    "webcamDetectionLimit": null,
+    "wrongGazeDirectionDurationLimit": null,
+    "silentDetectionsEnabled": false,
+    "aceEditorMode": "ace\/mode\/python",
+    "showCalculator": false,
+    "showScratchpad": false,
+    "photosTaken": false,
+    "recordVideo": false,
+    "recordAudio": false,
+    "recordScreen": false,
+    "allowNoRecording": null,
+    "showScore": true,
+    "showTutorials": false,
+    "testingProgramId": false,
+    "micRequired": false,
+    "classId": null,
+    "domain": "course_65",
+    "locale": "en"
+}

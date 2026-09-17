@@ -1,0 +1,599 @@
+{
+    "id": 11892,
+    "showCodeHonor": false,
+    "showNDA": false,
+    "timeLimitInMinutes": 15,
+    "timeWarningInMinutes": 1,
+    "shuffleAnswers": true,
+    "unlimitedAttempts": true,
+    "allowedAttempts": 1,
+    "showReview": true,
+    "showReviewAfterSubmitting": true,
+    "showAnswers": true,
+    "showWelcomePage": false,
+    "welcomePageContent": null,
+    "hasTimedSections": false,
+    "showIndependentSections": false,
+    "questions": [{
+            "id": 65563,
+            "customId": "PE1_Q3_ITEM_1",
+            "question": "<p>An operator able to check whether two values are <u>not<\/u> equal is coded as:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247194,
+                    "option": "<p><code >!=<\/code><\/p>"
+                }, {
+                    "id": 247195,
+                    "option": "<p><code >not ==<\/code><\/p>"
+                }, {
+                    "id": 247196,
+                    "option": "<p><code >&lt;&gt;<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3091
+        }, {
+            "id": 65564,
+            "customId": "PE1_Q3_ITEM_2",
+            "question": "<p>How many stars will the following snippet send to the console?<\/p>\n\n<code class=\"codep\">i = 2\nwhile i &gt;= 0:\n    print(\"*\")\n    i -= 2\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247197,
+                    "option": "<p>two<\/p>"
+                }, {
+                    "id": 247198,
+                    "option": "<p>one<\/p>"
+                }, {
+                    "id": 247199,
+                    "option": "<p>three<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3091
+        }, {
+            "id": 65565,
+            "customId": "PE1_Q3_ITEM_3",
+            "question": "<p>How many hashes will the following snippet send to the console?<\/p>\n\n<code class=\"codep\">for i in range(-1, 1):\n    print(\"#\")\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247200,
+                    "option": "<p>two<\/p>"
+                }, {
+                    "id": 247201,
+                    "option": "<p>one<\/p>"
+                }, {
+                    "id": 247202,
+                    "option": "<p>three<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3091
+        }, {
+            "id": 65566,
+            "customId": "PE1_Q3_ITEM_4",
+            "question": "<p>What value will be assigned to the <code >x<\/code> variable?<\/p>\n\n<code class=\"codep\">z = 10\ny = 0\nx = z &gt; y or z == y\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247203,
+                    "option": "<p><code >True<\/code><\/p>"
+                }, {
+                    "id": 247204,
+                    "option": "<p><code >False<\/code><\/p>"
+                }, {
+                    "id": 247205,
+                    "option": "<p><code >1<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3091
+        }, {
+            "id": 65567,
+            "customId": "PE1_Q3_ITEM_5",
+            "question": "<p>What is the output of the following code?<\/p>\n\n<code class=\"codep\">my_list = [3, 1, -1]\nmy_list[-1] = my_list[-2]\nprint(my_list)\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247206,
+                    "option": "<p><code >[3, 1, 1]<\/code><\/p>"
+                }, {
+                    "id": 247207,
+                    "option": "<p><code >[1, 1, -1]<\/code><\/p>"
+                }, {
+                    "id": 247208,
+                    "option": "<p><code >[3, -1, 1]<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3091
+        }, {
+            "id": 65568,
+            "customId": "PE1_Q3_ITEM_6",
+            "question": "<p>The second assignment:<\/p>\n\n<code class=\"codep\">vals = [0, 1, 2]\nvals[0], vals[1] = vals[1], vals[2]\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247209,
+                    "option": "<p>doesn't change the list's length<\/p>"
+                }, {
+                    "id": 247210,
+                    "option": "<p>shortens the list<\/p>"
+                }, {
+                    "id": 247211,
+                    "option": "<p>extends the list<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3091
+        }, {
+            "id": 65569,
+            "customId": "PE1_Q3_ITEM_7",
+            "question": "<p>Take a look at the snippet and choose one of the following statements which is <u>true<\/u>:<\/p>\n\n<code class=\"codep\">nums = []\nvals = nums\nvals.append(1)\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247212,
+                    "option": "<p><code >nums<\/code> and <code >vals<\/code> are of the same length<\/p>"
+                }, {
+                    "id": 247213,
+                    "option": "<p><code >nums<\/code> is longer than <code >vals<\/code><\/p>"
+                }, {
+                    "id": 247214,
+                    "option": "<p><code >vals<\/code> is longer than <code >nums<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3091
+        }, {
+            "id": 65570,
+            "customId": "PE1_Q3_ITEM_8",
+            "question": "<p>Take a look at the snippet and choose one of the following statements which is <u>true<\/u>:<p>\n\n<code class=\"codep\">nums = []\nvals = nums[:]\nvals.append(1)\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247215,
+                    "option": "<p><code >vals<\/code> is longer than <code >nums<\/code><\/p>"
+                }, {
+                    "id": 247216,
+                    "option": "<p><code >nums<\/code> and <code >vals<\/code> are of the same length<\/p>"
+                }, {
+                    "id": 247217,
+                    "option": "<p><code >nums<\/code> is longer than <code >vals<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3091
+        }, {
+            "id": 65571,
+            "customId": "PE1_Q3_ITEM_9",
+            "question": "<p>How many elements does the <code >my_list<\/code> list contain?<\/p>\n\n<code class=\"codep\">my_list = [0 for i in range(1, 3)]\n\n<\/code>\n<br>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247218,
+                    "option": "<p>two<\/p>"
+                }, {
+                    "id": 247219,
+                    "option": "<p>one<\/p>"
+                }, {
+                    "id": 247220,
+                    "option": "<p>three<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3091
+        }, {
+            "id": 65572,
+            "customId": "PE1_Q3_ITEM_10",
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">my_list = [0, 1, 2, 3]\nx = 1\nfor elem in my_list:\n    x *= elem\nprint(x)\n\n<\/code>\n<br>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247221,
+                    "option": "<p><code >0<\/code><\/p>"
+                }, {
+                    "id": 247222,
+                    "option": "<p><code >1<\/code><\/p>"
+                }, {
+                    "id": 247223,
+                    "option": "<p><code >6<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3091
+        }
+    ],
+    "sections": [{
+            "id": 3091,
+            "name": "PE1 -- Module 3 Quiz",
+            "passingThreshold": null,
+            "showSectionPage": false,
+            "showReview": false,
+            "timeLimitInMinutes": 0,
+            "timeWarningInMinutes": 0,
+            "numberOfQuestions": 10,
+            "questions": [{
+                    "id": 65563,
+                    "customId": "PE1_Q3_ITEM_1",
+                    "question": "<p>An operator able to check whether two values are <u>not<\/u> equal is coded as:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247194,
+                            "option": "<p><code >!=<\/code><\/p>"
+                        }, {
+                            "id": 247195,
+                            "option": "<p><code >not ==<\/code><\/p>"
+                        }, {
+                            "id": 247196,
+                            "option": "<p><code >&lt;&gt;<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3091
+                }, {
+                    "id": 65564,
+                    "customId": "PE1_Q3_ITEM_2",
+                    "question": "<p>How many stars will the following snippet send to the console?<\/p>\n\n<code class=\"codep\">i = 2\nwhile i &gt;= 0:\n    print(\"*\")\n    i -= 2\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247197,
+                            "option": "<p>two<\/p>"
+                        }, {
+                            "id": 247198,
+                            "option": "<p>one<\/p>"
+                        }, {
+                            "id": 247199,
+                            "option": "<p>three<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3091
+                }, {
+                    "id": 65565,
+                    "customId": "PE1_Q3_ITEM_3",
+                    "question": "<p>How many hashes will the following snippet send to the console?<\/p>\n\n<code class=\"codep\">for i in range(-1, 1):\n    print(\"#\")\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247200,
+                            "option": "<p>two<\/p>"
+                        }, {
+                            "id": 247201,
+                            "option": "<p>one<\/p>"
+                        }, {
+                            "id": 247202,
+                            "option": "<p>three<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3091
+                }, {
+                    "id": 65566,
+                    "customId": "PE1_Q3_ITEM_4",
+                    "question": "<p>What value will be assigned to the <code >x<\/code> variable?<\/p>\n\n<code class=\"codep\">z = 10\ny = 0\nx = z &gt; y or z == y\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247203,
+                            "option": "<p><code >True<\/code><\/p>"
+                        }, {
+                            "id": 247204,
+                            "option": "<p><code >False<\/code><\/p>"
+                        }, {
+                            "id": 247205,
+                            "option": "<p><code >1<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3091
+                }, {
+                    "id": 65567,
+                    "customId": "PE1_Q3_ITEM_5",
+                    "question": "<p>What is the output of the following code?<\/p>\n\n<code class=\"codep\">my_list = [3, 1, -1]\nmy_list[-1] = my_list[-2]\nprint(my_list)\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247206,
+                            "option": "<p><code >[3, 1, 1]<\/code><\/p>"
+                        }, {
+                            "id": 247207,
+                            "option": "<p><code >[1, 1, -1]<\/code><\/p>"
+                        }, {
+                            "id": 247208,
+                            "option": "<p><code >[3, -1, 1]<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3091
+                }, {
+                    "id": 65568,
+                    "customId": "PE1_Q3_ITEM_6",
+                    "question": "<p>The second assignment:<\/p>\n\n<code class=\"codep\">vals = [0, 1, 2]\nvals[0], vals[1] = vals[1], vals[2]\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247209,
+                            "option": "<p>doesn't change the list's length<\/p>"
+                        }, {
+                            "id": 247210,
+                            "option": "<p>shortens the list<\/p>"
+                        }, {
+                            "id": 247211,
+                            "option": "<p>extends the list<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3091
+                }, {
+                    "id": 65569,
+                    "customId": "PE1_Q3_ITEM_7",
+                    "question": "<p>Take a look at the snippet and choose one of the following statements which is <u>true<\/u>:<\/p>\n\n<code class=\"codep\">nums = []\nvals = nums\nvals.append(1)\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247212,
+                            "option": "<p><code >nums<\/code> and <code >vals<\/code> are of the same length<\/p>"
+                        }, {
+                            "id": 247213,
+                            "option": "<p><code >nums<\/code> is longer than <code >vals<\/code><\/p>"
+                        }, {
+                            "id": 247214,
+                            "option": "<p><code >vals<\/code> is longer than <code >nums<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3091
+                }, {
+                    "id": 65570,
+                    "customId": "PE1_Q3_ITEM_8",
+                    "question": "<p>Take a look at the snippet and choose one of the following statements which is <u>true<\/u>:<p>\n\n<code class=\"codep\">nums = []\nvals = nums[:]\nvals.append(1)\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247215,
+                            "option": "<p><code >vals<\/code> is longer than <code >nums<\/code><\/p>"
+                        }, {
+                            "id": 247216,
+                            "option": "<p><code >nums<\/code> and <code >vals<\/code> are of the same length<\/p>"
+                        }, {
+                            "id": 247217,
+                            "option": "<p><code >nums<\/code> is longer than <code >vals<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3091
+                }, {
+                    "id": 65571,
+                    "customId": "PE1_Q3_ITEM_9",
+                    "question": "<p>How many elements does the <code >my_list<\/code> list contain?<\/p>\n\n<code class=\"codep\">my_list = [0 for i in range(1, 3)]\n\n<\/code>\n<br>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247218,
+                            "option": "<p>two<\/p>"
+                        }, {
+                            "id": 247219,
+                            "option": "<p>one<\/p>"
+                        }, {
+                            "id": 247220,
+                            "option": "<p>three<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3091
+                }, {
+                    "id": 65572,
+                    "customId": "PE1_Q3_ITEM_10",
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">my_list = [0, 1, 2, 3]\nx = 1\nfor elem in my_list:\n    x *= elem\nprint(x)\n\n<\/code>\n<br>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247221,
+                            "option": "<p><code >0<\/code><\/p>"
+                        }, {
+                            "id": 247222,
+                            "option": "<p><code >1<\/code><\/p>"
+                        }, {
+                            "id": 247223,
+                            "option": "<p><code >6<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3091
+                }
+            ],
+            "showTutorial": false,
+            "tutorial": null
+        }
+    ],
+    "token": null,
+    "lastStableState": [],
+    "launchPresentationReturnUrl": null,
+    "fullScreenExitLimit": null,
+    "windowExitLimit": null,
+    "noInternetLimit": null,
+    "screenshotLimit": null,
+    "webcamDetectionLimit": null,
+    "wrongGazeDirectionDurationLimit": null,
+    "silentDetectionsEnabled": false,
+    "aceEditorMode": "ace\/mode\/python",
+    "showCalculator": false,
+    "showScratchpad": false,
+    "photosTaken": false,
+    "recordVideo": false,
+    "recordAudio": false,
+    "recordScreen": false,
+    "allowNoRecording": null,
+    "showScore": true,
+    "showTutorials": false,
+    "testingProgramId": false,
+    "micRequired": false,
+    "classId": null,
+    "domain": "course_65",
+    "locale": "en"
+}

@@ -1,0 +1,28 @@
+{
+  "version": "2.0.0",
+  "date": "2026-09-12",
+  "status": "OPERATIONAL",
+  "bank": {"questions": 148, "unique_sources": 169, "multi_select": 14, "concepts": 12},
+  "validation": {
+    "pass1_execution_verified": 94,
+    "pass2_machine_confirmed": 58,
+    "pass2_mismatches": 0,
+    "expert_reviewed": 90,
+    "external_key_check": "Q104 confirmed vs official PE1 key"
+  },
+  "tests": {"suite": "test_practice.js", "checks": 37, "passing": 37},
+  "features": [
+    "exam sim 30Q/40min",
+    "drill all",
+    "blank-spot drill (algorithmic)",
+    "flagged drill (user blind spots)",
+    "multi-select focus",
+    "explain panels (correct + incorrect options)",
+    "per-question + per-concept statistics",
+    "run history",
+    "readiness rolling metric (last 50)",
+    "flag checkbox persistence",
+    "back button",
+    "reset progress"
+  ]
+}

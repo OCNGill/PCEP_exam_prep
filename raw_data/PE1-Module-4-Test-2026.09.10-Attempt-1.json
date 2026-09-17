@@ -1,0 +1,1379 @@
+{
+    "id": 11895,
+    "showCodeHonor": true,
+    "showNDA": false,
+    "timeLimitInMinutes": 30,
+    "timeWarningInMinutes": 2,
+    "shuffleAnswers": true,
+    "unlimitedAttempts": true,
+    "allowedAttempts": 1,
+    "showReview": true,
+    "showReviewAfterSubmitting": true,
+    "showAnswers": false,
+    "showWelcomePage": true,
+    "welcomePageContent": null,
+    "hasTimedSections": false,
+    "showIndependentSections": false,
+    "questions": [{
+            "id": 65668,
+            "customId": "PE1_T4_ITEM_19",
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">dictionary = {'one': 'two', 'three': 'one', 'two': 'three'}\nv = dictionary['one']\n\nfor k in range(len(dictionary)):\n    v = dictionary[v]\n\nprint(v)\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247602,
+                    "option": "<p><code >two<\/code><\/p>"
+                }, {
+                    "id": 247603,
+                    "option": "<p><code >three<\/code><\/p>"
+                }, {
+                    "id": 247604,
+                    "option": "<p><code >one<\/code><\/p>"
+                }, {
+                    "id": 247605,
+                    "option": "<p><code >('one', 'two', 'three')<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65671,
+            "customId": "PE1_T4_ITEM_22",
+            "question": "<p>What is the output of the following code?<\/p>\n\n<p><code class=\"codep\">try:\n    value = input(\"Enter a value: \")\n    print(value\/value)\nexcept ValueError:\n    print(\"Bad input...\")\nexcept ZeroDivisionError:\n    print(\"Very bad input...\")\nexcept TypeError:\n    print(\"Very very bad input...\")\nexcept:\n    print(\"Booo!\")\n\n<\/code><\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247614,
+                    "option": "<p><code >Very very bad input...<\/code><\/p>"
+                }, {
+                    "id": 247615,
+                    "option": "<p><code >Very bad input...<\/code><\/p>"
+                }, {
+                    "id": 247616,
+                    "option": "<p><code >Bad input...<\/code><\/p>"
+                }, {
+                    "id": 247617,
+                    "option": "<p><code >Booo!<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65652,
+            "customId": "PE1_T4_ITEM_3",
+            "question": "<p>A built-in function is a function which:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247538,
+                    "option": "<p>comes with Python, and is an integral part of Python<\/p>"
+                }, {
+                    "id": 247539,
+                    "option": "<p>has been placed within your code by another programmer<\/p>"
+                }, {
+                    "id": 247540,
+                    "option": "<p>has to be imported before use<\/p>"
+                }, {
+                    "id": 247541,
+                    "option": "<p>is hidden from programmers<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65661,
+            "customId": "PE1_T4_ITEM_12",
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def fun(x):\n    if x % 2 == 0:\n    \treturn 1\n    else:\n    \treturn\n\n\nprint(fun(fun(2)) + 1)\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247574,
+                    "option": "<p>the code will cause a runtime error<\/p>"
+                }, {
+                    "id": 247575,
+                    "option": "<p><code >1<\/code><\/p>"
+                }, {
+                    "id": 247576,
+                    "option": "<p><code >2<\/code><\/p>"
+                }, {
+                    "id": 247577,
+                    "option": "<p><code >None<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65653,
+            "customId": "PE1_T4_ITEM_4",
+            "question": "<p>The fact that tuples belong to sequence types means that:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247542,
+                    "option": "<p>they can be indexed and sliced like lists<\/p>"
+                }, {
+                    "id": 247543,
+                    "option": "<p>they can be extended using the <code >.append()<\/code> method<\/p>"
+                }, {
+                    "id": 247544,
+                    "option": "<p>they can be modified using the <code >del<\/code> instruction<\/p>"
+                }, {
+                    "id": 247545,
+                    "option": "<p>they are actually lists<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65665,
+            "customId": "PE1_T4_ITEM_16",
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">my_list =  ['Mary', 'had', 'a', 'little', 'lamb']\n\n\ndef my_list(my_list):\n    del my_list[3]\n    my_list[3] = 'ram'\n\n\nprint(my_list(my_list))\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247590,
+                    "option": "<p>no output, the snippet is erroneous<\/p>"
+                }, {
+                    "id": 247591,
+                    "option": "<p><code >['Mary', 'had', 'a', 'little', 'lamb']<\/code><\/p>"
+                }, {
+                    "id": 247592,
+                    "option": "<p><code >['Mary', 'had', 'a', 'lamb']<\/code><\/p>"
+                }, {
+                    "id": 247593,
+                    "option": "<p><code >['Mary', 'had', 'a', 'ram']<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65663,
+            "customId": "PE1_T4_ITEM_14",
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def any():\n    print(var + 1, end='')\n\n\nvar = 1\nany()\nprint(var)\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247582,
+                    "option": "<p><code >21<\/code><\/p>"
+                }, {
+                    "id": 247583,
+                    "option": "<p><code >12<\/code><\/p>"
+                }, {
+                    "id": 247584,
+                    "option": "<p><code >11<\/code><\/p>"
+                }, {
+                    "id": 247585,
+                    "option": "<p><code >22<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65655,
+            "customId": "PE1_T4_ITEM_6",
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def fun(x):\n    x += 1\n    return x\n\n\nx = 2\nx = fun(x + 1)\nprint(x)\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247550,
+                    "option": "<p><code >4<\/code><\/p>"
+                }, {
+                    "id": 247551,
+                    "option": "<p><code >5<\/code><\/p>"
+                }, {
+                    "id": 247552,
+                    "option": "<p><code >3<\/code><\/p>"
+                }, {
+                    "id": 247553,
+                    "option": "<p>the code is erroneous<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65658,
+            "customId": "PE1_T4_ITEM_9",
+            "question": "<p>The following snippet:<\/p>\n\n<code class=\"codep\">def func_1(a):\n    return a ** a\n\n\ndef func_2(a):\n    return func_1(a) * func_1(a)\n\n\nprint(func_2(2))\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247562,
+                    "option": "<p>will output <code >16<\/code><\/p>"
+                }, {
+                    "id": 247563,
+                    "option": "<p>will output <code >4<\/code><\/p>"
+                }, {
+                    "id": 247564,
+                    "option": "<p>will output <code >2<\/code><\/p>"
+                }, {
+                    "id": 247565,
+                    "option": "<p>is erroneous<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65650,
+            "customId": "PE1_T4_ITEM_1",
+            "question": "<p>Which one of the following lines properly starts a parameterless function definition?<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247530,
+                    "option": "<p><code >def fun():<\/code><\/p>"
+                }, {
+                    "id": 247531,
+                    "option": "<p><code >def fun:<\/code><\/p>"
+                }, {
+                    "id": 247532,
+                    "option": "<p><code >function fun():<\/code><\/p>"
+                }, {
+                    "id": 247533,
+                    "option": "<p><code >fun function():<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65666,
+            "customId": "PE1_T4_ITEM_17",
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def fun(x, y, z):\n    return x + 2 * y + 3 * z\n\n\nprint(fun(0, z=1, y=3))\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247594,
+                    "option": "<p><code >9<\/code><\/p>"
+                }, {
+                    "id": 247595,
+                    "option": "<p><code >0<\/code><\/p>"
+                }, {
+                    "id": 247596,
+                    "option": "<p><code >3<\/code><\/p>"
+                }, {
+                    "id": 247597,
+                    "option": "<p>the snippet is erroneous<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65670,
+            "customId": "PE1_T4_ITEM_21",
+            "question": "<p>Select the <u>true<\/u> statements about the <i>try-except<\/i> block in relation to the following example. (Select <u>two<\/u> answers.)<\/p>\n\n<p><code class=\"codep\">try:\n    # Some code is here...\nexcept:\n    # Some code is here...\n\n<\/code><\/p>",
+            "type": "Multiple Choice",
+            "htmlType": "checkbox",
+            "optionsText": null,
+            "options": [{
+                    "id": 247610,
+                    "option": "<p>If you suspect that a snippet may raise an exception, you should place it in the <code >try<\/code> block.<\/p>"
+                }, {
+                    "id": 247611,
+                    "option": "<p>The code that follows the <code >except<\/code> statement will be executed if the code in the <code >try<\/code> clause runs into an error.<\/p>"
+                }, {
+                    "id": 247612,
+                    "option": "<p>If there is a syntax error in code located in the <code >try<\/code> block, the <code >except<\/code> branch will <b>not<\/b> handle it, and a <i>SyntaxError<\/i> exception will be raised instead.<\/p>"
+                }, {
+                    "id": 247613,
+                    "option": "<p>The code that follows the <code >try<\/code> statement will be executed if the code in the <code >except<\/code> clause runs into an error.<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65659,
+            "customId": "PE1_T4_ITEM_10",
+            "question": "<p>Which of the following lines properly starts a function using two parameters, both with zeroed default values?<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247566,
+                    "option": "<p><code >def fun(a=0, b=0):<\/code><\/p>"
+                }, {
+                    "id": 247567,
+                    "option": "<p><code >def fun(a=b=0):<\/code><\/p>"
+                }, {
+                    "id": 247568,
+                    "option": "<p><code >fun fun(a=0, b):<\/code><\/p>"
+                }, {
+                    "id": 247569,
+                    "option": "<p><code >fun fun(a, b=0):<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65662,
+            "customId": "PE1_T4_ITEM_13",
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def fun(x):\n    global y\n    y = x * x\n    return y\n\n\nfun(2)\nprint(y)\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247578,
+                    "option": "<p><code >4<\/code><\/p>"
+                }, {
+                    "id": 247579,
+                    "option": "<p><code >2<\/code><\/p>"
+                }, {
+                    "id": 247580,
+                    "option": "<p>None<\/p>"
+                }, {
+                    "id": 247581,
+                    "option": "<p>the code will cause a runtime error<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65664,
+            "customId": "PE1_T4_ITEM_15",
+            "question": "<p>Assuming that <code >my_tuple<\/code> is a correctly created tuple, the fact that tuples are immutable means that the following instruction:<\/p>\n\n<code class=\"codep\">my_tuple[1] = my_tuple[1] + my_tuple[0]\n\n<\/code>\n<br>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247586,
+                    "option": "<p>is illegal<\/p>"
+                }, {
+                    "id": 247587,
+                    "option": "<p>can be executed if and only if the tuple contains at least two elements<\/p>"
+                }, {
+                    "id": 247588,
+                    "option": "<p>is fully correct<\/p>"
+                }, {
+                    "id": 247589,
+                    "option": "<p>may be illegal if the tuple contains strings<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65657,
+            "customId": "PE1_T4_ITEM_8",
+            "question": "<p>The following snippet:<\/p>\n\n<code class=\"codep\">def func(a, b):\n    return a ** a\n\n\nprint(func(2))\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247558,
+                    "option": "<p>is erroneous<\/p>"
+                }, {
+                    "id": 247559,
+                    "option": "<p>will output <code >4<\/code><\/p>"
+                }, {
+                    "id": 247560,
+                    "option": "<p>will output <code >2<\/code><\/p>"
+                }, {
+                    "id": 247561,
+                    "option": "<p>will return <code >None<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65656,
+            "customId": "PE1_T4_ITEM_7",
+            "question": "<p>What code would you insert instead of the comment to obtain the expected output?<\/p>\n\n<p>Expected output:<\/p>\n<code class=\"codep\">a\nb\nc<\/code>\n<br>\n\n<p>Code:<\/p>\n\n<code class=\"codep\">dictionary = {}\nmy_list = ['a', 'b', 'c', 'd']\n\nfor i in range(len(my_list) - 1):\n    dictionary[my_list[i]] = (my_list[i], )\n\nfor i in sorted(dictionary.keys()):\n    k = dictionary[i]\n    <mark style=\"background-color:#e6f2ff;\"># Insert your code here.<\/mark>\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247554,
+                    "option": "<p><code >print(k[0])<\/code><\/p>"
+                }, {
+                    "id": 247555,
+                    "option": "<p><code >print(k['0'])<\/code><\/p>"
+                }, {
+                    "id": 247556,
+                    "option": "<p><code >print(k)<\/code><\/p>"
+                }, {
+                    "id": 247557,
+                    "option": "<p><code >print(k[\"0\"])<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65654,
+            "customId": "PE1_T4_ITEM_5",
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def f(x):\n    if x == 0:\n    \treturn 0\n    return x + f(x - 1)\n    \n\t\nprint(f(3))\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247546,
+                    "option": "<p><code >6<\/code><\/p>"
+                }, {
+                    "id": 247547,
+                    "option": "<p><code >3<\/code><\/p>"
+                }, {
+                    "id": 247548,
+                    "option": "<p><code >1<\/code><\/p>"
+                }, {
+                    "id": 247549,
+                    "option": "<p>the code is erroneous<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65660,
+            "customId": "PE1_T4_ITEM_11",
+            "question": "<p>Which of the following statements are <u>true<\/u>? &nbsp;&nbsp;(Select <u>two<\/u> answers)<\/p>",
+            "type": "Multiple Choice",
+            "htmlType": "checkbox",
+            "optionsText": null,
+            "options": [{
+                    "id": 247570,
+                    "option": "<p>The <code >None<\/code> value cannot be used outside functions<\/p>"
+                }, {
+                    "id": 247571,
+                    "option": "<p>The <code >None<\/code> value can be assigned to variables<\/p>"
+                }, {
+                    "id": 247572,
+                    "option": "<p>The <code >None<\/code> value can be compared with variables<\/p>"
+                }, {
+                    "id": 247573,
+                    "option": "<p>The <code >None<\/code> value can be used as an argument of arithmetic operators<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65669,
+            "customId": "PE1_T4_ITEM_20",
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">tup = (1, 2, 4, 8)\ntup = tup[1:-1]\ntup = tup[0]\nprint(tup)\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247606,
+                    "option": "<p><code >2<\/code><\/p>"
+                }, {
+                    "id": 247607,
+                    "option": "<p><code >(2)<\/code><\/p>"
+                }, {
+                    "id": 247608,
+                    "option": "<p><code >(2, )<\/code><\/p>"
+                }, {
+                    "id": 247609,
+                    "option": "<p>the snippet is erroneous<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65667,
+            "customId": "PE1_T4_ITEM_18",
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def fun(inp=2, out=3):\n    return inp * out\n\n\nprint(fun(out=2))\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247598,
+                    "option": "<p><code >4<\/code><\/p>"
+                }, {
+                    "id": 247599,
+                    "option": "<p><code >6<\/code><\/p>"
+                }, {
+                    "id": 247600,
+                    "option": "<p><code >2<\/code><\/p>"
+                }, {
+                    "id": 247601,
+                    "option": "<p>the snippet is erroneous<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }, {
+            "id": 65651,
+            "customId": "PE1_T4_ITEM_2",
+            "question": "<p>A function defined in the following way:&nbsp;&nbsp;(Select <u>two<\/u> answers)<\/p>\n\n<code class=\"codep\">def function(x=0):\n    return x\n\n<\/code>\n<br>",
+            "type": "Multiple Choice",
+            "htmlType": "checkbox",
+            "optionsText": null,
+            "options": [{
+                    "id": 247534,
+                    "option": "<p>may be invoked without any argument<\/p>"
+                }, {
+                    "id": 247535,
+                    "option": "<p>must be invoked with exactly one argument<\/p>"
+                }, {
+                    "id": 247536,
+                    "option": "<p>may be invoked with exactly one argument<\/p>"
+                }, {
+                    "id": 247537,
+                    "option": "<p>must be invoked without any argument<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3096
+        }
+    ],
+    "sections": [{
+            "id": 3096,
+            "name": "PE1 -- Module 4 Test",
+            "passingThreshold": null,
+            "showSectionPage": false,
+            "showReview": false,
+            "timeLimitInMinutes": 0,
+            "timeWarningInMinutes": 0,
+            "numberOfQuestions": 22,
+            "questions": [{
+                    "id": 65668,
+                    "customId": "PE1_T4_ITEM_19",
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">dictionary = {'one': 'two', 'three': 'one', 'two': 'three'}\nv = dictionary['one']\n\nfor k in range(len(dictionary)):\n    v = dictionary[v]\n\nprint(v)\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247602,
+                            "option": "<p><code >two<\/code><\/p>"
+                        }, {
+                            "id": 247603,
+                            "option": "<p><code >three<\/code><\/p>"
+                        }, {
+                            "id": 247604,
+                            "option": "<p><code >one<\/code><\/p>"
+                        }, {
+                            "id": 247605,
+                            "option": "<p><code >('one', 'two', 'three')<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65671,
+                    "customId": "PE1_T4_ITEM_22",
+                    "question": "<p>What is the output of the following code?<\/p>\n\n<p><code class=\"codep\">try:\n    value = input(\"Enter a value: \")\n    print(value\/value)\nexcept ValueError:\n    print(\"Bad input...\")\nexcept ZeroDivisionError:\n    print(\"Very bad input...\")\nexcept TypeError:\n    print(\"Very very bad input...\")\nexcept:\n    print(\"Booo!\")\n\n<\/code><\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247614,
+                            "option": "<p><code >Very very bad input...<\/code><\/p>"
+                        }, {
+                            "id": 247615,
+                            "option": "<p><code >Very bad input...<\/code><\/p>"
+                        }, {
+                            "id": 247616,
+                            "option": "<p><code >Bad input...<\/code><\/p>"
+                        }, {
+                            "id": 247617,
+                            "option": "<p><code >Booo!<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65652,
+                    "customId": "PE1_T4_ITEM_3",
+                    "question": "<p>A built-in function is a function which:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247538,
+                            "option": "<p>comes with Python, and is an integral part of Python<\/p>"
+                        }, {
+                            "id": 247539,
+                            "option": "<p>has been placed within your code by another programmer<\/p>"
+                        }, {
+                            "id": 247540,
+                            "option": "<p>has to be imported before use<\/p>"
+                        }, {
+                            "id": 247541,
+                            "option": "<p>is hidden from programmers<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65661,
+                    "customId": "PE1_T4_ITEM_12",
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def fun(x):\n    if x % 2 == 0:\n    \treturn 1\n    else:\n    \treturn\n\n\nprint(fun(fun(2)) + 1)\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247574,
+                            "option": "<p>the code will cause a runtime error<\/p>"
+                        }, {
+                            "id": 247575,
+                            "option": "<p><code >1<\/code><\/p>"
+                        }, {
+                            "id": 247576,
+                            "option": "<p><code >2<\/code><\/p>"
+                        }, {
+                            "id": 247577,
+                            "option": "<p><code >None<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65653,
+                    "customId": "PE1_T4_ITEM_4",
+                    "question": "<p>The fact that tuples belong to sequence types means that:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247542,
+                            "option": "<p>they can be indexed and sliced like lists<\/p>"
+                        }, {
+                            "id": 247543,
+                            "option": "<p>they can be extended using the <code >.append()<\/code> method<\/p>"
+                        }, {
+                            "id": 247544,
+                            "option": "<p>they can be modified using the <code >del<\/code> instruction<\/p>"
+                        }, {
+                            "id": 247545,
+                            "option": "<p>they are actually lists<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65665,
+                    "customId": "PE1_T4_ITEM_16",
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">my_list =  ['Mary', 'had', 'a', 'little', 'lamb']\n\n\ndef my_list(my_list):\n    del my_list[3]\n    my_list[3] = 'ram'\n\n\nprint(my_list(my_list))\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247590,
+                            "option": "<p>no output, the snippet is erroneous<\/p>"
+                        }, {
+                            "id": 247591,
+                            "option": "<p><code >['Mary', 'had', 'a', 'little', 'lamb']<\/code><\/p>"
+                        }, {
+                            "id": 247592,
+                            "option": "<p><code >['Mary', 'had', 'a', 'lamb']<\/code><\/p>"
+                        }, {
+                            "id": 247593,
+                            "option": "<p><code >['Mary', 'had', 'a', 'ram']<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65663,
+                    "customId": "PE1_T4_ITEM_14",
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def any():\n    print(var + 1, end='')\n\n\nvar = 1\nany()\nprint(var)\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247582,
+                            "option": "<p><code >21<\/code><\/p>"
+                        }, {
+                            "id": 247583,
+                            "option": "<p><code >12<\/code><\/p>"
+                        }, {
+                            "id": 247584,
+                            "option": "<p><code >11<\/code><\/p>"
+                        }, {
+                            "id": 247585,
+                            "option": "<p><code >22<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65655,
+                    "customId": "PE1_T4_ITEM_6",
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def fun(x):\n    x += 1\n    return x\n\n\nx = 2\nx = fun(x + 1)\nprint(x)\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247550,
+                            "option": "<p><code >4<\/code><\/p>"
+                        }, {
+                            "id": 247551,
+                            "option": "<p><code >5<\/code><\/p>"
+                        }, {
+                            "id": 247552,
+                            "option": "<p><code >3<\/code><\/p>"
+                        }, {
+                            "id": 247553,
+                            "option": "<p>the code is erroneous<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65658,
+                    "customId": "PE1_T4_ITEM_9",
+                    "question": "<p>The following snippet:<\/p>\n\n<code class=\"codep\">def func_1(a):\n    return a ** a\n\n\ndef func_2(a):\n    return func_1(a) * func_1(a)\n\n\nprint(func_2(2))\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247562,
+                            "option": "<p>will output <code >16<\/code><\/p>"
+                        }, {
+                            "id": 247563,
+                            "option": "<p>will output <code >4<\/code><\/p>"
+                        }, {
+                            "id": 247564,
+                            "option": "<p>will output <code >2<\/code><\/p>"
+                        }, {
+                            "id": 247565,
+                            "option": "<p>is erroneous<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65650,
+                    "customId": "PE1_T4_ITEM_1",
+                    "question": "<p>Which one of the following lines properly starts a parameterless function definition?<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247530,
+                            "option": "<p><code >def fun():<\/code><\/p>"
+                        }, {
+                            "id": 247531,
+                            "option": "<p><code >def fun:<\/code><\/p>"
+                        }, {
+                            "id": 247532,
+                            "option": "<p><code >function fun():<\/code><\/p>"
+                        }, {
+                            "id": 247533,
+                            "option": "<p><code >fun function():<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65666,
+                    "customId": "PE1_T4_ITEM_17",
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def fun(x, y, z):\n    return x + 2 * y + 3 * z\n\n\nprint(fun(0, z=1, y=3))\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247594,
+                            "option": "<p><code >9<\/code><\/p>"
+                        }, {
+                            "id": 247595,
+                            "option": "<p><code >0<\/code><\/p>"
+                        }, {
+                            "id": 247596,
+                            "option": "<p><code >3<\/code><\/p>"
+                        }, {
+                            "id": 247597,
+                            "option": "<p>the snippet is erroneous<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65670,
+                    "customId": "PE1_T4_ITEM_21",
+                    "question": "<p>Select the <u>true<\/u> statements about the <i>try-except<\/i> block in relation to the following example. (Select <u>two<\/u> answers.)<\/p>\n\n<p><code class=\"codep\">try:\n    # Some code is here...\nexcept:\n    # Some code is here...\n\n<\/code><\/p>",
+                    "type": "Multiple Choice",
+                    "htmlType": "checkbox",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247610,
+                            "option": "<p>If you suspect that a snippet may raise an exception, you should place it in the <code >try<\/code> block.<\/p>"
+                        }, {
+                            "id": 247611,
+                            "option": "<p>The code that follows the <code >except<\/code> statement will be executed if the code in the <code >try<\/code> clause runs into an error.<\/p>"
+                        }, {
+                            "id": 247612,
+                            "option": "<p>If there is a syntax error in code located in the <code >try<\/code> block, the <code >except<\/code> branch will <b>not<\/b> handle it, and a <i>SyntaxError<\/i> exception will be raised instead.<\/p>"
+                        }, {
+                            "id": 247613,
+                            "option": "<p>The code that follows the <code >try<\/code> statement will be executed if the code in the <code >except<\/code> clause runs into an error.<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65659,
+                    "customId": "PE1_T4_ITEM_10",
+                    "question": "<p>Which of the following lines properly starts a function using two parameters, both with zeroed default values?<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247566,
+                            "option": "<p><code >def fun(a=0, b=0):<\/code><\/p>"
+                        }, {
+                            "id": 247567,
+                            "option": "<p><code >def fun(a=b=0):<\/code><\/p>"
+                        }, {
+                            "id": 247568,
+                            "option": "<p><code >fun fun(a=0, b):<\/code><\/p>"
+                        }, {
+                            "id": 247569,
+                            "option": "<p><code >fun fun(a, b=0):<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65662,
+                    "customId": "PE1_T4_ITEM_13",
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def fun(x):\n    global y\n    y = x * x\n    return y\n\n\nfun(2)\nprint(y)\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247578,
+                            "option": "<p><code >4<\/code><\/p>"
+                        }, {
+                            "id": 247579,
+                            "option": "<p><code >2<\/code><\/p>"
+                        }, {
+                            "id": 247580,
+                            "option": "<p>None<\/p>"
+                        }, {
+                            "id": 247581,
+                            "option": "<p>the code will cause a runtime error<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65664,
+                    "customId": "PE1_T4_ITEM_15",
+                    "question": "<p>Assuming that <code >my_tuple<\/code> is a correctly created tuple, the fact that tuples are immutable means that the following instruction:<\/p>\n\n<code class=\"codep\">my_tuple[1] = my_tuple[1] + my_tuple[0]\n\n<\/code>\n<br>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247586,
+                            "option": "<p>is illegal<\/p>"
+                        }, {
+                            "id": 247587,
+                            "option": "<p>can be executed if and only if the tuple contains at least two elements<\/p>"
+                        }, {
+                            "id": 247588,
+                            "option": "<p>is fully correct<\/p>"
+                        }, {
+                            "id": 247589,
+                            "option": "<p>may be illegal if the tuple contains strings<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65657,
+                    "customId": "PE1_T4_ITEM_8",
+                    "question": "<p>The following snippet:<\/p>\n\n<code class=\"codep\">def func(a, b):\n    return a ** a\n\n\nprint(func(2))\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247558,
+                            "option": "<p>is erroneous<\/p>"
+                        }, {
+                            "id": 247559,
+                            "option": "<p>will output <code >4<\/code><\/p>"
+                        }, {
+                            "id": 247560,
+                            "option": "<p>will output <code >2<\/code><\/p>"
+                        }, {
+                            "id": 247561,
+                            "option": "<p>will return <code >None<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65656,
+                    "customId": "PE1_T4_ITEM_7",
+                    "question": "<p>What code would you insert instead of the comment to obtain the expected output?<\/p>\n\n<p>Expected output:<\/p>\n<code class=\"codep\">a\nb\nc<\/code>\n<br>\n\n<p>Code:<\/p>\n\n<code class=\"codep\">dictionary = {}\nmy_list = ['a', 'b', 'c', 'd']\n\nfor i in range(len(my_list) - 1):\n    dictionary[my_list[i]] = (my_list[i], )\n\nfor i in sorted(dictionary.keys()):\n    k = dictionary[i]\n    <mark style=\"background-color:#e6f2ff;\"># Insert your code here.<\/mark>\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247554,
+                            "option": "<p><code >print(k[0])<\/code><\/p>"
+                        }, {
+                            "id": 247555,
+                            "option": "<p><code >print(k['0'])<\/code><\/p>"
+                        }, {
+                            "id": 247556,
+                            "option": "<p><code >print(k)<\/code><\/p>"
+                        }, {
+                            "id": 247557,
+                            "option": "<p><code >print(k[\"0\"])<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65654,
+                    "customId": "PE1_T4_ITEM_5",
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def f(x):\n    if x == 0:\n    \treturn 0\n    return x + f(x - 1)\n    \n\t\nprint(f(3))\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247546,
+                            "option": "<p><code >6<\/code><\/p>"
+                        }, {
+                            "id": 247547,
+                            "option": "<p><code >3<\/code><\/p>"
+                        }, {
+                            "id": 247548,
+                            "option": "<p><code >1<\/code><\/p>"
+                        }, {
+                            "id": 247549,
+                            "option": "<p>the code is erroneous<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65660,
+                    "customId": "PE1_T4_ITEM_11",
+                    "question": "<p>Which of the following statements are <u>true<\/u>? &nbsp;&nbsp;(Select <u>two<\/u> answers)<\/p>",
+                    "type": "Multiple Choice",
+                    "htmlType": "checkbox",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247570,
+                            "option": "<p>The <code >None<\/code> value cannot be used outside functions<\/p>"
+                        }, {
+                            "id": 247571,
+                            "option": "<p>The <code >None<\/code> value can be assigned to variables<\/p>"
+                        }, {
+                            "id": 247572,
+                            "option": "<p>The <code >None<\/code> value can be compared with variables<\/p>"
+                        }, {
+                            "id": 247573,
+                            "option": "<p>The <code >None<\/code> value can be used as an argument of arithmetic operators<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65669,
+                    "customId": "PE1_T4_ITEM_20",
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">tup = (1, 2, 4, 8)\ntup = tup[1:-1]\ntup = tup[0]\nprint(tup)\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247606,
+                            "option": "<p><code >2<\/code><\/p>"
+                        }, {
+                            "id": 247607,
+                            "option": "<p><code >(2)<\/code><\/p>"
+                        }, {
+                            "id": 247608,
+                            "option": "<p><code >(2, )<\/code><\/p>"
+                        }, {
+                            "id": 247609,
+                            "option": "<p>the snippet is erroneous<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65667,
+                    "customId": "PE1_T4_ITEM_18",
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def fun(inp=2, out=3):\n    return inp * out\n\n\nprint(fun(out=2))\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247598,
+                            "option": "<p><code >4<\/code><\/p>"
+                        }, {
+                            "id": 247599,
+                            "option": "<p><code >6<\/code><\/p>"
+                        }, {
+                            "id": 247600,
+                            "option": "<p><code >2<\/code><\/p>"
+                        }, {
+                            "id": 247601,
+                            "option": "<p>the snippet is erroneous<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }, {
+                    "id": 65651,
+                    "customId": "PE1_T4_ITEM_2",
+                    "question": "<p>A function defined in the following way:&nbsp;&nbsp;(Select <u>two<\/u> answers)<\/p>\n\n<code class=\"codep\">def function(x=0):\n    return x\n\n<\/code>\n<br>",
+                    "type": "Multiple Choice",
+                    "htmlType": "checkbox",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247534,
+                            "option": "<p>may be invoked without any argument<\/p>"
+                        }, {
+                            "id": 247535,
+                            "option": "<p>must be invoked with exactly one argument<\/p>"
+                        }, {
+                            "id": 247536,
+                            "option": "<p>may be invoked with exactly one argument<\/p>"
+                        }, {
+                            "id": 247537,
+                            "option": "<p>must be invoked without any argument<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3096
+                }
+            ],
+            "showTutorial": false,
+            "tutorial": null
+        }
+    ],
+    "token": null,
+    "lastStableState": [],
+    "launchPresentationReturnUrl": null,
+    "fullScreenExitLimit": null,
+    "windowExitLimit": null,
+    "noInternetLimit": null,
+    "screenshotLimit": null,
+    "webcamDetectionLimit": null,
+    "wrongGazeDirectionDurationLimit": null,
+    "silentDetectionsEnabled": false,
+    "aceEditorMode": "ace\/mode\/python",
+    "showCalculator": false,
+    "showScratchpad": false,
+    "photosTaken": false,
+    "recordVideo": false,
+    "recordAudio": false,
+    "recordScreen": false,
+    "allowNoRecording": null,
+    "showScore": true,
+    "showTutorials": false,
+    "testingProgramId": false,
+    "micRequired": false,
+    "classId": null,
+    "domain": "course_65",
+    "locale": "en"
+}

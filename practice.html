@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PCEP Rapid Practice</title>
+<style>
+  :root {
+    --bg: #0d1117; --card: #161b22; --border: #30363d;
+    --fg: #e6edf3; --muted: #8b949e; --accent: #58a6ff;
+    --green: #3fb950; --red: #f85149; --yellow: #d29922;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg); color: var(--fg);
+    font-family: "Cascadia Code", Consolas, monospace;
+    padding: 24px; max-width: 900px; margin: 0 auto;
+  }
+  h1 { font-size: 1.4rem; margin-bottom: 4px; }
+  h1 span { color: var(--accent); }
+  .sub { color: var(--muted); font-size: 0.85rem; margin-bottom: 20px; }
+  .card { background: var(--card); border: 1px solid var(--border); border-radius: 8px; padding: 20px; margin-bottom: 16px; }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+  .stat { text-align: center; }
+  .stat .num { font-size: 1.8rem; font-weight: bold; }
+  .stat .lbl { color: var(--muted); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 1px; }
+  .green { color: var(--green); } .red { color: var(--red); }
+  .yellow { color: var(--yellow); } .accent { color: var(--accent); } .muted { color: var(--muted); }
+  .menu-btn {
+    display: block; width: 100%; text-align: left; background: var(--card);
+    color: var(--fg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 16px 20px; font-size: 1rem; font-family: inherit; cursor: pointer;
+    margin-bottom: 10px; transition: border-color .15s;
+  }
+  .menu-btn:hover { border-color: var(--accent); }
+  .menu-btn .desc { color: var(--muted); font-size: 0.8rem; margin-top: 4px; }
+  .qtext { white-space: pre-wrap; background: var(--card); border: 1px solid var(--border);
+    border-radius: 8px; padding: 18px; font-size: 0.95rem; line-height: 1.5; margin-bottom: 14px; }
+  .opt {
+    display: block; width: 100%; text-align: left; background: var(--card);
+    color: var(--fg); border: 1px solid var(--border); border-radius: 8px;
+    padding: 12px 16px; font-size: 0.9rem; font-family: inherit; cursor: pointer;
+    margin-bottom: 8px; line-height: 1.4; transition: border-color .12s;
+  }
+  .opt:hover:not(:disabled) { border-color: var(--accent); }
+  .opt.sel { border-color: var(--accent); background: #1c2a3a; }
+  .opt.correct { border-color: var(--green); background: #12261a; }
+  .opt.wrong { border-color: var(--red); background: #2d1517; }
+  .opt:disabled { cursor: default; }
+  .opt .letter { color: var(--muted); margin-right: 8px; }
+  .bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 0.85rem; color: var(--muted); gap: 8px; flex-wrap: wrap; }
+  .btn {
+    background: var(--accent); color: #0d1117; border: none; border-radius: 8px;
+    padding: 12px 24px; font-size: 0.95rem; font-weight: bold; font-family: inherit;
+    cursor: pointer; margin-top: 12px;
+  }
+  .btn.secondary { background: var(--card); color: var(--fg); border: 1px solid var(--border); }
+  .btn.small { padding: 8px 16px; font-size: 0.85rem; margin-top: 0; }
+  .timer { font-variant-numeric: tabular-nums; }
+  .feedback { padding: 12px 16px; border-radius: 8px; margin: 12px 0; font-size: 0.9rem; line-height: 1.5; white-space: pre-wrap; }
+  .feedback.ok { background: #12261a; border: 1px solid var(--green); }
+  .feedback.bad { background: #2d1517; border: 1px solid var(--red); }
+  .expl-panel { background: var(--card); border: 1px dashed var(--accent); border-radius: 8px;
+    padding: 14px 16px; margin: 10px 0; font-size: 0.85rem; line-height: 1.6; white-space: pre-wrap; }
+  .flagrow { margin-top: 10px; font-size: 0.85rem; color: var(--muted); }
+  .flagrow label { cursor: pointer; user-select: none; }
+  .flagrow input { accent-color: var(--yellow); margin-right: 6px; }
+  .result-big { font-size: 3rem; font-weight: bold; text-align: center; margin: 24px 0 8px; }
+  .result-sub { text-align: center; color: var(--muted); margin-bottom: 20px; }
+  .hidden { display: none; }
+  .progressbar { height: 6px; background: var(--border); border-radius: 3px; margin-bottom: 14px; overflow: hidden; }
+  .progressbar > div { height: 100%; background: var(--accent); transition: width .2s; }
+  table.cpt { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  table.cpt th, table.cpt td { text-align: left; padding: 7px 8px; border-bottom: 1px solid var(--border); }
+  table.cpt th { color: var(--muted); font-weight: normal; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 1px; }
+  .bar-bg { background: var(--border); border-radius: 3px; height: 8px; width: 120px; display: inline-block; vertical-align: middle; }
+  .bar-bg > div { height: 100%; border-radius: 3px; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: bold; }
+  .badge.blank { background: #3d1d20; color: var(--red); border: 1px solid var(--red); }
+  .badge.weak { background: #33270e; color: var(--yellow); border: 1px solid var(--yellow); }
+  .badge.solid { background: #12261a; color: var(--green); border: 1px solid var(--green); }
+  .badge.unseen { background: var(--card); color: var(--muted); border: 1px solid var(--border); }
+  details summary { cursor: pointer; color: var(--accent); font-size: 0.85rem; padding: 8px 0; }
+  .histline { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); padding: 4px 0; border-bottom: 1px solid var(--border); }
+</style>
+</head>
+<body>
+<h1>PCEP <span>Rapid Practice</span></h1>
+<div class="sub">Mission: pass the real PCEP (30 questions / 40 min) &ge; 75% — train to &gt; 90% &middot; 148-question verified bank</div>
+
+<!-- ============ HOME ============ -->
+<div id="home">
+  <div class="card">
+    <div class="stats-grid" id="homeStats"></div>
+  </div>
+  <button class="menu-btn" onclick="startExam()">
+    ⏱ Exam Simulation — 30 Q / 40 min
+    <div class="desc">Mirrors the real PCEP: 30 questions, 40-minute countdown, pass bar 75% (real exam: 70%)</div>
+  </button>
+  <button class="menu-btn" onclick="startDrill('all')">
+    🔁 Drill All (Random Order)
+    <div class="desc">All 148 questions, instant feedback + explanations, reshuffled every run</div>
+  </button>
+  <button class="menu-btn" onclick="startDrill('blank')">
+    🎯 Blank-Spot Drill (Algorithmic)
+    <div class="desc">Questions the engine flagged: accuracy below 70%, or any miss</div>
+  </button>
+  <button class="menu-btn" onclick="startDrill('flagged')">
+    ⚑ Flagged Drill (Your Blind Spots)
+    <div class="desc">Every question YOU flagged for review with the ⚑ checkbox</div>
+  </button>
+  <button class="menu-btn" onclick="startDrill('multi')">
+    ☑ Multi-Select Focus
+    <div class="desc">The 14 "Select two answers" questions — the classic PCEP trap</div>
+  </button>
+  <button class="menu-btn" onclick="showStats()">
+    📊 Statistics &amp; Blind-Spot Analysis
+    <div class="desc">Per-question and per-concept accuracy, your flags, run history, 90% readiness</div>
+  </button>
+  <button class="menu-btn" onclick="resetStats()">
+    ♻ Reset Progress
+    <div class="desc">Wipe all stats, flags and history</div>
+  </button>
+</div>
+
+<!-- ============ QUIZ ============ -->
+<div id="quiz" class="hidden">
+  <div class="bar">
+    <button class="btn secondary small" onclick="backOut()">← Back</button>
+    <div><span id="qPos"></span> &middot; <span id="modeLabel"></span></div>
+    <div class="timer" id="timer"></div>
+  </div>
+  <div class="progressbar"><div id="progFill" style="width:0%"></div></div>
+  <div class="qtext" id="qText"></div>
+  <div id="opts"></div>
+  <div id="fb"></div>
+  <div id="explainBox"></div>
+  <div class="flagrow"><label><input type="checkbox" id="flagChk" onchange="toggleFlag()"> ⚑ Flag this question for review (adds to your blind spots)</label></div>
+  <button class="btn hidden" id="nextBtn" onclick="nextQ()">Next →</button>
+  <button class="btn hidden" id="submitMultiBtn" onclick="submitMulti()">Submit</button>
+</div>
+
+<!-- ============ RESULTS ============ -->
+<div id="results" class="hidden">
+  <div class="bar"><button class="btn secondary small" onclick="goHome()">← Back</button></div>
+  <div class="result-big" id="resultBig"></div>
+  <div class="result-sub" id="resultSub"></div>
+  <div class="card" id="resultBreakdown"></div>
+  <div id="reviewList"></div>
+</div>
+
+<!-- ============ STATS ============ -->
+<div id="statsScr" class="hidden">
+  <div class="bar"><button class="btn secondary small" onclick="goHome()">← Back</button></div>
+  <div class="card"><div class="stats-grid" id="statsTop"></div></div>
+  <div id="statsBody"></div>
+</div>
+
+<script src="bank.js"></script>
+<script>
+let bank = PCEP_BANK, state = null, timerInt = null;
+
+const STORE = "pcep_practice_stats_v1";
+function blankStats() { return {seen:{}, correct:{}, wrong:{}, history:[], flagged:{}, log:[]}; }
+function loadStats() {
+  try {
+    const s = JSON.parse(localStorage.getItem(STORE));
+    if (!s) return blankStats();
+    for (const k of ["flagged","log","history"]) if (!s[k]) s[k] = (k === "log" ? [] : {});
+    return s;
+  } catch(e) { return blankStats(); }
+}
+function saveStats(s) { localStorage.setItem(STORE, JSON.stringify(s)); }
+
+function goHome() { clearInterval(timerInt); state = null; renderHome(); show("home"); }
+
+function show(id) {
+  for (const x of ["home","quiz","results","statsScr"]) document.getElementById(x).classList.add("hidden");
+  document.getElementById(id).classList.remove("hidden");
+}
+
+function backOut() {
+  if (state && state.mode === "exam" && !state.finished &&
+      !confirm("Abandon the exam simulation? The attempt will be scored as-is.")) return;
+  goHome();
+}
+
+function accOf(s, id) {
+  const c = s.correct[id] || 0, w = s.wrong[id] || 0;
+  return (c + w) ? c / (c + w) : null;
+}
+
+function conceptStats() {
+  const s = loadStats();
+  const map = {};
+  for (const q of bank) {
+    const c = q.concept || "Python Basics";
+    map[c] = map[c] || {seen:0, total:0, accSum:0, answered:0, flagged:0};
+    map[c].total++;
+    if (s.seen[q.id]) map[c].seen++;
+    const a = accOf(s, q.id);
+    if (a !== null) { map[c].answered++; map[c].accSum += a; }
+    if (s.flagged[q.id]) map[c].flagged++;
+  }
+  for (const c in map) {
+    const m = map[c];
+    m.acc = m.answered ? Math.round(100 * m.accSum / m.answered) : null;
+  }
+  return map;
+}
+
+function readiness() {
+  const s = loadStats();
+  const last = s.log.slice(-50);
+  if (!last.length) return null;
+  return Math.round(100 * last.filter(x => x.ok).length / last.length);
+}
+
+function renderHome() {
+  const s = loadStats();
+  const seen = Object.keys(s.seen).length;
+  const totalAns = Object.values(s.correct).reduce((a,b)=>a+b,0) + Object.values(s.wrong).reduce((a,b)=>a+b,0);
+  const totalC = Object.values(s.correct).reduce((a,b)=>a+b,0);
+  const pct = totalAns ? Math.round(100*totalC/totalAns) : 0;
+  const rd = readiness();
+  document.getElementById("homeStats").innerHTML = `
+    <div class="stat"><div class="num accent">${seen}/148</div><div class="lbl">Seen</div></div>
+    <div class="stat"><div class="num ${pct>=75?'green':pct>=50?'yellow':'red'}">${pct}%</div><div class="lbl">Accuracy</div></div>
+    <div class="stat"><div class="num ${rd===null?'muted':rd>=90?'green':rd>=75?'yellow':'red'}">${rd===null?"—":rd+"%"}</div><div class="lbl">Readiness (last 50)</div></div>
+    <div class="stat"><div class="num ${Object.keys(s.flagged).length?'yellow':'muted'}">${Object.keys(s.flagged).length}</div><div class="lbl">Flagged</div></div>`;
+}
+
+function shuffle(a) { const r=[...a]; for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];} return r; }
+
+function blankSpotIds() {
+  const s = loadStats();
+  return bank.filter(q => {
+    const a = accOf(s, q.id);
+    return (a !== null && a < 0.7) || (s.wrong[q.id] || 0) > 0;
+  }).map(q => q.id);
+}
+
+function startExam() {
+  const pool = shuffle(bank);
+  state = { mode: "exam", qs: pool.slice(0, 30), idx: 0, answers: {}, t0: Date.now(),
+            remain: 40*60*1000, revealed: {}, multiPicks: {}, finished: false };
+  document.getElementById("modeLabel").textContent = "EXAM SIM (30Q/40MIN)";
+  beginTimer(); show("quiz"); renderQ();
+}
+
+function startDrill(kind) {
+  let qs;
+  const s = loadStats();
+  if (kind === "all") qs = shuffle(bank);
+  else if (kind === "multi") qs = shuffle(bank.filter(b => b.type === "Multiple Choice"));
+  else if (kind === "blank") {
+    const ids = new Set(blankSpotIds());
+    qs = shuffle(bank.filter(b => ids.has(b.id)));
+    if (!qs.length) { alert("No blank spots — the engine sees no weak questions. Keep drilling."); return; }
+  }
+  else if (kind === "flagged") {
+    qs = shuffle(bank.filter(b => s.flagged[b.id]));
+    if (!qs.length) { alert("No flagged questions yet — use the ⚑ checkbox during drills to build your personal blind-spot list."); return; }
+  }
+  state = { mode: kind, qs, idx: 0, answers: {}, t0: Date.now(), revealed: {}, multiPicks: {}, finished: false };
+  document.getElementById("modeLabel").textContent =
+    kind === "blank" ? "BLANK-SPOT DRILL" : kind === "flagged" ? "FLAGGED DRILL" :
+    kind === "multi" ? "MULTI-SELECT DRILL" : "FULL DRILL";
+  clearInterval(timerInt); document.getElementById("timer").textContent = "";
+  show("quiz"); renderQ();
+}
+
+function beginTimer() {
+  clearInterval(timerInt);
+  const fmt = () => {
+    const m = Math.floor(state.remain/60000), sec = Math.floor((state.remain%60000)/1000);
+    const t = document.getElementById("timer");
+    t.textContent = `${m}:${String(sec).padStart(2,"0")}`;
+    t.className = "timer " + (m < 5 ? "red" : m < 10 ? "yellow" : "");
+  };
+  fmt();
+  timerInt = setInterval(() => {
+    state.remain -= 1000;
+    if (state.remain <= 0) { finishExam(true); return; }
+    fmt();
+  }, 1000);
+}
+
+function esc(s) { const d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+
+function renderQ() {
+  const q = state.qs[state.idx];
+  const s = loadStats();
+  document.getElementById("qPos").textContent = `Question ${state.idx+1}/${state.qs.length}`;
+  document.getElementById("progFill").style.width = (100*(state.idx)/state.qs.length) + "%";
+  document.getElementById("qText").textContent = q.q;
+  document.getElementById("fb").innerHTML = "";
+  document.getElementById("explainBox").innerHTML = "";
+  document.getElementById("nextBtn").classList.add("hidden");
+  document.getElementById("submitMultiBtn").classList.add("hidden");
+  document.getElementById("flagChk").checked = !!s.flagged[q.id];
+  const isMultiSel = q.answers.length > 1;
+  const box = document.getElementById("opts");
+  box.innerHTML = "";
+  const letters = "ABCDEF";
+  q.options.forEach((o, i) => {
+    const b = document.createElement("button");
+    b.className = "opt"; b.id = "opt" + i;
+    b.innerHTML = `<span class="letter">${letters[i]}.</span> ${esc(o)}`;
+    b.onclick = () => pick(i, isMultiSel);
+    box.appendChild(b);
+  });
+  if (state.revealed[q.id] && state.answers[q.id]) showFeedback(q, state.answers[q.id]);
+}
+
+function toggleFlag() {
+  const q = state.qs[state.idx];
+  const s = loadStats();
+  if (document.getElementById("flagChk").checked) s.flagged[q.id] = (s.flagged[q.id] || 0) + 1;
+  else delete s.flagged[q.id];
+  saveStats(s);
+}
+
+function pick(i, isMultiSel) {
+  const q = state.qs[state.idx];
+  if (state.revealed[q.id]) return;
+  if (isMultiSel) {
+    const picks = state.multiPicks[q.id] || (state.multiPicks[q.id] = new Set());
+    if (picks.has(i)) picks.delete(i); else picks.add(i);
+    document.querySelectorAll(".opt").forEach((b, j) => b.classList.toggle("sel", picks.has(j)));
+    if (picks.size === q.answers.length) {
+      document.getElementById("submitMultiBtn").classList.remove("hidden");
+    }
+    return;
+  }
+  state.answers[q.id] = [i];
+  reveal(q, [i]);
+}
+
+function submitMulti() {
+  const q = state.qs[state.idx];
+  const picks = [...(state.multiPicks[q.id] || [])];
+  state.answers[q.id] = picks;
+  reveal(q, picks);
+}
+
+function isCorrectPick(q, picks) {
+  return !!picks && picks.length === q.answers.length &&
+         picks.every(p => q.answers.includes(p)) && q.answers.every(a => picks.includes(a));
+}
+
+function reveal(q, picks) {
+  state.revealed[q.id] = true;
+  const s = loadStats();
+  s.seen[q.id] = (s.seen[q.id]||0) + 1;
+  const ok = isCorrectPick(q, picks);
+  if (ok) s.correct[q.id] = (s.correct[q.id]||0) + 1;
+  else s.wrong[q.id] = (s.wrong[q.id]||0) + 1;
+  s.log.push({id: q.id, ok: ok ? 1 : 0});
+  if (s.log.length > 400) s.log = s.log.slice(-400);
+  saveStats(s);
+  showFeedback(q, picks);
+}
+
+function showFeedback(q, picks) {
+  const ok = isCorrectPick(q, picks);
+  const letters = "ABCDEF";
+  q.options.forEach((o, i) => {
+    const b = document.getElementById("opt" + i);
+    if (!b) return;
+    b.disabled = true;
+    b.classList.remove("sel");
+    if (q.answers.includes(i)) b.classList.add("correct");
+    else if (picks && picks.includes(i)) b.classList.add("wrong");
+  });
+  const fb = document.getElementById("fb");
+  const txt = ok ? "✅ CORRECT" : "❌ WRONG — correct: " + q.answers.map(a=>letters[a]).join(", ");
+  fb.className = "feedback " + (ok ? "ok" : "bad");
+  fb.textContent = txt;
+  // expandable explanation
+  const eb = document.getElementById("explainBox");
+  eb.innerHTML = "";
+  if (q.expl) {
+    const wrap = document.createElement("div");
+    const btn = document.createElement("button");
+    btn.className = "btn secondary small"; btn.textContent = "▼ Explain";
+    const panel = document.createElement("div");
+    panel.className = "expl-panel hidden"; panel.textContent = q.expl;
+    btn.onclick = () => {
+      panel.classList.toggle("hidden");
+      btn.textContent = panel.classList.contains("hidden") ? "▼ Explain" : "▲ Hide explanation";
+    };
+    wrap.appendChild(btn); wrap.appendChild(panel);
+    eb.appendChild(wrap);
+  }
+  const nb = document.getElementById("nextBtn");
+  nb.classList.remove("hidden");
+  nb.textContent = state.idx + 1 < state.qs.length ? "Next →" : "Finish";
+  document.getElementById("submitMultiBtn").classList.add("hidden");
+  document.getElementById("progFill").style.width = (100*(state.idx+1)/state.qs.length) + "%";
+}
+
+function nextQ() {
+  if (state.idx + 1 >= state.qs.length) {
+    if (state.mode === "exam") finishExam(false);
+    else showResults();
+  } else { state.idx++; renderQ(); }
+}
+
+function logRun(mode, correct, total) {
+  const s = loadStats();
+  s.history.push({ts: new Date().toISOString().slice(0,16).replace("T"," "), mode, correct, total,
+                  pct: total ? Math.round(100*correct/total) : 0});
+  if (s.history.length > 60) s.history = s.history.slice(-60);
+  saveStats(s);
+}
+
+function finishExam(timedOut) {
+  clearInterval(timerInt);
+  state.finished = true;
+  const s = loadStats();
+  let correct = 0;
+  for (const q of state.qs) {
+    const picks = state.answers[q.id];
+    const seen = picks !== undefined || state.revealed[q.id];
+    if (seen) {
+      s.seen[q.id] = (s.seen[q.id]||0) + 1;
+      const ok = isCorrectPick(q, picks);
+      if (ok) { s.correct[q.id] = (s.correct[q.id]||0)+1; correct++; }
+      else s.wrong[q.id] = (s.wrong[q.id]||0)+1;
+      s.log.push({id: q.id, ok: ok ? 1 : 0});
+    }
+  }
+  if (s.log.length > 400) s.log = s.log.slice(-400);
+  saveStats(s);
+  const pct = Math.round(100*correct/state.qs.length);
+  const pass = pct >= 75;
+  logRun("exam", correct, state.qs.length);
+  document.getElementById("resultBig").innerHTML = pass ? '<span class="green">PASS</span>' : '<span class="red">FAIL</span>';
+  document.getElementById("resultSub").textContent = `${correct}/${state.qs.length} = ${pct}%  ·  required 75%  ·  ${timedOut ? "TIME EXPIRED" : "submitted"}  ·  real PCEP: 30Q/40min/70%`;
+  document.getElementById("resultBreakdown").innerHTML = "";
+  showResultsDetail(state.qs, state.answers);
+  show("results");
+}
+
+function showResults() {
+  const s = loadStats();
+  let correct = 0;
+  for (const q of state.qs) if (isCorrectPick(q, state.answers[q.id])) correct++;
+  logRun(state.mode, correct, state.qs.length);
+  const pct = state.qs.length ? Math.round(100*correct/state.qs.length) : 0;
+  document.getElementById("resultBig").innerHTML = `<span class="accent">${pct}%</span>`;
+  document.getElementById("resultSub").textContent = `${correct}/${state.qs.length} correct this session`;
+  document.getElementById("resultBreakdown").innerHTML = "";
+  showResultsDetail(state.qs, state.answers);
+  show("results");
+}
+
+function renderMissedQ(q) {
+  const letters = "ABCDEF";
+  const d = document.createElement("div");
+  d.className = "qtext";
+  let html = esc(q.q) + "\n" + `<span class="muted">[${esc(q.concept || "Python Basics")}]\n</span>`;
+  q.options.forEach((o,i) => {
+    html += (q.answers.includes(i) ? "✅ " : "   ") + letters[i] + ") " + esc(o) + "\n";
+  });
+  if (q.expl) html += "\n" + esc(q.expl);
+  d.innerHTML = html.split("\n").map(l => l.startsWith("✅") ? `<span class="green">${esc(l)}</span>` : l).join("\n");
+  return d;
+}
+
+function showResultsDetail(qs, answers) {
+  const wrong = qs.filter(q => !isCorrectPick(q, answers[q.id]));
+  const box = document.getElementById("reviewList");
+  if (!wrong.length) { box.innerHTML = '<div class="feedback ok">Flawless run — nothing to review.</div>'; return; }
+  box.innerHTML = `<h2 style="margin:16px 0 10px;font-size:1rem">Missed this session (${wrong.length})</h2>`;
+  for (const q of wrong) box.appendChild(renderMissedQ(q));
+}
+
+function showStats() {
+  const s = loadStats();
+  const rd = readiness();
+  const cs = conceptStats();
+  const flags = Object.keys(s.flagged);
+  const flagConcepts = {};
+  for (const q of bank) if (s.flagged[q.id]) {
+    const c = q.concept || "Python Basics";
+    flagConcepts[c] = (flagConcepts[c] || 0) + 1;
+  }
+  document.getElementById("statsTop").innerHTML = `
+    <div class="stat"><div class="num ${rd===null?'muted':rd>=90?'green':rd>=75?'yellow':'red'}">${rd===null?"—":rd+"%"}</div><div class="lbl">Readiness (last 50)</div></div>
+    <div class="stat"><div class="num">${s.history.length}</div><div class="lbl">Runs</div></div>
+    <div class="stat"><div class="num yellow">${flags.length}</div><div class="lbl">Flagged Qs</div></div>
+    <div class="stat"><div class="num red">${blankSpotIds().length}</div><div class="lbl">Blank Spots (algo)</div></div>`;
+  const box = document.getElementById("statsBody");
+  box.innerHTML = "";
+
+  // concept table (algorithmic)
+  const card1 = document.createElement("div"); card1.className = "card";
+  let h1 = `<h2 style="font-size:1rem;margin-bottom:10px">Concept Analysis <span class="muted" style="font-size:0.75rem">(algorithmic)</span></h2><table class="cpt"><tr><th>Concept</th><th>Seen</th><th>Accuracy</th><th></th><th>Status</th></tr>`;
+  const rows = Object.entries(cs).sort((a,b) => (a[1].acc === null ? 101 : a[1].acc) - (b[1].acc === null ? 101 : b[1].acc));
+  for (const [c, m] of rows) {
+    let badge, color;
+    if (m.acc === null) { badge = "unseen"; color = "var(--muted)"; }
+    else if (m.acc < 60) { badge = "blank"; color = "var(--red)"; }
+    else if (m.acc < 80) { badge = "weak"; color = "var(--yellow)"; }
+    else if (m.acc >= 90) { badge = "solid"; color = "var(--green)"; }
+    else { badge = "weak"; color = "var(--yellow)"; }
+    const label = m.acc === null ? "—" : m.acc + "%";
+    const status = badge === "blank" ? "BLANK SPOT" : badge === "solid" ? "SOLID" : badge === "unseen" ? "UNSEEN" : "WEAK";
+    h1 += `<tr><td>${esc(c)}${m.flagged?` <span class="yellow">⚑${m.flagged}</span>`:""}</td><td>${m.seen}/${m.total}</td><td>${label}</td><td><span class="bar-bg"><div style="width:${m.acc||0}%;background:${color}"></div></span></td><td><span class="badge ${badge}">${status}</span></td></tr>`;
+  }
+  h1 += "</table>";
+  card1.innerHTML = h1;
+  box.appendChild(card1);
+
+  // user-flagged blind spots
+  const card2 = document.createElement("div"); card2.className = "card";
+  let h2 = `<h2 style="font-size:1rem;margin-bottom:10px">⚑ Your Flagged Blind Spots <span class="muted" style="font-size:0.75rem">(user-perceived)</span></h2>`;
+  if (!flags.length) h2 += `<div class="muted" style="font-size:0.85rem">Nothing flagged yet. During any drill, tick the ⚑ checkbox on questions you doubt — they land here.</div>`;
+  else {
+    h2 += `<div style="font-size:0.85rem;line-height:1.8">`;
+    for (const [c, n] of Object.entries(flagConcepts).sort((a,b)=>b[1]-a[1]))
+      h2 += `<span class="badge weak" style="margin-right:6px">${esc(c)}: ${n}</span>`;
+    h2 += `</div>`;
+  }
+  h2 += `<button class="btn small" style="margin-top:12px" onclick="startDrill('flagged')">⚑ Drill Flagged Questions</button>`;
+  card2.innerHTML = h2;
+  box.appendChild(card2);
+
+  // run history
+  const card3 = document.createElement("div"); card3.className = "card";
+  let h3 = `<h2 style="font-size:1rem;margin-bottom:10px">Run History</h2>`;
+  if (!s.history.length) h3 += `<div class="muted" style="font-size:0.85rem">No runs recorded yet.</div>`;
+  else for (const r of [...s.history].reverse().slice(0, 15)) {
+    const cls = r.pct >= 90 ? "green" : r.pct >= 75 ? "yellow" : "red";
+    h3 += `<div class="histline"><span>${esc(r.ts)} · ${esc(r.mode)}</span><span class="${cls}">${r.correct}/${r.total} = ${r.pct}%</span></div>`;
+  }
+  card3.innerHTML = h3;
+  box.appendChild(card3);
+
+  // per-question detail
+  const card4 = document.createElement("div"); card4.className = "card";
+  card4.innerHTML = `<details><summary>Show per-question detail (148)</summary><div id="qDetail" style="margin-top:8px"></div></details>`;
+  box.appendChild(card4);
+  const qd = card4.querySelector("#qDetail");
+  const rowsQ = bank.map(q => {
+    const a = accOf(s, q.id);
+    const c = s.correct[q.id] || 0, w = s.wrong[q.id] || 0;
+    return {q, a, c, w};
+  }).sort((x,y) => (x.a === null ? 101 : x.a) - (y.a === null ? 101 : y.a));
+  let h4 = `<table class="cpt"><tr><th>#</th><th>Question</th><th>Concept</th><th>Seen</th><th>Acc</th><th>⚑</th></tr>`;
+  for (const {q, a, c, w} of rowsQ) {
+    const snippet = q.q.split("\n")[0].slice(0, 60);
+    h4 += `<tr><td class="muted">${q.id}</td><td>${esc(snippet)}</td><td>${esc(q.concept)}</td><td>${c+w}</td><td class="${a===null?'muted':a>=0.8?'green':a>=0.5?'yellow':'red'}">${a===null?"—":Math.round(100*a)+"%"}</td><td>${s.flagged[q.id]?"⚑":""}</td></tr>`;
+  }
+  h4 += "</table>";
+  qd.innerHTML = h4;
+
+  show("statsScr");
+}
+
+function resetStats() {
+  if (!confirm("Wipe ALL progress, flags and history?")) return;
+  localStorage.removeItem(STORE);
+  renderHome();
+}
+
+renderHome();
+</script>
+</body>
+</html>

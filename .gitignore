@@ -1,0 +1,6 @@
+# scratch/temp artifacts
+_runner_tmp.py
+_runner2_tmp.py
+*.log
+local_infer_*.txt
+.DS_Store

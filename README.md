@@ -27,6 +27,7 @@ browser (localStorage).
 | 🎯 Blank-Spot Drill (algorithmic) | Questions the engine flagged: accuracy < 70% or any miss |
 | ⚑ Flagged Drill (your blind spots) | Every question YOU ticked with the ⚑ checkbox |
 | ☑ Multi-Select Focus | The 14 "Select two answers" questions — the classic PCEP trap |
+| 🃏 Flashcard Drill | 138 open-ended KimWynne class cards (reveal, know/again, re-queue) |
 | 📊 Statistics & Blind-Spot Analysis | Per-question + per-concept accuracy, run history, 90% readiness |
 
 ## Answer quality engine
@@ -77,11 +78,13 @@ review: flag it and verify.
 ```
 PCEP_exam_prep/
 ├── practice.html           # the trainer app (open in browser)
-├── bank.js                 # question bank + answers + explanations (embedded, file://-safe)
+├── bank.js                 # question bank + answers + explanations + flashcards (file://-safe)
 ├── pcep_bank.json          # same data, JSON form
+├── flashcards.json         # 138 KimWynne open-ended class Q&A cards
 ├── start_practice.bat      # double-click launcher
 ├── verify_snippets.py      # pass-1 answer verification harness
 ├── validate2.py            # pass-2 independent dual-validation harness
+├── ingest_v2.py            # shared-drive ingestion (v3 sweep, dedupe vs library)
 ├── build_bank.py           # pass-1 bank builder
 ├── build_bank_v2.py        # v2 bank builder (key + explanations + concepts)
 ├── bank_raw.json           # intermediate: deduped bank before keying

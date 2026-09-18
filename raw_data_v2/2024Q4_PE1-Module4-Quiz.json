@@ -1,0 +1,691 @@
+{
+    "id": 11894,
+    "showCodeHonor": false,
+    "showNDA": false,
+    "timeLimitInMinutes": 15,
+    "timeWarningInMinutes": 1,
+    "shuffleAnswers": true,
+    "unlimitedAttempts": true,
+    "allowedAttempts": 1,
+    "showReview": true,
+    "showReviewAfterSubmitting": true,
+    "showAnswers": true,
+    "showWelcomePage": false,
+    "welcomePageContent": null,
+    "hasTimedSections": false,
+    "showIndependentSections": false,
+    "questions": [{
+            "id": 65672,
+            "question": "<p>A function definition starts with the keyword:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247618,
+                    "option": "<p><code >def<\/code><\/p>"
+                }, {
+                    "id": 247619,
+                    "option": "<p><code >function<\/code><\/p>"
+                }, {
+                    "id": 247620,
+                    "option": "<p><code >fun<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3097
+        }, {
+            "id": 65673,
+            "question": "<p>A function definition:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247621,
+                    "option": "<p>must be placed before the first invocation<\/p>"
+                }, {
+                    "id": 247622,
+                    "option": "<p>may be placed anywhere inside the code after the first invocation<\/p>"
+                }, {
+                    "id": 247623,
+                    "option": "<p>cannot be placed among other code<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3097
+        }, {
+            "id": 65674,
+            "question": "<p>A function parameter is a kind of variable accessible:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247624,
+                    "option": "<p>only inside the function<\/p>"
+                }, {
+                    "id": 247625,
+                    "option": "<p>anywhere in the code<\/p>"
+                }, {
+                    "id": 247626,
+                    "option": "<p>only after the function definition's completion<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3097
+        }, {
+            "id": 65675,
+            "question": "<p>A way of passing arguments in which the order of the arguments determines the initial parameters' values is referred to as:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247627,
+                    "option": "<p>positional<\/p>"
+                }, {
+                    "id": 247628,
+                    "option": "<p>ordered<\/p>"
+                }, {
+                    "id": 247629,
+                    "option": "<p>sequential<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3097
+        }, {
+            "id": 65676,
+            "question": "<p>Which of the following statements are <u>true<\/u>?&nbsp;&nbsp;(Select <u>two<\/u> answers)<\/p>",
+            "type": "Multiple Choice",
+            "htmlType": "checkbox",
+            "optionsText": null,
+            "options": [{
+                    "id": 247630,
+                    "option": "<p>The <code >return<\/code> keyword forces the function to restart its execution<\/p>"
+                }, {
+                    "id": 247631,
+                    "option": "<p>The <code >return<\/code> keyword may cause the function to return a value<\/p>"
+                }, {
+                    "id": 247632,
+                    "option": "<p>The <code >return<\/code> keyword forces the function's execution to terminate<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3097
+        }, {
+            "id": 65677,
+            "question": "<p>The <code >None<\/code> keyword designates:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247633,
+                    "option": "<p>a <code >None<\/code> value<\/p>"
+                }, {
+                    "id": 247634,
+                    "option": "<p>a function which doesn't return a value<\/p>"
+                }, {
+                    "id": 247635,
+                    "option": "<p>an empty instruction<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3097
+        }, {
+            "id": 65678,
+            "question": "<p>A variable defined outside a function:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247636,
+                    "option": "<p>may be read, but not written (something more is needed to do so)<\/p>"
+                }, {
+                    "id": 247637,
+                    "option": "<p>may not be accessed in any way inside the function<\/p>"
+                }, {
+                    "id": 247638,
+                    "option": "<p>may be freely accessed inside the function<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3097
+        }, {
+            "id": 65679,
+            "question": "<p>If a list is passed into a function as an argument, deleting any of its elements inside the function using the <code >del<\/code> instruction:<\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247639,
+                    "option": "<p>will affect the argument<\/p>"
+                }, {
+                    "id": 247640,
+                    "option": "<p>will not affect the argument<\/p>"
+                }, {
+                    "id": 247641,
+                    "option": "<p>will cause a runtime error<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3097
+        }, {
+            "id": 65680,
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def fun(in=2, out=3):\n    return in * out\n\n\nprint(fun(3))\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247642,
+                    "option": "<p>the snippet is erroneous (invalid syntax)<\/p>"
+                }, {
+                    "id": 247643,
+                    "option": "<p><code >6<\/code><\/p>"
+                }, {
+                    "id": 247644,
+                    "option": "<p><code >9<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3097
+        }, {
+            "id": 65681,
+            "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">tup = (1, ) + (1, )\ntup = tup + tup\nprint(len(tup))\n\n<\/code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247645,
+                    "option": "<p><code >4<\/code><\/p>"
+                }, {
+                    "id": 247646,
+                    "option": "<p><code >2<\/code><\/p>"
+                }, {
+                    "id": 247647,
+                    "option": "<p>the snippet is erroneous (invalid syntax)<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3097
+        }, {
+            "id": 65682,
+            "question": "<p>What is the output of the following program if the user enters <code >kangaroo<\/code> at the first prompt and <code >0<\/code> at the second prompt?<\/p>\n\n<p><code class=\"codep\">try:\n    first_prompt = input(\"Enter the first value: \")\n    a = len(first_prompt)\n    second_prompt = input(\"Enter the second value: \")\n    b = len(second_prompt) * 2\n    print(a\/b)\nexcept ZeroDivisionError:\n    print(\"Do not divide by zero!\")\nexcept ValueError:\n    print(\"Wrong value.\")\nexcept:\n    print(\"Error.Error.Error.\")\n\n<\/code><\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247648,
+                    "option": "<p><code >4.0<\/code><\/p>"
+                }, {
+                    "id": 247649,
+                    "option": "<p><code >Error.Error.Error.<\/code><\/p>"
+                }, {
+                    "id": 247650,
+                    "option": "<p><code >Do not divide by zero!<\/code><\/p>"
+                }, {
+                    "id": 247651,
+                    "option": "<p><code >Wrong value.<\/code><\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3097
+        }, {
+            "id": 65683,
+            "question": "<p>What is the expected behavior of the following program if the user enters <code >0<\/code>?<\/p>\n\n<p><code class=\"codep\">value = input(\"Enter a value: \")\nprint(10\/value)\n\n<\/code><\/p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [{
+                    "id": 247652,
+                    "option": "<p>The program will raise the <code >TypeError<\/code> exception.<\/p>"
+                }, {
+                    "id": 247653,
+                    "option": "<p>The program will raise the <code >ValueError<\/code> exception.<\/p>"
+                }, {
+                    "id": 247654,
+                    "option": "<p>The program will raise the <code >ZeroDivisionError<\/code> exception.<\/p>"
+                }, {
+                    "id": 247655,
+                    "option": "<p>The program will output <code >0<\/code> to the console.<\/p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3097
+        }
+    ],
+    "sections": [{
+            "id": 3097,
+            "name": "PE1 -- Module 4 Quiz",
+            "passingThreshold": null,
+            "showSectionPage": false,
+            "showReview": false,
+            "timeLimitInMinutes": 0,
+            "timeWarningInMinutes": 0,
+            "numberOfQuestions": 12,
+            "questions": [{
+                    "id": 65672,
+                    "question": "<p>A function definition starts with the keyword:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247618,
+                            "option": "<p><code >def<\/code><\/p>"
+                        }, {
+                            "id": 247619,
+                            "option": "<p><code >function<\/code><\/p>"
+                        }, {
+                            "id": 247620,
+                            "option": "<p><code >fun<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3097
+                }, {
+                    "id": 65673,
+                    "question": "<p>A function definition:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247621,
+                            "option": "<p>must be placed before the first invocation<\/p>"
+                        }, {
+                            "id": 247622,
+                            "option": "<p>may be placed anywhere inside the code after the first invocation<\/p>"
+                        }, {
+                            "id": 247623,
+                            "option": "<p>cannot be placed among other code<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3097
+                }, {
+                    "id": 65674,
+                    "question": "<p>A function parameter is a kind of variable accessible:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247624,
+                            "option": "<p>only inside the function<\/p>"
+                        }, {
+                            "id": 247625,
+                            "option": "<p>anywhere in the code<\/p>"
+                        }, {
+                            "id": 247626,
+                            "option": "<p>only after the function definition's completion<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3097
+                }, {
+                    "id": 65675,
+                    "question": "<p>A way of passing arguments in which the order of the arguments determines the initial parameters' values is referred to as:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247627,
+                            "option": "<p>positional<\/p>"
+                        }, {
+                            "id": 247628,
+                            "option": "<p>ordered<\/p>"
+                        }, {
+                            "id": 247629,
+                            "option": "<p>sequential<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3097
+                }, {
+                    "id": 65676,
+                    "question": "<p>Which of the following statements are <u>true<\/u>?&nbsp;&nbsp;(Select <u>two<\/u> answers)<\/p>",
+                    "type": "Multiple Choice",
+                    "htmlType": "checkbox",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247630,
+                            "option": "<p>The <code >return<\/code> keyword forces the function to restart its execution<\/p>"
+                        }, {
+                            "id": 247631,
+                            "option": "<p>The <code >return<\/code> keyword may cause the function to return a value<\/p>"
+                        }, {
+                            "id": 247632,
+                            "option": "<p>The <code >return<\/code> keyword forces the function's execution to terminate<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3097
+                }, {
+                    "id": 65677,
+                    "question": "<p>The <code >None<\/code> keyword designates:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247633,
+                            "option": "<p>a <code >None<\/code> value<\/p>"
+                        }, {
+                            "id": 247634,
+                            "option": "<p>a function which doesn't return a value<\/p>"
+                        }, {
+                            "id": 247635,
+                            "option": "<p>an empty instruction<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3097
+                }, {
+                    "id": 65678,
+                    "question": "<p>A variable defined outside a function:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247636,
+                            "option": "<p>may be read, but not written (something more is needed to do so)<\/p>"
+                        }, {
+                            "id": 247637,
+                            "option": "<p>may not be accessed in any way inside the function<\/p>"
+                        }, {
+                            "id": 247638,
+                            "option": "<p>may be freely accessed inside the function<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3097
+                }, {
+                    "id": 65679,
+                    "question": "<p>If a list is passed into a function as an argument, deleting any of its elements inside the function using the <code >del<\/code> instruction:<\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247639,
+                            "option": "<p>will affect the argument<\/p>"
+                        }, {
+                            "id": 247640,
+                            "option": "<p>will not affect the argument<\/p>"
+                        }, {
+                            "id": 247641,
+                            "option": "<p>will cause a runtime error<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3097
+                }, {
+                    "id": 65680,
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">def fun(in=2, out=3):\n    return in * out\n\n\nprint(fun(3))\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247642,
+                            "option": "<p>the snippet is erroneous (invalid syntax)<\/p>"
+                        }, {
+                            "id": 247643,
+                            "option": "<p><code >6<\/code><\/p>"
+                        }, {
+                            "id": 247644,
+                            "option": "<p><code >9<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3097
+                }, {
+                    "id": 65681,
+                    "question": "<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">tup = (1, ) + (1, )\ntup = tup + tup\nprint(len(tup))\n\n<\/code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247645,
+                            "option": "<p><code >4<\/code><\/p>"
+                        }, {
+                            "id": 247646,
+                            "option": "<p><code >2<\/code><\/p>"
+                        }, {
+                            "id": 247647,
+                            "option": "<p>the snippet is erroneous (invalid syntax)<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3097
+                }, {
+                    "id": 65682,
+                    "question": "<p>What is the output of the following program if the user enters <code >kangaroo<\/code> at the first prompt and <code >0<\/code> at the second prompt?<\/p>\n\n<p><code class=\"codep\">try:\n    first_prompt = input(\"Enter the first value: \")\n    a = len(first_prompt)\n    second_prompt = input(\"Enter the second value: \")\n    b = len(second_prompt) * 2\n    print(a\/b)\nexcept ZeroDivisionError:\n    print(\"Do not divide by zero!\")\nexcept ValueError:\n    print(\"Wrong value.\")\nexcept:\n    print(\"Error.Error.Error.\")\n\n<\/code><\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247648,
+                            "option": "<p><code >4.0<\/code><\/p>"
+                        }, {
+                            "id": 247649,
+                            "option": "<p><code >Error.Error.Error.<\/code><\/p>"
+                        }, {
+                            "id": 247650,
+                            "option": "<p><code >Do not divide by zero!<\/code><\/p>"
+                        }, {
+                            "id": 247651,
+                            "option": "<p><code >Wrong value.<\/code><\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3097
+                }, {
+                    "id": 65683,
+                    "question": "<p>What is the expected behavior of the following program if the user enters <code >0<\/code>?<\/p>\n\n<p><code class=\"codep\">value = input(\"Enter a value: \")\nprint(10\/value)\n\n<\/code><\/p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [{
+                            "id": 247652,
+                            "option": "<p>The program will raise the <code >TypeError<\/code> exception.<\/p>"
+                        }, {
+                            "id": 247653,
+                            "option": "<p>The program will raise the <code >ValueError<\/code> exception.<\/p>"
+                        }, {
+                            "id": 247654,
+                            "option": "<p>The program will raise the <code >ZeroDivisionError<\/code> exception.<\/p>"
+                        }, {
+                            "id": 247655,
+                            "option": "<p>The program will output <code >0<\/code> to the console.<\/p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3097
+                }
+            ],
+            "showTutorial": false,
+            "tutorial": null
+        }
+    ],
+    "token": null,
+    "lastStableState": [],
+    "launchPresentationReturnUrl": null,
+    "fullScreenExitLimit": null,
+    "windowExitLimit": null,
+    "noInternetLimit": null,
+    "screenshotLimit": null,
+    "webcamDetectionLimit": null,
+    "wrongGazeDirectionDurationLimit": null,
+    "aceEditorMode": "ace\/mode\/python",
+    "showCalculator": false,
+    "showScratchpad": false,
+    "photosTaken": false,
+    "recordVideo": false,
+    "recordAudio": false,
+    "recordScreen": false,
+    "allowNoRecording": null,
+    "showScore": true,
+    "showTutorials": false,
+    "testingProgramId": false,
+    "classId": null
+}

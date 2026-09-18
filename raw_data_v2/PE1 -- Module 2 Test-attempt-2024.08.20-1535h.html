@@ -1,0 +1,391 @@
+<html translate="no" class=" js flexbox flexboxlegacy canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers no-applicationcache svg inlinesvg smil svgclippaths"><head><style>    .error_widget_wrapper {        background: inherit;        color: inherit;        border:none    }    .error_widget {        border-top: solid 2px;        border-bottom: solid 2px;        margin: 5px 0;        padding: 10px 40px;        white-space: pre-wrap;    }    .error_widget.ace_error, .error_widget_arrow.ace_error{        border-color: #ff5a5a    }    .error_widget.ace_warning, .error_widget_arrow.ace_warning{        border-color: #F1D817    }    .error_widget.ace_info, .error_widget_arrow.ace_info{        border-color: #5a5a5a    }    .error_widget.ace_ok, .error_widget_arrow.ace_ok{        border-color: #5aaa5a    }    .error_widget_arrow {        position: absolute;        border: solid 5px;        border-top-color: transparent!important;        border-right-color: transparent!important;        border-left-color: transparent!important;        top: -5px;    }</style><style id="ace-tm">.ace-tm .ace_gutter {background: #f0f0f0;color: #333;}.ace-tm .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-tm .ace_fold {background-color: #6B72E6;}.ace-tm {background-color: #FFFFFF;color: black;}.ace-tm .ace_cursor {color: black;}.ace-tm .ace_invisible {color: rgb(191, 191, 191);}.ace-tm .ace_storage,.ace-tm .ace_keyword {color: blue;}.ace-tm .ace_constant {color: rgb(197, 6, 11);}.ace-tm .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-tm .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-tm .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-tm .ace_invalid {background-color: rgba(255, 0, 0, 0.1);color: red;}.ace-tm .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-tm .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-tm .ace_support.ace_type,.ace-tm .ace_support.ace_class {color: rgb(109, 121, 222);}.ace-tm .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-tm .ace_string {color: rgb(3, 106, 7);}.ace-tm .ace_comment {color: rgb(76, 136, 107);}.ace-tm .ace_comment.ace_doc {color: rgb(0, 102, 255);}.ace-tm .ace_comment.ace_doc.ace_tag {color: rgb(128, 159, 191);}.ace-tm .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-tm .ace_variable {color: rgb(49, 132, 149);}.ace-tm .ace_xml-pe {color: rgb(104, 104, 91);}.ace-tm .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-tm .ace_heading {color: rgb(12, 7, 255);}.ace-tm .ace_list {color:rgb(185, 6, 144);}.ace-tm .ace_meta.ace_tag {color:rgb(0, 22, 142);}.ace-tm .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-tm .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-tm.ace_multiselect .ace_selection.ace_start {box-shadow: 0 0 3px 0px white;}.ace-tm .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-tm .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-tm .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-tm .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-tm .ace_gutter-active-line {background-color : #dcdcdc;}.ace-tm .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-tm .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}
+/*# sourceURL=ace/css/ace-tm */</style><style id="ace_editor.css">.ace_br1 {border-top-left-radius    : 3px;}.ace_br2 {border-top-right-radius   : 3px;}.ace_br3 {border-top-left-radius    : 3px; border-top-right-radius:    3px;}.ace_br4 {border-bottom-right-radius: 3px;}.ace_br5 {border-top-left-radius    : 3px; border-bottom-right-radius: 3px;}.ace_br6 {border-top-right-radius   : 3px; border-bottom-right-radius: 3px;}.ace_br7 {border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px;}.ace_br8 {border-bottom-left-radius : 3px;}.ace_br9 {border-top-left-radius    : 3px; border-bottom-left-radius:  3px;}.ace_br10{border-top-right-radius   : 3px; border-bottom-left-radius:  3px;}.ace_br11{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-left-radius:  3px;}.ace_br12{border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br13{border-top-left-radius    : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br14{border-top-right-radius   : 3px; border-bottom-right-radius: 3px; border-bottom-left-radius:  3px;}.ace_br15{border-top-left-radius    : 3px; border-top-right-radius:    3px; border-bottom-right-radius: 3px; border-bottom-left-radius: 3px;}.ace_editor {position: relative;overflow: hidden;font: 12px/normal 'Monaco', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;direction: ltr;text-align: left;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}.ace_scroller {position: absolute;overflow: hidden;top: 0;bottom: 0;background-color: inherit;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;cursor: text;}.ace_content {position: absolute;box-sizing: border-box;min-width: 100%;contain: style size layout;}.ace_dragging .ace_scroller:before{position: absolute;top: 0;left: 0;right: 0;bottom: 0;content: '';background: rgba(250, 250, 250, 0.01);z-index: 1000;}.ace_dragging.ace_dark .ace_scroller:before{background: rgba(0, 0, 0, 0.01);}.ace_selecting, .ace_selecting * {cursor: text !important;}.ace_gutter {position: absolute;overflow : hidden;width: auto;top: 0;bottom: 0;left: 0;cursor: default;z-index: 4;-ms-user-select: none;-moz-user-select: none;-webkit-user-select: none;user-select: none;contain: style size layout;}.ace_gutter-active-line {position: absolute;left: 0;right: 0;}.ace_scroller.ace_scroll-left {box-shadow: 17px 0 16px -16px rgba(0, 0, 0, 0.4) inset;}.ace_gutter-cell {position: absolute;top: 0;left: 0;right: 0;padding-left: 19px;padding-right: 6px;background-repeat: no-repeat;}.ace_gutter-cell.ace_error {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAABOFBMVEX/////////QRswFAb/Ui4wFAYwFAYwFAaWGAfDRymzOSH/PxswFAb/SiUwFAYwFAbUPRvjQiDllog5HhHdRybsTi3/Tyv9Tir+Syj/UC3////XurebMBIwFAb/RSHbPx/gUzfdwL3kzMivKBAwFAbbvbnhPx66NhowFAYwFAaZJg8wFAaxKBDZurf/RB6mMxb/SCMwFAYwFAbxQB3+RB4wFAb/Qhy4Oh+4QifbNRcwFAYwFAYwFAb/QRzdNhgwFAYwFAbav7v/Uy7oaE68MBK5LxLewr/r2NXewLswFAaxJw4wFAbkPRy2PyYwFAaxKhLm1tMwFAazPiQwFAaUGAb/QBrfOx3bvrv/VC/maE4wFAbRPBq6MRO8Qynew8Dp2tjfwb0wFAbx6eju5+by6uns4uH9/f36+vr/GkHjAAAAYnRSTlMAGt+64rnWu/bo8eAA4InH3+DwoN7j4eLi4xP99Nfg4+b+/u9B/eDs1MD1mO7+4PHg2MXa347g7vDizMLN4eG+Pv7i5evs/v79yu7S3/DV7/498Yv24eH+4ufQ3Ozu/v7+y13sRqwAAADLSURBVHjaZc/XDsFgGIBhtDrshlitmk2IrbHFqL2pvXf/+78DPokj7+Fz9qpU/9UXJIlhmPaTaQ6QPaz0mm+5gwkgovcV6GZzd5JtCQwgsxoHOvJO15kleRLAnMgHFIESUEPmawB9ngmelTtipwwfASilxOLyiV5UVUyVAfbG0cCPHig+GBkzAENHS0AstVF6bacZIOzgLmxsHbt2OecNgJC83JERmePUYq8ARGkJx6XtFsdddBQgZE2nPR6CICZhawjA4Fb/chv+399kfR+MMMDGOQAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: 2px center;}.ace_gutter-cell.ace_warning {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAmVBMVEX///8AAAD///8AAAAAAABPSzb/5sAAAAB/blH/73z/ulkAAAAAAAD85pkAAAAAAAACAgP/vGz/rkDerGbGrV7/pkQICAf////e0IsAAAD/oED/qTvhrnUAAAD/yHD/njcAAADuv2r/nz//oTj/p064oGf/zHAAAAA9Nir/tFIAAAD/tlTiuWf/tkIAAACynXEAAAAAAAAtIRW7zBpBAAAAM3RSTlMAABR1m7RXO8Ln31Z36zT+neXe5OzooRDfn+TZ4p3h2hTf4t3k3ucyrN1K5+Xaks52Sfs9CXgrAAAAjklEQVR42o3PbQ+CIBQFYEwboPhSYgoYunIqqLn6/z8uYdH8Vmdnu9vz4WwXgN/xTPRD2+sgOcZjsge/whXZgUaYYvT8QnuJaUrjrHUQreGczuEafQCO/SJTufTbroWsPgsllVhq3wJEk2jUSzX3CUEDJC84707djRc5MTAQxoLgupWRwW6UB5fS++NV8AbOZgnsC7BpEAAAAABJRU5ErkJggg==");background-position: 2px center;}.ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAAAAAA6mKC9AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAAJ0Uk5TAAB2k804AAAAPklEQVQY02NgIB68QuO3tiLznjAwpKTgNyDbMegwisCHZUETUZV0ZqOquBpXj2rtnpSJT1AEnnRmL2OgGgAAIKkRQap2htgAAAAASUVORK5CYII=");background-position: 2px center;}.ace_dark .ace_gutter-cell.ace_info {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAAJFBMVEUAAAChoaGAgIAqKiq+vr6tra1ZWVmUlJSbm5s8PDxubm56enrdgzg3AAAAAXRSTlMAQObYZgAAAClJREFUeNpjYMAPdsMYHegyJZFQBlsUlMFVCWUYKkAZMxZAGdxlDMQBAG+TBP4B6RyJAAAAAElFTkSuQmCC");}.ace_scrollbar {contain: strict;position: absolute;right: 0;bottom: 0;z-index: 6;}.ace_scrollbar-inner {position: absolute;cursor: text;left: 0;top: 0;}.ace_scrollbar-v{overflow-x: hidden;overflow-y: scroll;top: 0;}.ace_scrollbar-h {overflow-x: scroll;overflow-y: hidden;left: 0;}.ace_print-margin {position: absolute;height: 100%;}.ace_text-input {position: absolute;z-index: 0;width: 0.5em;height: 1em;opacity: 0;background: transparent;-moz-appearance: none;appearance: none;border: none;resize: none;outline: none;overflow: hidden;font: inherit;padding: 0 1px;margin: 0 -1px;contain: strict;-ms-user-select: text;-moz-user-select: text;-webkit-user-select: text;user-select: text;white-space: pre!important;}.ace_text-input.ace_composition {background: transparent;color: inherit;z-index: 1000;opacity: 1;}.ace_composition_placeholder { color: transparent }.ace_composition_marker { border-bottom: 1px solid;position: absolute;border-radius: 0;margin-top: 1px;}[ace_nocontext=true] {transform: none!important;filter: none!important;perspective: none!important;clip-path: none!important;mask : none!important;contain: none!important;perspective: none!important;mix-blend-mode: initial!important;z-index: auto;}.ace_layer {z-index: 1;position: absolute;overflow: hidden;word-wrap: normal;white-space: pre;height: 100%;width: 100%;box-sizing: border-box;pointer-events: none;}.ace_gutter-layer {position: relative;width: auto;text-align: right;pointer-events: auto;height: 1000000px;contain: style size layout;}.ace_text-layer {font: inherit !important;position: absolute;height: 1000000px;width: 1000000px;contain: style size layout;}.ace_text-layer > .ace_line, .ace_text-layer > .ace_line_group {contain: style size layout;position: absolute;top: 0;left: 0;right: 0;}.ace_hidpi .ace_text-layer,.ace_hidpi .ace_gutter-layer,.ace_hidpi .ace_content,.ace_hidpi .ace_gutter {contain: strict;will-change: transform;}.ace_hidpi .ace_text-layer > .ace_line, .ace_hidpi .ace_text-layer > .ace_line_group {contain: strict;}.ace_cjk {display: inline-block;text-align: center;}.ace_cursor-layer {z-index: 4;}.ace_cursor {z-index: 4;position: absolute;box-sizing: border-box;border-left: 2px solid;transform: translatez(0);}.ace_multiselect .ace_cursor {border-left-width: 1px;}.ace_slim-cursors .ace_cursor {border-left-width: 1px;}.ace_overwrite-cursors .ace_cursor {border-left-width: 0;border-bottom: 1px solid;}.ace_hidden-cursors .ace_cursor {opacity: 0.2;}.ace_smooth-blinking .ace_cursor {transition: opacity 0.18s;}.ace_animate-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: step-end;animation-name: blink-ace-animate;animation-iteration-count: infinite;}.ace_animate-blinking.ace_smooth-blinking .ace_cursor {animation-duration: 1000ms;animation-timing-function: ease-in-out;animation-name: blink-ace-animate-smooth;}@keyframes blink-ace-animate {from, to { opacity: 1; }60% { opacity: 0; }}@keyframes blink-ace-animate-smooth {from, to { opacity: 1; }45% { opacity: 1; }60% { opacity: 0; }85% { opacity: 0; }}.ace_marker-layer .ace_step, .ace_marker-layer .ace_stack {position: absolute;z-index: 3;}.ace_marker-layer .ace_selection {position: absolute;z-index: 5;}.ace_marker-layer .ace_bracket {position: absolute;z-index: 6;}.ace_marker-layer .ace_active-line {position: absolute;z-index: 2;}.ace_marker-layer .ace_selected-word {position: absolute;z-index: 4;box-sizing: border-box;}.ace_line .ace_fold {box-sizing: border-box;display: inline-block;height: 11px;margin-top: -2px;vertical-align: middle;background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACJJREFUeNpi+P//fxgTAwPDBxDxD078RSX+YeEyDFMCIMAAI3INmXiwf2YAAAAASUVORK5CYII=");background-repeat: no-repeat, repeat-x;background-position: center center, top left;color: transparent;border: 1px solid black;border-radius: 2px;cursor: pointer;pointer-events: auto;}.ace_dark .ace_fold {}.ace_fold:hover{background-image:url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABEAAAAJCAYAAADU6McMAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAJpJREFUeNpi/P//PwOlgAXGYGRklAVSokD8GmjwY1wasKljQpYACtpCFeADcHVQfQyMQAwzwAZI3wJKvCLkfKBaMSClBlR7BOQikCFGQEErIH0VqkabiGCAqwUadAzZJRxQr/0gwiXIal8zQQPnNVTgJ1TdawL0T5gBIP1MUJNhBv2HKoQHHjqNrA4WO4zY0glyNKLT2KIfIMAAQsdgGiXvgnYAAAAASUVORK5CYII="),url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAA3CAYAAADNNiA5AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAACBJREFUeNpi+P//fz4TAwPDZxDxD5X4i5fLMEwJgAADAEPVDbjNw87ZAAAAAElFTkSuQmCC");}.ace_tooltip {background-color: #FFF;background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.1));border: 1px solid gray;border-radius: 1px;box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);color: black;max-width: 100%;padding: 3px 4px;position: fixed;z-index: 999999;box-sizing: border-box;cursor: default;white-space: pre;word-wrap: break-word;line-height: normal;font-style: normal;font-weight: normal;letter-spacing: normal;pointer-events: none;}.ace_folding-enabled > .ace_gutter-cell {padding-right: 13px;}.ace_fold-widget {box-sizing: border-box;margin: 0 -12px 0 1px;display: none;width: 11px;vertical-align: top;background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42mWKsQ0AMAzC8ixLlrzQjzmBiEjp0A6WwBCSPgKAXoLkqSot7nN3yMwR7pZ32NzpKkVoDBUxKAAAAABJRU5ErkJggg==");background-repeat: no-repeat;background-position: center;border-radius: 3px;border: 1px solid transparent;cursor: pointer;}.ace_folding-enabled .ace_fold-widget {display: inline-block;   }.ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAANElEQVR42m3HwQkAMAhD0YzsRchFKI7sAikeWkrxwScEB0nh5e7KTPWimZki4tYfVbX+MNl4pyZXejUO1QAAAABJRU5ErkJggg==");}.ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAGCAYAAAAG5SQMAAAAOUlEQVR42jXKwQkAMAgDwKwqKD4EwQ26sSOkVWjgIIHAzPiCgaqiqnJHZnKICBERHN194O5b9vbLuAVRL+l0YWnZAAAAAElFTkSuQmCCXA==");}.ace_fold-widget:hover {border: 1px solid rgba(0, 0, 0, 0.3);background-color: rgba(255, 255, 255, 0.2);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.7);}.ace_fold-widget:active {border: 1px solid rgba(0, 0, 0, 0.4);background-color: rgba(0, 0, 0, 0.05);box-shadow: 0 1px 1px rgba(255, 255, 255, 0.8);}.ace_dark .ace_fold-widget {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAHklEQVQIW2P4//8/AzoGEQ7oGCaLLAhWiSwB146BAQCSTPYocqT0AAAAAElFTkSuQmCC");}.ace_dark .ace_fold-widget.ace_end {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAH0lEQVQIW2P4//8/AxQ7wNjIAjDMgC4AxjCVKBirIAAF0kz2rlhxpAAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget.ace_closed {background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAMAAAAFCAYAAACAcVaiAAAAHElEQVQIW2P4//+/AxAzgDADlOOAznHAKgPWAwARji8UIDTfQQAAAABJRU5ErkJggg==");}.ace_dark .ace_fold-widget:hover {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);background-color: rgba(255, 255, 255, 0.1);}.ace_dark .ace_fold-widget:active {box-shadow: 0 1px 1px rgba(255, 255, 255, 0.2);}.ace_inline_button {border: 1px solid lightgray;display: inline-block;margin: -1px 8px;padding: 0 5px;pointer-events: auto;cursor: pointer;}.ace_inline_button:hover {border-color: gray;background: rgba(200,200,200,0.2);display: inline-block;pointer-events: auto;}.ace_fold-widget.ace_invalid {background-color: #FFB4B4;border-color: #DE5555;}.ace_fade-fold-widgets .ace_fold-widget {transition: opacity 0.4s ease 0.05s;opacity: 0;}.ace_fade-fold-widgets:hover .ace_fold-widget {transition: opacity 0.05s ease 0.05s;opacity:1;}.ace_underline {text-decoration: underline;}.ace_bold {font-weight: bold;}.ace_nobold .ace_bold {font-weight: normal;}.ace_italic {font-style: italic;}.ace_error-marker {background-color: rgba(255, 0, 0,0.2);position: absolute;z-index: 9;}.ace_highlight-marker {background-color: rgba(255, 255, 0,0.2);position: absolute;z-index: 8;}
+/*# sourceURL=ace/css/ace_editor.css */</style><style type="text/css">@charset "UTF-8";[ng\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style><meta class="foundation-mq-small"><meta class="foundation-mq-small-only"><meta class="foundation-mq-medium"><meta class="foundation-mq-medium-only"><meta class="foundation-mq-large"><meta class="foundation-mq-large-only"><meta class="foundation-mq-xlarge"><meta class="foundation-mq-xlarge-only"><meta class="foundation-mq-xxlarge"><meta class="foundation-data-attribute-namespace">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Edube Interactive | An all-in-one browser-based programming environment for OpenEDG Python Institute and C++ Institute online courses | Learn programming, test your code, perform lab exercises">
+        <meta name="author" content="">
+        <meta name="referrer" content="always">
+        <title>Edube Interactive ::                         PE1 -- Module 2 Test
+            </title>
+
+        <!-- Google Tag Manager -->
+        <script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-BW912Z0P86&amp;cx=c&amp;_slc=1"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-2V3DLZYYTP&amp;cx=c&amp;_slc=1"></script><script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script><script type="text/javascript" async="" src="https://www.googletagmanager.com/gtag/js?id=G-2V3DLZYYTP&amp;l=dataLayer&amp;cx=c"></script><script type="text/javascript" async="" charset="utf-8" src="https://www.gstatic.com/recaptcha/releases/hfUfsXWZFeg83qqxrK27GB8P/recaptcha__en.js" crossorigin="anonymous" integrity="sha384-CUWl3AwpNax4J2/ffIDxMr+sLnEFg8pkj5QqZtMtJZtrL5bS5QTkIoza4qZakWjL"></script><script async="" src="https://www.googletagmanager.com/gtm.js?id=GTM-KVNFRS8"></script><script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+            })(window,document,'script','dataLayer','GTM-KVNFRS8');</script>
+        <!-- End Google Tag Manager -->
+
+                                        <link rel="shortcut icon" href="/uploads/a97a70d4c8ad138a163c817728043ff3.png">
+            
+            <link rel="stylesheet" href="/assets/vendor/jquery-ui/jquery-ui.min.css">
+
+                            <link rel="stylesheet" href="/css/app.css?v=261">
+                    
+
+        <style></style><meta class="foundation-mq-topbar"></head>
+    <body id="quiz" class="no-select ng-scope" ng-app="app">
+        <!-- Google Tag Manager (noscript) -->
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KVNFRS8"
+                          height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+        <!-- End Google Tag Manager (noscript) -->
+
+            <div id="loader-wrapper" class="loader-wrapper hidden-loader">
+        <div id="loader" class="loader"></div>
+    </div>
+
+                    <!-- Navigation -->
+            <nav class="top-bar" data-topbar="" role="navigation" aria-hidden="true">
+                <ul class="title-area">
+                    <li class="name hide-for-small-only">
+                                                    <img class="logo" src="/uploads/9318e73e3d7bf59f5e978901aa5edb18.png" alt="Logo">
+                                            </li>
+                                        </ul>
+
+                
+            <section class="top-bar-section" aria-hidden="true">
+                                            <!-- Left nav section -->
+                        <div class="left-wrapper">
+                            <ul class="left">
+                                                                <li class="title">                        PE1 -- Module 2 Test
+            </li>
+                                                            </ul>
+                        </div>
+                    
+                    <!-- Right nav section -->
+                    <div class="right-wrapper">
+                        <ul class="right">
+                                            
+            <li class="hide-for-small-only">
+            <a href="" id="online-status" class="button round online"><i class="fa fa-circle"></i>
+                <span>Online</span>
+            </a>
+        </li>
+                            </ul>
+                    </div>
+                </section></nav>
+        
+        
+            <div class="off-canvas-wrap quiz-off-canvas-wrap ng-scope quiz-auto-off-canvas-wrap" data-offcanvas="" ng-controller="QuizController" ng-init="init()" ng-class="{'quiz-auto-off-canvas-wrap': currentStep !== TITLE_PAGE_STEP &amp;&amp; currentStep !== SUMMARY_STEP}">
+
+    <div class="inner-wrap">
+
+        <div id="overlay" class="overlay hidden-overlay">
+
+            <div class="overlay__content">
+                <div id="overlay-header" class="overlay__content__header"></div>
+                <div class="overlay__content__body">
+                    <div id="overlay-body"></div>
+                    <!-- ngIf: isSuspiciousActivityOverlay -->
+                </div>
+                <div id="overlay-footer" class="overlay__content__footer">
+                    <!-- ngIf: isSuspiciousActivityOverlay && !iDevice -->
+                    <!-- ngIf: isSuspiciousActivityOverlay && iDevice -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Off canvas menu -->
+        <aside class="left-off-canvas-menu">
+            <ul class="off-canvas-list">
+                <li><label>List of contents</label></li>
+                            </ul>
+        </aside>
+
+        <!-- Main content -->
+        <div class="quiz">
+            <div class="quiz-progress">
+                <div class="quiz-progress-item ng-binding">
+                    <!-- ngIf: isExam() -->Progress (0%)
+                </div>
+                <div class="progress quiz-progress-bar">
+                    <span class="meter quiz-progress-meter" style="width: 0%;"></span>
+                </div>
+                <div class="quiz-progress-item">
+                    <!-- ngIf: preTestTimerEnabled --><span class="timer-label show-for-medium-up ng-scope" ng-if="preTestTimerEnabled">You must start the test before</span><!-- end ngIf: preTestTimerEnabled -->
+
+                        <!-- ngIf: (isQuizStep() || isReviewQuestionsStep() || preTestTimerEnabled || tutorial) && hasCountDownTimer() --><span ng-if="(isQuizStep() || isReviewQuestionsStep() || preTestTimerEnabled || tutorial) &amp;&amp; hasCountDownTimer()" ng-class="{'countdown-timer-warning': showTimeWarningIfNeeded(), 'pre-timer': preTestTimerEnabled}" class="ng-binding ng-scope pre-timer">
+                            <!-- ngIf: !preTestTimerEnabled --> 14:33
+                        </span><!-- end ngIf: (isQuizStep() || isReviewQuestionsStep() || preTestTimerEnabled || tutorial) && hasCountDownTimer() -->
+
+                    <!-- ngIf: isReviewStep() -->
+                </div>
+            </div>
+
+            <div class="quiz-box">
+                <!-- ngIf: isQuizStep() || isReviewStep() || isReviewQuestionsStep() || preTestTimerEnabled --><div class="quiz-header ng-scope" ng-if="isQuizStep() || isReviewStep() || isReviewQuestionsStep() || preTestTimerEnabled">
+                    <div class="quiz-navbar-hamburger-wrapper">
+                                                <!-- ngIf: showCalculator() -->
+                        <!-- ngIf: showScratchpad() -->
+                                            </div>
+                    <div class="quiz-question-counter-wrapper">
+                        <!-- ngIf: isQuizStep() || isReviewStep() -->
+                    </div>
+                    <!-- ngIf: isQuizStep() || isReviewStep() -->
+                </div><!-- end ngIf: isQuizStep() || isReviewStep() || isReviewQuestionsStep() || preTestTimerEnabled -->
+
+                <!-- ngIf: currentStep === WELCOME_PAGE_STEP --><div class="quiz-step ng-scope" ng-if="currentStep === WELCOME_PAGE_STEP">
+                    <!-- ngIf: !preTestTimerEnabled -->
+                    <strong class="quiz-step-title">PE1 -- Module 2 Test</strong>
+                    <!-- ngIf: isExam() -->
+                    <!-- ngIf: !isExam() --><div class="quiz-step-text ng-binding ng-scope" ng-if="!isExam()" ng-bind-html="renderHtml(getWelcomePageContent())"></div><!-- end ngIf: !isExam() -->
+                    <div class="quiz-actions">
+                        <div class="quiz-navi">
+                            <!-- ngIf: isExam() -->
+                            <!-- ngIf: !isExam() --><button class="button btn-quiz-primary ng-scope" ng-if="!isExam()" ng-click="begin()">
+                                Proceed
+                            </button><!-- end ngIf: !isExam() -->
+                        </div>
+                    </div>
+                </div><!-- end ngIf: currentStep === WELCOME_PAGE_STEP -->
+
+                <!-- ngIf: currentStep === NDA_STEP -->
+
+                <!-- ngIf: currentStep === HONOR_CODE_STEP -->
+
+                <!-- ngIf: currentStep === TITLE_PAGE_STEP -->
+
+                <!-- ngIf: currentStep === SECTION_PAGE_STEP -->
+
+                <!-- ngIf: isQuizStep() || isReviewStep() -->
+
+                <!-- ngIf: currentStep === REVIEW_QUESTIONS_STEP -->
+
+                <!-- ngIf: currentStep === SUMMARY_STEP -->
+
+                <!-- ngIf: currentStep === TERMINATED_EXAM_STEP -->
+
+                <!-- ngIf: currentStep === REVIEW_EXAM_OBJECTIVES_STEP -->
+
+                <!-- ngIf: currentStep === RESUMED_EXAM_STEP -->
+
+                <!-- ngIf: currentStep === PERMISSION_DENIED_STEP -->
+
+                <!-- ngIf: currentStep === LOADING_STEP -->
+
+                <!-- ngIf: currentStep === TUTORIAL_STEP -->
+            </div>
+
+                                                                                                                                
+                    </div>
+
+        <div id="nda-refusal-modal" class="reveal-modal modal" data-reveal="" aria-labelledby="Non-Disclosure Agreement Refusal" aria-hidden="true" role="dialog">
+
+    <div class="row">
+        <div class="large-12 columns">
+            <span class="title">Non-Disclosure Agreement Refusal</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <p>
+                You have indicated that you do not agree to the terms of the Non-Disclosure Agreement. For the exam to continue you must agree to this agreement, otherwise your session will be terminated.<br><br>
+                Are you sure you want to terminate your exam session?
+            </p>
+        </div>
+        <div class="large-12 columns">
+            <div class="quiz-actions">
+                <div class="quiz-navi">
+                    <button class="button btn-quiz-primary" ng-click="rejectNDA()">Yes</button>
+                    <button class="button btn-quiz-secondary" ng-click="closeNDARefusalModal()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="close-reveal-modal" aria-label="Close">×</a>
+</div>        <!-- ngIf: currentSection -->        <div id="submit-quiz-modal" class="reveal-modal modal" data-reveal="" aria-labelledby="Submit quiz" aria-hidden="true" role="dialog">
+
+    <div class="row">
+        <div class="large-12 columns">
+            <!-- ngIf: isExam() -->
+            <!-- ngIf: !isExam() --><span class="title ng-scope" ng-if="!isExam()">End Assessment</span><!-- end ngIf: !isExam() -->
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <p>
+                Are you sure you want to submit your                <!-- ngIf: isExam() -->
+                <!-- ngIf: !isExam() --><span ng-if="!isExam()" class="ng-scope">assessment?</span><!-- end ngIf: !isExam() --> After clicking Yes your session will end, your answers will be submitted, and you will no longer be able to change them.            </p>
+        </div>
+        <div class="large-12 columns">
+            <div class="quiz-actions">
+                <div class="quiz-navi">
+                    <button class="button btn-quiz-primary" ng-click="submitQuiz()">Yes</button>
+                    <button class="button btn-quiz-secondary" ng-click="closeSubmitQuizModal()">No</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a class="close-reveal-modal" aria-label="Close">×</a>
+</div>        <div id="comment-modal" class="reveal-modal small modal" data-reveal="" aria-labelledby="Add a comment" aria-hidden="true" role="dialog">
+
+    <div class="row">
+        <div class="large-12 columns">
+            <span class="title">Add a comment</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <form class="ng-pristine ng-valid">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Comment:
+                            <textarea rows="10" ng-model="currentQuestionComment" class="ng-pristine ng-untouched ng-valid ng-empty"></textarea>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div class="quiz-actions">
+                            <div class="quiz-navi">
+                                <button class="button btn-quiz-primary" ng-click="addQuestionComment(currentQuestion)">
+                                    Send
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <a class="close-reveal-modal" aria-label="Close">×</a>
+</div>        <div class="scratchpad modal hide">
+    <span class="close-icon" ng-click="closeScratchpad()"></span>
+    <div class="row">
+        <div class="large-12 columns">
+            <span class="title">Scratchpad</span>
+            <div class="info">
+                <i class="fa fa-info-circle" aria-hidden="true"></i> You can drag and drop your scratchpad to any part of the screen
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <form class="ng-pristine ng-valid">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <textarea rows="10" ng-model="scratchpad" class="ng-pristine ng-untouched ng-valid ng-empty"></textarea>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+        <div id="contactModal" class="reveal-modal small modal ng-scope" data-reveal="" aria-labelledby="Contact" aria-hidden="true" role="dialog" ng-controller="ContactModalController">
+
+    <div class="row">
+        <div class="large-12 columns">
+            <span class="title">Report a bug</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <form ng-submit="sendForm()" class="ng-pristine ng-valid-email ng-invalid ng-invalid-required">
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>Email:
+                            <input type="email" name="email" required="" ng-model="formData.email" class="ng-pristine ng-untouched ng-empty ng-valid-email ng-invalid ng-invalid-required">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>
+                            Subject:
+                            <input type="text" name="subject" required="" ng-model="formData.subject" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required">
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <label>
+                            Message:
+                            <textarea rows="4" name="message" required="" ng-model="formData.message" class="ng-pristine ng-untouched ng-empty ng-invalid ng-invalid-required"></textarea>
+                        </label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12 columns">
+                        <div id="recaptcha" class="g-recaptcha" data-sitekey="6Ld2hzQUAAAAAKbQumZ5v3mR23a8PLo_C_50LjZ0" data-callback="recaptchaSuccessCallback"><div style="width: 304px; height: 78px;"><div><iframe title="reCAPTCHA" width="304" height="78" role="presentation" name="a-x4g4dizfcurm" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/anchor?ar=1&amp;k=6Ld2hzQUAAAAAKbQumZ5v3mR23a8PLo_C_50LjZ0&amp;co=aHR0cHM6Ly9lZHViZS5vcmc6NDQz&amp;hl=en&amp;v=hfUfsXWZFeg83qqxrK27GB8P&amp;size=normal&amp;cb=8y5iuraryadx"></iframe></div><textarea id="g-recaptcha-response" name="g-recaptcha-response" class="g-recaptcha-response" style="width: 250px; height: 40px; border: 1px solid rgb(193, 193, 193); margin: 10px 25px; padding: 0px; resize: none; display: none;"></textarea></div><iframe style="display: none;"></iframe></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-12-columns text-center">
+                                                    <div class="quiz-actions">
+                                <div class="quiz-navi">
+                                    <button type="submit" class="button btn-quiz-primary">Send</button>
+                                </div>
+                            </div>
+                                            </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <a class="close-reveal-modal" aria-label="Close">×</a>
+
+    <div id="response-modal" class="reveal-modal small modal" data-reveal="" aria-labelledby="Response" aria-hidden="true" role="dialog">
+        <p class="response-msg ng-binding" ng-bind="responseMsg">Please wait...</p>
+        <a class="close-reveal-modal" aria-label="Close">×</a>
+    </div>
+
+</div>        <div class="calculator hide">
+    <div class="calculator__display">
+        <span class="close-icon" ng-click="closeCalculator()"></span>
+        <div class="calculator__result">0</div>
+    </div>
+
+    <div class="calculator__keys">
+        <button class="key--operator" data-action="add">+</button>
+        <button class="key--operator" data-action="subtract">-</button>
+        <button class="key--operator" data-action="multiply">×</button>
+        <button class="key--operator" data-action="divide">÷</button>
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>0</button>
+        <button data-action="decimal">.</button>
+        <button class="key--clear" data-action="clear">AC</button>
+        <button class="key--equal" data-action="calculate">=</button>
+    </div>
+</div>
+
+        
+        <!-- Close the off-canvas menu -->
+        <a class="exit-off-canvas"></a>
+
+    </div>
+
+</div>    
+                    <div class="cookie-bar ng-scope ng-hide" aria-hidden="true" ng-controller="CookieBarController" ng-init="init()" ng-hide="isHidden">
+                We use cookies to improve our service. By continuing to use the site, you agree to our <a href="/page/privacy-policy">privacy</a> and <a href="/page/cookie-policy">cookie policies</a>. <a class="close-btn" ng-click="close()">×</a>
+            </div>
+        
+            <script src="https://www.google.com/recaptcha/api.js" async="" defer=""></script>
+
+            <script>
+            let data = {"id":9592,"showCodeHonor":true,"showNDA":false,"timeLimitInMinutes":0,"timeWarningInMinutes":2,"shuffleAnswers":true,"unlimitedAttempts":true,"allowedAttempts":1,"showReview":true,"showReviewAfterSubmitting":true,"showAnswers":false,"showWelcomePage":true,"welcomePageContent":null,"hasTimedSections":false,"showIndependentSections":false,"questions":[{"id":65526,"question":"<p>What is the output of the following snippet if the user enters two lines containing <code >3<\/code> and <code >6<\/code> respectively?<\/p>\n\n<code class=\"codep\">x = input()\ny = int(input())\n\nprint(x * y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247056,"option":"<p><code >333333<\/code><\/p>"},{"id":247057,"option":"<p><code >18<\/code><\/p>"},{"id":247058,"option":"<p><code >666<\/code><\/p>"},{"id":247059,"option":"<p><code >36<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65521,"question":"<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">x = 1\ny = 2\nz = x\nx = y\ny = z\nprint(x, y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247036,"option":"<p><code >2 1<\/code><\/p>"},{"id":247037,"option":"<p><code >1 2<\/code><\/p>"},{"id":247038,"option":"<p><code >1 1<\/code><\/p>"},{"id":247039,"option":"<p><code >2 2<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65514,"question":"<p>The <code >0o<\/code> prefix means that the number after it is denoted as:<\/p>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247008,"option":"<p>octal<\/p>"},{"id":247009,"option":"<p>binary<\/p>"},{"id":247010,"option":"<p>decimal<\/p>"},{"id":247011,"option":"<p>hexadecimal<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65517,"question":"<p>Which of the following statements are <u>true<\/u>?  (Select <u>two<\/u> answers)<\/p>","type":"Multiple Choice","htmlType":"checkbox","optionsText":null,"options":[{"id":247020,"option":"<p>The result of the <code >\/<\/code> operator is always an integer value.<\/p>"},{"id":247021,"option":"<p>The right argument of the <code >%<\/code> operator cannot be zero.<\/p>"},{"id":247022,"option":"<p>Addition precedes multiplication.<\/p>"},{"id":247023,"option":"<p>The <code >**<\/code> operator uses right-sided binding.<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65525,"question":"<p>What is the output of the following snippet if the user enters two lines containing <code >11<\/code> and <code >4<\/code> respectively?<\/p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nx = x % y\nx = x % y\ny = y % x\n\nprint(y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247052,"option":"<p><code >1<\/code><\/p>"},{"id":247053,"option":"<p><code >2<\/code><\/p>"},{"id":247054,"option":"<p><code >3<\/code><\/p>"},{"id":247055,"option":"<p><code >4<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65513,"question":"<p>The value <strong>twenty point twelve times ten raised to the power of eight<\/strong> should be written as:<\/p>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247004,"option":"<p><code >20.12E8<\/code><\/p>"},{"id":247005,"option":"<p><code >20.12*10^8<\/code><\/p>"},{"id":247006,"option":"<p><code >20.12E8.0<\/code><\/p>"},{"id":247007,"option":"<p><code >20E12.8<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65524,"question":"<p>What is the output of the following snippet if the user enters two lines containing <code >2<\/code> and <code >4<\/code> respectively?<\/p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nx = x \/ y\ny = y \/ x\n\nprint(y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247048,"option":"<p><code >8.0<\/code><\/p>"},{"id":247049,"option":"<p><code >4.0<\/code><\/p>"},{"id":247050,"option":"<p><code >2.0<\/code><\/p>"},{"id":247051,"option":"<p>the code will cause a runtime error<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65527,"question":"<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">z = y = x = 1\nprint(x, y, z, sep='*')\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247060,"option":"<p><code >1*1*1<\/code><\/p>"},{"id":247061,"option":"<p><code >1 1 1<\/code><\/p>"},{"id":247062,"option":"<p><code >x*y*z<\/code><\/p>"},{"id":247063,"option":"<p><code >x y z<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65530,"question":"<p>What is the output of the following snippet if the user enters two lines containing <code >2<\/code> and <code >4<\/code> respectively?<\/p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nprint(x + y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247072,"option":"<p><code >6<\/code><\/p>"},{"id":247073,"option":"<p><code >24<\/code><\/p>"},{"id":247074,"option":"<p><code >2<\/code><\/p>"},{"id":247075,"option":"<p><code >4<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65523,"question":"<p>What is the output of the following snippet if the user enters two lines containing <code >2<\/code> and <code >4<\/code> respectively?<\/p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nx = x \/\/ y\ny = y \/\/ x\n\nprint(y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247044,"option":"<p>the code will cause a runtime error<\/p>"},{"id":247045,"option":"<p><code >2.0<\/code><\/p>"},{"id":247046,"option":"<p><code >4.0<\/code><\/p>"},{"id":247047,"option":"<p><code >8.0<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65512,"question":"<p>The meaning of the <strong>keyword parameter<\/strong> is determined by:<\/p>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247000,"option":"<p>the argument's name specified along with its value<\/p>"},{"id":247001,"option":"<p>its position within the argument list<\/p>"},{"id":247002,"option":"<p>its connection with existing variables<\/p>"},{"id":247003,"option":"<p>its value<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65519,"question":"<p>Which of the following variable names are <u>illegal<\/u>?  (Select <u>two<\/u> answers)<\/p>","type":"Multiple Choice","htmlType":"checkbox","optionsText":null,"options":[{"id":247028,"option":"<p><code >True<\/code><\/p>"},{"id":247029,"option":"<p><code >true<\/code><\/p>"},{"id":247030,"option":"<p><code >TRUE<\/code><\/p>"},{"id":247031,"option":"<p><code >and<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65518,"question":"<p>Left-sided binding determines that the result of the following expression:<\/p>\n<code >1 \/\/ 2 * 3<\/code>\n<br>\n<br>\n<p>is equal to:<\/p>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247024,"option":"<p><code >0<\/code><\/p>"},{"id":247025,"option":"<p><code >4.5<\/code><\/p>"},{"id":247026,"option":"<p><code >0.0<\/code><\/p>"},{"id":247027,"option":"<p><code >0.16666666666666666<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65511,"question":"<p>The <code >\\n<\/code> digraph forces the <code >print()<\/code> function to:<\/p>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":246996,"option":"<p>break the output line<\/p>"},{"id":246997,"option":"<p>output exactly two characters: <code >\\<\/code> and <code >n<\/code><\/p>"},{"id":246998,"option":"<p>duplicate the character next to the digraph<\/p>"},{"id":246999,"option":"<p>stop its execution<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65528,"question":"<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">y = 2 + 3 * 5.\nprint(Y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247064,"option":"<p>the snippet will cause an execution error<\/p>"},{"id":247065,"option":"<p><code >25.<\/code><\/p>"},{"id":247066,"option":"<p><code >17<\/code><\/p>"},{"id":247067,"option":"<p><code >17.0<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65529,"question":"<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">x = 1 \/ 2 + 3 \/\/ 3 + 4 ** 2\nprint(x)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247068,"option":"<p><code >17.5<\/code><\/p>"},{"id":247069,"option":"<p><code >17<\/code><\/p>"},{"id":247070,"option":"<p><code >8<\/code><\/p>"},{"id":247071,"option":"<p><code >8.5<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65515,"question":"<p>The <code >**<\/code> operator:<\/p>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247012,"option":"<p>performs exponentiation<\/p>"},{"id":247013,"option":"<p>does not exist<\/p>"},{"id":247014,"option":"<p>performs floating-point multiplication<\/p>"},{"id":247015,"option":"<p>performs duplicated multiplication<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65520,"question":"<p>The <code >print()<\/code> function can output values of:<\/p>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247032,"option":"<p>any number of arguments (including zero)<\/p>"},{"id":247033,"option":"<p>any number of arguments (excluding zero)<\/p>"},{"id":247034,"option":"<p>just one argument<\/p>"},{"id":247035,"option":"<p>not more than five arguments<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65516,"question":"<p>The result of the following division:<\/p>\n<code >1 \/ 1<\/code>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247016,"option":"<p>is equal to <code >1.0<\/code><\/p>"},{"id":247017,"option":"<p>is equal to <code >1<\/code><\/p>"},{"id":247018,"option":"<p>cannot be evaluated<\/p>"},{"id":247019,"option":"<p>cannot be predicted<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65522,"question":"<p>What is the output of the following snippet if the user enters two lines containing <code >2<\/code> and <code >4<\/code> respectively?<\/p>\n\n<code class=\"codep\">x = input()\ny = input()\nprint(x + y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247040,"option":"<p><code >24<\/code><\/p>"},{"id":247041,"option":"<p><code >2<\/code><\/p>"},{"id":247042,"option":"<p><code >4<\/code><\/p>"},{"id":247043,"option":"<p><code >6<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088}],"sections":[{"id":3088,"name":"PE1 -- Module 2 Test","passingThreshold":null,"showSectionPage":false,"showReview":false,"timeLimitInMinutes":0,"timeWarningInMinutes":0,"numberOfQuestions":20,"questions":[{"id":65526,"question":"<p>What is the output of the following snippet if the user enters two lines containing <code >3<\/code> and <code >6<\/code> respectively?<\/p>\n\n<code class=\"codep\">x = input()\ny = int(input())\n\nprint(x * y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247056,"option":"<p><code >333333<\/code><\/p>"},{"id":247057,"option":"<p><code >18<\/code><\/p>"},{"id":247058,"option":"<p><code >666<\/code><\/p>"},{"id":247059,"option":"<p><code >36<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65521,"question":"<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">x = 1\ny = 2\nz = x\nx = y\ny = z\nprint(x, y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247036,"option":"<p><code >2 1<\/code><\/p>"},{"id":247037,"option":"<p><code >1 2<\/code><\/p>"},{"id":247038,"option":"<p><code >1 1<\/code><\/p>"},{"id":247039,"option":"<p><code >2 2<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65514,"question":"<p>The <code >0o<\/code> prefix means that the number after it is denoted as:<\/p>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247008,"option":"<p>octal<\/p>"},{"id":247009,"option":"<p>binary<\/p>"},{"id":247010,"option":"<p>decimal<\/p>"},{"id":247011,"option":"<p>hexadecimal<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65517,"question":"<p>Which of the following statements are <u>true<\/u>?  (Select <u>two<\/u> answers)<\/p>","type":"Multiple Choice","htmlType":"checkbox","optionsText":null,"options":[{"id":247020,"option":"<p>The result of the <code >\/<\/code> operator is always an integer value.<\/p>"},{"id":247021,"option":"<p>The right argument of the <code >%<\/code> operator cannot be zero.<\/p>"},{"id":247022,"option":"<p>Addition precedes multiplication.<\/p>"},{"id":247023,"option":"<p>The <code >**<\/code> operator uses right-sided binding.<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65525,"question":"<p>What is the output of the following snippet if the user enters two lines containing <code >11<\/code> and <code >4<\/code> respectively?<\/p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nx = x % y\nx = x % y\ny = y % x\n\nprint(y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247052,"option":"<p><code >1<\/code><\/p>"},{"id":247053,"option":"<p><code >2<\/code><\/p>"},{"id":247054,"option":"<p><code >3<\/code><\/p>"},{"id":247055,"option":"<p><code >4<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65513,"question":"<p>The value <strong>twenty point twelve times ten raised to the power of eight<\/strong> should be written as:<\/p>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247004,"option":"<p><code >20.12E8<\/code><\/p>"},{"id":247005,"option":"<p><code >20.12*10^8<\/code><\/p>"},{"id":247006,"option":"<p><code >20.12E8.0<\/code><\/p>"},{"id":247007,"option":"<p><code >20E12.8<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65524,"question":"<p>What is the output of the following snippet if the user enters two lines containing <code >2<\/code> and <code >4<\/code> respectively?<\/p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nx = x \/ y\ny = y \/ x\n\nprint(y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247048,"option":"<p><code >8.0<\/code><\/p>"},{"id":247049,"option":"<p><code >4.0<\/code><\/p>"},{"id":247050,"option":"<p><code >2.0<\/code><\/p>"},{"id":247051,"option":"<p>the code will cause a runtime error<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65527,"question":"<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">z = y = x = 1\nprint(x, y, z, sep='*')\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247060,"option":"<p><code >1*1*1<\/code><\/p>"},{"id":247061,"option":"<p><code >1 1 1<\/code><\/p>"},{"id":247062,"option":"<p><code >x*y*z<\/code><\/p>"},{"id":247063,"option":"<p><code >x y z<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65530,"question":"<p>What is the output of the following snippet if the user enters two lines containing <code >2<\/code> and <code >4<\/code> respectively?<\/p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nprint(x + y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247072,"option":"<p><code >6<\/code><\/p>"},{"id":247073,"option":"<p><code >24<\/code><\/p>"},{"id":247074,"option":"<p><code >2<\/code><\/p>"},{"id":247075,"option":"<p><code >4<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65523,"question":"<p>What is the output of the following snippet if the user enters two lines containing <code >2<\/code> and <code >4<\/code> respectively?<\/p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nx = x \/\/ y\ny = y \/\/ x\n\nprint(y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247044,"option":"<p>the code will cause a runtime error<\/p>"},{"id":247045,"option":"<p><code >2.0<\/code><\/p>"},{"id":247046,"option":"<p><code >4.0<\/code><\/p>"},{"id":247047,"option":"<p><code >8.0<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65512,"question":"<p>The meaning of the <strong>keyword parameter<\/strong> is determined by:<\/p>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247000,"option":"<p>the argument's name specified along with its value<\/p>"},{"id":247001,"option":"<p>its position within the argument list<\/p>"},{"id":247002,"option":"<p>its connection with existing variables<\/p>"},{"id":247003,"option":"<p>its value<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65519,"question":"<p>Which of the following variable names are <u>illegal<\/u>?  (Select <u>two<\/u> answers)<\/p>","type":"Multiple Choice","htmlType":"checkbox","optionsText":null,"options":[{"id":247028,"option":"<p><code >True<\/code><\/p>"},{"id":247029,"option":"<p><code >true<\/code><\/p>"},{"id":247030,"option":"<p><code >TRUE<\/code><\/p>"},{"id":247031,"option":"<p><code >and<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65518,"question":"<p>Left-sided binding determines that the result of the following expression:<\/p>\n<code >1 \/\/ 2 * 3<\/code>\n<br>\n<br>\n<p>is equal to:<\/p>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247024,"option":"<p><code >0<\/code><\/p>"},{"id":247025,"option":"<p><code >4.5<\/code><\/p>"},{"id":247026,"option":"<p><code >0.0<\/code><\/p>"},{"id":247027,"option":"<p><code >0.16666666666666666<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65511,"question":"<p>The <code >\\n<\/code> digraph forces the <code >print()<\/code> function to:<\/p>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":246996,"option":"<p>break the output line<\/p>"},{"id":246997,"option":"<p>output exactly two characters: <code >\\<\/code> and <code >n<\/code><\/p>"},{"id":246998,"option":"<p>duplicate the character next to the digraph<\/p>"},{"id":246999,"option":"<p>stop its execution<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65528,"question":"<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">y = 2 + 3 * 5.\nprint(Y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247064,"option":"<p>the snippet will cause an execution error<\/p>"},{"id":247065,"option":"<p><code >25.<\/code><\/p>"},{"id":247066,"option":"<p><code >17<\/code><\/p>"},{"id":247067,"option":"<p><code >17.0<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65529,"question":"<p>What is the output of the following snippet?<\/p>\n\n<code class=\"codep\">x = 1 \/ 2 + 3 \/\/ 3 + 4 ** 2\nprint(x)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247068,"option":"<p><code >17.5<\/code><\/p>"},{"id":247069,"option":"<p><code >17<\/code><\/p>"},{"id":247070,"option":"<p><code >8<\/code><\/p>"},{"id":247071,"option":"<p><code >8.5<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65515,"question":"<p>The <code >**<\/code> operator:<\/p>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247012,"option":"<p>performs exponentiation<\/p>"},{"id":247013,"option":"<p>does not exist<\/p>"},{"id":247014,"option":"<p>performs floating-point multiplication<\/p>"},{"id":247015,"option":"<p>performs duplicated multiplication<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65520,"question":"<p>The <code >print()<\/code> function can output values of:<\/p>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247032,"option":"<p>any number of arguments (including zero)<\/p>"},{"id":247033,"option":"<p>any number of arguments (excluding zero)<\/p>"},{"id":247034,"option":"<p>just one argument<\/p>"},{"id":247035,"option":"<p>not more than five arguments<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65516,"question":"<p>The result of the following division:<\/p>\n<code >1 \/ 1<\/code>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247016,"option":"<p>is equal to <code >1.0<\/code><\/p>"},{"id":247017,"option":"<p>is equal to <code >1<\/code><\/p>"},{"id":247018,"option":"<p>cannot be evaluated<\/p>"},{"id":247019,"option":"<p>cannot be predicted<\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088},{"id":65522,"question":"<p>What is the output of the following snippet if the user enters two lines containing <code >2<\/code> and <code >4<\/code> respectively?<\/p>\n\n<code class=\"codep\">x = input()\ny = input()\nprint(x + y)\n\n<\/code>\n<br>","type":"Single Choice","htmlType":"radio","optionsText":null,"options":[{"id":247040,"option":"<p><code >24<\/code><\/p>"},{"id":247041,"option":"<p><code >2<\/code><\/p>"},{"id":247042,"option":"<p><code >4<\/code><\/p>"},{"id":247043,"option":"<p><code >6<\/code><\/p>"}],"shuffleOptions":true,"timeLimitInMinutes":0,"timeLimitInSeconds":0,"timeWarningInMinutes":0,"timeWarningInSeconds":0,"audioSrc":null,"audioPlayLimit":0,"maxResponses":null,"sectionId":3088}],"showTutorial":false,"tutorial":null}],"token":null,"lastStableState":[],"launchPresentationReturnUrl":"https:\/\/lms.netacad.com\/mod\/lti\/return.php?course=2280461&launch_container=4&instanceid=47587159&sesskey=hZyOh245oO","fullScreenExitLimit":null,"windowExitLimit":null,"noInternetLimit":null,"screenshotLimit":null,"webcamDetectionLimit":null,"wrongGazeDirectionDurationLimit":null,"aceEditorMode":"ace\/mode\/python","showCalculator":false,"showScratchpad":false,"photosTaken":false,"recordVideo":false,"recordAudio":false,"recordScreen":false,"allowNoRecording":null,"showScore":true,"showTutorials":false,"testingProgramId":false,"classId":null,"preTestTimerEnabled":true};
+            Object.freeze(data);
+        </script>
+    
+    <script src="/assets/js/draggable-question.js?v=3"></script>
+    <script src="/assets/js/calculator.js"></script>
+
+    
+            <script src="/js/quiz_174.js"></script><span data-selector="tooltip-m02tpi2l0" id="tooltip-m02tpi2l0" class="tooltip" role="tooltip">Comment<span class="nub"></span></span><span data-selector="tooltip-m02tpi2l1" id="tooltip-m02tpi2l1" class="tooltip" role="tooltip">Flag for review<span class="nub"></span></span><span data-selector="tooltip-m02tpi2l2" id="tooltip-m02tpi2l2" class="tooltip" role="tooltip">Report a bug<span class="nub"></span></span><span data-selector="tooltip-m02tpi2l3" id="tooltip-m02tpi2l3" class="tooltip" role="tooltip">Comment<span class="nub"></span></span><span data-selector="tooltip-m02tpi2l4" id="tooltip-m02tpi2l4" class="tooltip" role="tooltip">Flag for review<span class="nub"></span></span><span data-selector="tooltip-m02tpi2l5" id="tooltip-m02tpi2l5" class="tooltip" role="tooltip">Report a bug<span class="nub"></span></span>
+    
+    
+<div style="background-color: rgb(255, 255, 255); border: 1px solid rgb(204, 204, 204); box-shadow: rgba(0, 0, 0, 0.2) 2px 2px 3px; position: absolute; transition: visibility linear 0.3s, opacity 0.3s linear; opacity: 0; visibility: hidden; z-index: 2000000000; left: 0px; top: -10000px;"><div style="width: 100%; height: 100%; position: fixed; top: 0px; left: 0px; z-index: 2000000000; background-color: rgb(255, 255, 255); opacity: 0.05;"></div><div class="g-recaptcha-bubble-arrow" style="border: 11px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -11px; z-index: 2000000000;"></div><div class="g-recaptcha-bubble-arrow" style="border: 10px solid transparent; width: 0px; height: 0px; position: absolute; pointer-events: none; margin-top: -10px; z-index: 2000000000;"></div><div style="z-index: 2000000000; position: relative;"><iframe title="recaptcha challenge expires in two minutes" name="c-x4g4dizfcurm" frameborder="0" scrolling="no" sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation allow-modals allow-popups-to-escape-sandbox allow-storage-access-by-user-activation" src="https://www.google.com/recaptcha/api2/bframe?hl=en&amp;v=hfUfsXWZFeg83qqxrK27GB8P&amp;k=6Ld2hzQUAAAAAKbQumZ5v3mR23a8PLo_C_50LjZ0" style="width: 100%; height: 100%;"></iframe></div></div></body></html>

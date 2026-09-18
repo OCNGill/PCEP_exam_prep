@@ -1,0 +1,1418 @@
+{
+    "id": 9592,
+    "showCodeHonor": true,
+    "showNDA": false,
+    "timeLimitInMinutes": 0,
+    "timeWarningInMinutes": 2,
+    "shuffleAnswers": true,
+    "unlimitedAttempts": true,
+    "allowedAttempts": 1,
+    "showReview": true,
+    "showReviewAfterSubmitting": true,
+    "showAnswers": false,
+    "showWelcomePage": true,
+    "welcomePageContent": null,
+    "hasTimedSections": false,
+    "showIndependentSections": false,
+    "questions": [
+        {
+            "id": 65526,
+            "question": "<p>What is the output of the following snippet if the user enters two lines containing <code >3</code> and <code >6</code> respectively?</p>\n\n<code class=\"codep\">x = input()\ny = int(input())\n\nprint(x * y)\n\n</code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247056,
+                    "option": "<p><code >333333</code></p>"
+                },
+                {
+                    "id": 247057,
+                    "option": "<p><code >18</code></p>"
+                },
+                {
+                    "id": 247058,
+                    "option": "<p><code >666</code></p>"
+                },
+                {
+                    "id": 247059,
+                    "option": "<p><code >36</code></p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65521,
+            "question": "<p>What is the output of the following snippet?</p>\n\n<code class=\"codep\">x = 1\ny = 2\nz = x\nx = y\ny = z\nprint(x, y)\n\n</code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247036,
+                    "option": "<p><code >2 1</code></p>"
+                },
+                {
+                    "id": 247037,
+                    "option": "<p><code >1 2</code></p>"
+                },
+                {
+                    "id": 247038,
+                    "option": "<p><code >1 1</code></p>"
+                },
+                {
+                    "id": 247039,
+                    "option": "<p><code >2 2</code></p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65514,
+            "question": "<p>The <code >0o</code> prefix means that the number after it is denoted as:</p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247008,
+                    "option": "<p>octal</p>"
+                },
+                {
+                    "id": 247009,
+                    "option": "<p>binary</p>"
+                },
+                {
+                    "id": 247010,
+                    "option": "<p>decimal</p>"
+                },
+                {
+                    "id": 247011,
+                    "option": "<p>hexadecimal</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65517,
+            "question": "<p>Which of the following statements are <u>true</u>?  (Select <u>two</u> answers)</p>",
+            "type": "Multiple Choice",
+            "htmlType": "checkbox",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247020,
+                    "option": "<p>The result of the <code >/</code> operator is always an integer value.</p>"
+                },
+                {
+                    "id": 247021,
+                    "option": "<p>The right argument of the <code >%</code> operator cannot be zero.</p>"
+                },
+                {
+                    "id": 247022,
+                    "option": "<p>Addition precedes multiplication.</p>"
+                },
+                {
+                    "id": 247023,
+                    "option": "<p>The <code >**</code> operator uses right-sided binding.</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65525,
+            "question": "<p>What is the output of the following snippet if the user enters two lines containing <code >11</code> and <code >4</code> respectively?</p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nx = x % y\nx = x % y\ny = y % x\n\nprint(y)\n\n</code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247052,
+                    "option": "<p><code >1</code></p>"
+                },
+                {
+                    "id": 247053,
+                    "option": "<p><code >2</code></p>"
+                },
+                {
+                    "id": 247054,
+                    "option": "<p><code >3</code></p>"
+                },
+                {
+                    "id": 247055,
+                    "option": "<p><code >4</code></p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65513,
+            "question": "<p>The value <strong>twenty point twelve times ten raised to the power of eight</strong> should be written as:</p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247004,
+                    "option": "<p><code >20.12E8</code></p>"
+                },
+                {
+                    "id": 247005,
+                    "option": "<p><code >20.12*10^8</code></p>"
+                },
+                {
+                    "id": 247006,
+                    "option": "<p><code >20.12E8.0</code></p>"
+                },
+                {
+                    "id": 247007,
+                    "option": "<p><code >20E12.8</code></p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65524,
+            "question": "<p>What is the output of the following snippet if the user enters two lines containing <code >2</code> and <code >4</code> respectively?</p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nx = x / y\ny = y / x\n\nprint(y)\n\n</code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247048,
+                    "option": "<p><code >8.0</code></p>"
+                },
+                {
+                    "id": 247049,
+                    "option": "<p><code >4.0</code></p>"
+                },
+                {
+                    "id": 247050,
+                    "option": "<p><code >2.0</code></p>"
+                },
+                {
+                    "id": 247051,
+                    "option": "<p>the code will cause a runtime error</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65527,
+            "question": "<p>What is the output of the following snippet?</p>\n\n<code class=\"codep\">z = y = x = 1\nprint(x, y, z, sep='*')\n\n</code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247060,
+                    "option": "<p><code >1*1*1</code></p>"
+                },
+                {
+                    "id": 247061,
+                    "option": "<p><code >1 1 1</code></p>"
+                },
+                {
+                    "id": 247062,
+                    "option": "<p><code >x*y*z</code></p>"
+                },
+                {
+                    "id": 247063,
+                    "option": "<p><code >x y z</code></p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65530,
+            "question": "<p>What is the output of the following snippet if the user enters two lines containing <code >2</code> and <code >4</code> respectively?</p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nprint(x + y)\n\n</code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247072,
+                    "option": "<p><code >6</code></p>"
+                },
+                {
+                    "id": 247073,
+                    "option": "<p><code >24</code></p>"
+                },
+                {
+                    "id": 247074,
+                    "option": "<p><code >2</code></p>"
+                },
+                {
+                    "id": 247075,
+                    "option": "<p><code >4</code></p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65523,
+            "question": "<p>What is the output of the following snippet if the user enters two lines containing <code >2</code> and <code >4</code> respectively?</p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nx = x // y\ny = y // x\n\nprint(y)\n\n</code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247044,
+                    "option": "<p>the code will cause a runtime error</p>"
+                },
+                {
+                    "id": 247045,
+                    "option": "<p><code >2.0</code></p>"
+                },
+                {
+                    "id": 247046,
+                    "option": "<p><code >4.0</code></p>"
+                },
+                {
+                    "id": 247047,
+                    "option": "<p><code >8.0</code></p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65512,
+            "question": "<p>The meaning of the <strong>keyword parameter</strong> is determined by:</p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247000,
+                    "option": "<p>the argument's name specified along with its value</p>"
+                },
+                {
+                    "id": 247001,
+                    "option": "<p>its position within the argument list</p>"
+                },
+                {
+                    "id": 247002,
+                    "option": "<p>its connection with existing variables</p>"
+                },
+                {
+                    "id": 247003,
+                    "option": "<p>its value</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65519,
+            "question": "<p>Which of the following variable names are <u>illegal</u>?  (Select <u>two</u> answers)</p>",
+            "type": "Multiple Choice",
+            "htmlType": "checkbox",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247028,
+                    "option": "<p><code >True</code></p>"
+                },
+                {
+                    "id": 247029,
+                    "option": "<p><code >true</code></p>"
+                },
+                {
+                    "id": 247030,
+                    "option": "<p><code >TRUE</code></p>"
+                },
+                {
+                    "id": 247031,
+                    "option": "<p><code >and</code></p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65518,
+            "question": "<p>Left-sided binding determines that the result of the following expression:</p>\n<code >1 // 2 * 3</code>\n<br>\n<br>\n<p>is equal to:</p>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247024,
+                    "option": "<p><code >0</code></p>"
+                },
+                {
+                    "id": 247025,
+                    "option": "<p><code >4.5</code></p>"
+                },
+                {
+                    "id": 247026,
+                    "option": "<p><code >0.0</code></p>"
+                },
+                {
+                    "id": 247027,
+                    "option": "<p><code >0.16666666666666666</code></p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65511,
+            "question": "<p>The <code >\\n</code> digraph forces the <code >print()</code> function to:</p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 246996,
+                    "option": "<p>break the output line</p>"
+                },
+                {
+                    "id": 246997,
+                    "option": "<p>output exactly two characters: <code >\\</code> and <code >n</code></p>"
+                },
+                {
+                    "id": 246998,
+                    "option": "<p>duplicate the character next to the digraph</p>"
+                },
+                {
+                    "id": 246999,
+                    "option": "<p>stop its execution</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65528,
+            "question": "<p>What is the output of the following snippet?</p>\n\n<code class=\"codep\">y = 2 + 3 * 5.\nprint(Y)\n\n</code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247064,
+                    "option": "<p>the snippet will cause an execution error</p>"
+                },
+                {
+                    "id": 247065,
+                    "option": "<p><code >25.</code></p>"
+                },
+                {
+                    "id": 247066,
+                    "option": "<p><code >17</code></p>"
+                },
+                {
+                    "id": 247067,
+                    "option": "<p><code >17.0</code></p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65529,
+            "question": "<p>What is the output of the following snippet?</p>\n\n<code class=\"codep\">x = 1 / 2 + 3 // 3 + 4 ** 2\nprint(x)\n\n</code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247068,
+                    "option": "<p><code >17.5</code></p>"
+                },
+                {
+                    "id": 247069,
+                    "option": "<p><code >17</code></p>"
+                },
+                {
+                    "id": 247070,
+                    "option": "<p><code >8</code></p>"
+                },
+                {
+                    "id": 247071,
+                    "option": "<p><code >8.5</code></p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65515,
+            "question": "<p>The <code >**</code> operator:</p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247012,
+                    "option": "<p>performs exponentiation</p>"
+                },
+                {
+                    "id": 247013,
+                    "option": "<p>does not exist</p>"
+                },
+                {
+                    "id": 247014,
+                    "option": "<p>performs floating-point multiplication</p>"
+                },
+                {
+                    "id": 247015,
+                    "option": "<p>performs duplicated multiplication</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65520,
+            "question": "<p>The <code >print()</code> function can output values of:</p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247032,
+                    "option": "<p>any number of arguments (including zero)</p>"
+                },
+                {
+                    "id": 247033,
+                    "option": "<p>any number of arguments (excluding zero)</p>"
+                },
+                {
+                    "id": 247034,
+                    "option": "<p>just one argument</p>"
+                },
+                {
+                    "id": 247035,
+                    "option": "<p>not more than five arguments</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65516,
+            "question": "<p>The result of the following division:</p>\n<code >1 / 1</code>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247016,
+                    "option": "<p>is equal to <code >1.0</code></p>"
+                },
+                {
+                    "id": 247017,
+                    "option": "<p>is equal to <code >1</code></p>"
+                },
+                {
+                    "id": 247018,
+                    "option": "<p>cannot be evaluated</p>"
+                },
+                {
+                    "id": 247019,
+                    "option": "<p>cannot be predicted</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        },
+        {
+            "id": 65522,
+            "question": "<p>What is the output of the following snippet if the user enters two lines containing <code >2</code> and <code >4</code> respectively?</p>\n\n<code class=\"codep\">x = input()\ny = input()\nprint(x + y)\n\n</code>\n<br>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247040,
+                    "option": "<p><code >24</code></p>"
+                },
+                {
+                    "id": 247041,
+                    "option": "<p><code >2</code></p>"
+                },
+                {
+                    "id": 247042,
+                    "option": "<p><code >4</code></p>"
+                },
+                {
+                    "id": 247043,
+                    "option": "<p><code >6</code></p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3088
+        }
+    ],
+    "sections": [
+        {
+            "id": 3088,
+            "name": "PE1 -- Module 2 Test",
+            "passingThreshold": null,
+            "showSectionPage": false,
+            "showReview": false,
+            "timeLimitInMinutes": 0,
+            "timeWarningInMinutes": 0,
+            "numberOfQuestions": 20,
+            "questions": [
+                {
+                    "id": 65526,
+                    "question": "<p>What is the output of the following snippet if the user enters two lines containing <code >3</code> and <code >6</code> respectively?</p>\n\n<code class=\"codep\">x = input()\ny = int(input())\n\nprint(x * y)\n\n</code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247056,
+                            "option": "<p><code >333333</code></p>"
+                        },
+                        {
+                            "id": 247057,
+                            "option": "<p><code >18</code></p>"
+                        },
+                        {
+                            "id": 247058,
+                            "option": "<p><code >666</code></p>"
+                        },
+                        {
+                            "id": 247059,
+                            "option": "<p><code >36</code></p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65521,
+                    "question": "<p>What is the output of the following snippet?</p>\n\n<code class=\"codep\">x = 1\ny = 2\nz = x\nx = y\ny = z\nprint(x, y)\n\n</code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247036,
+                            "option": "<p><code >2 1</code></p>"
+                        },
+                        {
+                            "id": 247037,
+                            "option": "<p><code >1 2</code></p>"
+                        },
+                        {
+                            "id": 247038,
+                            "option": "<p><code >1 1</code></p>"
+                        },
+                        {
+                            "id": 247039,
+                            "option": "<p><code >2 2</code></p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65514,
+                    "question": "<p>The <code >0o</code> prefix means that the number after it is denoted as:</p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247008,
+                            "option": "<p>octal</p>"
+                        },
+                        {
+                            "id": 247009,
+                            "option": "<p>binary</p>"
+                        },
+                        {
+                            "id": 247010,
+                            "option": "<p>decimal</p>"
+                        },
+                        {
+                            "id": 247011,
+                            "option": "<p>hexadecimal</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65517,
+                    "question": "<p>Which of the following statements are <u>true</u>?  (Select <u>two</u> answers)</p>",
+                    "type": "Multiple Choice",
+                    "htmlType": "checkbox",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247020,
+                            "option": "<p>The result of the <code >/</code> operator is always an integer value.</p>"
+                        },
+                        {
+                            "id": 247021,
+                            "option": "<p>The right argument of the <code >%</code> operator cannot be zero.</p>"
+                        },
+                        {
+                            "id": 247022,
+                            "option": "<p>Addition precedes multiplication.</p>"
+                        },
+                        {
+                            "id": 247023,
+                            "option": "<p>The <code >**</code> operator uses right-sided binding.</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65525,
+                    "question": "<p>What is the output of the following snippet if the user enters two lines containing <code >11</code> and <code >4</code> respectively?</p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nx = x % y\nx = x % y\ny = y % x\n\nprint(y)\n\n</code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247052,
+                            "option": "<p><code >1</code></p>"
+                        },
+                        {
+                            "id": 247053,
+                            "option": "<p><code >2</code></p>"
+                        },
+                        {
+                            "id": 247054,
+                            "option": "<p><code >3</code></p>"
+                        },
+                        {
+                            "id": 247055,
+                            "option": "<p><code >4</code></p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65513,
+                    "question": "<p>The value <strong>twenty point twelve times ten raised to the power of eight</strong> should be written as:</p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247004,
+                            "option": "<p><code >20.12E8</code></p>"
+                        },
+                        {
+                            "id": 247005,
+                            "option": "<p><code >20.12*10^8</code></p>"
+                        },
+                        {
+                            "id": 247006,
+                            "option": "<p><code >20.12E8.0</code></p>"
+                        },
+                        {
+                            "id": 247007,
+                            "option": "<p><code >20E12.8</code></p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65524,
+                    "question": "<p>What is the output of the following snippet if the user enters two lines containing <code >2</code> and <code >4</code> respectively?</p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nx = x / y\ny = y / x\n\nprint(y)\n\n</code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247048,
+                            "option": "<p><code >8.0</code></p>"
+                        },
+                        {
+                            "id": 247049,
+                            "option": "<p><code >4.0</code></p>"
+                        },
+                        {
+                            "id": 247050,
+                            "option": "<p><code >2.0</code></p>"
+                        },
+                        {
+                            "id": 247051,
+                            "option": "<p>the code will cause a runtime error</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65527,
+                    "question": "<p>What is the output of the following snippet?</p>\n\n<code class=\"codep\">z = y = x = 1\nprint(x, y, z, sep='*')\n\n</code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247060,
+                            "option": "<p><code >1*1*1</code></p>"
+                        },
+                        {
+                            "id": 247061,
+                            "option": "<p><code >1 1 1</code></p>"
+                        },
+                        {
+                            "id": 247062,
+                            "option": "<p><code >x*y*z</code></p>"
+                        },
+                        {
+                            "id": 247063,
+                            "option": "<p><code >x y z</code></p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65530,
+                    "question": "<p>What is the output of the following snippet if the user enters two lines containing <code >2</code> and <code >4</code> respectively?</p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nprint(x + y)\n\n</code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247072,
+                            "option": "<p><code >6</code></p>"
+                        },
+                        {
+                            "id": 247073,
+                            "option": "<p><code >24</code></p>"
+                        },
+                        {
+                            "id": 247074,
+                            "option": "<p><code >2</code></p>"
+                        },
+                        {
+                            "id": 247075,
+                            "option": "<p><code >4</code></p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65523,
+                    "question": "<p>What is the output of the following snippet if the user enters two lines containing <code >2</code> and <code >4</code> respectively?</p>\n\n<code class=\"codep\">x = int(input())\ny = int(input())\n\nx = x // y\ny = y // x\n\nprint(y)\n\n</code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247044,
+                            "option": "<p>the code will cause a runtime error</p>"
+                        },
+                        {
+                            "id": 247045,
+                            "option": "<p><code >2.0</code></p>"
+                        },
+                        {
+                            "id": 247046,
+                            "option": "<p><code >4.0</code></p>"
+                        },
+                        {
+                            "id": 247047,
+                            "option": "<p><code >8.0</code></p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65512,
+                    "question": "<p>The meaning of the <strong>keyword parameter</strong> is determined by:</p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247000,
+                            "option": "<p>the argument's name specified along with its value</p>"
+                        },
+                        {
+                            "id": 247001,
+                            "option": "<p>its position within the argument list</p>"
+                        },
+                        {
+                            "id": 247002,
+                            "option": "<p>its connection with existing variables</p>"
+                        },
+                        {
+                            "id": 247003,
+                            "option": "<p>its value</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65519,
+                    "question": "<p>Which of the following variable names are <u>illegal</u>?  (Select <u>two</u> answers)</p>",
+                    "type": "Multiple Choice",
+                    "htmlType": "checkbox",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247028,
+                            "option": "<p><code >True</code></p>"
+                        },
+                        {
+                            "id": 247029,
+                            "option": "<p><code >true</code></p>"
+                        },
+                        {
+                            "id": 247030,
+                            "option": "<p><code >TRUE</code></p>"
+                        },
+                        {
+                            "id": 247031,
+                            "option": "<p><code >and</code></p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65518,
+                    "question": "<p>Left-sided binding determines that the result of the following expression:</p>\n<code >1 // 2 * 3</code>\n<br>\n<br>\n<p>is equal to:</p>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247024,
+                            "option": "<p><code >0</code></p>"
+                        },
+                        {
+                            "id": 247025,
+                            "option": "<p><code >4.5</code></p>"
+                        },
+                        {
+                            "id": 247026,
+                            "option": "<p><code >0.0</code></p>"
+                        },
+                        {
+                            "id": 247027,
+                            "option": "<p><code >0.16666666666666666</code></p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65511,
+                    "question": "<p>The <code >\\n</code> digraph forces the <code >print()</code> function to:</p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 246996,
+                            "option": "<p>break the output line</p>"
+                        },
+                        {
+                            "id": 246997,
+                            "option": "<p>output exactly two characters: <code >\\</code> and <code >n</code></p>"
+                        },
+                        {
+                            "id": 246998,
+                            "option": "<p>duplicate the character next to the digraph</p>"
+                        },
+                        {
+                            "id": 246999,
+                            "option": "<p>stop its execution</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65528,
+                    "question": "<p>What is the output of the following snippet?</p>\n\n<code class=\"codep\">y = 2 + 3 * 5.\nprint(Y)\n\n</code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247064,
+                            "option": "<p>the snippet will cause an execution error</p>"
+                        },
+                        {
+                            "id": 247065,
+                            "option": "<p><code >25.</code></p>"
+                        },
+                        {
+                            "id": 247066,
+                            "option": "<p><code >17</code></p>"
+                        },
+                        {
+                            "id": 247067,
+                            "option": "<p><code >17.0</code></p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65529,
+                    "question": "<p>What is the output of the following snippet?</p>\n\n<code class=\"codep\">x = 1 / 2 + 3 // 3 + 4 ** 2\nprint(x)\n\n</code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247068,
+                            "option": "<p><code >17.5</code></p>"
+                        },
+                        {
+                            "id": 247069,
+                            "option": "<p><code >17</code></p>"
+                        },
+                        {
+                            "id": 247070,
+                            "option": "<p><code >8</code></p>"
+                        },
+                        {
+                            "id": 247071,
+                            "option": "<p><code >8.5</code></p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65515,
+                    "question": "<p>The <code >**</code> operator:</p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247012,
+                            "option": "<p>performs exponentiation</p>"
+                        },
+                        {
+                            "id": 247013,
+                            "option": "<p>does not exist</p>"
+                        },
+                        {
+                            "id": 247014,
+                            "option": "<p>performs floating-point multiplication</p>"
+                        },
+                        {
+                            "id": 247015,
+                            "option": "<p>performs duplicated multiplication</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65520,
+                    "question": "<p>The <code >print()</code> function can output values of:</p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247032,
+                            "option": "<p>any number of arguments (including zero)</p>"
+                        },
+                        {
+                            "id": 247033,
+                            "option": "<p>any number of arguments (excluding zero)</p>"
+                        },
+                        {
+                            "id": 247034,
+                            "option": "<p>just one argument</p>"
+                        },
+                        {
+                            "id": 247035,
+                            "option": "<p>not more than five arguments</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65516,
+                    "question": "<p>The result of the following division:</p>\n<code >1 / 1</code>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247016,
+                            "option": "<p>is equal to <code >1.0</code></p>"
+                        },
+                        {
+                            "id": 247017,
+                            "option": "<p>is equal to <code >1</code></p>"
+                        },
+                        {
+                            "id": 247018,
+                            "option": "<p>cannot be evaluated</p>"
+                        },
+                        {
+                            "id": 247019,
+                            "option": "<p>cannot be predicted</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                },
+                {
+                    "id": 65522,
+                    "question": "<p>What is the output of the following snippet if the user enters two lines containing <code >2</code> and <code >4</code> respectively?</p>\n\n<code class=\"codep\">x = input()\ny = input()\nprint(x + y)\n\n</code>\n<br>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247040,
+                            "option": "<p><code >24</code></p>"
+                        },
+                        {
+                            "id": 247041,
+                            "option": "<p><code >2</code></p>"
+                        },
+                        {
+                            "id": 247042,
+                            "option": "<p><code >4</code></p>"
+                        },
+                        {
+                            "id": 247043,
+                            "option": "<p><code >6</code></p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3088
+                }
+            ],
+            "showTutorial": false,
+            "tutorial": null
+        }
+    ],
+    "token": null,
+    "lastStableState": [
+    ],
+    "launchPresentationReturnUrl": "https://lms.netacad.com/mod/lti/return.php?course=2280461&launch_container=4&instanceid=47587159&sesskey=hZyOh245oO",
+    "fullScreenExitLimit": null,
+    "windowExitLimit": null,
+    "noInternetLimit": null,
+    "screenshotLimit": null,
+    "webcamDetectionLimit": null,
+    "wrongGazeDirectionDurationLimit": null,
+    "aceEditorMode": "ace/mode/python",
+    "showCalculator": false,
+    "showScratchpad": false,
+    "photosTaken": false,
+    "recordVideo": false,
+    "recordAudio": false,
+    "recordScreen": false,
+    "allowNoRecording": null,
+    "showScore": true,
+    "showTutorials": false,
+    "testingProgramId": false,
+    "classId": null,
+    "preTestTimerEnabled": true
+}

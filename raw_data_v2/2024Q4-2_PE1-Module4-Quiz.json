@@ -1,0 +1,737 @@
+{
+    "id": 11887,
+    "showCodeHonor": true,
+    "showNDA": false,
+    "timeLimitInMinutes": 20,
+    "timeWarningInMinutes": 2,
+    "shuffleAnswers": true,
+    "unlimitedAttempts": true,
+    "allowedAttempts": 1,
+    "showReview": true,
+    "showReviewAfterSubmitting": true,
+    "showAnswers": false,
+    "showWelcomePage": true,
+    "welcomePageContent": null,
+    "hasTimedSections": false,
+    "showIndependentSections": false,
+    "questions": [
+        {
+            "id": 65606,
+            "question": "<p>What are the four fundamental elements that make a language?</p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247346,
+                    "option": "<p>An alphabet, a lexis, a syntax, and semantics</p>"
+                },
+                {
+                    "id": 247347,
+                    "option": "<p>An alphabet, a lexis, phonetics, and semantics</p>"
+                },
+                {
+                    "id": 247348,
+                    "option": "<p>An alphabet, phonetics, phonology, and semantics</p>"
+                },
+                {
+                    "id": 247349,
+                    "option": "<p>An alphabet, morphology, phonetics, and semantics</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3094
+        },
+        {
+            "id": 65614,
+            "question": "<p>What is the expected behavior of the following program?</p>\n\n<code class=\"codep\">prin(\"Goodbye!\")\n\n</code>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247378,
+                    "option": "<p>The program will output <code >Goodbye!</code> to the screen</p>"
+                },
+                {
+                    "id": 247379,
+                    "option": "<p>The program will output <code >\"Goodbye!\"</code></p>"
+                },
+                {
+                    "id": 247380,
+                    "option": "<p>The program will output <code >(\"Goodbye!\")</code></p>"
+                },
+                {
+                    "id": 247381,
+                    "option": "<p>The program will generate an error message on the screen</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3094
+        },
+        {
+            "id": 65611,
+            "question": "<p>What is <i>CPython</i>?</p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247366,
+                    "option": "<p>It's the default, reference implementation of Python, written in the C language</p>"
+                },
+                {
+                    "id": 247367,
+                    "option": "<p>It's a programming language that is a superset of Python, designed to produce C-like performance with code written in Python</p>"
+                },
+                {
+                    "id": 247368,
+                    "option": "<p>It's a programming language that is a superset of the C language, designed to produce Python-like performance with code written in C</p>"
+                },
+                {
+                    "id": 247369,
+                    "option": "<p>It's the default, reference implementation of the C language, written in Python</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3094
+        },
+        {
+            "id": 65605,
+            "question": "<p>What is machine code?</p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247342,
+                    "option": "<p>A low-level programming language consisting of binary digits/bits that the computer reads and understands</p>"
+                },
+                {
+                    "id": 247343,
+                    "option": "<p>A low-level programming language consisting of hexadecimal digits that make up high-level language instructions</p>"
+                },
+                {
+                    "id": 247344,
+                    "option": "<p>A medium-level programming language consisting of the assembly code designed for the computer processor</p>"
+                },
+                {
+                    "id": 247345,
+                    "option": "<p>A high-level programming language consisting of instruction lists that humans can read and understand</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3094
+        },
+        {
+            "id": 65610,
+            "question": "<p>Select the <u>true</u> statements? (Select <u>two</u> answers)</p>",
+            "type": "Multiple Choice",
+            "htmlType": "checkbox",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247362,
+                    "option": "<p>Python is a good choice for creating and executing tests for applications</p>"
+                },
+                {
+                    "id": 247363,
+                    "option": "<p>Python is free, open-source, and multiplatform</p>"
+                },
+                {
+                    "id": 247364,
+                    "option": "<p>Python is a good choice for low-level programming, e.g., when you want to implement an effective driver</p>"
+                },
+                {
+                    "id": 247365,
+                    "option": "<p>Python 3 is backwards compatible with Python 2</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3094
+        },
+        {
+            "id": 65609,
+            "question": "<p>What is the best definition of a <i>script</i>?</p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247358,
+                    "option": "<p>It's a text file that contains instructions which make up a Python program</p>"
+                },
+                {
+                    "id": 247359,
+                    "option": "<p>It's an error message generated by the compiler</p>"
+                },
+                {
+                    "id": 247360,
+                    "option": "<p>It's an error message generated by the interpreter</p>"
+                },
+                {
+                    "id": 247361,
+                    "option": "<p>It's a text file that contains sequences of zeroes and ones</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3094
+        },
+        {
+            "id": 65612,
+            "question": "<p>What do you call a command-line interpreter which lets you interact with your OS and execute Python commands and scripts?</p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247370,
+                    "option": "<p>A console</p>"
+                },
+                {
+                    "id": 247371,
+                    "option": "<p>An editor</p>"
+                },
+                {
+                    "id": 247372,
+                    "option": "<p>Jython</p>"
+                },
+                {
+                    "id": 247373,
+                    "option": "<p>A compiler</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3094
+        },
+        {
+            "id": 65607,
+            "question": "<p>What do you call a file containing a program written in a high-level programming language?</p>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247350,
+                    "option": "<p>A source file</p>"
+                },
+                {
+                    "id": 247351,
+                    "option": "<p>A machine file</p>"
+                },
+                {
+                    "id": 247352,
+                    "option": "<p>A code file</p>"
+                },
+                {
+                    "id": 247353,
+                    "option": "<p>A target file</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3094
+        },
+        {
+            "id": 65613,
+            "question": "<p>What is the expected behavior of the following program?</p>\n\n<code class=\"codep\">print(\"Hello!\")\n\n</code>",
+            "type": "Single Choice",
+            "htmlType": "radio",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247374,
+                    "option": "<p>The program will output <code >Hello!</code> to the screen</p>"
+                },
+                {
+                    "id": 247375,
+                    "option": "<p>The program will output <code >\"Hello!\"</code> to the screen</p>"
+                },
+                {
+                    "id": 247376,
+                    "option": "<p>The program will output <code >(\"Hello!\")</code> to the screen</p>"
+                },
+                {
+                    "id": 247377,
+                    "option": "<p>The program will generate an error message on the screen</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3094
+        },
+        {
+            "id": 65608,
+            "question": "<p>What is <u>true</u> about compilation? (Select <u>two</u> answers)</p>",
+            "type": "Multiple Choice",
+            "htmlType": "checkbox",
+            "optionsText": null,
+            "options": [
+                {
+                    "id": 247354,
+                    "option": "<p>The code is converted directly into machine code executable by the processor</p>"
+                },
+                {
+                    "id": 247355,
+                    "option": "<p>It tends to be faster than interpretation</p>"
+                },
+                {
+                    "id": 247356,
+                    "option": "<p>It tends to be slower than interpretation</p>"
+                },
+                {
+                    "id": 247357,
+                    "option": "<p>Both you and the end user must have the compiler to run your code</p>"
+                }
+            ],
+            "shuffleOptions": true,
+            "timeLimitInMinutes": 0,
+            "timeLimitInSeconds": 0,
+            "timeWarningInMinutes": 0,
+            "timeWarningInSeconds": 0,
+            "audioSrc": null,
+            "audioPlayLimit": 0,
+            "maxResponses": null,
+            "sectionId": 3094
+        }
+    ],
+    "sections": [
+        {
+            "id": 3094,
+            "name": "PE1 -- Module 1 Test",
+            "passingThreshold": null,
+            "showSectionPage": false,
+            "showReview": false,
+            "timeLimitInMinutes": 0,
+            "timeWarningInMinutes": 0,
+            "numberOfQuestions": 10,
+            "questions": [
+                {
+                    "id": 65606,
+                    "question": "<p>What are the four fundamental elements that make a language?</p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247346,
+                            "option": "<p>An alphabet, a lexis, a syntax, and semantics</p>"
+                        },
+                        {
+                            "id": 247347,
+                            "option": "<p>An alphabet, a lexis, phonetics, and semantics</p>"
+                        },
+                        {
+                            "id": 247348,
+                            "option": "<p>An alphabet, phonetics, phonology, and semantics</p>"
+                        },
+                        {
+                            "id": 247349,
+                            "option": "<p>An alphabet, morphology, phonetics, and semantics</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3094
+                },
+                {
+                    "id": 65614,
+                    "question": "<p>What is the expected behavior of the following program?</p>\n\n<code class=\"codep\">prin(\"Goodbye!\")\n\n</code>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247378,
+                            "option": "<p>The program will output <code >Goodbye!</code> to the screen</p>"
+                        },
+                        {
+                            "id": 247379,
+                            "option": "<p>The program will output <code >\"Goodbye!\"</code></p>"
+                        },
+                        {
+                            "id": 247380,
+                            "option": "<p>The program will output <code >(\"Goodbye!\")</code></p>"
+                        },
+                        {
+                            "id": 247381,
+                            "option": "<p>The program will generate an error message on the screen</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3094
+                },
+                {
+                    "id": 65611,
+                    "question": "<p>What is <i>CPython</i>?</p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247366,
+                            "option": "<p>It's the default, reference implementation of Python, written in the C language</p>"
+                        },
+                        {
+                            "id": 247367,
+                            "option": "<p>It's a programming language that is a superset of Python, designed to produce C-like performance with code written in Python</p>"
+                        },
+                        {
+                            "id": 247368,
+                            "option": "<p>It's a programming language that is a superset of the C language, designed to produce Python-like performance with code written in C</p>"
+                        },
+                        {
+                            "id": 247369,
+                            "option": "<p>It's the default, reference implementation of the C language, written in Python</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3094
+                },
+                {
+                    "id": 65605,
+                    "question": "<p>What is machine code?</p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247342,
+                            "option": "<p>A low-level programming language consisting of binary digits/bits that the computer reads and understands</p>"
+                        },
+                        {
+                            "id": 247343,
+                            "option": "<p>A low-level programming language consisting of hexadecimal digits that make up high-level language instructions</p>"
+                        },
+                        {
+                            "id": 247344,
+                            "option": "<p>A medium-level programming language consisting of the assembly code designed for the computer processor</p>"
+                        },
+                        {
+                            "id": 247345,
+                            "option": "<p>A high-level programming language consisting of instruction lists that humans can read and understand</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3094
+                },
+                {
+                    "id": 65610,
+                    "question": "<p>Select the <u>true</u> statements? (Select <u>two</u> answers)</p>",
+                    "type": "Multiple Choice",
+                    "htmlType": "checkbox",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247362,
+                            "option": "<p>Python is a good choice for creating and executing tests for applications</p>"
+                        },
+                        {
+                            "id": 247363,
+                            "option": "<p>Python is free, open-source, and multiplatform</p>"
+                        },
+                        {
+                            "id": 247364,
+                            "option": "<p>Python is a good choice for low-level programming, e.g., when you want to implement an effective driver</p>"
+                        },
+                        {
+                            "id": 247365,
+                            "option": "<p>Python 3 is backwards compatible with Python 2</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3094
+                },
+                {
+                    "id": 65609,
+                    "question": "<p>What is the best definition of a <i>script</i>?</p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247358,
+                            "option": "<p>It's a text file that contains instructions which make up a Python program</p>"
+                        },
+                        {
+                            "id": 247359,
+                            "option": "<p>It's an error message generated by the compiler</p>"
+                        },
+                        {
+                            "id": 247360,
+                            "option": "<p>It's an error message generated by the interpreter</p>"
+                        },
+                        {
+                            "id": 247361,
+                            "option": "<p>It's a text file that contains sequences of zeroes and ones</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3094
+                },
+                {
+                    "id": 65612,
+                    "question": "<p>What do you call a command-line interpreter which lets you interact with your OS and execute Python commands and scripts?</p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247370,
+                            "option": "<p>A console</p>"
+                        },
+                        {
+                            "id": 247371,
+                            "option": "<p>An editor</p>"
+                        },
+                        {
+                            "id": 247372,
+                            "option": "<p>Jython</p>"
+                        },
+                        {
+                            "id": 247373,
+                            "option": "<p>A compiler</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3094
+                },
+                {
+                    "id": 65607,
+                    "question": "<p>What do you call a file containing a program written in a high-level programming language?</p>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247350,
+                            "option": "<p>A source file</p>"
+                        },
+                        {
+                            "id": 247351,
+                            "option": "<p>A machine file</p>"
+                        },
+                        {
+                            "id": 247352,
+                            "option": "<p>A code file</p>"
+                        },
+                        {
+                            "id": 247353,
+                            "option": "<p>A target file</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3094
+                },
+                {
+                    "id": 65613,
+                    "question": "<p>What is the expected behavior of the following program?</p>\n\n<code class=\"codep\">print(\"Hello!\")\n\n</code>",
+                    "type": "Single Choice",
+                    "htmlType": "radio",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247374,
+                            "option": "<p>The program will output <code >Hello!</code> to the screen</p>"
+                        },
+                        {
+                            "id": 247375,
+                            "option": "<p>The program will output <code >\"Hello!\"</code> to the screen</p>"
+                        },
+                        {
+                            "id": 247376,
+                            "option": "<p>The program will output <code >(\"Hello!\")</code> to the screen</p>"
+                        },
+                        {
+                            "id": 247377,
+                            "option": "<p>The program will generate an error message on the screen</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3094
+                },
+                {
+                    "id": 65608,
+                    "question": "<p>What is <u>true</u> about compilation? (Select <u>two</u> answers)</p>",
+                    "type": "Multiple Choice",
+                    "htmlType": "checkbox",
+                    "optionsText": null,
+                    "options": [
+                        {
+                            "id": 247354,
+                            "option": "<p>The code is converted directly into machine code executable by the processor</p>"
+                        },
+                        {
+                            "id": 247355,
+                            "option": "<p>It tends to be faster than interpretation</p>"
+                        },
+                        {
+                            "id": 247356,
+                            "option": "<p>It tends to be slower than interpretation</p>"
+                        },
+                        {
+                            "id": 247357,
+                            "option": "<p>Both you and the end user must have the compiler to run your code</p>"
+                        }
+                    ],
+                    "shuffleOptions": true,
+                    "timeLimitInMinutes": 0,
+                    "timeLimitInSeconds": 0,
+                    "timeWarningInMinutes": 0,
+                    "timeWarningInSeconds": 0,
+                    "audioSrc": null,
+                    "audioPlayLimit": 0,
+                    "maxResponses": null,
+                    "sectionId": 3094
+                }
+            ],
+            "showTutorial": false,
+            "tutorial": null
+        }
+    ],
+    "token": null,
+    "lastStableState": [
+    ],
+    "launchPresentationReturnUrl": null,
+    "fullScreenExitLimit": null,
+    "windowExitLimit": null,
+    "noInternetLimit": null,
+    "screenshotLimit": null,
+    "webcamDetectionLimit": null,
+    "wrongGazeDirectionDurationLimit": null,
+    "aceEditorMode": "ace/mode/python",
+    "showCalculator": false,
+    "showScratchpad": false,
+    "photosTaken": false,
+    "recordVideo": false,
+    "recordAudio": false,
+    "recordScreen": false,
+    "allowNoRecording": null,
+    "showScore": true,
+    "showTutorials": false,
+    "testingProgramId": false,
+    "classId": null
+}

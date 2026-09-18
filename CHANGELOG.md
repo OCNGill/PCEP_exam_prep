@@ -3,6 +3,29 @@
 All notable changes to the PCEP Rapid Practice system.
 Format: Keep-a-Changelog-ish, newest first.
 
+## [2.1.0] — 2026-09-17
+
+### Added
+- **Class shared-drive ingestion** (`ingest_v2.py`): swept Rich's NTAI shared
+  drive — last 2 years of test data (2024Q4, 2025Q2, 2025Q4, PCAP practice,
+  loose exports). Result: **all 340+ parsed questions were duplicates of the
+  existing pool** — the library already contained the full PE1 question bank.
+  Zero new MCQs; zero lost.
+- **🃏 Flashcard Drill**: 138 open-ended KimWynne class Q&A cards (basics +
+  scipy/data-science) as a new deck mode — show question, reveal answer,
+  mark known/again ("again" re-queues the card), stats persisted.
+- **Third-validation cross-check** vs the EDU "correct answers" study notes:
+  6 agreements; 2 disagreements were EDU file errors (the EDU notes contradicted
+  both our live-executed output and their own explanation text — and disagreed
+  with each other). Our execution-verified key stands.
+
+### Verified
+- 48/48 headless functional tests passing (37 prior + 11 flashcard checks).
+
+**Verse:** *"Iron sharpens iron, as one person sharpens another." — Proverbs 27:17.*
+Chosen because the EDU cross-check sharpened our confidence: independent sources
+were tested against each other, and only verified truth survived.
+
 ## [2.0.0] — 2026-09-12
 
 ### Added

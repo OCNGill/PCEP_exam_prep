@@ -1,6 +1,6 @@
 {
-  "version": "2.0.0",
-  "date": "2026-09-12",
+  "version": "2.1.0",
+  "date": "2026-09-17",
   "status": "OPERATIONAL",
   "bank": {"questions": 148, "unique_sources": 169, "multi_select": 14, "concepts": 12},
   "validation": {
@@ -10,13 +10,14 @@
     "expert_reviewed": 90,
     "external_key_check": "Q104 confirmed vs official PE1 key"
   },
-  "tests": {"suite": "test_practice.js", "checks": 37, "passing": 37},
+  "tests": {"suite": "test_practice.js", "checks": 48, "passing": 48},
   "features": [
     "exam sim 30Q/40min",
     "drill all",
     "blank-spot drill (algorithmic)",
     "flagged drill (user blind spots)",
     "multi-select focus",
+    "flashcard drill (138 KimWynne class cards)",
     "explain panels (correct + incorrect options)",
     "per-question + per-concept statistics",
     "run history",

@@ -59,11 +59,16 @@ setTimeout(() => {
     check("exam: 40-minute timer (40:00)", doc.getElementById("timer").textContent === "40:00");
     check("back button present in quiz", !!doc.querySelector("#quiz .bar .btn.secondary"));
 
-    // answer 5 exam questions correctly
+    // answer 5 exam questions correctly (handle multi-select questions)
     for (let i = 0; i < 5; i++) {
       w.eval(`state.idx = ${i}; renderQ();`);
-      const a = w.eval("state.qs[state.idx].answers[0]");
-      w.eval(`pick(${a}, false)`);
+      const answers = w.eval("state.qs[state.idx].answers");
+      if (answers.length > 1) {
+        for (const a of answers) w.eval(`pick(${a}, true)`);
+        w.eval("submitMulti()");
+      } else {
+        w.eval(`pick(${answers[0]}, false)`);
+      }
       check("exam feedback rendered (q" + (i+1) + ")", doc.getElementById("fb").textContent.startsWith("✅"));
       w.eval("nextQ()");
     }
@@ -158,6 +163,26 @@ setTimeout(() => {
     // ---- readiness ----
     const rd = w.eval("readiness()");
     check("readiness computed", typeof rd === "number");
+
+    // ---- flashcards ----
+    check("flashcards loaded (138)", w.eval("PCEP_FLASHCARDS.length") === 138);
+    w.eval("startFlashcards()");
+    check("flash view visible", !doc.getElementById("flash").classList.contains("hidden"));
+    check("card 1 question rendered", doc.getElementById("fcQ").textContent.length > 3);
+    check("answer hidden before reveal", doc.getElementById("fcA").classList.contains("hidden"));
+    w.eval("revealCard()");
+    check("answer revealed", !doc.getElementById("fcA").classList.contains("hidden"));
+    check("rate buttons visible after reveal", !doc.getElementById("fcKnown").classList.contains("hidden"));
+    const beforeLen = w.eval("fc.deck.length");
+    w.eval("rateCard(0)"); // 'again' re-queues the card
+    check("'again' re-queues card", w.eval("fc.deck.length") === beforeLen + 1);
+    check("card advanced", w.eval("fc.idx") === 1);
+    w.eval("revealCard()");
+    w.eval("rateCard(1)");
+    check("'known' advances card", w.eval("fc.idx") === 2);
+    const fcstats = JSON.parse(w.localStorage.getItem("pcep_practice_stats_v1")).fc;
+    check("flashcard stats persisted", fcstats && Object.keys(fcstats.again).length === 1 && Object.keys(fcstats.known).length === 1);
+    w.eval('goHome()');
 
     console.log(failures === 0 ? "ALL FUNCTIONAL TESTS PASSED (v2)" : failures + " FAILURES");
     w.close();

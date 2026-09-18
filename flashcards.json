@@ -1,0 +1,692 @@
+[
+ {
+  "id": 1,
+  "q": "What is the difference between a variable and expression?",
+  "a": "An expression is the definition of a variable. A variable is a named placed in memory where data is stored."
+ },
+ {
+  "id": 2,
+  "q": "What do string constants need?",
+  "a": "Single or double quotes"
+ },
+ {
+  "id": 3,
+  "q": "what is a variable?",
+  "a": "A variable is a named placed in memory where data is stored."
+ },
+ {
+  "id": 4,
+  "q": "Python variables must start with what?",
+  "a": "an _or a letter"
+ },
+ {
+  "id": 5,
+  "q": "what sequence does python execute in?",
+  "a": "Right to Left"
+ },
+ {
+  "id": 6,
+  "q": "What is the operation symbol for power and remainder?",
+  "a": "Power ** Remainder %"
+ },
+ {
+  "id": 7,
+  "q": "How do you findd out the type of your input?",
+  "a": "type(input)"
+ },
+ {
+  "id": 8,
+  "q": "Difference between intergers and floating ?",
+  "a": "Interger are whole numbers. Floats are decimal parts."
+ },
+ {
+  "id": 9,
+  "q": "Will dividing an interger produce an interger?",
+  "a": "No. An interger divsion produces a floating point. return(10/2) --> 5.0"
+ },
+ {
+  "id": 10,
+  "q": "What does the input() function do ?",
+  "a": "Return the string of the user input"
+ },
+ {
+  "id": 11,
+  "q": "How do we comment code in Python?",
+  "a": "# comment here"
+ },
+ {
+  "id": 12,
+  "q": "What is the operator precendence?",
+  "a": "Top to Bottom. Parenthesis. Power. Multiplication. Addition. Left to Right within the expression."
+ },
+ {
+  "id": 13,
+  "q": "What is a boolean expression and its operators?",
+  "a": "Boolean expression asks a question and produce a Y/N or True/False for program control. <= less than or equal to or >= greateer than equal to. != / == not equal or equal to"
+ },
+ {
+  "id": 14,
+  "q": "What happens if you increase the indent after an if statement?",
+  "a": "Increase the indent is for the return of an if/for statement"
+ },
+ {
+  "id": 15,
+  "q": "What happens if you reduce the indent after an if statement?",
+  "a": "indicate the end of the block code"
+ },
+ {
+  "id": 16,
+  "q": "What happens if you maintain the indent after an if statement?",
+  "a": "indicate the scope of the block which lines are affected"
+ },
+ {
+  "id": 17,
+  "q": "What does range() do?",
+  "a": "Usually used in a loop and range(5) will go through interger 0 1 2 3 4. Starts at zero and goes to one less than the parameter."
+ },
+ {
+  "id": 18,
+  "q": "What are all the key option in conditional statements?",
+  "a": "if [cond.expression]: true elif [cond.expression]: true else [cond.expression]: false"
+ },
+ {
+  "id": 19,
+  "q": "What is the purpose of try and except in python?",
+  "a": "Try and except is used for traceback. You know its going to 'blow up'."
+ },
+ {
+  "id": 20,
+  "q": "What is try and except?",
+  "a": "Try is where you place a dangerous peice of code block that you predict will 'blow up'/throw an error. Instead of stopping the program all together you can use except. try: dangerous code except: results of error when dangerous code renders an error"
+ },
+ {
+  "id": 21,
+  "q": "What does a function consist of?",
+  "a": "a function name declariation: def thing(): indent for the result: print(334) function call: thing()"
+ },
+ {
+  "id": 22,
+  "q": "Is it possible to get the single character of string ?",
+  "a": "We can get at any single character in a string using an index specified in square brackets m=abbey m[1] >>> 'b'"
+ },
+ {
+  "id": 23,
+  "q": "How to get the length of a string or array? And index starts with...",
+  "a": "len(), an interget count of how many variables/characters are present. + 0 index start"
+ },
+ {
+  "id": 24,
+  "q": "How to slice string without function?",
+  "a": "colon operator helps us slice string . example: m=abbey print(m[1:3]) >> bbe"
+ },
+ {
+  "id": 25,
+  "q": "How to find the number of occurances in a string ?",
+  "a": "find() searches a string n return the number of occursnces. m.find(‘bb’) >> 1"
+ },
+ {
+  "id": 26,
+  "q": "How to replace?",
+  "a": "replace(match_str,replace_str)"
+ },
+ {
+  "id": 27,
+  "q": "What is a list in python?",
+  "a": "A list is a collection that allows us to put many values in a single variable. In order to sequence of objects."
+ },
+ {
+  "id": 28,
+  "q": "How do you look inside a list?",
+  "a": "Square brackets"
+ },
+ {
+  "id": 29,
+  "q": "What is the difference between strings and list?",
+  "a": "Strings are immutables, meaning we cannot change them, whereas listed as mutables and we can CRUD them as we see fit."
+ },
+ {
+  "id": 30,
+  "q": "Can you concate list?",
+  "a": "Yes. a+b = c c = [1 2 3 4 5 ]"
+ },
+ {
+  "id": 31,
+  "q": "list.append(x)",
+  "a": "Add an item to the end of the list."
+ },
+ {
+  "id": 32,
+  "q": "list.pop([i])",
+  "a": "Remove the item at the given position in the list, and return it. If no index is specified, a.pop() removes and returns the last item in the list."
+ },
+ {
+  "id": 33,
+  "q": "list.insert(i, x)",
+  "a": "Insert an item at a given position. The first argument is the index of the element before which to insert, so a.insert(0, x)"
+ },
+ {
+  "id": 34,
+  "q": "list.remove(x)",
+  "a": "Remove the first item from the list whose value is equal to x. I"
+ },
+ {
+  "id": 35,
+  "q": "list.reverse()",
+  "a": "Reverse the elements of the list in place."
+ },
+ {
+  "id": 36,
+  "q": "list.extend(iterable)",
+  "a": "Extend the list by appending all the items from the iterable."
+ },
+ {
+  "id": 37,
+  "q": "list.index(x[, start[, end]])",
+  "a": "Return zero-based index in the list of the first item whose value is equal to x."
+ },
+ {
+  "id": 38,
+  "q": "What are the two ways you can check a list for an element?",
+  "a": "find() or in . l=[9 4 3] l in 4 >> true"
+ },
+ {
+  "id": 39,
+  "q": "what is the difference between dictionaries and list in python?",
+  "a": "List are a linear collection of values, whereas list have a key value pair."
+ },
+ {
+  "id": 40,
+  "q": "What order are dictionaries in?",
+  "a": "No particular order. The insertion order is not the sorted order."
+ },
+ {
+  "id": 41,
+  "q": "How to insert into a dictionary ?",
+  "a": "thisSet=dict(). key value defining. thisSet['summer']=12"
+ },
+ {
+  "id": 42,
+  "q": "get()",
+  "a": "The get() method returns the value of the item with the specified key."
+ },
+ {
+  "id": 43,
+  "q": "How to retrieve list of key n values?",
+  "a": "list(test.keys()) list(test.values()) list(test)"
+ },
+ {
+  "id": 44,
+  "q": "How can you iterate through two variables?",
+  "a": "for xx,bb in testDict.items() print(xx,bb)"
+ },
+ {
+  "id": 45,
+  "q": "How could we rewrite this: for x in fruits: if \"a\" in x: newlist.append(x) print(newlist))",
+  "a": "fruits = [\"apple\", \"banana\", \"cherry\", \"kiwi\", \"mango\"] newlist = [x for x in fruits if \"a\" in x] print(newlist))"
+ },
+ {
+  "id": 46,
+  "q": "How would you calculate frequency within a dictionary in python?",
+  "a": "def CountFrequency(my_list): # Creating an empty dictionary freq = {} for item in my_list: if (item in freq): freq[item] += 1 else: freq[item] = 1 for key, value in freq.items(): print(\"% d : % d\" % (key, value)) # Driver function if __name__ == \"__main__\": my_list = [1, 1, 1, 5, 5, 3, 1, 3, 3, 1, 4, 4, 4, 2, 2, 2, 2] CountFrequency(my_list))"
+ },
+ {
+  "id": 47,
+  "q": "What is a set?",
+  "a": "An unorded collection of unique objects"
+ },
+ {
+  "id": 48,
+  "q": "What characters are needed for less dictionaries, and tuples within python?",
+  "a": "Dictionary are curly brackets. List are square brackets. Tuples are parathesis."
+ },
+ {
+  "id": 49,
+  "q": "What is a tuple?",
+  "a": "A tuple is ordered immutable sequence of objects."
+ },
+ {
+  "id": 50,
+  "q": "Can you alter a tuple ?",
+  "a": "No because they are immutable"
+ },
+ {
+  "id": 51,
+  "q": "Can you sort, append, or reverse a tuple?",
+  "a": "No"
+ },
+ {
+  "id": 52,
+  "q": "what two functions can you do with a tuple?",
+  "a": "count and index"
+ },
+ {
+  "id": 53,
+  "q": "When is a good time to use tuples?",
+  "a": "Tuples are comparable by using a pointer to go element by element"
+ },
+ {
+  "id": 54,
+  "q": "How do I go about sorting a dictionary?",
+  "a": "A dictionary can have key value tuples which you can that sort. sorted() will sort your sequences"
+ },
+ {
+  "id": 55,
+  "q": "how do you sort a list by values instead of keys?",
+  "a": "c = {'a':10, 'b':1, 'c':22} >>> print( sorted( [ (v,k) for k,v in c.items() ] ) ) [(1, 'b'), (10, 'a'), (22, 'c')]"
+ },
+ {
+  "id": 56,
+  "q": "how do you add key value pairs to a list?",
+  "a": "tmp = list() for k, v in c.items() : tmp.append( (v, k) )"
+ },
+ {
+  "id": 57,
+  "q": "If the variable data is a Python list, how do we sort it in reverse order?",
+  "a": "data.sort(reverse=True)"
+ },
+ {
+  "id": 58,
+  "q": "What is a regular expression ?",
+  "a": "Reg ex is wild card” expressions for matching and parsing strings"
+ },
+ {
+  "id": 59,
+  "q": "Before you can use regular expressions in your program…",
+  "a": "you must import the library using “import re”"
+ },
+ {
+  "id": 60,
+  "q": "re.search()",
+  "a": "To see if a string matches, a regular expression, similar to the find method, but for strings"
+ },
+ {
+  "id": 61,
+  "q": "re.findall()",
+  "a": "Instructions of ushering that match the regular expression, similar to the find method and slicing"
+ },
+ {
+  "id": 62,
+  "q": "What does a dot character mean for wildcard characters?",
+  "a": "match to any character"
+ },
+ {
+  "id": 63,
+  "q": "What time is * mean for wild card characters?",
+  "a": "Many times, matched many times"
+ },
+ {
+  "id": 64,
+  "q": "^",
+  "a": "Matches the beginning of a line"
+ },
+ {
+  "id": 65,
+  "q": "$",
+  "a": "Matches the end of the line"
+ },
+ {
+  "id": 66,
+  "q": ".",
+  "a": "Matches any character"
+ },
+ {
+  "id": 67,
+  "q": "\\s",
+  "a": "Matches whitespace"
+ },
+ {
+  "id": 68,
+  "q": "*",
+  "a": "Repeats a character zero or more times"
+ },
+ {
+  "id": 69,
+  "q": "*?",
+  "a": "Repeats a character zero or more times (non-greedy)"
+ },
+ {
+  "id": 70,
+  "q": "=+",
+  "a": "Repeats a character one or more times"
+ },
+ {
+  "id": 71,
+  "q": "=+?",
+  "a": "Repeats a character one or more times (non-greedy)"
+ },
+ {
+  "id": 72,
+  "q": "[aeiou]",
+  "a": "Matches a single character in the listed set"
+ },
+ {
+  "id": 73,
+  "q": "[^XYZ]",
+  "a": "Matches a single character not in the listed set"
+ },
+ {
+  "id": 74,
+  "q": "[a-z0-9]",
+  "a": "The set of characters can include a range"
+ },
+ {
+  "id": 75,
+  "q": "(",
+  "a": "Indicates where string extraction is to start"
+ },
+ {
+  "id": 76,
+  "q": ")",
+  "a": "Indicates where string extraction is to end"
+ },
+ {
+  "id": 77,
+  "q": "How to use the .format method?",
+  "a": "My name is {}'.format('abbey') >> 'My name is Abbbey"
+ },
+ {
+  "id": 78,
+  "q": "What is an IL?",
+  "a": "An instruction list, a complete set of known commands"
+ },
+ {
+  "id": 79,
+  "q": "What is CPython?",
+  "a": "CPython is the reference implementation of the Python programming language. Written in C and Python, CPython is the default and most widely used implementation of the Python language."
+ },
+ {
+  "id": 80,
+  "q": "What is machine code?",
+  "a": "Machine code is a program written in machine language, which consists of sequences of digital binary numbers: 0s and 1s."
+ },
+ {
+  "id": 81,
+  "q": "What are the four fundamental elements that make a language?",
+  "a": "Each language, be it machine language or natural language, consists of an alphabet, a lexis, a syntax, and semantics."
+ },
+ {
+  "id": 82,
+  "q": "What do you call a file containing a program written in a high-level programming language?",
+  "a": "A source file is a file that contains source code, that is, a program’s instructions."
+ },
+ {
+  "id": 83,
+  "q": "What does a complier do?",
+  "a": "The compiler translates (compiles) the source program (a set of high-level language instructions) into machine code (a lower-level representation of the source program). The sequence of 0s and 1s can be then executed by the processor. The execution of the compiled code is usually faster than interpretation."
+ },
+ {
+  "id": 84,
+  "q": "What is the best definition of a script?",
+  "a": "A script is a set of high-level language commands in a file, structured to be executed like a program. A Python script is therefore a file containing code written in Python."
+ },
+ {
+  "id": 85,
+  "q": "What is Python?",
+  "a": "Python is a free and open-source programming language available to everyone. It is a multi- and cross-platform language, which means a Python program written on a Linux system will run on a Mac, and vice versa. Because Python is relatively easy to learn and contains simple syntax, it is a good choice for testers."
+ },
+ {
+  "id": 86,
+  "q": "What do you call a command-line interpreter which lets you interact with your OS and execute Python commands and scripts?",
+  "a": "A Python console is a command-line interpreter that allows you to execute Python commands, instructions, and scripts line by line. Just like the one here: www.python.org/shell."
+ },
+ {
+  "id": 87,
+  "q": "What does this character mean: \\",
+  "a": "The escape character meaning a new series of characters is coming"
+ },
+ {
+  "id": 88,
+  "q": "What does the n repersent in \\",
+  "a": "The n placed after backslash signifies a new line on the input"
+ },
+ {
+  "id": 89,
+  "q": "What does end=\"\" do?",
+  "a": "end=\"\" is a keyboard argument, needs a keyword END, equal sign to assign value and last positional argument \\n or \"\""
+ },
+ {
+  "id": 90,
+  "q": "What does sep=\"-\" do?",
+  "a": "The sep parameter is used to format strings that need to be printed on the console and to add a separator between strings."
+ },
+ {
+  "id": 91,
+  "q": "What is IDLE?",
+  "a": "Integrated Development Learning Environment in Python."
+ },
+ {
+  "id": 92,
+  "q": "The most important difference between a float and an integer is what..",
+  "a": "they are stored differently in computer memory"
+ },
+ {
+  "id": 93,
+  "q": "how can a hexadecimal be denoted?",
+  "a": "0x"
+ },
+ {
+  "id": 94,
+  "q": "what are the symbols for regular division and integer division?",
+  "a": "Regular / Integer //"
+ },
+ {
+  "id": 95,
+  "q": "What does right side binding mean?",
+  "a": "In a right-side binding expression, the operators on the right side of the expression are evaluated first, followed by the operators on the left side."
+ },
+ {
+  "id": 96,
+  "q": "The following edition will result to what 123 + 0.00",
+  "a": "123.00"
+ },
+ {
+  "id": 97,
+  "q": "The meaning of the keyword parameter is determined by:",
+  "a": "the argument's name specified along with its value"
+ },
+ {
+  "id": 98,
+  "q": "The value twenty point twelve times ten raised to the power of eight should be written as:",
+  "a": "the answer is 20.12E8"
+ },
+ {
+  "id": 99,
+  "q": "The 0o prefix means that the number after it is denoted as:",
+  "a": "octal"
+ },
+ {
+  "id": 100,
+  "q": "1 / 1",
+  "a": "the answer is 1.0, a floating point value"
+ },
+ {
+  "id": 101,
+  "q": "Two facts about right-side binding :",
+  "a": "The ** operator uses right-sided binding. The right argument of the % operator cannot be zero."
+ },
+ {
+  "id": 102,
+  "q": "Left-sided binding determines that the result of the following expression: 1 // 2 * 3 is equal to:",
+  "a": "Left-sided binding means that the expression is evaluated from left to right: 1 // 2 = 0, and 0 * 3 = 0."
+ },
+ {
+  "id": 103,
+  "q": "Which of the following variable names are illegal? (Select two answers)",
+  "a": "True and and are Python keywords (reserved words), and they cannot be used as variable names. And since Python is case-sensitive, the names true and TRUE are perfectly legal, though not necessarily the best names."
+ },
+ {
+  "id": 104,
+  "q": "The print() function can output values of:",
+  "a": "any number of arguments (including zero)"
+ },
+ {
+  "id": 105,
+  "q": "What is the output of the following snippet? x = 1 y = 2 z = x x = y y = z print(x, y)",
+  "a": "Let’s analyze this example: the value 1 is assigned to variable x, and variable x is initiated (so x = 1) the value 2 is assigned to variable y, and variable y is initiated (so y = 2) the value assigned to variable x is assigned to variable z, and variable z is initiated (so z = 1) the x variable is assigned the value which is assigned to variable y (so x = 2) the y variable is assigned the value which is assigned to variable z (so y = 1) the values ssigned to variables x and y are now printed, giving the following output: 2 1 (note: the print() function separates the outputted values with a whitespace)"
+ },
+ {
+  "id": 106,
+  "q": "What is the output of the following snippet if the user enters two lines containing 2 and 4 respectively? x = input() y = input() print(x + y)",
+  "a": "Let’s analyze this example: the input() function reads the arguments entered by the user (2 and 4 respectively) and converts them to strings, variables x and y are assigned the strings inputted by the user, the print() function outputs the result of the concatenation operation to the screen (the process of adding/merging strings): \"2\" + \"4\"; the + operator adds a string to another string, and outputs 24."
+ },
+ {
+  "id": 107,
+  "q": "What is the output of the following snippet if the user enters two lines containing 2 and 4 respectively? x = int(input()) y = int(input()) x = x // y y = y // x print(y)",
+  "a": "Let’s analyze this example: the x variable is assigned the integer value of 2 (2 is inputted by the user, converted to a string by the input() function, and then converted to an integer by the int() function) the y variable is assigned the integer value of 4 (4 is inputted by the user, converted to a string by the input() function, and then converted to an integer by the int() function) an operation is performed resulting in the x variable being assigned the value of 0 (2 // 4=0) an operation is being performed, but a ZeroDivisionException is raised, because the // operator cannot accept 0 as its right operand. The program is terminated."
+ },
+ {
+  "id": 108,
+  "q": "Question 14 Multiple choice question What is the output of the following snippet if the user enters two lines containing 2 and 4 respectively? x = int(input()) y = int(input()) x = x / y y = y / x print(y)",
+  "a": "Let’s analyze this example: the x variable is assigned the integer value of 2 (2 is inputted by the user, converted to a string by the input() function, and then converted to an integer by the int() function) the y variable is assigned the integer value of 4 (4 is inputted by the user, converted to a string by the input() function, and then converted to an integer by the int() function) an operation is performed resulting in the x variable being assigned the value of 0.5 (2 / 4 = 0.5) an operation is performed resulting in the y variable being assigned the value of 8.0 (4 / 0.5 = 8.0) the value assigned to the y variable (8.0) is printed to the screen."
+ },
+ {
+  "id": 109,
+  "q": "What is the output of the following snippet if the user enters two lines containing 11 and 4 respectively? x = int(input()) y = int(input()) x = x % y x = x % y y = y % x print(y)",
+  "a": "Let’s analyze this example: the x variable is assigned the integer value of 11 (11 is inputted by the user, converted to a string by the input() function, and then converted to an integer by the int() function) the y variable is assigned the integer value of 4 (4 is inputted by the user, converted to a string by the input() function, and then converted to an integer by the int() function) an operation is performed resulting in the x variable being assigned the value of 3 (3 % 4 = 3) an operation is performed resulting in the x variable being assigned the value of 0 (3 % 11 = 0) an operation is performed resulting in the y variable being assigned the value of 1 (4 % 3 = 1) the value assigned to the y variable (1) is printed to the screen."
+ },
+ {
+  "id": 110,
+  "q": "What is the output of the following snippet if the user enters two lines containing 3 and 6 respectively? x = input() y = int(input()) print(x * y)",
+  "a": "Let’s analyze this example: the x variable is assigned the value of \"3\" (3 is inputted by the user and converted to a string by the input() function) the y variable is assigned the value of 6 (6 is inputted by the user, converted to a string by the input() function, and then converted to an integer by the int() function) the print() function outputs the result of the following string multiplication: \"3\" * 6, that is 333333"
+ },
+ {
+  "id": 111,
+  "q": "What is the output of the following snippet? z = y = x = 1 print(x, y, z, sep='*')",
+  "a": "Let’s analyze the example: the variables z, y, and x are declared and initialized, and the value 1 is assigned to each of them by using the mechanism of assigning the same value to multiple variables, the values assigned to the three variables are printed to the screen and separated by the * symbol using the sep keyword argument."
+ },
+ {
+  "id": 112,
+  "q": "What is the output of the following snippet? y = 2 + 3 * 5. print(Y)",
+  "a": "Python is case-sensitive, so y and Y are two different variables. Since the program attempts to print to the screen a value associated with a variable that does not exist in the local namespace, Python doesn’t recognize it, and a NameError exception is raised."
+ },
+ {
+  "id": 113,
+  "q": "What is the output of the following snippet? x = 1 / 2 + 3 // 3 + 4 ** 2 print(x)",
+  "a": "The principle of operator precedence (order of operations) takes effect here. Let’s see what happens here: first, the 4 ** 2 expression is evaluated with 16 as the result, second, the 1 / 2 expression is evaluated with 0.5 as the result, third, the 3 // 3 expression is evaluated with 1 as the result, finally, the three values are added (0.5 + 1 + 16), and the resulting value (17.5) is assigned to the x variable and printed to the screen."
+ },
+ {
+  "id": 114,
+  "q": "What is the output of the following snippet if the user enters two lines containing 2 and 4 respectively? x = int(input()) y = int(input()) print(x + y)",
+  "a": "The values 2 and 4 are inputted by the user, converted from strings to integers, and assigned to the x and y variables respectively. The print() function outputs the result of integer addition (2 + 4) to the screen."
+ },
+ {
+  "id": 115,
+  "q": "What does this (>>=) operator repersent?",
+  "a": "Bitwise Right Shift Operator is >>=. It divide the number by 2^n. Example: a=12 , a>>=1 is 6 bc 12/2=6. Similarly, a=12, a>>=2 is 3 bc 12/2=6/2=3"
+ },
+ {
+  "id": 116,
+  "q": "What does this (<<=) operator repersent?",
+  "a": "Bitwise Left Shift Operator is >>=. It multiply the number by 2^n. Example: a=12 , a>>=1 is 6 bc 12*2=24. Similarly, a=12, a>>=2 is 3 bc 12*2=24*2=48"
+ },
+ {
+  "id": 117,
+  "q": "An operator able to check whether two values are equal is coded as:",
+  "a": "Remember that the == operator compares two arguments and checks if they are equal."
+ },
+ {
+  "id": 118,
+  "q": "The value eventually assigned to x is equal to: x = 1 x = x == x",
+  "a": "The == operator is more prominent in the operator hierarchy than the = operator. Therefore, the operation on the right is evaluated before the one on the left."
+ },
+ {
+  "id": 119,
+  "q": "How many stars (*) will the following snippet send to the console? i = 0 while i <= 3 : i += 2 print(\"*\")",
+  "a": "Let’s analyze this example: the i variable is assigned the integer value of 0, the while loop compares if 0 <= 3, and since it is True, the loop is entered, the i variable is incremented by 2, and a first star is printed on the console, the while loop now compares if 2 <= 3, and since it is True, the loop is entered, the variable i is incremented by 2, and a second star is printed on the console, the while loop now compares if 4 <= 3, and since it is False, the loop is no longer executed."
+ },
+ {
+  "id": 120,
+  "q": "How many stars (*) will the following snippet send to the console? i = 0 while i <= 5 : i += 1 if i % 2 == 0: break print(\"*\")",
+  "a": "Let’s analyze this example: the i variable is assigned the integer value of 0, the while the i variable is incremented by 1, and its new value is 2, the operation 1 % 2 is evaluated and returns 1, the 1 is compared with 0, 1 == 0, and since it is False, the if conditional is not executed, A star is printed on the console, the while loop now compares if 2 <= 3, and since it is True, the loop is entered, the i variable is incremented by 1, and its new value is 2, the operation 2 % 2 is evaluated and returns 0, the 0 is compared with 0, 0 == 0, and since it is True, the if conditional is executed, the break statement is executed, the while loop is terminated."
+ },
+ {
+  "id": 121,
+  "q": "How many hashes (#) will the following snippet send to the console? for i in range(1): print(\"#\") else: print(\"#\")",
+  "a": "Let’s analyze this example: the for loop begins using the variable i as counter, it begins in 0 and stops before 1, so a single iteration is performed, a first # is printed on the console, after exiting the loop, the else statement is executed, a second # is printed on the console."
+ },
+ {
+  "id": 122,
+  "q": "How many hashes (#) will the following snippet send to the console? var = 0 while var < 6: var += 1 if var % 2 == 0: continue print(\"#\")",
+  "a": "Let’s analyze this example: the var variable is assigned the integer value of 0, the while loop begins comparing 0 < 6, and since it is True, the loop is entered, the var variable is incremented by 1, and its new value is 1, the operation 1 % 2 returns 1, and 1==0 returns False, the if conditional is not executed, a first # is printed in the console, the while loop compares 1 < 6, and since it is True, the loop is entered, the var variable is incremented by 1, and its new value is 2, the operation 2 % 2 returns 0,, and 0==0 returns True, the if conditional is executed, and the continue statement jumps to the while statement, the while loop now compares 2 < 6, and since it is True, the loop is entered, the var variable is incremented by 1, and its new value is 3, the operation 3 % 2 returns 1, and 1==0 returns False, the if conditional is not executed, a second # is printed on the console, the while loop compares 3 < 6, and since it is True, the loop is entered, the var variable is incremented by 1, its new value is 4, the operation 4 % 2 returns 0, and 0==0 returns True, the if conditional is executed, and the continue statement jumps to the while statement, the while loop now compares 4 < 6, and since it is True, the loop is entered, the var variable is incremented by 1, and its new value is 5, the operation 5 % 2 returns 1, and 1==0 returns False, the if conditional is not executed, a third # is printed on the console, the while loop now compares 5 < 6, and since it is True, the loop is entered, the var variable is incremented by 1, and its new value is 6, the operation 6 % 2 returns 0, and 0==0 returns True, the if conditional is executed, and the continue statement jumps to the while statement, the while loop now compares 6 < 6, and since it is False, the loop is terminated."
+ },
+ {
+  "id": 123,
+  "q": "How many hashes (#) will the following snippet send to the console? var = 1 while var < 10: print(\"#\") var = var << 1",
+  "a": "Let’s analyze this example: the var variable is assigned the integer value of 1, the while loop begins comparing 1 < 10, and since it is True, the loop is entered, a first # is printed on the console, the var variable is binary shifted 1 position to the left, and it is now 2, the while loop compares 2 < 10, and since it is True, the loop is entered, a second # is printed on the console, the var variable is binary shifted 1 position to the left, and it is now 4, the while loop compares 4 < 10, and since it is True, the loop is entered, a third # is printed on the console, the var variable is binary shifted 1 position to the left, and it is now 8, the while loop compares 8 < 10, and since it is True, the loop is terminated, a fourth # is printed on the console, the var variable is binary shifted 1 position to the left, and it is now 16, the while loop compares 16 < 10, and since it is False, the loop is terminated."
+ },
+ {
+  "id": 124,
+  "q": "What value will be assigned to the x variable? z = 10 y = 0 x = y < z and z > y or y > z and z < y",
+  "a": "Let’s analyze this example: the z variable is assigned the integer value of 10, the y variable is assigned the integer value of 0, the relational comparison y < z returns True, the relational comparison z > y returns True, the logical comparison True and True returns True, the relational comparison y > z returns False, the relational comparison z < y returns False, the logical comparison False and False returns False, finally, True or False returns True."
+ },
+ {
+  "id": 125,
+  "q": "What is the output of the following snippet? a = 1 b = 0 c = a & b d = a | b e = a ^ b print(c + d + e)",
+  "a": "Let’s analyze this example: the a variable is assigned the integer value of 1, the b variable is assigned the integer value of 0, the c variable is assigned the and bitwise result of a & b, which is 0,/li> the d variable is assigned the or bitwise result of a | b, which is 1, the e variable is assigned the xor bitwise result of a ^ b, which is 1, the sum of the c,d and e variables is printed on the console, which is 2."
+ },
+ {
+  "id": 126,
+  "q": "What is the output of the following snippet? my_list = [3, 1, -2] print(my_list[my_list[-1]])",
+  "a": "Let’s analyze this example: the list my_list is created with the integer elements 3, 1, -2, using a negative index (-1), the value of the last element in the list is obtained, which is -2, -2 is used to obtain the value of the second last element, which is 1, 1 is printed on the console."
+ },
+ {
+  "id": 127,
+  "q": "What is the output of the following snippet? my_list = [1, 2, 3, 4] print(my_list[-3:-2])",
+  "a": "Let’s analyze this example: the list my_list is created with the integer elements 1, 2, 3, 4, using negative indices (-3:-2), the elements from the third-last position to before the second-last position are selected, the elements are printed on the console."
+ },
+ {
+  "id": 128,
+  "q": "The second assignment: vals = [0, 1, 2] vals[0], vals[2] = vals[2], vals[0]",
+  "a": "Let’s analyze this example: the list vals is created with the integer elements 0,1,2, using positive indices, the value in position 0 is swapped with the element in position 2, the elements are now in this order: 2,1,0. Therefore, the list has been reversed."
+ },
+ {
+  "id": 129,
+  "q": "After execution of the following snippet, the sum of all vals elements will be equal to: vals = [0, 1, 2] vals.insert(0, 1) del vals[1]",
+  "a": "Let’s analyze this example: the list vals is created with the integer elements 0, 1, 2, using the insert method, an integer value of 1 is inserted in the first position of the list. The new list is 1,0,1,2, using the del function, the element in position 1 is deleted, and the list is now 1,1,2, the sum of the elements is 4."
+ },
+ {
+  "id": 130,
+  "q": "Take a look at the snippet, and choose the true statements: (Select two answers) nums = [1, 2, 3] vals = nums del vals[1:2]",
+  "a": "Remember that: the assignment vals = nums does not create a new list, as vals is only another name for nums, and they both point to the same space in the memory, if you delete any elements in vals, they are also deleted in nums."
+ },
+ {
+  "id": 131,
+  "q": "Which of the following sentences are true? (Select two answers) nums = [1, 2, 3] vals = nums[-1:-2]",
+  "a": "when using indices, a new list is created with the elements specified within the brackets, the new list created only has one element: [3]."
+ },
+ {
+  "id": 132,
+  "q": "What is the output of the following snippet? my_list_1 = [1, 2, 3] my_list_2 = [] for v in my_list_1: my_list_2.insert(0, v) print(my_list_2)",
+  "a": "Let's analyze this code: a list named my_list_1 is created with the elements 1,2,3, an empty list named my_list_2 is created, using a for loop, my_list_1 is iterated, every element in my_list_1 is inserted in my_list_2, always in the position 0, this is the list in each iteration: [1] [2,1] [3,2,1] finally, the list is printed on the console."
+ },
+ {
+  "id": 133,
+  "q": "What is the output of the following snippet? my_list = [1, 2, 3] for v in range(len(my_list)): my_list.insert(1, my_list[v]) print(my_list)",
+  "a": "Let's analyze this code: a list named my_list is created with the elements 1,2,3, using a for loop in the range from 0 to the length of my_list minus 1, that is 0,1,2, the following elements are inserted in the list: in iteration 1: the value of that returns my_list[0] is inserted in position 1. The list is now: [1,1,2,3] in iteration 2: the value of that returns my_list[1] is inserted in position 1. The list is now: [1,1,1,2,3] in iteration 3: the value of that returns my_list[2] is inserted in position 1. The list is now: [1,1,1,1,2,3] finally, the list is printed on the console."
+ },
+ {
+  "id": 134,
+  "q": "How many elements does the my_list list contain? my_list = [i for i in range(-1, 2)]",
+  "a": "A list named my_list is created with a range of elements from -1 to an element before 2, that is: -1,0,1. Three elements."
+ },
+ {
+  "id": 135,
+  "q": "What is the output of the following snippet? t = [[3-i for i in range (3)] for j in range (3)] s = 0 for i in range(3): s += t[i][i] print(s)",
+  "a": "Let's analyze this code: a list named t is created with the following characteristics: the first for loop iterates through 0,1,2, with these operations: 3-0, 3-1, 3-2. The results are added to the list: [3,2,1] the second for loop also iterates through 0,1,2, performing the previous operation three times, the resulting list is the following: [[3, 2, 1], [3, 2, 1], [3, 2, 1]] the variable s is assigned the integer value of 0, a third for loop iterates through 0,1,2, the elements in positions [0][0], [1][1], [2][2] are added, the result is 3+2+1 = 6, the s variable is printed on the console."
+ },
+ {
+  "id": 136,
+  "q": "What is the output of the following snippet? my_list = [[0, 1, 2, 3] for i in range(2)] print(my_list[2][0])",
+  "a": "Let's analyze this code: a list named my_list is created with the element [0, 1, 2, 3] in the range of 0, 1 using a for loop. Therefore, the list created is as follows: [[0, 1, 2, 3], [0, 1, 2, 3]] an attempt is made to access the element in position [2][0] the index 2 is out of range, so the error message IndexError: list index out of range is generated."
+ },
+ {
+  "id": 137,
+  "q": "What does chi2_contigency do in scipy ?",
+  "a": "This function computes the chi-square statistic and p-value for the hypothesis test of independence of the observed frequencies in the contingency table observed."
+ },
+ {
+  "id": 138,
+  "q": "What does chi2_contigency return in scipy ?",
+  "a": "chi2_contingency is used to conduct a Chi-square test on a 2x3 contingency table. The function returns: chi2: The test statistic. p: The p-value of the test dof: Degrees of freedom expected: The expected frequencies, based on the marginal sums of the table."
+ }
+]

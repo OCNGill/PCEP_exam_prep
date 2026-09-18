@@ -113,6 +113,10 @@
     ☑ Multi-Select Focus
     <div class="desc">The 14 "Select two answers" questions — the classic PCEP trap</div>
   </button>
+  <button class="menu-btn" onclick="startFlashcards()">
+    🃏 Flashcard Drill (KimWynne deck — 138 cards)
+    <div class="desc">Open-ended class Q&A: show question, reveal answer, mark known/again</div>
+  </button>
   <button class="menu-btn" onclick="showStats()">
     📊 Statistics &amp; Blind-Spot Analysis
     <div class="desc">Per-question and per-concept accuracy, your flags, run history, 90% readiness</div>
@@ -138,6 +142,21 @@
   <div class="flagrow"><label><input type="checkbox" id="flagChk" onchange="toggleFlag()"> ⚑ Flag this question for review (adds to your blind spots)</label></div>
   <button class="btn hidden" id="nextBtn" onclick="nextQ()">Next →</button>
   <button class="btn hidden" id="submitMultiBtn" onclick="submitMulti()">Submit</button>
+</div>
+
+<!-- ============ FLASHCARDS ============ -->
+<div id="flash" class="hidden">
+  <div class="bar">
+    <button class="btn secondary small" onclick="goHome()">← Back</button>
+    <div><span id="fcPos"></span> &middot; FLASHCARD DRILL</div>
+    <div id="fcScore"></div>
+  </div>
+  <div class="progressbar"><div id="fcProg" style="width:0%"></div></div>
+  <div class="qtext" id="fcQ" onclick="revealCard()" style="cursor:pointer"></div>
+  <div class="expl-panel hidden" id="fcA"></div>
+  <button class="btn hidden" id="fcKnown" onclick="rateCard(1)">✅ I know this</button>
+  <button class="btn secondary hidden" id="fcAgain" onclick="rateCard(0)">🔁 Show me again</button>
+  <div class="feedback ok" style="margin-top:16px" id="fcDone" hidden>Deck complete — reshuffle and run it again.</div>
 </div>
 
 <!-- ============ RESULTS ============ -->
@@ -172,10 +191,10 @@ function loadStats() {
 }
 function saveStats(s) { localStorage.setItem(STORE, JSON.stringify(s)); }
 
-function goHome() { clearInterval(timerInt); state = null; renderHome(); show("home"); }
+function goHome() { clearInterval(timerInt); state = null; fc = null; renderHome(); show("home"); }
 
 function show(id) {
-  for (const x of ["home","quiz","results","statsScr"]) document.getElementById(x).classList.add("hidden");
+  for (const x of ["home","quiz","results","statsScr","flash"]) document.getElementById(x).classList.add("hidden");
   document.getElementById(id).classList.remove("hidden");
 }
 
@@ -564,6 +583,59 @@ function resetStats() {
   if (!confirm("Wipe ALL progress, flags and history?")) return;
   localStorage.removeItem(STORE);
   renderHome();
+}
+
+// ---- flashcards ----
+let fc = null;
+
+function startFlashcards() {
+  fc = { deck: shuffle(PCEP_FLASHCARDS), idx: 0, known: 0, again: 0, revealed: false };
+  show("flash"); renderCard();
+}
+
+function renderCard() {
+  if (fc.idx >= fc.deck.length) {
+    document.getElementById("fcQ").textContent = "Deck complete.";
+    document.getElementById("fcA").classList.add("hidden");
+    document.getElementById("fcKnown").classList.add("hidden");
+    document.getElementById("fcAgain").classList.add("hidden");
+    document.getElementById("fcDone").hidden = false;
+    document.getElementById("fcPos").textContent = `${fc.deck.length}/${fc.deck.length}`;
+    document.getElementById("fcScore").textContent = `known ${fc.known} · again ${fc.again}`;
+    document.getElementById("fcProg").style.width = "100%";
+    return;
+  }
+  const c = fc.deck[fc.idx];
+  document.getElementById("fcPos").textContent = `Card ${fc.idx+1}/${fc.deck.length}`;
+  document.getElementById("fcScore").textContent = `known ${fc.known} · again ${fc.again}`;
+  document.getElementById("fcProg").style.width = (100*fc.idx/fc.deck.length) + "%";
+  document.getElementById("fcQ").textContent = c.q;
+  const a = document.getElementById("fcA");
+  a.textContent = c.a; a.classList.add("hidden");
+  document.getElementById("fcKnown").classList.add("hidden");
+  document.getElementById("fcAgain").classList.add("hidden");
+  document.getElementById("fcDone").hidden = true;
+  fc.revealed = false;
+}
+
+function revealCard() {
+  if (!fc || fc.revealed || fc.idx >= fc.deck.length) return;
+  fc.revealed = true;
+  document.getElementById("fcA").classList.remove("hidden");
+  document.getElementById("fcKnown").classList.remove("hidden");
+  document.getElementById("fcAgain").classList.remove("hidden");
+}
+
+function rateCard(ok) {
+  if (!fc || !fc.revealed) return;
+  const c = fc.deck[fc.idx];
+  const s = loadStats();
+  s.fc = s.fc || {known:{}, again:{}};
+  if (ok) { s.fc.known[c.id] = (s.fc.known[c.id]||0)+1; fc.known++; }
+  else { s.fc.again[c.id] = (s.fc.again[c.id]||0)+1; fc.again++; fc.deck.push(c); }
+  saveStats(s);
+  fc.idx++;
+  renderCard();
 }
 
 renderHome();

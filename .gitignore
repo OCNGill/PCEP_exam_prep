@@ -4,3 +4,5 @@ _runner2_tmp.py
 *.log
 local_infer_*.txt
 .DS_Store
+__pycache__/
+*.pyc

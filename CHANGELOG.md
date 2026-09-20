@@ -3,6 +3,30 @@
 All notable changes to the PCEP Rapid Practice system.
 Format: Keep-a-Changelog-ish, newest first.
 
+## [2.1.1] — 2026-09-17
+
+### Changed
+- **Explanations rebuilt as code walkthroughs** (Commander directive: the
+  boilerplate "does not match the verified output" notes were useless).
+  New trace engine (`trace_engine.py` + `regen_walkthroughs.py`) executes each
+  snippet line-by-line under sys.settrace and generates real arithmetic:
+  - assignments shown as equations: `a = a ^ b → a = 1 ^ 0 = 1`
+  - list mutations shown as state evolution: `insert(1, …) → my_list becomes [1, 1, 2, 3]`
+  - loop-count questions summarized pass-by-pass: `var 0 → becomes 1 → prints '#'` / `skipped (continue)`
+  - recursion traced call-by-call with substituted arguments and return values
+  - augmented assignments computed: `s += t[i][i] → s = 3 + (t[1][1]) = 5`
+  - wrong options now explained contextually: intermediate values are called
+    out as traps ("this appears around step 5, but the program ends at '1'")
+
+### Verified
+- 48/48 functional tests passing; all 58 execution-verified questions
+  regenerated (0 trace failures).
+
+**Verse:** *"Give me understanding, that I may observe your law and follow it
+with all my heart." — Psalm 119:34.* Chosen because the Commander asked for
+understanding of the logic, not memorized outputs — understanding is what
+makes knowledge stick.
+
 ## [2.1.0] — 2026-09-17
 
 ### Added

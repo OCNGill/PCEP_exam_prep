@@ -21,8 +21,8 @@ certification trainer that takes raw exam Q&A exports to a passed PCEP exam.
 
 ```json
 {
-  "version": "2.0.0",
-  "date": "2026-09-12",
+  "version": "2.2.0",
+  "date": "2026-09-20",
   "status": "OPERATIONAL",
   "bank": {"questions": 148, "unique_sources": 169, "multi_select": 14, "concepts": 12},
   "validation": {
@@ -32,10 +32,11 @@ certification trainer that takes raw exam Q&A exports to a passed PCEP exam.
     "expert_reviewed": 90,
     "external_key_check": "Q104 confirmed vs official PE1 key"
   },
-  "tests": {"suite": "test_practice.js", "checks": 37, "passing": 37},
+  "tests": {"suite": "test_practice.js", "checks": 50, "passing": 50},
   "features": [
     "exam sim 30Q/40min", "drill all", "blank-spot drill (algorithmic)",
     "flagged drill (user blind spots)", "multi-select focus",
+    "flashcard drill (100 PCEP-only cards mapped to official objectives)",
     "explain panels (correct + incorrect options)",
     "per-question + per-concept statistics", "run history",
     "readiness rolling metric (last 50)", "flag checkbox persistence",
@@ -47,7 +48,8 @@ certification trainer that takes raw exam Q&A exports to a passed PCEP exam.
 ## Tracks (tracks.md)
 
 ### Active
-- *(none — system operational, all tests green)*
+- Flashcard deck rebuild complete: 100 PCEP-only cards, 25 per official block,
+  source metadata on every card; 50/50 functional tests green (v2.2.0).
 
 ### Next
 - Sandra/Steve first real run-through → seed flag + accuracy data

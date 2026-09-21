@@ -3,6 +3,40 @@
 All notable changes to the PCEP Rapid Practice system.
 Format: Keep-a-Changelog-ish, newest first.
 
+## [2.2.0] — 2026-09-20
+
+### Added
+- **PCEP-only flashcard deck rebuilt** (`build_flashcards_v2.py`): 100 cards
+  mapped to the official PCEP-30-02 objectives — 25 fundamentals, 25 control
+  flow, 25 data collections, 25 functions/exceptions.
+- Every card carries `objective`, `topic`, `source_url`, `practice_url`, and
+  `verification` metadata; the trainer displays the objective and topic above
+  each card.
+- Code cards are execution-verified in an isolated subprocess during the deck
+  build (timeout-guarded); expected output or exception mismatch fails the build.
+- Deck validator rejects non-PCEP material (SciPy, pandas, NumPy, data science,
+  CSV tooling) and enforces 100-card count, unique questions, valid objective
+  IDs, and 25/25/25/25 block distribution.
+
+### Changed
+- **Retired the 138-card KimWynne class deck.** It mixed SciPy/data-science
+  material with Python basics and carried no objective mapping, so it did not
+  represent the PCEP exam.
+- `bank.js` now carries both the 148-question MCQ bank and the 100-card
+  PCEP-only deck with source metadata.
+- README, Conductor state, tracks, and shared-drive ingestion report updated to
+  document the rebuild and the source provenance.
+
+### Verified
+- `python build_flashcards_v2.py` → 100 validated PCEP-only flashcards, block
+  distribution 25/25/25/25.
+- `node test_practice.js` → **50/50 checks passing**, including deck count,
+  objective metadata, out-of-scope exclusion, and flashcard UI rendering.
+
+**Verse:** *"But test everything; hold fast what is good." — 1 Thessalonians 5:21.*
+Chosen because the old deck was not defended — it was tested against the official
+exam scope, the off-scope cards were removed, and only what held up was kept.
+
 ## [2.1.1] — 2026-09-17
 
 ### Changed

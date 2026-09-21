@@ -165,10 +165,13 @@ setTimeout(() => {
     check("readiness computed", typeof rd === "number");
 
     // ---- flashcards ----
-    check("flashcards loaded (138)", w.eval("PCEP_FLASHCARDS.length") === 138);
+    check("flashcards loaded (100 PCEP-only cards)", w.eval("PCEP_FLASHCARDS.length") === 100);
+    check("flashcards have PCEP objective metadata", w.eval("PCEP_FLASHCARDS.every(c => c.id && c.objective.startsWith('PCEP-30-02 ') && c.source_url && c.practice_url)"));
+    check("flashcards exclude non-PCEP topics", !w.eval("PCEP_FLASHCARDS.some(c => /scipy|pandas|numpy|data science|machine learning|csv/i.test(c.q + ' ' + c.a))"));
     w.eval("startFlashcards()");
     check("flash view visible", !doc.getElementById("flash").classList.contains("hidden"));
     check("card 1 question rendered", doc.getElementById("fcQ").textContent.length > 3);
+    check("card objective metadata rendered", doc.getElementById("fcMeta").textContent.includes("PCEP-30-02"));
     check("answer hidden before reveal", doc.getElementById("fcA").classList.contains("hidden"));
     w.eval("revealCard()");
     check("answer revealed", !doc.getElementById("fcA").classList.contains("hidden"));

@@ -86,7 +86,7 @@
 </head>
 <body>
 <h1>PCEP <span>Rapid Practice</span></h1>
-<div class="sub">Mission: pass the real PCEP (30 questions / 40 min) &ge; 75% — train to &gt; 90% &middot; 148-question verified bank</div>
+<div class="sub">Mission: pass the real PCEP (30 questions / 40 min) &ge; 75% — train to &gt; 90% &middot; 148-question verified bank &middot; 100-card PCEP-only flashcard deck</div>
 
 <!-- ============ HOME ============ -->
 <div id="home">
@@ -114,8 +114,8 @@
     <div class="desc">The 14 "Select two answers" questions — the classic PCEP trap</div>
   </button>
   <button class="menu-btn" onclick="startFlashcards()">
-    🃏 Flashcard Drill (KimWynne deck — 138 cards)
-    <div class="desc">Open-ended class Q&A: show question, reveal answer, mark known/again</div>
+    🃏 Flashcard Drill — 100 PCEP-only cards
+    <div class="desc">Official PCEP-30-02 objective coverage; show question, reveal answer, mark known/again</div>
   </button>
   <button class="menu-btn" onclick="showStats()">
     📊 Statistics &amp; Blind-Spot Analysis
@@ -153,6 +153,7 @@
   </div>
   <div class="progressbar"><div id="fcProg" style="width:0%"></div></div>
   <div class="qtext" id="fcQ" onclick="revealCard()" style="cursor:pointer"></div>
+  <div class="muted" id="fcMeta"></div>
   <div class="expl-panel hidden" id="fcA"></div>
   <button class="btn hidden" id="fcKnown" onclick="rateCard(1)">✅ I know this</button>
   <button class="btn secondary hidden" id="fcAgain" onclick="rateCard(0)">🔁 Show me again</button>
@@ -597,6 +598,7 @@ function renderCard() {
   if (fc.idx >= fc.deck.length) {
     document.getElementById("fcQ").textContent = "Deck complete.";
     document.getElementById("fcA").classList.add("hidden");
+    document.getElementById("fcMeta").textContent = "";
     document.getElementById("fcKnown").classList.add("hidden");
     document.getElementById("fcAgain").classList.add("hidden");
     document.getElementById("fcDone").hidden = false;
@@ -610,8 +612,10 @@ function renderCard() {
   document.getElementById("fcScore").textContent = `known ${fc.known} · again ${fc.again}`;
   document.getElementById("fcProg").style.width = (100*fc.idx/fc.deck.length) + "%";
   document.getElementById("fcQ").textContent = c.q;
+  document.getElementById("fcMeta").textContent = `${c.objective} · ${c.topic}`;
   const a = document.getElementById("fcA");
   a.textContent = c.a; a.classList.add("hidden");
+  document.getElementById("fcMeta").textContent = `${c.objective} · ${c.topic}`;
   document.getElementById("fcKnown").classList.add("hidden");
   document.getElementById("fcAgain").classList.add("hidden");
   document.getElementById("fcDone").hidden = true;

@@ -424,7 +424,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • 123 + 0.0\n❌ B — does not match the traced execution.\n❌ C — does not match the traced execution.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '', matching this option exactly. | ❌ B — does not match the verified output (''). | ❌ C — does not match the verified output ('').",
   "explsrc": "execution-verified"
  },
  {
@@ -506,7 +506,7 @@
    0
   ],
   "concept": "Output & Strings",
-  "expl": "✅ A — walk through it line by line:\n  • x = 1    →  x = 1\n  • y = 2    →  y = 2\n  • z = x    →  z = 1\n  • x = y    →  x = 2\n  • y = z    →  y = 1\n  • print(x, y)    →  prints '2 1'\n  → output: '2 1'\n❌ B — the executed trace above ends with '2 1' — this is not what the code produces.\n❌ C — the executed trace above ends with '2 1' — this is not what the code produces.\n❌ D — the executed trace above ends with '2 1' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '2 1', matching this option exactly. | ❌ B — does not match the verified output ('2 1'). | ❌ C — does not match the verified output ('2 1'). | ❌ D — does not match the verified output ('2 1').",
   "explsrc": "execution-verified"
  },
  {
@@ -523,7 +523,7 @@
    0
   ],
   "concept": "Output & Strings",
-  "expl": "✅ A — walk through it line by line:\n  • z = y = x = 1\n  • print(x, y, z, sep='*')    →  prints '1*1*1'\n  → output: '1*1*1'\n❌ B — the executed trace above ends with '1*1*1' — this is not what the code produces.\n❌ C — the executed trace above ends with '1*1*1' — this is not what the code produces.\n❌ D — the executed trace above ends with '1*1*1' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '1*1*1', matching this option exactly. | ❌ B — does not match the verified output ('1*1*1'). | ❌ C — does not match the verified output ('1*1*1'). | ❌ D — does not match the verified output ('1*1*1').",
   "explsrc": "execution-verified"
  },
  {
@@ -575,7 +575,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • x = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000026ABDBE5A80>())\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000026ABDBE5A80>())\n  • x = x % y    →  x = 11 % 4 = 3\n  • x = x % y    →  x = 3 % 4 = 3\n  • y = y % x    →  y = 4 % 3 = 1\n  • print(y)    →  prints '1'\n  → output: '1'\n❌ B — the executed trace above ends with '1' — this is not what the code produces.\n❌ C — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '1'.\n❌ D — this value appears as an INTERMEDIATE state around step 5, but the program keeps running and ends at '1'.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '1', matching this option exactly. | ❌ B — does not match the verified output ('1'). | ❌ C — does not match the verified output ('1'). | ❌ D — does not match the verified output ('1').",
   "explsrc": "execution-verified"
  },
  {
@@ -592,7 +592,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • x = 1 / 2 + 3 // 3 + 4 ** 2    →  x = 1 / 2 + 3 // 3 + 4 ** 2 = 17.5\n  • print(x)    →  prints '17.5'\n  → output: '17.5'\n❌ B — the executed trace above ends with '17.5' — this is not what the code produces.\n❌ C — the executed trace above ends with '17.5' — this is not what the code produces.\n❌ D — the executed trace above ends with '17.5' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '17.5', matching this option exactly. | ❌ B — does not match the verified output ('17.5'). | ❌ C — does not match the verified output ('17.5'). | ❌ D — does not match the verified output ('17.5').",
   "explsrc": "execution-verified"
  },
  {
@@ -609,7 +609,7 @@
    0
   ],
   "concept": "Output & Strings",
-  "expl": "✅ A — walk through it line by line:\n  • x = input()\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000026ABDBE5EE0>())\n  • print(x * y)    →  prints '333333'\n  → output: '333333'\n❌ B — the executed trace above ends with '333333' — this is not what the code produces.\n❌ C — the executed trace above ends with '333333' — this is not what the code produces.\n❌ D — the executed trace above ends with '333333' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '333333', matching this option exactly. | ❌ B — does not match the verified output ('333333'). | ❌ C — does not match the verified output ('333333'). | ❌ D — does not match the verified output ('333333').",
   "explsrc": "execution-verified"
  },
  {
@@ -678,7 +678,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • x = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000026ABDBE60C0>())\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000026ABDBE60C0>())\n  • x = x / y    →  x = 2 / 4 = 0.5\n  • y = y / x    →  y = 4 / 0.5 = 8.0\n  • print(y)    →  prints '8.0'\n  → output: '8.0'\n❌ B — the executed trace above ends with '8.0' — this is not what the code produces.\n❌ C — the executed trace above ends with '8.0' — this is not what the code produces.\n❌ D — the executed trace above ends with '8.0' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '8.0', matching this option exactly. | ❌ B — does not match the verified output ('8.0'). | ❌ C — does not match the verified output ('8.0'). | ❌ D — does not match the verified output ('8.0').",
   "explsrc": "execution-verified"
  },
  {
@@ -712,7 +712,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • 1 / 1\n❌ B — does not match the traced execution.\n❌ C — does not match the traced execution.\n❌ D — does not match the traced execution.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '', matching this option exactly. | ❌ B — does not match the verified output (''). | ❌ C — does not match the verified output (''). | ❌ D — does not match the verified output ('').",
   "explsrc": "execution-verified"
  },
  {
@@ -729,7 +729,7 @@
    0
   ],
   "concept": "Output & Strings",
-  "expl": "✅ A — walk through it line by line:\n  • x = input()\n  • y = input()\n  • print(x + y)    →  prints '24'\n  → output: '24'\n❌ B — the executed trace above ends with '24' — this is not what the code produces.\n❌ C — the executed trace above ends with '24' — this is not what the code produces.\n❌ D — the executed trace above ends with '24' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '24', matching this option exactly. | ❌ B — does not match the verified output ('24'). | ❌ C — does not match the verified output ('24'). | ❌ D — does not match the verified output ('24').",
   "explsrc": "execution-verified"
  },
  {
@@ -746,7 +746,7 @@
    0
   ],
   "concept": "Output & Strings",
-  "expl": "✅ A — walk through it line by line:\n  • x = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000026ABDBE6660>())\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000026ABDBE6660>())\n  • print(x + y)    →  prints '6'\n  → output: '6'\n❌ B — the executed trace above ends with '6' — this is not what the code produces.\n❌ C — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '6'.\n❌ D — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '6'.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '6', matching this option exactly. | ❌ B — does not match the verified output ('6'). | ❌ C — does not match the verified output ('6'). | ❌ D — does not match the verified output ('6').",
   "explsrc": "execution-verified"
  },
  {
@@ -831,7 +831,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • 1 // 2 * 3\n❌ B — does not match the traced execution.\n❌ C — does not match the traced execution.\n❌ D — does not match the traced execution.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '<<EXC SyntaxError>>', matching this option exactly. | ❌ B — does not match the verified output ('<<EXC SyntaxError>>'). | ❌ C — does not match the verified output ('<<EXC SyntaxError>>'). | ❌ D — does not match the verified output ('<<EXC SyntaxError>>').",
   "explsrc": "execution-verified"
  },
  {
@@ -863,7 +863,7 @@
    0
   ],
   "concept": "Loops",
-  "expl": "✅ A — the loop ran 3 pass(es); here is each pass:\n  • pass 1: var 2 → becomes 0 → prints '*'\n  • pass 2: var 0 → becomes -2 → prints '*'\n  • pass 3: var -2 → becomes -2 → no print\n  → '*' was printed 2 time(s) total: '* *'\n  → that's why the answer is A (two '*').\n❌ B — the trace printed exactly 2 '*'; count them in the pass list above.\n❌ C — the trace printed exactly 2 '*'; count them in the pass list above.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '* | *', matching this option exactly. | ❌ B — does not match the verified output ('* | *'). | ❌ C — does not match the verified output ('* | *').",
   "explsrc": "execution-verified"
  },
  {
@@ -879,7 +879,7 @@
    0
   ],
   "concept": "Loops",
-  "expl": "✅ A — the loop ran 3 pass(es); here is each pass:\n  • pass 1: var None → becomes -1 → prints '#'\n  • pass 2: var -1 → becomes 0 → prints '#'\n  • pass 3: var 0 → becomes 0 → no print\n  → '#' was printed 2 time(s) total: '# #'\n  → that's why the answer is A (two '#').\n❌ B — the trace printed exactly 2 '#'; count them in the pass list above.\n❌ C — the trace printed exactly 2 '#'; count them in the pass list above.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '# | #', matching this option exactly. | ❌ B — does not match the verified output ('# | #'). | ❌ C — does not match the verified output ('# | #').",
   "explsrc": "execution-verified"
  },
  {
@@ -895,7 +895,7 @@
    0
   ],
   "concept": "Logic & Comparison",
-  "expl": "✅ A — walk through it line by line:\n  • z = 10    →  z = 10\n  • y = 0    →  y = 0\n  • x = z > y or z == y    →  x = 10 > 0 or 10 == 0 = True\n❌ B — does not match the traced execution.\n❌ C — does not match the traced execution.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '', matching this option exactly. | ❌ B — does not match the verified output (''). | ❌ C — does not match the verified output ('').",
   "explsrc": "execution-verified"
  },
  {
@@ -975,7 +975,7 @@
    0
   ],
   "concept": "Lists",
-  "expl": "✅ A — the loop ran 0 pass(es); here is each pass:\n  → '2' was printed 1 time(s) total: '2'\n  → that's why the answer is A (one '2').\n❌ B — tempting: that's the count of loop PASSES, not of printed symbols. The loop ran 0 times but printed only 1.\n❌ C — the trace printed exactly 1 '2'; count them in the pass list above.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '', matching this option exactly. | ❌ B — does not match the verified output (''). | ❌ C — does not match the verified output ('').",
   "explsrc": "execution-verified"
  },
  {
@@ -991,7 +991,7 @@
    0
   ],
   "concept": "Lists",
-  "expl": "✅ A — walk through it line by line:\n  • my_list = [0, 1, 2, 3]    →  my_list = [0, 1, 2, 3]\n  • x = 1    →  x = 1\n  • for elem in my_list:\n  • x *= elem    →  x = 1 * (0) = 0\n  • for elem in my_list:    →  elem = 0\n  • x *= elem    →  x = 0 * (1) = 0\n  • for elem in my_list:    →  elem = 1\n  • x *= elem    →  x = 0 * (2) = 0\n  • for elem in my_list:    →  elem = 2\n  • x *= elem    →  x = 0 * (3) = 0\n  • for elem in my_list:    →  elem = 3\n  • print(x)    →  prints '0'\n  → output: '0'\n❌ B — this value appears as an INTERMEDIATE state around step 7, but the program keeps running and ends at '0'.\n❌ C — the executed trace above ends with '0' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '0', matching this option exactly. | ❌ B — does not match the verified output ('0'). | ❌ C — does not match the verified output ('0').",
   "explsrc": "execution-verified"
  },
  {
@@ -1008,7 +1008,7 @@
    0
   ],
   "concept": "Lists",
-  "expl": "✅ A — walk through it line by line:\n  • my_list = [1, 2, 3]    →  my_list = [1, 2, 3]\n  • for v in range(len(my_list)):\n  • my_list.insert(1, my_list[v])    →  my_list becomes [1, 1, 2, 3]\n  • for v in range(len(my_list)):    →  v = 0\n  • my_list.insert(1, my_list[v])    →  my_list becomes [1, 1, 1, 2, 3]\n  • for v in range(len(my_list)):    →  v = 1\n  • my_list.insert(1, my_list[v])    →  my_list becomes [1, 1, 1, 1, 2, 3]\n  • for v in range(len(my_list)):    →  v = 2\n  • print(my_list)    →  prints '[1, 1, 1, 1, 2, 3]'\n  → output: '[1, 1, 1, 1, 2, 3]'\n❌ B — the executed trace above ends with '[1, 1, 1, 1, 2, 3]' — this is not what the code produces.\n❌ C — the executed trace above ends with '[1, 1, 1, 1, 2, 3]' — this is not what the code produces.\n❌ D — the executed trace above ends with '[1, 1, 1, 1, 2, 3]' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '[1, 1, 1, 1, 2, 3]', matching this option exactly. | ❌ B — does not match the verified output ('[1, 1, 1, 1, 2, 3]'). | ❌ C — does not match the verified output ('[1, 1, 1, 1, 2, 3]'). | ❌ D — does not match the verified output ('[1, 1, 1, 1, 2, 3]').",
   "explsrc": "execution-verified"
  },
  {
@@ -1025,7 +1025,7 @@
    0
   ],
   "concept": "Lists",
-  "expl": "✅ A — walk through it line by line:\n  • my_list = [3, 1, -2]    →  my_list = [3, 1, -2]\n  • print(my_list[my_list[-1]])    →  prints '1'\n  → output: '1'\n❌ B — the executed trace above ends with '1' — this is not what the code produces.\n❌ C — the executed trace above ends with '1' — this is not what the code produces.\n❌ D — the executed trace above ends with '1' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '1', matching this option exactly. | ❌ B — does not match the verified output ('1'). | ❌ C — does not match the verified output ('1'). | ❌ D — does not match the verified output ('1').",
   "explsrc": "execution-verified"
  },
  {
@@ -1059,7 +1059,7 @@
    0
   ],
   "concept": "Loops",
-  "expl": "✅ A — the loop ran 2 pass(es); here is each pass:\n  • pass 1: var None → becomes 0 → prints '#'\n  • pass 2: var 0 → becomes 0 → prints '#'\n  → '#' was printed 2 time(s) total: '# #'\n  → that's why the answer is A (two '#').\n❌ B — the trace printed exactly 2 '#'; count them in the pass list above.\n❌ C — the trace printed exactly 2 '#'; count them in the pass list above.\n❌ D — the trace printed exactly 2 '#'; count them in the pass list above.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '# | #', matching this option exactly. | ❌ B — does not match the verified output ('# | #'). | ❌ C — does not match the verified output ('# | #'). | ❌ D — does not match the verified output ('# | #').",
   "explsrc": "execution-verified"
  },
  {
@@ -1076,7 +1076,7 @@
    0
   ],
   "concept": "Loops",
-  "expl": "✅ A — the loop ran 7 pass(es); here is each pass:\n  • pass 1: var 0 → becomes 1 → prints '#'\n  • pass 2: var 1 → becomes 2 → skipped (continue/break), no print\n  • pass 3: var 2 → becomes 3 → prints '#'\n  • pass 4: var 3 → becomes 4 → skipped (continue/break), no print\n  • pass 5: var 4 → becomes 5 → prints '#'\n  • pass 6: var 5 → becomes 6 → skipped (continue/break), no print\n  • pass 7: var 6 → becomes 6 → no print\n  → '#' was printed 3 time(s) total: '# # #'\n  → that's why the answer is A (three '#').\n❌ B — the trace printed exactly 3 '#'; count them in the pass list above.\n❌ C — the trace printed exactly 3 '#'; count them in the pass list above.\n❌ D — the trace printed exactly 3 '#'; count them in the pass list above.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '# | # | #', matching this option exactly. | ❌ B — does not match the verified output ('# | # | #'). | ❌ C — does not match the verified output ('# | # | #'). | ❌ D — does not match the verified output ('# | # | #').",
   "explsrc": "execution-verified"
  },
  {
@@ -1110,7 +1110,7 @@
    0
   ],
   "concept": "Logic & Comparison",
-  "expl": "✅ A — walk through it line by line:\n  • z = 10    →  z = 10\n  • y = 0    →  y = 0\n  • x = y < z and z > y or y > z and z < y    →  x = 0 < 10 and 10 > 0 or 0 > 10 and 10 < 0 = True\n❌ B — does not match the traced execution.\n❌ C — does not match the traced execution.\n❌ D — does not match the traced execution.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '', matching this option exactly. | ❌ B — does not match the verified output (''). | ❌ C — does not match the verified output (''). | ❌ D — does not match the verified output ('').",
   "explsrc": "execution-verified"
  },
  {
@@ -1127,7 +1127,7 @@
    0
   ],
   "concept": "Lists",
-  "expl": "✅ A — walk through it line by line:\n  • my_list = [1, 2, 3, 4]    →  my_list = [1, 2, 3, 4]\n  • print(my_list[-3:-2])    →  prints '[2]'\n  → output: '[2]'\n❌ B — the executed trace above ends with '[2]' — this is not what the code produces.\n❌ C — the executed trace above ends with '[2]' — this is not what the code produces.\n❌ D — the executed trace above ends with '[2]' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '[2]', matching this option exactly. | ❌ B — does not match the verified output ('[2]'). | ❌ C — does not match the verified output ('[2]'). | ❌ D — does not match the verified output ('[2]').",
   "explsrc": "execution-verified"
  },
  {
@@ -1144,7 +1144,7 @@
    0
   ],
   "concept": "Loops",
-  "expl": "✅ A — the loop ran 5 pass(es); here is each pass:\n  • pass 1: var 1 → becomes 2 → prints '#'\n  • pass 2: var 2 → becomes 4 → prints '#'\n  • pass 3: var 4 → becomes 8 → prints '#'\n  • pass 4: var 8 → becomes 16 → prints '#'\n  • pass 5: var 16 → becomes 16 → no print\n  → '#' was printed 4 time(s) total: '# # # #'\n  → that's why the answer is A (four '#').\n❌ B — the trace printed exactly 4 '#'; count them in the pass list above.\n❌ C — the trace printed exactly 4 '#'; count them in the pass list above.\n❌ D — the trace printed exactly 4 '#'; count them in the pass list above.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '# | # | # | #', matching this option exactly. | ❌ B — does not match the verified output ('# | # | # | #'). | ❌ C — does not match the verified output ('# | # | # | #'). | ❌ D — does not match the verified output ('# | # | # | #').",
   "explsrc": "execution-verified"
  },
  {
@@ -1179,7 +1179,7 @@
    0
   ],
   "concept": "Lists",
-  "expl": "✅ A — the loop ran 0 pass(es); here is each pass:\n  → '3' was printed 1 time(s) total: '3'\n  → that's why the answer is A (one '3').\n❌ B — the trace printed exactly 1 '3'; count them in the pass list above.\n❌ C — the trace printed exactly 1 '3'; count them in the pass list above.\n❌ D — tempting: that's the count of loop PASSES, not of printed symbols. The loop ran 0 times but printed only 1.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '', matching this option exactly. | ❌ B — does not match the verified output (''). | ❌ C — does not match the verified output (''). | ❌ D — does not match the verified output ('').",
   "explsrc": "execution-verified"
  },
  {
@@ -1196,7 +1196,7 @@
    0
   ],
   "concept": "Lists",
-  "expl": "✅ A — walk through it line by line:\n  • my_list_1 = [1, 2, 3]    →  my_list_1 = [1, 2, 3]\n  • my_list_2 = []    →  my_list_2 = []\n  • for v in my_list_1:\n  • my_list_2.insert(0, v)    →  my_list_2 becomes [1]\n  • for v in my_list_1:    →  v = 1\n  • my_list_2.insert(0, v)    →  my_list_2 becomes [2, 1]\n  • for v in my_list_1:    →  v = 2\n  • my_list_2.insert(0, v)    →  my_list_2 becomes [3, 2, 1]\n  • for v in my_list_1:    →  v = 3\n  • print(my_list_2)    →  prints '[3, 2, 1]'\n  → output: '[3, 2, 1]'\n❌ B — the executed trace above ends with '[3, 2, 1]' — this is not what the code produces.\n❌ C — the executed trace above ends with '[3, 2, 1]' — this is not what the code produces.\n❌ D — the executed trace above ends with '[3, 2, 1]' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '[3, 2, 1]', matching this option exactly. | ❌ B — does not match the verified output ('[3, 2, 1]'). | ❌ C — does not match the verified output ('[3, 2, 1]'). | ❌ D — does not match the verified output ('[3, 2, 1]').",
   "explsrc": "execution-verified"
  },
  {
@@ -1213,7 +1213,7 @@
    0
   ],
   "concept": "Bitwise",
-  "expl": "✅ A — walk through it line by line:\n  • a = 1    →  a = 1\n  • b = 0    →  b = 0\n  • c = a & b    →  c = 1 & 0 = 0\n  • d = a | b    →  d = 1 | 0 = 1\n  • e = a ^ b    →  e = 1 ^ 0 = 1\n  • print(c + d + e)    →  prints '2'\n  → output: '2'\n❌ B — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '2'.\n❌ C — the executed trace above ends with '2' — this is not what the code produces.\n❌ D — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '2'.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '2', matching this option exactly. | ❌ B — does not match the verified output ('2'). | ❌ C — does not match the verified output ('2'). | ❌ D — does not match the verified output ('2').",
   "explsrc": "execution-verified"
  },
  {
@@ -1230,7 +1230,7 @@
    0
   ],
   "concept": "Loops",
-  "expl": "✅ A — the loop ran 2 pass(es); here is each pass:\n  • pass 1: var 0 → becomes 1 → prints '*'\n  • pass 2: var 1 → becomes 2 → skipped (continue/break), no print\n  → '*' was printed 1 time(s) total: '*'\n  → that's why the answer is A (one '*').\n❌ B — the trace printed exactly 1 '*'; count them in the pass list above.\n❌ C — the trace printed exactly 1 '*'; count them in the pass list above.\n❌ D — the trace printed exactly 1 '*'; count them in the pass list above.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '*', matching this option exactly. | ❌ B — does not match the verified output ('*'). | ❌ C — does not match the verified output ('*'). | ❌ D — does not match the verified output ('*').",
   "explsrc": "execution-verified"
  },
  {
@@ -1247,7 +1247,7 @@
    0
   ],
   "concept": "Loops",
-  "expl": "✅ A — the loop ran 3 pass(es); here is each pass:\n  • pass 1: var 0 → becomes 2 → prints '*'\n  • pass 2: var 2 → becomes 4 → prints '*'\n  • pass 3: var 4 → becomes 4 → no print\n  → '*' was printed 2 time(s) total: '* *'\n  → that's why the answer is A (two '*').\n❌ B — the trace printed exactly 2 '*'; count them in the pass list above.\n❌ C — the trace printed exactly 2 '*'; count them in the pass list above.\n❌ D — the trace printed exactly 2 '*'; count them in the pass list above.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '* | *', matching this option exactly. | ❌ B — does not match the verified output ('* | *'). | ❌ C — does not match the verified output ('* | *'). | ❌ D — does not match the verified output ('* | *').",
   "explsrc": "execution-verified"
  },
  {
@@ -1264,7 +1264,7 @@
    0
   ],
   "concept": "Logic & Comparison",
-  "expl": "✅ A — walk through it line by line:\n  • x = 1    →  x = 1\n  • x = x == x    →  x = 1 == 1 = True\n❌ B — does not match the traced execution.\n❌ C — does not match the traced execution.\n❌ D — does not match the traced execution.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '', matching this option exactly. | ❌ B — does not match the verified output (''). | ❌ C — does not match the verified output (''). | ❌ D — does not match the verified output ('').",
   "explsrc": "execution-verified"
  },
  {
@@ -1298,7 +1298,7 @@
    0
   ],
   "concept": "Lists",
-  "expl": "✅ A — walk through it line by line:\n  • t = [[3-i for i in range (3)] for j in range (3)]    →  t = [[3, 2, 1], [3, 2, 1], [3, 2, 1]]\n  • s = 0    →  s = 0\n  • for i in range(3):\n  • s += t[i][i]    →  s = 0 + ([[3, 2, 1], [3, 2, 1], [3, 2, 1]][0][0]) = 3\n  • for i in range(3):    →  i = 0\n  • s += t[i][i]    →  s = 3 + ([[3, 2, 1], [3, 2, 1], [3, 2, 1]][1][1]) = 5\n  • for i in range(3):    →  i = 1\n  • s += t[i][i]    →  s = 5 + ([[3, 2, 1], [3, 2, 1], [3, 2, 1]][2][2]) = 6\n  • for i in range(3):    →  i = 2\n  • print(s)    →  prints '6'\n  → output: '6'\n❌ B — the executed trace above ends with '6' — this is not what the code produces.\n❌ C — the executed trace above ends with '6' — this is not what the code produces.\n❌ D — the executed trace above ends with '6' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '6', matching this option exactly. | ❌ B — does not match the verified output ('6'). | ❌ C — does not match the verified output ('6'). | ❌ D — does not match the verified output ('6').",
   "explsrc": "execution-verified"
  },
  {
@@ -1494,7 +1494,7 @@
    0
   ],
   "concept": "Tuples",
-  "expl": "✅ A — walk through it line by line:\n  • tup = (1, ) + (1, )    →  tup = (1, ) + (1, ) = (1, 1)\n  • tup = tup + tup    →  tup = (1, 1) + (1, 1) = (1, 1, 1, 1)\n  • print(len(tup))    →  prints '4'\n  → output: '4'\n❌ B — the executed trace above ends with '4' — this is not what the code produces.\n❌ C — the executed trace above ends with '4' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '4', matching this option exactly. | ❌ B — does not match the verified output ('4'). | ❌ C — does not match the verified output ('4').",
   "explsrc": "execution-verified"
  },
  {
@@ -1545,7 +1545,7 @@
    0
   ],
   "concept": "Dictionaries",
-  "expl": "✅ A — walk through it line by line:\n  • dictionary = {'one': 'two', 'three': 'one', 'two': 'three'}    →  dictionary = {'one': 'two', 'three': 'one', 'two': 'three'}\n  • v = dictionary['one']    →  v = {'one': 'two', 'three': 'one', 'two': 'three'}['one'] = 'two'\n  • for k in range(len(dictionary)):\n  • v = dictionary[v]    →  v = {'one': 'two', 'three': 'one', 'two': 'three'}['two'] = 'three'\n  • for k in range(len(dictionary)):    →  k = 0\n  • v = dictionary[v]    →  v = {'one': 'two', 'three': 'one', 'two': 'three'}['three'] = 'one'\n  • for k in range(len(dictionary)):    →  k = 1\n  • v = dictionary[v]    →  v = {'one': 'two', 'three': 'one', 'two': 'three'}['one'] = 'two'\n  • for k in range(len(dictionary)):    →  k = 2\n  • print(v)    →  prints 'two'\n  → output: 'two'\n❌ B — the executed trace above ends with 'two' — this is not what the code produces.\n❌ C — the executed trace above ends with 'two' — this is not what the code produces.\n❌ D — the executed trace above ends with 'two' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is 'two', matching this option exactly. | ❌ B — does not match the verified output ('two'). | ❌ C — does not match the verified output ('two'). | ❌ D — does not match the verified output ('two').",
   "explsrc": "execution-verified"
  },
  {
@@ -1647,7 +1647,7 @@
    0
   ],
   "concept": "Functions",
-  "expl": "✅ A — walk through it line by line:\n  • def any():\n  • var = 1    →  var = 1\n  • any()\n  • [in any()] print(var + 1, end='')    →  prints '21'\n  • print(var)    →  prints ''\n  → output: '21'\n❌ B — the executed trace above ends with '21' — this is not what the code produces.\n❌ C — the executed trace above ends with '21' — this is not what the code produces.\n❌ D — the executed trace above ends with '21' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '21', matching this option exactly. | ❌ B — does not match the verified output ('21'). | ❌ C — does not match the verified output ('21'). | ❌ D — does not match the verified output ('21').",
   "explsrc": "execution-verified"
  },
  {
@@ -1664,7 +1664,7 @@
    0
   ],
   "concept": "Variables & Types",
-  "expl": "✅ A — walk through it line by line:\n  • def fun(x):\n  • x = 2    →  x = 2\n  • x = fun(x + 1)    →  x = <function fun at 0x0000026ABE031B20>(2 + 1) = 4\n  • [in fun()] x += 1    →  x = 3 + (1) = 4\n  • [in fun()] return x    →  returns 4\n  • print(x)    →  prints '4'\n  → output: '4'\n❌ B — the executed trace above ends with '4' — this is not what the code produces.\n❌ C — this value appears as an INTERMEDIATE state around step 4, but the program keeps running and ends at '4'.\n❌ D — the executed trace above ends with '4' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '4', matching this option exactly. | ❌ B — does not match the verified output ('4'). | ❌ C — does not match the verified output ('4'). | ❌ D — does not match the verified output ('4').",
   "explsrc": "execution-verified"
  },
  {
@@ -1681,7 +1681,7 @@
    0
   ],
   "concept": "Functions",
-  "expl": "✅ A — walk through it line by line:\n  • def func_1(a):\n  • def func_2(a):\n  • print(func_2(2))    →  prints '16'\n  • [in func_2()] return func_1(a) * func_1(a)    →  returns func_1(2) * func_1(2)\n  • [in func_1()] return a ** a    →  returns 2 ** 2\n  → output: '16'\n❌ B — the executed trace above ends with '16' — this is not what the code produces.\n❌ C — the executed trace above ends with '16' — this is not what the code produces.\n❌ D — the executed trace above ends with '16' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '16', matching this option exactly. | ❌ B — does not match the verified output ('16'). | ❌ C — does not match the verified output ('16'). | ❌ D — does not match the verified output ('16').",
   "explsrc": "execution-verified"
  },
  {
@@ -1715,7 +1715,7 @@
    0
   ],
   "concept": "Functions",
-  "expl": "✅ A — walk through it line by line:\n  • def fun(x, y, z):\n  • print(fun(0, z=1, y=3))    →  prints '9'\n  • [in fun()] return x + 2 * y + 3 * z    →  returns 0 + 2 * 3 + 3 * 1\n  → output: '9'\n❌ B — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '9'.\n❌ C — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '9'.\n❌ D — the executed trace above ends with '9' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '9', matching this option exactly. | ❌ B — does not match the verified output ('9'). | ❌ C — does not match the verified output ('9'). | ❌ D — does not match the verified output ('9').",
   "explsrc": "execution-verified"
  },
  {
@@ -1767,7 +1767,7 @@
    0
   ],
   "concept": "Variables & Types",
-  "expl": "✅ A — walk through it line by line:\n  • def fun(x):\n  • fun(2)\n  • [in fun()] y = x * x    →  y = 2 * 2 = 4\n  • [in fun()] return y    →  returns y\n  • print(y)    →  prints '4'\n  → output: '4'\n❌ B — this value appears as an INTERMEDIATE state around step 4, but the program keeps running and ends at '4'.\n❌ C — the executed trace above ends with '4' — this is not what the code produces.\n❌ D — the executed trace above ends with '4' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '4', matching this option exactly. | ❌ B — does not match the verified output ('4'). | ❌ C — does not match the verified output ('4'). | ❌ D — does not match the verified output ('4').",
   "explsrc": "execution-verified"
  },
  {
@@ -1835,7 +1835,7 @@
    0
   ],
   "concept": "Functions",
-  "expl": "✅ A — walk through it line by line:\n  • def f(x):\n  • print(f(3))    →  prints '6'\n  • [in f()] if x == 0:    →  checks 3 == 0\n  • [in f()] return x + f(x - 1)    →  returns 3 + f(3 - 1)\n  • [in f()] if x == 0:    →  checks 2 == 0\n  • [in f()] return x + f(x - 1)    →  returns 2 + f(2 - 1)\n  • [in f()] if x == 0:    →  checks 1 == 0\n  • [in f()] return x + f(x - 1)    →  returns 1 + f(1 - 1)\n  • [in f()] if x == 0:    →  checks 0 == 0\n  • [in f()] return 0    →  returns 0\n  → output: '6'\n❌ B — this value appears as an INTERMEDIATE state around step 4, but the program keeps running and ends at '6'.\n❌ C — this value appears as an INTERMEDIATE state around step 8, but the program keeps running and ends at '6'.\n❌ D — the executed trace above ends with '6' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '6', matching this option exactly. | ❌ B — does not match the verified output ('6'). | ❌ C — does not match the verified output ('6'). | ❌ D — does not match the verified output ('6').",
   "explsrc": "execution-verified"
  },
  {
@@ -1870,7 +1870,7 @@
    0
   ],
   "concept": "Tuples",
-  "expl": "✅ A — walk through it line by line:\n  • tup = (1, 2, 4, 8)    →  tup = (1, 2, 4, 8)\n  • tup = tup[1:-1]    →  tup = (1, 2, 4, 8)[1:-1] = (2, 4)\n  • tup = tup[0]    →  tup = (2, 4)[0] = 2\n  • print(tup)    →  prints '2'\n  → output: '2'\n❌ B — the executed trace above ends with '2' — this is not what the code produces.\n❌ C — the executed trace above ends with '2' — this is not what the code produces.\n❌ D — the executed trace above ends with '2' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '2', matching this option exactly. | ❌ B — does not match the verified output ('2'). | ❌ C — does not match the verified output ('2'). | ❌ D — does not match the verified output ('2').",
   "explsrc": "execution-verified"
  },
  {
@@ -1887,7 +1887,7 @@
    0
   ],
   "concept": "Functions",
-  "expl": "✅ A — walk through it line by line:\n  • def fun(inp=2, out=3):\n  • print(fun(out=2))    →  prints '4'\n  • [in fun()] return inp * out    →  returns 2 * 2\n  → output: '4'\n❌ B — the executed trace above ends with '4' — this is not what the code produces.\n❌ C — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '4'.\n❌ D — the executed trace above ends with '4' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '4', matching this option exactly. | ❌ B — does not match the verified output ('4'). | ❌ C — does not match the verified output ('4'). | ❌ D — does not match the verified output ('4').",
   "explsrc": "execution-verified"
  },
  {
@@ -1922,7 +1922,7 @@
    0
   ],
   "concept": "Lists",
-  "expl": "✅ A — walk through it line by line:\n  • my_list =  [x * x for x in range(5)]    →  my_list = [0, 1, 4, 9, 16]\n  • def fun(lst):\n  • print(fun(my_list))    →  prints '[0, 1, 4, 9]'\n  • [in fun()] del lst[lst[2]]    →  lst becomes [0, 1, 4, 9]\n  • [in fun()] return lst    →  returns [0, 1, 4, 9]\n  → output: '[0, 1, 4, 9]'\n❌ B — the executed trace above ends with '[0, 1, 4, 9]' — this is not what the code produces.\n❌ C — the executed trace above ends with '[0, 1, 4, 9]' — this is not what the code produces.\n❌ D — the executed trace above ends with '[0, 1, 4, 9]' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '[0, 1, 4, 9]', matching this option exactly. | ❌ B — does not match the verified output ('[0, 1, 4, 9]'). | ❌ C — does not match the verified output ('[0, 1, 4, 9]'). | ❌ D — does not match the verified output ('[0, 1, 4, 9]').",
   "explsrc": "execution-verified"
  },
  {
@@ -1975,7 +1975,7 @@
    0
   ],
   "concept": "Functions",
-  "expl": "✅ A — walk through it line by line:\n  • def fun(x, y):\n  • print(fun(0, 3))    →  prints '0'\n  • [in fun()] if x == y:    →  checks 0 == 3\n  • [in fun()] return fun(x, y-1)    →  returns fun(0, 3-1)\n  • [in fun()] if x == y:    →  checks 0 == 2\n  • [in fun()] return fun(x, y-1)    →  returns fun(0, 2-1)\n  • [in fun()] if x == y:    →  checks 0 == 1\n  • [in fun()] return fun(x, y-1)    →  returns fun(0, 1-1)\n  • [in fun()] if x == y:    →  checks 0 == 0\n  • [in fun()] return x    →  returns 0\n  → output: '0'\n❌ B — this value appears as an INTERMEDIATE state around step 8, but the program keeps running and ends at '0'.\n❌ C — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '0'.\n❌ D — the executed trace above ends with '0' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '0', matching this option exactly. | ❌ B — does not match the verified output ('0'). | ❌ C — does not match the verified output ('0'). | ❌ D — does not match the verified output ('0').",
   "explsrc": "execution-verified"
  },
  {
@@ -1992,7 +1992,7 @@
    0
   ],
   "concept": "Output & Strings",
-  "expl": "✅ A — walk through it line by line:\n  • y = input()\n  • x = input()\n  • print(x + y)    →  prints '63'\n  → output: '63'\n❌ B — the executed trace above ends with '63' — this is not what the code produces.\n❌ C — the executed trace above ends with '63' — this is not what the code produces.\n❌ D — the executed trace above ends with '63' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '63', matching this option exactly. | ❌ B — does not match the verified output ('63'). | ❌ C — does not match the verified output ('63'). | ❌ D — does not match the verified output ('63').",
   "explsrc": "execution-verified"
  },
  {
@@ -2063,7 +2063,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • x = float(input())    →  float(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000026ABE033240>())\n  • y = float(input())    →  float(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000026ABE033240>())\n  • print(y ** (1 / x))    →  prints '2.0'\n  → output: '2.0'\n❌ B — the executed trace above ends with '2.0' — this is not what the code produces.\n❌ C — the executed trace above ends with '2.0' — this is not what the code produces.\n❌ D — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '2.0'.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '2.0', matching this option exactly. | ❌ B — does not match the verified output ('2.0'). | ❌ C — does not match the verified output ('2.0'). | ❌ D — does not match the verified output ('2.0').",
   "explsrc": "execution-verified"
  },
  {
@@ -2080,7 +2080,7 @@
    0
   ],
   "concept": "Lists",
-  "expl": "✅ A — the loop ran 0 pass(es); here is each pass:\n  → '0' was printed 1 time(s) total: '0'\n  → that's why the answer is A (one '0').\n❌ B — tempting: that's the count of loop PASSES, not of printed symbols. The loop ran 0 times but printed only 1.\n❌ C — the trace printed exactly 1 '0'; count them in the pass list above.\n❌ D — the trace printed exactly 1 '0'; count them in the pass list above.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '', matching this option exactly. | ❌ B — does not match the verified output (''). | ❌ C — does not match the verified output (''). | ❌ D — does not match the verified output ('').",
   "explsrc": "execution-verified"
  },
  {
@@ -2168,7 +2168,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • 1 // 5 + 1 / 5\n❌ B — does not match the traced execution.\n❌ C — does not match the traced execution.\n❌ D — does not match the traced execution.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '0.2', matching this option exactly. | ❌ B — does not match the verified output ('0.2'). | ❌ C — does not match the verified output ('0.2'). | ❌ D — does not match the verified output ('0.2').",
   "explsrc": "execution-verified"
  },
  {
@@ -2220,7 +2220,7 @@
    0
   ],
   "concept": "Lists",
-  "expl": "✅ A — the loop ran 16 pass(es); here is each pass:\n  • pass 1: var None → becomes None → no print\n  • pass 2: var None → becomes 0 → no print\n  • pass 3: var 0 → becomes 1 → prints '#'\n  • pass 4: var 1 → becomes 2 → no print\n  • pass 5: var 2 → becomes None → no print\n  • pass 6: var None → becomes 2 → no print\n  • pass 7: var 2 → becomes 0 → no print\n  • pass 8: var 0 → becomes 1 → prints '#'\n  • pass 9: var 1 → becomes 2 → no print\n  • pass 10: var 2 → becomes None → no print\n  • pass 11: var None → becomes 2 → no print\n  • pass 12: var 2 → becomes 0 → no print\n  • pass 13: var 0 → becomes 1 → prints '#'\n  • pass 14: var 1 → becomes 2 → no print\n  • pass 15: var 2 → becomes None → no print\n  • pass 16: var None → becomes None → no print\n  → '#' was printed 3 time(s) total: '# # #'\n  → that's why the answer is A (three '#').\n❌ B — the trace printed exactly 3 '#'; count them in the pass list above.\n❌ C — the trace printed exactly 3 '#'; count them in the pass list above.\n❌ D — the trace printed exactly 3 '#'; count them in the pass list above.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '# | # | #', matching this option exactly. | ❌ B — does not match the verified output ('# | # | #'). | ❌ C — does not match the verified output ('# | # | #'). | ❌ D — does not match the verified output ('# | # | #').",
   "explsrc": "execution-verified"
  },
  {
@@ -2237,7 +2237,7 @@
    0
   ],
   "concept": "Dictionaries",
-  "expl": "✅ A — walk through it line by line:\n  • dct = {}    →  dct = {}\n  • dct['1'] = (1, 2)\n  • dct['2'] = (2, 1)\n  • for x in dct.keys():\n  • print(dct[x][1], end=\"\")    →  prints '21'\n  • for x in dct.keys():    →  x = '1'\n  • for x in dct.keys():    →  x = '2'\n  → output: '21'\n❌ B — the executed trace above ends with '21' — this is not what the code produces.\n❌ C — the executed trace above ends with '21' — this is not what the code produces.\n❌ D — the executed trace above ends with '21' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '21', matching this option exactly. | ❌ B — does not match the verified output ('21'). | ❌ C — does not match the verified output ('21'). | ❌ D — does not match the verified output ('21').",
   "explsrc": "execution-verified"
  },
  {
@@ -2254,7 +2254,7 @@
    0
   ],
   "concept": "Variables & Types",
-  "expl": "✅ A — walk through it line by line:\n  • x = 1    →  x = 1\n  • y = 2    →  y = 2\n  • x, y, z = x, x, y\n  • z, y, z = x, y, z\n  • print(x, y, z)    →  prints '1 1 2'\n  → output: '1 1 2'\n❌ B — the executed trace above ends with '1 1 2' — this is not what the code produces.\n❌ C — the executed trace above ends with '1 1 2' — this is not what the code produces.\n❌ D — the executed trace above ends with '1 1 2' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '1 1 2', matching this option exactly. | ❌ B — does not match the verified output ('1 1 2'). | ❌ C — does not match the verified output ('1 1 2'). | ❌ D — does not match the verified output ('1 1 2').",
   "explsrc": "execution-verified"
  },
  {
@@ -2288,7 +2288,7 @@
    0
   ],
   "concept": "Tuples",
-  "expl": "✅ A — walk through it line by line:\n  • tup = (1, 2, 4, 8)    →  tup = (1, 2, 4, 8)\n  • tup = tup[-2:-1]    →  tup = (1, 2, 4, 8)[-2:-1] = (4,)\n  • tup = tup[-1]    →  tup = (4,)[-1] = 4\n  • print(tup)    →  prints '4'\n  → output: '4'\n❌ B — the executed trace above ends with '4' — this is not what the code produces.\n❌ C — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '4'.\n❌ D — the executed trace above ends with '4' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '4', matching this option exactly. | ❌ B — does not match the verified output ('4'). | ❌ C — does not match the verified output ('4'). | ❌ D — does not match the verified output ('4').",
   "explsrc": "execution-verified"
  },
  {
@@ -2305,7 +2305,7 @@
    0
   ],
   "concept": "Bitwise",
-  "expl": "✅ A — walk through it line by line:\n  • a = 1    →  a = 1\n  • b = 0    →  b = 0\n  • a = a ^ b    →  a = 1 ^ 0 = 1\n  • b = a ^ b    →  b = 1 ^ 0 = 1\n  • a = a ^ b    →  a = 1 ^ 1 = 0\n  • print(a, b)    →  prints '0 1'\n  → output: '0 1'\n❌ B — the executed trace above ends with '0 1' — this is not what the code produces.\n❌ C — the executed trace above ends with '0 1' — this is not what the code produces.\n❌ D — the executed trace above ends with '0 1' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '0 1', matching this option exactly. | ❌ B — does not match the verified output ('0 1'). | ❌ C — does not match the verified output ('0 1'). | ❌ D — does not match the verified output ('0 1').",
   "explsrc": "execution-verified"
  },
  {
@@ -2357,7 +2357,7 @@
    0
   ],
   "concept": "Output & Strings",
-  "expl": "✅ A — walk through it line by line:\n  • print(\"a\", \"b\", \"c\", sep=\"sep\")    →  prints 'asepbsepc'\n  → output: 'asepbsepc'\n❌ B — the executed trace above ends with 'asepbsepc' — this is not what the code produces.\n❌ C — the executed trace above ends with 'asepbsepc' — this is not what the code produces.\n❌ D — the executed trace above ends with 'asepbsepc' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is 'asepbsepc', matching this option exactly. | ❌ B — does not match the verified output ('asepbsepc'). | ❌ C — does not match the verified output ('asepbsepc'). | ❌ D — does not match the verified output ('asepbsepc').",
   "explsrc": "execution-verified"
  },
  {
@@ -2391,7 +2391,7 @@
    0
   ],
   "concept": "Logic & Comparison",
-  "expl": "✅ A — walk through it line by line:\n  • z = 0    →  z = 0\n  • y = 10    →  y = 10\n  • x = y < z and z > y or y > z and z < y    →  x = 10 < 0 and 0 > 10 or 10 > 0 and 0 < 10 = True\n❌ B — does not match the traced execution.\n❌ C — does not match the traced execution.\n❌ D — does not match the traced execution.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '', matching this option exactly. | ❌ B — does not match the verified output (''). | ❌ C — does not match the verified output (''). | ❌ D — does not match the verified output ('').",
   "explsrc": "execution-verified"
  },
  {
@@ -2408,7 +2408,7 @@
    2
   ],
   "concept": "Lists",
-  "expl": "✅ C — walk through it line by line:\n  • my_list = [1, 2]    →  my_list = [1, 2]\n  • for v in range(2):\n  • my_list.insert(-1, my_list[v])    →  my_list becomes [1, 1, 2]\n  • for v in range(2):    →  v = 0\n  • my_list.insert(-1, my_list[v])    →  my_list becomes [1, 1, 1, 2]\n  • for v in range(2):    →  v = 1\n  • print(my_list)    →  prints '[1, 1, 1, 2]'\n  → output: '[1, 1, 1, 2]'\n❌ A — the executed trace above ends with '[1, 1, 1, 2]' — this is not what the code produces.\n❌ B — the executed trace above ends with '[1, 1, 1, 2]' — this is not what the code produces.\n❌ D — the executed trace above ends with '[1, 1, 1, 2]' — this is not what the code produces.",
+  "expl": "✅ C — live-verified by executing the snippet: actual output is '[1, 1, 1, 2]', matching this option exactly. | ❌ A — does not match the verified output ('[1, 1, 1, 2]'). | ❌ B — does not match the verified output ('[1, 1, 1, 2]'). | ❌ D — does not match the verified output ('[1, 1, 1, 2]').",
   "explsrc": "execution-verified"
  },
  {
@@ -2443,7 +2443,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • x = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000026ABDBE71A0>())\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000026ABDBE71A0>())\n  • x = x % y    →  x = 3 % 2 = 1\n  • x = x % y    →  x = 1 % 2 = 1\n  • y = y % x    →  y = 2 % 1 = 0\n  • print(y)    →  prints '0'\n  → output: '0'\n❌ B — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '0'.\n❌ C — this value appears as an INTERMEDIATE state around step 5, but the program keeps running and ends at '0'.\n❌ D — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '0'.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '0', matching this option exactly. | ❌ B — does not match the verified output ('0'). | ❌ C — does not match the verified output ('0'). | ❌ D — does not match the verified output ('0').",
   "explsrc": "execution-verified"
  },
  {
@@ -2460,7 +2460,7 @@
    0
   ],
   "concept": "Dictionaries",
-  "expl": "✅ A — walk through it line by line:\n  • dct = {'one': 'two', 'three': 'one', 'two': 'three'}    →  dct = {'one': 'two', 'three': 'one', 'two': 'three'}\n  • v = dct['three']    →  v = {'one': 'two', 'three': 'one', 'two': 'three'}['three'] = 'one'\n  • for k in range(len(dct)):\n  • v = dct[v]    →  v = {'one': 'two', 'three': 'one', 'two': 'three'}['one'] = 'two'\n  • for k in range(len(dct)):    →  k = 0\n  • v = dct[v]    →  v = {'one': 'two', 'three': 'one', 'two': 'three'}['two'] = 'three'\n  • for k in range(len(dct)):    →  k = 1\n  • v = dct[v]    →  v = {'one': 'two', 'three': 'one', 'two': 'three'}['three'] = 'one'\n  • for k in range(len(dct)):    →  k = 2\n  • print(v)    →  prints 'one'\n  → output: 'one'\n❌ B — the executed trace above ends with 'one' — this is not what the code produces.\n❌ C — the executed trace above ends with 'one' — this is not what the code produces.\n❌ D — the executed trace above ends with 'one' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is 'one', matching this option exactly. | ❌ B — does not match the verified output ('one'). | ❌ C — does not match the verified output ('one'). | ❌ D — does not match the verified output ('one').",
   "explsrc": "execution-verified"
  },
  {
@@ -2477,7 +2477,7 @@
    0
   ],
   "concept": "Functions",
-  "expl": "✅ A — walk through it line by line:\n  • def fun(x):\n  • print(fun(fun(2)))    →  prints '2'\n  • [in fun()] if x % 2 == 0:    →  checks 2 % 2 == 0\n  • [in fun()] return 1    →  returns 1\n  • [in fun()] if x % 2 == 0:    →  checks 1 % 2 == 0\n  • [in fun()] return 2    →  returns 2\n  → output: '2'\n❌ B — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '2'.\n❌ C — the executed trace above ends with '2' — this is not what the code produces.\n❌ D — the executed trace above ends with '2' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '2', matching this option exactly. | ❌ B — does not match the verified output ('2'). | ❌ C — does not match the verified output ('2'). | ❌ D — does not match the verified output ('2').",
   "explsrc": "execution-verified"
  },
  {
@@ -2494,7 +2494,7 @@
    0
   ],
   "concept": "Functions",
-  "expl": "✅ A — walk through it line by line:\n  • def fun(inp=2, out=3):\n  • print(fun(out=2))    →  prints '4'\n  • [in fun()] return inp * out    →  returns 2 * 2\n  → output: '4'\n❌ B — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '4'.\n❌ C — the executed trace above ends with '4' — this is not what the code produces.\n❌ D — the executed trace above ends with '4' — this is not what the code produces.",
+  "expl": "✅ A — live-verified by executing the snippet: actual output is '4', matching this option exactly. | ❌ B — does not match the verified output ('4'). | ❌ C — does not match the verified output ('4'). | ❌ D — does not match the verified output ('4').",
   "explsrc": "execution-verified"
  }
 ]

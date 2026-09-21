@@ -7,8 +7,8 @@ raw data → passed PCEP certification exam in 30 days or less.
 train to **> 90% knowledge** through repeated, targeted run-throughs that cement
 the right answers.
 
-**Status: OPERATIONAL.** 148-question verified bank · every answer dual-validated ·
-every question explained · 37/37 functional regression tests green.
+**Status: OPERATIONAL.** 148-question verified bank · 100-card PCEP-only flashcard
+deck · every answer dual-validated · 50/50 functional regression tests green.
 
 ---
 
@@ -27,7 +27,7 @@ browser (localStorage).
 | 🎯 Blank-Spot Drill (algorithmic) | Questions the engine flagged: accuracy < 70% or any miss |
 | ⚑ Flagged Drill (your blind spots) | Every question YOU ticked with the ⚑ checkbox |
 | ☑ Multi-Select Focus | The 14 "Select two answers" questions — the classic PCEP trap |
-| 🃏 Flashcard Drill | 138 open-ended KimWynne class cards (reveal, know/again, re-queue) |
+| 🃏 Flashcard Drill | 100 PCEP-only cards mapped to official PCEP-30-02 objectives (reveal, know/again, re-queue) |
 | 📊 Statistics & Blind-Spot Analysis | Per-question + per-concept accuracy, run history, 90% readiness |
 
 ## Answer quality engine
@@ -42,6 +42,18 @@ browser (localStorage).
 - **Concept analysis** — all 148 questions tagged into 12 concepts (Lists,
   Functions, Operators & Math, Exceptions, …), each scored and statused:
   BLANK SPOT / WEAK / SOLID / UNSEEN.
+
+## Flashcard deck (PCEP-only)
+
+- **100 cards**, 25 per official PCEP-30-02 block: Python fundamentals, control
+  flow, data collections, and functions/exceptions.[1]
+- Every card carries its objective ID, topic, source URL, and verification
+  status, so an off-scope or unverified card cannot hide in the deck.
+- Code cards are executed in an isolated subprocess by `build_flashcards_v2.py`;
+  the build fails if any expected output or exception does not match.
+- Non-PCEP material (SciPy, pandas, NumPy, data science, CSV tooling) is
+  rejected by the deck validator and is not present in the shipped deck.
+- Practice cross-reference: the w3resource PCEP preparation guide.[2]
 
 ## Answer key integrity (dual validation)
 
@@ -80,7 +92,8 @@ PCEP_exam_prep/
 ├── practice.html           # the trainer app (open in browser)
 ├── bank.js                 # question bank + answers + explanations + flashcards (file://-safe)
 ├── pcep_bank.json          # same data, JSON form
-├── flashcards.json         # 138 KimWynne open-ended class Q&A cards
+├── flashcards.json         # 100 PCEP-only cards with objective + source metadata
+├── build_flashcards_v2.py  # flashcard deck builder + validator (executes code cards)
 ├── start_practice.bat      # double-click launcher
 ├── verify_snippets.py      # pass-1 answer verification harness
 ├── validate2.py            # pass-2 independent dual-validation harness
@@ -90,7 +103,7 @@ PCEP_exam_prep/
 ├── bank_raw.json           # intermediate: deduped bank before keying
 ├── exec_results.json       # pass-1 recorded outputs
 ├── exec_answers_pass2.json # pass-2 exec-derived answer indices
-├── test_practice.js        # headless functional regression suite (37 checks)
+├── test_practice.js        # headless functional regression suite (50 checks)
 ├── raw_data/               # untouched original NTAI exports (10 files)
 ├── conductor/conductor.md  # 7D Conductor: product definition, state, tracks
 └── CHANGELOG.md
@@ -101,10 +114,16 @@ PCEP_exam_prep/
 1. Add/drop exports in `raw_data/`, regenerate the raw bank (extraction preserves
    `<code class="codep">` blocks for indentation fidelity)
 2. `python build_bank_v2.py` — fails loudly if any question lacks key or explanation
-3. Rebuild `bank.js` from `pcep_bank.json`
+3. `python build_flashcards_v2.py` — validates the 100-card PCEP-only deck and
+   rebuilds both `flashcards.json` and `bank.js`
 4. `python validate2.py` — must report 0 mismatches
 5. `node test_practice.js` — must report all tests passed
 
 ---
 
 *"All hard work brings a profit, but mere talk leads only to poverty." — Proverbs 14:23*
+
+## Sources
+
+[1] https://pythoninstitute.org/pcep-exam-syllabus — Python Institute PCEP-30-02 exam syllabus
+[2] https://www.w3resource.com/python/certificate/index.php — w3resource PCEP certification preparation guide

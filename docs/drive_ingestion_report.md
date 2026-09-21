@@ -19,7 +19,11 @@ Window: last 2 years (2024-09 → present). 2022 material excluded.
 - **340+ parsed TestInvitation questions — 100% duplicates of the existing
   library.** The 2024–2026 exports all draw from the same PE1 question pool.
   Zero new MCQs; zero lost. The 148-question bank remains complete.
-- **138 flashcards** (KimWynne open-ended Q&A) → new Flashcard Drill mode.
+- **138 flashcards** (KimWynne open-ended Q&A) were initially imported as a
+  Flashcard Drill. **Retired 2026-09-20:** the deck mixed SciPy/data-science
+  material with Python basics and had no objective mapping. Replaced by a
+  **100-card PCEP-only deck** mapped to the official PCEP-30-02 syllabus and
+  validated by `build_flashcards_v2.py` (see `docs/flashcard_rebuild_report.md`).
 - **EDU answer-key cross-check** (third validation signal):
   - 6 agree with our key.
   - 2 disagree — both are EDU-file errors on the print-quotes question

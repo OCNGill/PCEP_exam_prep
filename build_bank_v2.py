@@ -190,6 +190,8 @@ def main():
     concepts = sorted(set(o["concept"] for o in out))
     json.dump(out, open(os.path.join(HERE, "pcep_bank.json"), "w", encoding="utf-8"), indent=1, ensure_ascii=False)
     print(f"pcep_bank.json: {len(out)} questions | {ev} execution-verified | {len(out)-ev} expert-reviewed | {multi} multi-select")
+    print("NOTE: this rebuild RESETS execution-verified explanations to fallback text —")
+    print("      ALWAYS run `python regen_walkthroughs.py` next, then `python build_flashcards_v2.py` (bank.js).")
     print(f"concepts ({len(concepts)}): " + ", ".join(f"{c} ({sum(1 for o in out if o['concept']==c)})" for c in concepts))
     return 0
 

@@ -8,7 +8,7 @@ train to **> 90% knowledge** through repeated, targeted run-throughs that cement
 the right answers.
 
 **Status: OPERATIONAL.** 148-question verified bank · 100-card PCEP-only flashcard
-deck · every answer dual-validated · 50/50 functional regression tests green.
+deck · every answer dual-validated · 68/68 functional regression tests green.
 
 ---
 
@@ -29,6 +29,11 @@ browser (localStorage).
 | ☑ Multi-Select Focus | The 14 "Select two answers" questions — the classic PCEP trap |
 | 🃏 Flashcard Drill | 100 PCEP-only cards mapped to official PCEP-30-02 objectives (reveal, know/again, re-queue) |
 | 📊 Statistics & Blind-Spot Analysis | Per-question + per-concept accuracy, run history, 90% readiness |
+| 📈 Blind-spot trends (Home) | Run-accuracy sparkline, momentum (last 20 vs prior 20), concept drift (⚠ worsening / ✓ improving), newly-blind question count |
+| ▶️ Continue / 🔁 Restart (Home) | Drills persist after every answer — kill the tab, reopen, and continue at the exact question, order and answers you left |
+
+**Universal nav:** a 🏠 Home button sits on every screen (quiz, flashcards,
+results, statistics). Exam-sim abandonment still asks for confirmation.
 
 ## Answer quality engine
 
@@ -36,7 +41,9 @@ browser (localStorage).
   doubt. Flagged questions aggregate into concept-level blind spots and get
   their own drill. Your perception + the algorithm, combined.
 - **▼ Explain** — every question has an expandable explanation covering the
-  correct answer AND each wrong option.
+  correct answer AND each wrong option. Code questions get a line-by-line
+  execution walkthrough with WHY annotations (operator semantics, lengths
+  adding, type promotion), not just the final output.
 - **Readiness (last 50)** — rolling accuracy over your 50 most recent answers;
   ≥ 90% = exam-ready zone.
 - **Concept analysis** — all 148 questions tagged into 12 concepts (Lists,
@@ -114,10 +121,13 @@ PCEP_exam_prep/
 1. Add/drop exports in `raw_data/`, regenerate the raw bank (extraction preserves
    `<code class="codep">` blocks for indentation fidelity)
 2. `python build_bank_v2.py` — fails loudly if any question lacks key or explanation
-3. `python build_flashcards_v2.py` — validates the 100-card PCEP-only deck and
+3. **`python regen_walkthroughs.py` — MANDATORY after any `build_bank_v2.py`
+   run.** That builder resets execution-verified explanations to fallback text;
+   skipping this step is exactly what shipped the v2.2.0 regression.
+4. `python build_flashcards_v2.py` — validates the 100-card PCEP-only deck and
    rebuilds both `flashcards.json` and `bank.js`
-4. `python validate2.py` — must report 0 mismatches
-5. `node test_practice.js` — must report all tests passed
+5. `python validate2.py` — must report 0 mismatches
+6. `node test_practice.js` — must report all tests passed
 
 ---
 

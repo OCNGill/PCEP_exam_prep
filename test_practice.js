@@ -16,27 +16,27 @@ fs.copyFileSync(path.join(SRC, "practice.html"), path.join(APPDIR, "practice.htm
 fs.copyFileSync(path.join(SRC, "bank.js"), path.join(APPDIR, "bank.js"));
 
 const html = fs.readFileSync(path.join(APPDIR, "practice.html"), "utf-8");
-const dom = new JSDOM(html, {
+// Shared store across JSDOM instances: simulates "kill the tab, reopen" with
+// the same persisted localStorage (same file:// origin behavior as Chrome).
+const store = new Map();
+const lsValue = () => ({
+  getItem: k => (store.has(k) ? store.get(k) : null),
+  setItem: (k, v) => store.set(k, String(v)),
+  removeItem: k => store.delete(k),
+  clear: () => store.clear(),
+});
+const mkDom = () => new JSDOM(html, {
   runScripts: "dangerously",
   resources: "usable",
   url: "file:///" + APP,
   pretendToBeVisual: true,
   beforeParse(window) {
-    // jsdom treats file: origins as opaque; provide a working localStorage stub
-    const store = new Map();
-    Object.defineProperty(window, "localStorage", {
-      value: {
-        getItem: k => (store.has(k) ? store.get(k) : null),
-        setItem: (k, v) => store.set(k, String(v)),
-        removeItem: k => store.delete(k),
-        clear: () => store.clear(),
-      },
-      configurable: true,
-    });
+    Object.defineProperty(window, "localStorage", { value: lsValue(), configurable: true });
     window.confirm = () => true; // auto-accept dialogs in tests
     window.alert = () => {};
   },
 });
+const dom = mkDom();
 const { window: w } = dom;
 const doc = w.document;
 let failures = 0;
@@ -187,9 +187,83 @@ setTimeout(() => {
     check("flashcard stats persisted", fcstats && Object.keys(fcstats.again).length === 1 && Object.keys(fcstats.known).length === 1);
     w.eval('goHome()');
 
-    console.log(failures === 0 ? "ALL FUNCTIONAL TESTS PASSED (v2)" : failures + " FAILURES");
-    w.close();
-    process.exit(failures ? 1 : 0);
+    // ---- universal top-nav Home ----
+    w.eval('startExam()');
+    check("topnav visible in quiz", !doc.getElementById("topnav").classList.contains("hidden"));
+    doc.querySelector("#topnav button").click(); // confirm auto-accepted
+    check("topnav Home returns to home", !doc.getElementById("home").classList.contains("hidden"));
+    check("topnav hidden on home", doc.getElementById("topnav").classList.contains("hidden"));
+
+    // ---- home trends (seeded deterministically) ----
+    const st = JSON.parse(w.localStorage.getItem("pcep_practice_stats_v1"));
+    st.history = [];
+    [50,55,60,65,70].forEach((p,i) => st.history.push({ts:"2026-10-1"+i+" 10:0"+i, mode:"all", correct:p, total:100, pct:p}));
+    const lp = w.eval("bank.find(q => q.concept === 'Loops').id");
+    st.log = [];
+    for (let i = 0; i < 60; i++) {
+      if (i < 10) st.log.push({id: lp, ok: 1});
+      else if (i < 30) st.log.push({id: ((i*13)%148)+1, ok: 1});
+      else if (i < 40) st.log.push({id: lp, ok: 0});
+      else st.log.push({id: ((i*17)%148)+1, ok: (i%2)});
+    }
+    w.localStorage.setItem("pcep_practice_stats_v1", JSON.stringify(st));
+    w.eval("renderHome()");
+    const tr = doc.getElementById("trendsBody").textContent;
+    check("trends: run accuracy sparkline", tr.includes("Run accuracy"));
+    check("trends: momentum delta", tr.includes("Momentum"));
+    check("trends: worsening blind spot flagged", tr.includes("Worsening blind spot"));
+
+    // ---- drill resume: save → KILL INSTANCE → reopen shared storage ----
+    w.localStorage.removeItem("pcep_drill_resume_v1");
+    w.eval('startDrill("all")');
+    const firstOrder = [];
+    for (let i = 0; i < 6; i++) {
+      w.eval(`state.idx=${i}; renderQ();`);
+      firstOrder.push(w.eval("state.qs[state.idx].id"));
+      const ans = w.eval("state.qs[state.idx].answers");
+      if (ans.length > 1) { for (const a of ans) w.eval(`pick(${a},true)`); w.eval("submitMulti();"); }
+      else w.eval(`pick(${ans[0]},false);`);
+      w.eval("nextQ()");
+    }
+    check("drill paused at question 7 (idx 6)", w.eval("state.idx") === 6);
+    w.eval("goHome()");
+    const btns = [...doc.querySelectorAll("#resumeSlot .menu-btn")];
+    check("home shows Continue at Question 7/148", btns.some(b => b.textContent.includes("Continue") && b.textContent.includes("Question 7/148")));
+    check("home shows Restart option", btns.some(b => b.textContent.includes("Restart")));
+    const seenBeforeResume = Object.keys(JSON.parse(w.localStorage.getItem("pcep_practice_stats_v1")).seen).length;
+
+    // FRESH JSDOM over the SAME store = kill the tab and reopen it
+    const dom2 = mkDom();
+    setTimeout(() => {
+      try {
+        const w2 = dom2.window, doc2 = w2.document;
+        const btns2 = [...doc2.querySelectorAll("#resumeSlot .menu-btn")];
+        check("fresh instance sees Continue at Question 7/148", btns2.some(b => b.textContent.includes("Continue") && b.textContent.includes("Question 7/148")));
+        w2.eval("resumeDrill()");
+        check("resumed at idx 6", w2.eval("state.idx") === 6);
+        check("resumed question order preserved", JSON.stringify(w2.eval("state.qs.slice(0,6).map(q=>q.id)")) === JSON.stringify(firstOrder));
+        check("resumed answers preserved (6)", w2.eval("Object.keys(state.answers).length") === 6);
+        check("resumed revealed preserved (6)", w2.eval("Object.keys(state.revealed).length") === 6);
+        const seenAfter = Object.keys(JSON.parse(w2.localStorage.getItem("pcep_practice_stats_v1")).seen).length;
+        check("resume does not double-count stats", seenAfter === seenBeforeResume);
+        w2.eval("goHome()");
+        const rb = [...doc2.querySelectorAll("#resumeSlot .menu-btn")].find(b => b.textContent.includes("Restart"));
+        check("restart button present after reopen", !!rb);
+        if (rb) rb.click();
+        check("restart begins at question 1", w2.eval("state.idx") === 0 && w2.eval("state.mode") === "all");
+        w2.eval("goHome()");
+        const cont1 = [...doc2.querySelectorAll("#resumeSlot .menu-btn")].find(b => b.textContent.includes("Continue"));
+        check("after restart, Continue shows Question 1/148", !!cont1 && cont1.textContent.includes("Question 1/148"));
+        dom2.window.close();
+      } catch (e2) {
+        console.log("TEST CRASH (instance 2):", e2.message);
+        console.log((e2.stack || "").split("\n").slice(0, 4).join("\n"));
+        failures++;
+      }
+      console.log(failures === 0 ? "ALL FUNCTIONAL TESTS PASSED (v2)" : failures + " FAILURES");
+      w.close();
+      process.exit(failures ? 1 : 0);
+    }, 400);
   } catch (e) {
     console.log("TEST CRASH:", e.message);
     console.log((e.stack || "").split("\n").slice(0, 5).join("\n"));

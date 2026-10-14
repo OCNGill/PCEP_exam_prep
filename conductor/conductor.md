@@ -21,8 +21,8 @@ certification trainer that takes raw exam Q&A exports to a passed PCEP exam.
 
 ```json
 {
-  "version": "2.2.0",
-  "date": "2026-09-20",
+  "version": "2.3.0",
+  "date": "2026-10-14",
   "status": "OPERATIONAL",
   "bank": {"questions": 148, "unique_sources": 169, "multi_select": 14, "concepts": 12},
   "validation": {
@@ -30,13 +30,17 @@ certification trainer that takes raw exam Q&A exports to a passed PCEP exam.
     "pass2_machine_confirmed": 58,
     "pass2_mismatches": 0,
     "expert_reviewed": 90,
-    "external_key_check": "Q104 confirmed vs official PE1 key"
+    "external_key_check": "Q104 confirmed vs official PE1 key",
+    "walkthroughs": "58/58 line-by-line with WHY annotations, 0 fallback phrases"
   },
-  "tests": {"suite": "test_practice.js", "checks": 50, "passing": 50},
+  "tests": {"suite": "test_practice.js", "checks": 68, "passing": 68},
   "features": [
     "exam sim 30Q/40min", "drill all", "blank-spot drill (algorithmic)",
     "flagged drill (user blind spots)", "multi-select focus",
     "flashcard drill (100 PCEP-only cards mapped to official objectives)",
+    "home blind-spot trends (sparkline, momentum, concept drift, new misses)",
+    "universal top-nav Home on every screen",
+    "resumable drills (kill tab → Continue at saved question / Restart)",
     "explain panels (correct + incorrect options)",
     "per-question + per-concept statistics", "run history",
     "readiness rolling metric (last 50)", "flag checkbox persistence",

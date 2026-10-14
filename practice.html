@@ -49,6 +49,14 @@
   .opt:disabled { cursor: default; }
   .opt .letter { color: var(--muted); margin-right: 8px; }
   .bar { display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; font-size: 0.85rem; color: var(--muted); gap: 8px; flex-wrap: wrap; }
+  .topnav { display: flex; gap: 10px; align-items: center; margin-bottom: 14px; }
+  .topnav .btn { margin-top: 0; }
+  .trendlbl { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px; color: var(--muted); margin-bottom: 6px; }
+  .trendrow { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; font-size: 0.8rem; padding: 5px 0; border-bottom: 1px solid var(--border); }
+  .trendrow:last-child { border-bottom: none; }
+  .spark { display: inline-flex; align-items: flex-end; gap: 2px; height: 22px; }
+  .sparkbar { width: 9px; background: var(--accent); border-radius: 2px 2px 0 0; display: inline-block; }
+  .sparkbar.cur { background: var(--green); }
   .btn {
     background: var(--accent); color: #0d1117; border: none; border-radius: 8px;
     padding: 12px 24px; font-size: 0.95rem; font-weight: bold; font-family: inherit;
@@ -87,12 +95,21 @@
 <body>
 <h1>PCEP <span>Rapid Practice</span></h1>
 <div class="sub">Mission: pass the real PCEP (30 questions / 40 min) &ge; 75% — train to &gt; 90% &middot; 148-question verified bank &middot; 100-card PCEP-only flashcard deck</div>
+<nav id="topnav" class="topnav hidden">
+  <button class="btn secondary small" onclick="backOut()">🏠 Home</button>
+  <span class="muted" id="navHint" style="font-size:0.78rem"></span>
+</nav>
 
 <!-- ============ HOME ============ -->
 <div id="home">
   <div class="card">
     <div class="stats-grid" id="homeStats"></div>
   </div>
+  <div class="card" id="trendsCard">
+    <div class="trendlbl">📈 Blind-spot trends</div>
+    <div id="trendsBody"></div>
+  </div>
+  <div id="resumeSlot"></div>
   <button class="menu-btn" onclick="startExam()">
     ⏱ Exam Simulation — 30 Q / 40 min
     <div class="desc">Mirrors the real PCEP: 30 questions, 40-minute countdown, pass bar 75% (real exam: 70%)</div>
@@ -192,11 +209,21 @@ function loadStats() {
 }
 function saveStats(s) { localStorage.setItem(STORE, JSON.stringify(s)); }
 
-function goHome() { clearInterval(timerInt); state = null; fc = null; renderHome(); show("home"); }
+function goHome() { clearInterval(timerInt); saveResume(); state = null; fc = null; renderHome(); show("home"); }
 
 function show(id) {
   for (const x of ["home","quiz","results","statsScr","flash"]) document.getElementById(x).classList.add("hidden");
   document.getElementById(id).classList.remove("hidden");
+  const tn = document.getElementById("topnav");
+  if (id === "home") {
+    tn.classList.add("hidden");
+    document.getElementById("navHint").textContent = "";
+  } else {
+    tn.classList.remove("hidden");
+    document.getElementById("navHint").textContent =
+      id === "quiz" && state && state.mode !== "exam"
+        ? "drill progress auto-saves — leave any time, continue from this question" : "";
+  }
 }
 
 function backOut() {
@@ -236,6 +263,132 @@ function readiness() {
   return Math.round(100 * last.filter(x => x.ok).length / last.length);
 }
 
+// ---- blind-spot trends (home) ----
+function conceptById(id) { const q = bank.find(x => x.id === id); return q ? (q.concept || "Python Basics") : "?"; }
+
+function trendsHTML() {
+  const s = loadStats();
+  const runs = (s.history || []).slice(-6);
+  const log = s.log || [];
+  if (runs.length < 2 && log.length < 12)
+    return '<div class="muted" style="font-size:0.8rem">No trend data yet — finish a drill or exam run and your blindness trends populate here automatically.</div>';
+  let html = "";
+  if (runs.length >= 2) {
+    const vals = runs.map(r => r.pct || 0);
+    const bars = vals.map((v, i) =>
+      `<span class="sparkbar${i === vals.length - 1 ? " cur" : ""}" style="height:${Math.max(4, Math.round(v / 5))}px" title="${v}%"></span>`).join("");
+    const d = vals[vals.length - 1] - vals[0];
+    html += `<div class="trendrow"><span class="muted">Run accuracy (last ${vals.length})</span><span class="spark">${bars}</span>` +
+            `<span class="${d > 4 ? "green" : d < -4 ? "red" : "muted"}">${d > 4 ? "▲" : d < -4 ? "▼" : "→"} ${vals[vals.length - 1]}%${d ? ` (${d > 0 ? "+" : ""}${d})` : ""}</span></div>`;
+  }
+  if (log.length >= 12) {
+    const acc = a => (a.length ? Math.round((100 * a.filter(x => x.ok).length) / a.length) : null);
+    const rec = log.slice(-20), prev = log.slice(-40, -20);
+    if (prev.length >= 5) {
+      const ra = acc(rec), pa = acc(prev), d = ra - pa;
+      html += `<div class="trendrow"><span class="muted">Momentum — last ${rec.length} vs prior ${prev.length} answers</span>` +
+              `<span class="${d > 4 ? "green" : d < -4 ? "red" : "muted"}">${d > 4 ? "▲" : d < -4 ? "▼" : "→"} ${ra}% vs ${pa}%</span></div>`;
+    }
+    const half = Math.floor(log.length / 2);
+    const early = log.slice(0, half), recent = log.slice(half);
+    const m = {};
+    const bump = (e, side) => {
+      const c = conceptById(e.id);
+      m[c] = m[c] || { eN: 0, eC: 0, rN: 0, rC: 0 };
+      m[c][side + "N"]++; if (e.ok) m[c][side + "C"]++;
+    };
+    early.forEach(e => bump(e, "e")); recent.forEach(e => bump(e, "r"));
+    const rows = [];
+    for (const c in m) {
+      const v = m[c];
+      if (v.eN >= 4 && v.rN >= 4) {
+        const ea = Math.round((100 * v.eC) / v.eN), rAcc = Math.round((100 * v.rC) / v.rN);
+        rows.push({ c, ea, ra: rAcc, d: rAcc - ea });
+      }
+    }
+    rows.sort((a, b) => a.d - b.d);
+    const worse = rows.filter(r => r.d <= -15).slice(0, 3);
+    const better = rows.filter(r => r.d >= 15).slice(-2).reverse();
+    for (const r of worse)
+      html += `<div class="trendrow"><span class="muted">⚠ Worsening blind spot — ${esc(r.c)}</span><span class="red">${r.ea}% → ${r.ra}% (▼${-r.d})</span></div>`;
+    for (const r of better)
+      html += `<div class="trendrow"><span class="muted">✓ Improving — ${esc(r.c)}</span><span class="green">${r.ea}% → ${r.ra}% (▲${r.d})</span></div>`;
+    if (!worse.length && !better.length)
+      html += `<div class="trendrow"><span class="muted">Concept drift</span><span class="muted">stable across ${log.length} answers — keep drilling to reveal drift</span></div>`;
+    const earlyMiss = new Set(early.filter(e => !e.ok).map(e => e.id));
+    const newBlind = [...new Set(recent.filter(e => !e.ok && !earlyMiss.has(e.id)).map(e => e.id))];
+    if (newBlind.length)
+      html += `<div class="trendrow"><span class="muted">🆕 New blind spots (missed recently, not before)</span><span class="yellow">${newBlind.length} question${newBlind.length > 1 ? "s" : ""}</span></div>`;
+  }
+  return html;
+}
+
+// ---- drill resume (kill tab → continue where you left off) ----
+const RKEY = "pcep_drill_resume_v1";
+
+function saveResume() {
+  try {
+    if (!state || state.mode === "exam" || state.finished || !state.qs || !state.qs.length) return;
+    const r = {
+      v: 1, mode: state.mode,
+      ids: state.qs.map(q => q.id), idx: state.idx,
+      answers: { ...state.answers }, revealed: { ...state.revealed },
+      multiPicks: {}, t0: state.t0, savedAt: Date.now()
+    };
+    for (const k in state.multiPicks) r.multiPicks[k] = [...state.multiPicks[k]];
+    localStorage.setItem(RKEY, JSON.stringify(r));
+  } catch (e) { /* resume is best-effort */ }
+}
+
+function loadResume() {
+  try {
+    const r = JSON.parse(localStorage.getItem(RKEY));
+    if (!r || r.mode === "exam" || !Array.isArray(r.ids) || !r.ids.length) return null;
+    if (r.idx == null || r.idx >= r.ids.length) return null;
+    const qs = r.ids.map(id => bank.find(q => q.id === id)).filter(Boolean);
+    if (qs.length !== r.ids.length) return null;
+    r.qs = qs;
+    return r;
+  } catch (e) { return null; }
+}
+
+function clearResume() { try { localStorage.removeItem(RKEY); } catch (e) {} }
+
+function resumeButtonsHTML() {
+  const r = loadResume();
+  if (!r) return "";
+  const label = r.mode === "all" ? "Full Drill" : r.mode === "flagged" ? "Flagged Drill" :
+                r.mode === "multi" ? "Multi-Select Drill" : "Blank-Spot Drill";
+  const pos = (r.idx | 0) + 1, total = r.ids.length;
+  const answered = Object.keys(r.answers || {}).length;
+  return `<button class="menu-btn" onclick="resumeDrill()">▶️ Continue ${label} — Question ${pos}/${total}
+    <div class="desc">Picked up where you left off · ${answered} answered so far · order &amp; answers saved in this browser</div></button>
+  <button class="menu-btn" onclick="restartDrill()">🔁 Restart ${label}
+    <div class="desc">Throw away saved progress and start over from question 1</div></button>`;
+}
+
+function resumeDrill() {
+  const r = loadResume();
+  if (!r) { clearResume(); renderHome(); return; }
+  state = {
+    mode: r.mode, qs: r.qs, idx: r.idx | 0, answers: r.answers || {},
+    t0: r.t0 || Date.now(), revealed: r.revealed || {}, multiPicks: {}, finished: false
+  };
+  for (const k in (r.multiPicks || {})) state.multiPicks[k] = new Set(r.multiPicks[k]);
+  document.getElementById("modeLabel").textContent =
+    (state.mode === "blank" ? "BLANK-SPOT DRILL" : state.mode === "flagged" ? "FLAGGED DRILL" :
+     state.mode === "multi" ? "MULTI-SELECT DRILL" : "FULL DRILL") + " (RESUMED)";
+  clearInterval(timerInt); document.getElementById("timer").textContent = "";
+  show("quiz"); renderQ();
+}
+
+function restartDrill() {
+  const r = loadResume();
+  const kind = r ? r.mode : "all";
+  clearResume();
+  startDrill(kind);
+}
+
 function renderHome() {
   const s = loadStats();
   const seen = Object.keys(s.seen).length;
@@ -248,6 +401,8 @@ function renderHome() {
     <div class="stat"><div class="num ${pct>=75?'green':pct>=50?'yellow':'red'}">${pct}%</div><div class="lbl">Accuracy</div></div>
     <div class="stat"><div class="num ${rd===null?'muted':rd>=90?'green':rd>=75?'yellow':'red'}">${rd===null?"—":rd+"%"}</div><div class="lbl">Readiness (last 50)</div></div>
     <div class="stat"><div class="num ${Object.keys(s.flagged).length?'yellow':'muted'}">${Object.keys(s.flagged).length}</div><div class="lbl">Flagged</div></div>`;
+  document.getElementById("trendsBody").innerHTML = trendsHTML();
+  document.getElementById("resumeSlot").innerHTML = resumeButtonsHTML();
 }
 
 function shuffle(a) { const r=[...a]; for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];} return r; }
@@ -283,6 +438,7 @@ function startDrill(kind) {
     if (!qs.length) { alert("No flagged questions yet — use the ⚑ checkbox during drills to build your personal blind-spot list."); return; }
   }
   state = { mode: kind, qs, idx: 0, answers: {}, t0: Date.now(), revealed: {}, multiPicks: {}, finished: false };
+  saveResume();
   document.getElementById("modeLabel").textContent =
     kind === "blank" ? "BLANK-SPOT DRILL" : kind === "flagged" ? "FLAGGED DRILL" :
     kind === "multi" ? "MULTI-SELECT DRILL" : "FULL DRILL";
@@ -379,6 +535,7 @@ function reveal(q, picks) {
   s.log.push({id: q.id, ok: ok ? 1 : 0});
   if (s.log.length > 400) s.log = s.log.slice(-400);
   saveStats(s);
+  saveResume();
   showFeedback(q, picks);
 }
 
@@ -424,7 +581,7 @@ function nextQ() {
   if (state.idx + 1 >= state.qs.length) {
     if (state.mode === "exam") finishExam(false);
     else showResults();
-  } else { state.idx++; renderQ(); }
+  } else { state.idx++; saveResume(); renderQ(); }
 }
 
 function logRun(mode, correct, total) {
@@ -464,6 +621,7 @@ function finishExam(timedOut) {
 }
 
 function showResults() {
+  clearResume();
   const s = loadStats();
   let correct = 0;
   for (const q of state.qs) if (isCorrectPick(q, state.answers[q.id])) correct++;
@@ -583,6 +741,7 @@ function showStats() {
 function resetStats() {
   if (!confirm("Wipe ALL progress, flags and history?")) return;
   localStorage.removeItem(STORE);
+  clearResume();
   renderHome();
 }
 

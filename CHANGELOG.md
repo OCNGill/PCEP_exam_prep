@@ -3,6 +3,50 @@
 All notable changes to the PCEP Rapid Practice system.
 Format: Keep-a-Changelog-ish, newest first.
 
+## [2.3.0] — 2026-10-14
+
+### Fixed
+- **v2.2.0 explanation regression repaired (Commander caught it live).** The
+  2.2.0 chain ran `build_bank_v2.py` WITHOUT `regen_walkthroughs.py` afterward;
+  that builder regenerates `pcep_bank.json` from scratch, silently reverting
+  all **58 execution-verified explanations** to the lazy
+  `live-verified by executing the snippet: actual output is 'X'` fallback.
+  All 58 walkthroughs restored — 0 trace failures, 0 fallbacks remaining.
+  Chain order is now locked in `conductor/tracks.md`, and `build_bank_v2.py`
+  prints a loud NOTE pointing at the required regen step.
+
+### Added
+- **WHY annotations in the trace engine** (learning-grade walkthroughs):
+  - sequence concatenation shows lengths adding:
+    `tup = (1,1) + (1,1) = (1,1,1,1)  [concatenation: 2 elements + 2 elements = 4 elements]`
+  - `print(len(x))` shows the real value: `tup = (1,1,1,1), len = 4 → prints '4'`
+  - numeric promotion annotated: `123 + 0.0 → evaluates to 123.0  [type promotion: int + float → float]`
+  - bare expression statements are now evaluated instead of echoing source.
+- **📈 Blind-spot trends card on Home**: run-accuracy sparkline (last 6 runs),
+  momentum (last 20 vs prior 20 answers), concept drift (⚠ worsening /
+  ✓ improving vs the earlier half of your answer log), and a count of
+  🆕 newly-blind questions. Empty state until enough data exists.
+- **Universal 🏠 Home top-nav** on every screen (quiz, flashcards, results,
+  statistics); abandoning a live exam sim still requires the confirm guard.
+- **Resumable drills** — Full Drill and every other drill persists question
+  order, position, answers and revealed state to localStorage on every answer,
+  advance, and leave. Home then offers `▶️ Continue … — Question N/148` plus
+  `🔁 Restart`. Completing or resetting clears the saved state. Exam sims are
+  deliberately NOT persisted (the 40-minute clock is a single sitting).
+
+### Verified
+- `node test_practice.js` → **68/68 checks**, including a fresh-JSDOM
+  kill-tab simulation: instance 2 over the same storage sees
+  `Continue … Question 7/148`, resumes at idx 6 with identical question order,
+  answers and reveal state, and does not double-count statistics.
+- `validate2.py` → 0 mismatches; `regen_walkthroughs.py` → 58/58 walkthroughs,
+  0 trace failures.
+
+**Verse:** *"…forgetting what lies behind and straining forward to what lies
+ahead, I press toward the goal…" — Philippians 3:13–14 (ESV).* Chosen because
+the drill now lets you press on from exactly where you stopped, while the
+trends card keeps your eyes forward on what is slipping.
+
 ## [2.2.0] — 2026-09-20
 
 ### Added

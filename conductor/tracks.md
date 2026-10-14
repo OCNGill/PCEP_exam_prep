@@ -1,8 +1,8 @@
 # Tracks — PCEP_exam_prep
 
 ## Active
-- Flashcard deck rebuild complete: 100 PCEP-only cards, 25 per official block,
-  source metadata on every card; 50/50 functional tests green (v2.2.0).
+- v2.3.0 shipped: 58 WHY-walkthroughs restored (v2.2.0 regression), home
+  blind-spot trends, universal Home nav, resumable drills — 68/68 green.
 
 ## Next
 - Sandra/Steve first real run-through → seed flag + accuracy data
@@ -14,6 +14,8 @@
 - Android delivery via the Gillsystems Commander app
 
 ## Rules
-- No commit without: build_bank_v2.py clean → build_flashcards_v2.py clean →
-  validate2.py 0 mismatches → node test_practice.js all green →
-  CHANGELOG + conductor updated.
+- No commit without, IN THIS ORDER: build_bank_v2.py (only if raw/key changed)
+  → **regen_walkthroughs.py (MANDATORY after any build_bank_v2 run — it wipes
+  the 58 walkthroughs back to fallback text; this exact omission shipped the
+  v2.2.0 regression)** → build_flashcards_v2.py clean → validate2.py 0
+  mismatches → node test_practice.js all green → CHANGELOG + conductor updated.

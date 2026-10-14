@@ -102,12 +102,59 @@ def _subst(expr, locs, depth=0):
             out = re.sub(r"\b" + re.escape(k) + r"\b", fmt(v), out)
     return out
 
+def _pl(n, unit):
+    return f"{n} {unit}" + ("" if n == 1 else "s")
+
+
+def _concat_note(expr, locs):
+    """WHY annotation for sequence concatenation: show that lengths add."""
+    try:
+        if " + " not in expr:
+            return ""
+        left, right = expr.split(" + ", 1)
+        ev = {"__builtins__": __builtins__}
+        lv = eval(left, ev, dict(locs))
+        rv = eval(right, ev, dict(locs))
+        total = eval(expr, ev, dict(locs))
+        if isinstance(lv, (str, tuple, list)) and type(lv) is type(rv) is type(total):
+            unit = "character" if isinstance(lv, str) else "element"
+            return f"  [concatenation: {_pl(len(lv), unit)} + {_pl(len(rv), unit)} = {_pl(len(total), unit)}]"
+    except Exception:
+        return ""
+    return ""
+
+
+def _num_note(expr, locs):
+    """WHY annotation for int/float promotion in arithmetic."""
+    try:
+        if " + " not in expr:
+            return ""
+        ev = {"__builtins__": __builtins__}
+        left, right = expr.split(" + ", 1)
+        lv = eval(left, ev, dict(locs))
+        rv = eval(right, ev, dict(locs))
+        if (isinstance(lv, (int, float)) and isinstance(rv, (int, float))
+                and type(lv) is not type(rv)
+                and not isinstance(lv, bool) and not isinstance(rv, bool)):
+            total = eval(expr, ev, dict(locs))
+            return f"  [type promotion: {type(lv).__name__} + {type(rv).__name__} → {type(total).__name__}]"
+    except Exception:
+        return ""
+    return ""
+
+
 def describe_step(step, printed_lines=()):
     src = step["src"]
     locs = step["before"]
     # print lines: attribute captured output lines in order
     if src.startswith("print("):
         if printed_lines:
+            inner = src[6:-1] if src.endswith(")") else ""
+            if inner.startswith("len(") and inner.endswith(")"):
+                target = inner[4:-1].strip()
+                if target in locs:
+                    v = locs[target]
+                    return f"{src}    →  {target} = {fmt(v)}, len = {len(v)} → prints {printed_lines[0]!r}"
             return f'{src}    →  prints {printed_lines[0]!r}'
         return None  # skip duplicate print headers
     m = re.match(r"(\w+)\s*=\s*(.+)$", src)
@@ -120,7 +167,7 @@ def describe_step(step, printed_lines=()):
                 return f"{src}    →  {var} = {fmt(val)}"
             sub = _subst(expr, locs)
             arrow = f" = {sub} = {fmt(val)}" if sub != fmt(val) else f" = {fmt(val)}"
-            return f"{src}    →  {var}{arrow}"
+            return f"{src}    →  {var}{arrow}" + _concat_note(expr, locs) + _num_note(expr, locs)
         except Exception:
             return f"{src}    →  {_subst(expr, locs)}" if _subst(expr, locs) != expr else src
     mret = re.match(r"return (.+)$", src)
@@ -163,6 +210,18 @@ def describe_step(step, printed_lines=()):
                 return f"{src}    →  {base} becomes {fmt(ns.get(base))}"
             except Exception:
                 return src
+    # Bare expression statements (e.g. `123 + 0.0`): evaluate them so the
+    # walkthrough shows the RESULT, not just the source echo.
+    _kw = ("def ", "class ", "for ", "while ", "if ", "elif", "else", "try",
+           "except", "finally", "with ", "pass", "break", "continue", "return",
+           "global ", "nonlocal ", "del ", "raise", "yield", "import ", "from ",
+           "assert", "@")
+    if src and not src.endswith(":") and "input(" not in src and not src.startswith(_kw):
+        try:
+            val = eval(src, {"__builtins__": __builtins__}, dict(locs))
+            return f"{src}    →  evaluates to {fmt(val)}" + _num_note(src, locs)
+        except Exception:
+            pass
     return src
 
 def build_walkthrough(q, steps, output):

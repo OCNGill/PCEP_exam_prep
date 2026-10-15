@@ -3,6 +3,31 @@
 All notable changes to the PCEP Rapid Practice system.
 Format: Keep-a-Changelog-ish, newest first.
 
+## [2.3.1] — 2026-10-14
+
+### Fixed
+- **Arithmetic chains in explanations** — Commander: *"how the FUCK did it
+  calculate 17.5?"* Walkthroughs no longer echo the source and jump to the
+  final value. Every compound expression now breaks into operand-by-operand
+  intermediate steps. Q36 now reads:
+  `4 ** 2 = 16 · 1 / 2 = 0.5 · 3 // 3 = 1 · 0.5 + 1 = 1.5 · 1.5 + 16 = 17.5`.
+  Chains are dependency-safe (each value is computed before it is used) and
+  precedence-first (highest-ready operator emits first — the exponent shows
+  even though it sits rightmost in source). Wired into assignments,
+  augmented assignments, `return`, `print()` arguments and bare expressions;
+  single-operation lines and non-arithmetic syntax keep the prior rendering.
+  Safe builtins render as their own step (`len('abc') = 3`).
+
+### Verified
+- `node test_practice.js` → **70/70 checks** (+2: Q36 chain contains the
+  17.5 derivation; chain order is PEMDAS + dependency-safe).
+- `validate2.py` → 0 mismatches; `regen_walkthroughs.py` → 58/58,
+  0 trace failures, 0 fallback phrases.
+
+**Verse:** *"The beginning of wisdom is this: Get wisdom, and whatever you
+get, get insight." — Proverbs 4:7 (ESV).* Chosen because the walkthroughs now
+hand over the insight — every intermediate step — instead of just the answer.
+
 ## [2.3.0] — 2026-10-14
 
 ### Fixed

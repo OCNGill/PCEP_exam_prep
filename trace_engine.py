@@ -3,7 +3,7 @@ for infinite-loop snippets). For every executed line it snapshots the variable
 state BEFORE the line runs, so explanations can show actual arithmetic:
   a = a ^ b    →  a = 1 ^ 0 = 1
 """
-import json, os, re, sys, threading, io, queue, copy
+import ast, json, os, re, sys, threading, io, queue, copy
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 
@@ -124,6 +124,126 @@ def _concat_note(expr, locs):
     return ""
 
 
+class _NoBreak(Exception):
+    pass
+
+
+_OPFN = {
+    ast.Add: lambda a, b: a + b, ast.Sub: lambda a, b: a - b,
+    ast.Mult: lambda a, b: a * b, ast.Div: lambda a, b: a / b,
+    ast.FloorDiv: lambda a, b: a // b, ast.Mod: lambda a, b: a % b,
+    ast.Pow: lambda a, b: a ** b, ast.LShift: lambda a, b: a << b,
+    ast.RShift: lambda a, b: a >> b, ast.BitAnd: lambda a, b: a & b,
+    ast.BitOr: lambda a, b: a | b, ast.BitXor: lambda a, b: a ^ b,
+}
+_OPSYM = {
+    ast.Add: "+", ast.Sub: "-", ast.Mult: "*", ast.Div: "/",
+    ast.FloorDiv: "//", ast.Mod: "%", ast.Pow: "**",
+    ast.LShift: "<<", ast.RShift: ">>", ast.BitAnd: "&",
+    ast.BitOr: "|", ast.BitXor: "^",
+}
+_PREC = {ast.Pow: 6, ast.Mult: 4, ast.Div: 4, ast.FloorDiv: 4, ast.Mod: 4,
+         ast.LShift: 3, ast.RShift: 3, ast.Add: 2, ast.Sub: 2,
+         ast.BitAnd: 1, ast.BitXor: 1, ast.BitOr: 1}
+_SAFE_MAP = {"len": len, "abs": abs, "round": round, "int": int,
+             "float": float, "str": str, "sum": sum, "min": min,
+             "max": max, "ord": ord, "bin": bin, "oct": oct, "hex": hex}
+
+
+def _arith_breakdown(expr, locs):
+    """Step-by-step arithmetic chain for a compound expression, e.g.
+        1 / 2 + 3 // 3 + 4 ** 2
+    becomes
+        ['4 ** 2 = 16', '1 / 2 = 0.5', '3 // 3 = 1',
+         '0.5 + 1 = 1.5', '1.5 + 16 = 17.5']
+    Each line shows real operands and the intermediate result, ordered so
+    every value is computed before it is used (dependency-safe) with the
+    highest-precedence ready operator first (PEMDAS). Returns [] when there
+    is nothing to break down: fewer than two operations, side-effect calls,
+    or syntax outside the arithmetic whitelist — callers keep the old
+    rendering then."""
+    try:
+        tree = ast.parse(str(expr).strip(), mode="eval").body
+    except Exception:
+        return []
+    steps = []  # each: {prec, deps:set, text}
+
+    def red(n, depth=0):
+        if depth > 12 or len(steps) > 14:
+            raise _NoBreak()
+        if isinstance(n, ast.Constant):
+            return n.value, None
+        if isinstance(n, ast.Name):
+            if n.id in locs:
+                return locs[n.id], None
+            raise _NoBreak()
+        if isinstance(n, ast.UnaryOp) and type(n.op) in (ast.USub, ast.UAdd, ast.Invert):
+            v, dep = red(n.operand, depth + 1)
+            if isinstance(v, (list, tuple, str)) and isinstance(n.op, ast.USub):
+                raise _NoBreak()  # sequence negation does not exist
+            v = -v if isinstance(n.op, ast.USub) else (+v if isinstance(n.op, ast.UAdd) else ~v)
+            return v, dep
+        if isinstance(n, ast.BinOp) and type(n.op) in _OPFN:
+            lv, ld = red(n.left, depth + 1)
+            rv, rd = red(n.right, depth + 1)
+            if type(n.op) is ast.Pow and isinstance(rv, int) and abs(rv) > 64:
+                raise _NoBreak()
+            try:
+                v = _OPFN[type(n.op)](lv, rv)
+            except Exception:
+                raise _NoBreak()
+            if isinstance(v, int) and not isinstance(v, bool) and v.bit_length() > 512:
+                raise _NoBreak()
+            sid = len(steps)
+            steps.append({
+                "prec": _PREC.get(type(n.op), 1),
+                "deps": {d for d in (ld, rd) if d is not None},
+                "text": f"{fmt(lv)} {_OPSYM[type(n.op)]} {fmt(rv)} = {fmt(v)}",
+            })
+            return v, sid
+        if (isinstance(n, ast.Call) and isinstance(n.func, ast.Name)
+                and n.func.id in _SAFE_MAP and not n.keywords):
+            args, deps = [], set()
+            for a in n.args:
+                av, ad = red(a, depth + 1)
+                args.append(av)
+                if ad is not None:
+                    deps.add(ad)
+            try:
+                v = _SAFE_MAP[n.func.id](*args)
+            except Exception:
+                raise _NoBreak()
+            if isinstance(v, int) and not isinstance(v, bool) and v.bit_length() > 512:
+                raise _NoBreak()
+            sid = len(steps)
+            rendered = ", ".join(fmt(a) for a in args)
+            steps.append({"prec": 7, "deps": deps,
+                          "text": f"{n.func.id}({rendered}) = {fmt(v)}"})
+            return v, sid
+        raise _NoBreak()
+
+    try:
+        red(tree)
+    except Exception:
+        return []
+    # emit: dependency-safe, highest precedence first among ready steps
+    emitted, out, pend = set(), [], list(range(len(steps)))
+    while pend:
+        ready = [i for i in pend if steps[i]["deps"] <= emitted]
+        if not ready:
+            return []
+        pick = min(ready, key=lambda i: (-steps[i]["prec"], i))
+        out.append(steps[pick]["text"])
+        emitted.add(pick)
+        pend.remove(pick)
+    return out if len(out) >= 2 else []
+
+
+def _chain(steps):
+    """Render a breakdown chain as indented continuation lines."""
+    return "\n        " + "\n        ".join("· " + s for s in steps)
+
+
 def _num_note(expr, locs):
     """WHY annotation for int/float promotion in arithmetic."""
     try:
@@ -155,7 +275,9 @@ def describe_step(step, printed_lines=()):
                 if target in locs:
                     v = locs[target]
                     return f"{src}    →  {target} = {fmt(v)}, len = {len(v)} → prints {printed_lines[0]!r}"
-            return f'{src}    →  prints {printed_lines[0]!r}'
+            chain = _arith_breakdown(src[6:-1], locs) if src.startswith("print(") and src.endswith(")") else []
+            base = f'{src}    →  prints {printed_lines[0]!r}'
+            return base + (_chain(chain) if chain else "")
         return None  # skip duplicate print headers
     m = re.match(r"(\w+)\s*=\s*(.+)$", src)
     if m and not m.group(2).startswith(("input",)):
@@ -165,6 +287,11 @@ def describe_step(step, printed_lines=()):
             if re.search(r"\bfor\b.+\bin\b", expr):
                 # comprehension: don't substitute inlined iteration locals
                 return f"{src}    →  {var} = {fmt(val)}"
+            chain = _arith_breakdown(expr, locs)
+            if chain:
+                # arithmetic chain replaces the source echo: show the numbers
+                return (f"{src}    →  {var} = {fmt(val)}"
+                        + _concat_note(expr, locs) + _chain(chain))
             sub = _subst(expr, locs)
             arrow = f" = {sub} = {fmt(val)}" if sub != fmt(val) else f" = {fmt(val)}"
             return f"{src}    →  {var}{arrow}" + _concat_note(expr, locs) + _num_note(expr, locs)
@@ -172,7 +299,9 @@ def describe_step(step, printed_lines=()):
             return f"{src}    →  {_subst(expr, locs)}" if _subst(expr, locs) != expr else src
     mret = re.match(r"return (.+)$", src)
     if mret:
-        return f"{src}    →  returns {_subst(mret.group(1), locs)}"
+        chain = _arith_breakdown(mret.group(1), locs)
+        return (f"{src}    →  returns {_subst(mret.group(1), locs)}"
+                + (_chain(chain) if chain else ""))
     mfor = re.match(r"for (\w+) in (.+):$", src)
     if mfor:
         var = mfor.group(1)
@@ -197,7 +326,11 @@ def describe_step(step, printed_lines=()):
             val = _ops[op](locs[var], eval(rhs, {"__builtins__": __builtins__}, dict(locs)))
         except Exception:
             return f"{src}    →  {_subst(rhs, locs)}"
-        return f"{src}    →  {var} = {fmt(locs[var])} {op.replace('=','')} ({_subst(rhs, locs)}) = {fmt(val)}"
+        head = f"{src}    →  {var} = {fmt(locs[var])} {op.replace('=','')} ({_subst(rhs, locs)}) = {fmt(val)}"
+        chain = _arith_breakdown(rhs, locs)
+        if chain:
+            head += _chain(chain)
+        return head
     # list mutation lines: execute on a copy of before-state, show result
     mm = re.match(r"(\w+)\.(insert|append|extend|pop|remove)\(", src) or \
          re.match(r"del (\w+)\[", src)
@@ -219,6 +352,9 @@ def describe_step(step, printed_lines=()):
     if src and not src.endswith(":") and "input(" not in src and not src.startswith(_kw):
         try:
             val = eval(src, {"__builtins__": __builtins__}, dict(locs))
+            chain = _arith_breakdown(src, locs)
+            if chain:
+                return f"{src}    →  evaluates to {fmt(val)}" + _chain(chain)
             return f"{src}    →  evaluates to {fmt(val)}" + _num_note(src, locs)
         except Exception:
             pass

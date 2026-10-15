@@ -8,7 +8,7 @@ train to **> 90% knowledge** through repeated, targeted run-throughs that cement
 the right answers.
 
 **Status: OPERATIONAL.** 148-question verified bank · 100-card PCEP-only flashcard
-deck · every answer dual-validated · 68/68 functional regression tests green.
+deck · every answer dual-validated · 70/70 functional regression tests green.
 
 ---
 
@@ -43,7 +43,9 @@ results, statistics). Exam-sim abandonment still asks for confirmation.
 - **▼ Explain** — every question has an expandable explanation covering the
   correct answer AND each wrong option. Code questions get a line-by-line
   execution walkthrough with WHY annotations (operator semantics, lengths
-  adding, type promotion), not just the final output.
+  adding, type promotion) and arithmetic chains that show every operand and
+  intermediate value in precedence order — `4 ** 2 = 16 → 1 / 2 = 0.5 →
+  3 // 3 = 1 → 0.5 + 1 = 1.5 → 1.5 + 16 = 17.5` — not just the final output.
 - **Readiness (last 50)** — rolling accuracy over your 50 most recent answers;
   ≥ 90% = exam-ready zone.
 - **Concept analysis** — all 148 questions tagged into 12 concepts (Lists,

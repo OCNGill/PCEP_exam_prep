@@ -51,6 +51,10 @@ setTimeout(() => {
     check("every question has explanation", w.eval("bank.every(q => q.expl && q.expl.length > 20)"));
     check("every question has concept", w.eval("bank.every(q => q.concept && q.concept.length > 2)"));
     check("12 concepts present", w.eval("new Set(bank.map(q => q.concept)).size") === 12);
+    check("Q36 explain shows arithmetic chain to 17.5",
+      w.eval("bank.find(q => q.id === 36).expl.includes('4 ** 2 = 16') && bank.find(q => q.id === 36).expl.includes('3 // 3 = 1') && bank.find(q => q.id === 36).expl.includes('1.5 + 16 = 17.5')"));
+    check("Q36 chain ordered PEMDAS + dependency-safe",
+      w.eval("(e => e.indexOf('4 ** 2 = 16') < e.indexOf('1 / 2 = 0.5') && e.indexOf('1 / 2 = 0.5') < e.indexOf('0.5 + 1 = 1.5') && e.indexOf('4 ** 2 = 16') < e.indexOf('1.5 + 16 = 17.5'))(bank.find(q => q.id === 36).expl)"));
     check("home stats rendered", doc.getElementById("homeStats").textContent.includes("0/148"));
 
     // ---- exam sim: 30 Q / 40 min ----

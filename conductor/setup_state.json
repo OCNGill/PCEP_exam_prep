@@ -1,5 +1,5 @@
 {
-  "version": "2.3.0",
+  "version": "2.3.1",
   "date": "2026-10-14",
   "status": "OPERATIONAL",
   "bank": {"questions": 148, "unique_sources": 169, "multi_select": 14, "concepts": 12},
@@ -9,9 +9,9 @@
     "pass2_mismatches": 0,
     "expert_reviewed": 90,
     "external_key_check": "Q104 confirmed vs official PE1 key",
-    "walkthroughs": "58/58 line-by-line with WHY annotations, 0 fallback phrases"
+    "walkthroughs": "58/58 line-by-line with WHY annotations + operand-by-operand arithmetic chains (dependency-safe, precedence-first), 0 fallback phrases"
   },
-  "tests": {"suite": "test_practice.js", "checks": 68, "passing": 68},
+  "tests": {"suite": "test_practice.js", "checks": 70, "passing": 70},
   "features": [
     "exam sim 30Q/40min",
     "drill all",
@@ -23,6 +23,7 @@
     "universal top-nav Home on every screen",
     "resumable drills (kill tab → Continue at saved question / Restart)",
     "explain panels (correct + incorrect options)",
+    "arithmetic-chain explanations (every operand + intermediate value, PEMDAS-ordered)",
     "per-question + per-concept statistics",
     "run history",
     "readiness rolling metric (last 50)",

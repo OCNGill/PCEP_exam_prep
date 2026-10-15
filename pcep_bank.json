@@ -575,7 +575,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • x = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000020F1631A2A0>())\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000020F1631A2A0>())\n  • x = x % y    →  x = 11 % 4 = 3\n  • x = x % y    →  x = 3 % 4 = 3\n  • y = y % x    →  y = 4 % 3 = 1\n  • print(y)    →  prints '1'\n  → output: '1'\n❌ B — the executed trace above ends with '1' — this is not what the code produces.\n❌ C — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '1'.\n❌ D — this value appears as an INTERMEDIATE state around step 5, but the program keeps running and ends at '1'.",
+  "expl": "✅ A — walk through it line by line:\n  • x = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x000002EBFAB485C0>())\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x000002EBFAB485C0>())\n  • x = x % y    →  x = 11 % 4 = 3\n  • x = x % y    →  x = 3 % 4 = 3\n  • y = y % x    →  y = 4 % 3 = 1\n  • print(y)    →  prints '1'\n  → output: '1'\n❌ B — the executed trace above ends with '1' — this is not what the code produces.\n❌ C — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '1'.\n❌ D — this value appears as an INTERMEDIATE state around step 5, but the program keeps running and ends at '1'.",
   "explsrc": "execution-verified"
  },
  {
@@ -592,7 +592,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • x = 1 / 2 + 3 // 3 + 4 ** 2    →  x = 1 / 2 + 3 // 3 + 4 ** 2 = 17.5  [type promotion: float + int → float]\n  • print(x)    →  prints '17.5'\n  → output: '17.5'\n❌ B — the executed trace above ends with '17.5' — this is not what the code produces.\n❌ C — the executed trace above ends with '17.5' — this is not what the code produces.\n❌ D — the executed trace above ends with '17.5' — this is not what the code produces.",
+  "expl": "✅ A — walk through it line by line:\n  • x = 1 / 2 + 3 // 3 + 4 ** 2    →  x = 17.5\n        · 4 ** 2 = 16\n        · 1 / 2 = 0.5\n        · 3 // 3 = 1\n        · 0.5 + 1 = 1.5\n        · 1.5 + 16 = 17.5\n  • print(x)    →  prints '17.5'\n  → output: '17.5'\n❌ B — the executed trace above ends with '17.5' — this is not what the code produces.\n❌ C — the executed trace above ends with '17.5' — this is not what the code produces.\n❌ D — the executed trace above ends with '17.5' — this is not what the code produces.",
   "explsrc": "execution-verified"
  },
  {
@@ -609,7 +609,7 @@
    0
   ],
   "concept": "Output & Strings",
-  "expl": "✅ A — walk through it line by line:\n  • x = input()\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000020F1631A6C0>())\n  • print(x * y)    →  prints '333333'\n  → output: '333333'\n❌ B — the executed trace above ends with '333333' — this is not what the code produces.\n❌ C — the executed trace above ends with '333333' — this is not what the code produces.\n❌ D — the executed trace above ends with '333333' — this is not what the code produces.",
+  "expl": "✅ A — walk through it line by line:\n  • x = input()\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x000002EBFAB48E00>())\n  • print(x * y)    →  prints '333333'\n  → output: '333333'\n❌ B — the executed trace above ends with '333333' — this is not what the code produces.\n❌ C — the executed trace above ends with '333333' — this is not what the code produces.\n❌ D — the executed trace above ends with '333333' — this is not what the code produces.",
   "explsrc": "execution-verified"
  },
  {
@@ -678,7 +678,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • x = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000020F1631A8D0>())\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000020F1631A8D0>())\n  • x = x / y    →  x = 2 / 4 = 0.5\n  • y = y / x    →  y = 4 / 0.5 = 8.0\n  • print(y)    →  prints '8.0'\n  → output: '8.0'\n❌ B — the executed trace above ends with '8.0' — this is not what the code produces.\n❌ C — the executed trace above ends with '8.0' — this is not what the code produces.\n❌ D — the executed trace above ends with '8.0' — this is not what the code produces.",
+  "expl": "✅ A — walk through it line by line:\n  • x = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x000002EBFAB490C0>())\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x000002EBFAB490C0>())\n  • x = x / y    →  x = 2 / 4 = 0.5\n  • y = y / x    →  y = 4 / 0.5 = 8.0\n  • print(y)    →  prints '8.0'\n  → output: '8.0'\n❌ B — the executed trace above ends with '8.0' — this is not what the code produces.\n❌ C — the executed trace above ends with '8.0' — this is not what the code produces.\n❌ D — the executed trace above ends with '8.0' — this is not what the code produces.",
   "explsrc": "execution-verified"
  },
  {
@@ -746,7 +746,7 @@
    0
   ],
   "concept": "Output & Strings",
-  "expl": "✅ A — walk through it line by line:\n  • x = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000020F1631AF00>())\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000020F1631AF00>())\n  • print(x + y)    →  prints '6'\n  → output: '6'\n❌ B — the executed trace above ends with '6' — this is not what the code produces.\n❌ C — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '6'.\n❌ D — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '6'.",
+  "expl": "✅ A — walk through it line by line:\n  • x = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x000002EBFAB49A60>())\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x000002EBFAB49A60>())\n  • print(x + y)    →  prints '6'\n  → output: '6'\n❌ B — the executed trace above ends with '6' — this is not what the code produces.\n❌ C — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '6'.\n❌ D — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '6'.",
   "explsrc": "execution-verified"
  },
  {
@@ -831,7 +831,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • 1 // 2 * 3    →  evaluates to 0\n❌ B — does not match the traced execution.\n❌ C — does not match the traced execution.\n❌ D — does not match the traced execution.",
+  "expl": "✅ A — walk through it line by line:\n  • 1 // 2 * 3    →  evaluates to 0\n        · 1 // 2 = 0\n        · 0 * 3 = 0\n❌ B — does not match the traced execution.\n❌ C — does not match the traced execution.\n❌ D — does not match the traced execution.",
   "explsrc": "execution-verified"
  },
  {
@@ -1213,7 +1213,7 @@
    0
   ],
   "concept": "Bitwise",
-  "expl": "✅ A — walk through it line by line:\n  • a = 1    →  a = 1\n  • b = 0    →  b = 0\n  • c = a & b    →  c = 1 & 0 = 0\n  • d = a | b    →  d = 1 | 0 = 1\n  • e = a ^ b    →  e = 1 ^ 0 = 1\n  • print(c + d + e)    →  prints '2'\n  → output: '2'\n❌ B — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '2'.\n❌ C — the executed trace above ends with '2' — this is not what the code produces.\n❌ D — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '2'.",
+  "expl": "✅ A — walk through it line by line:\n  • a = 1    →  a = 1\n  • b = 0    →  b = 0\n  • c = a & b    →  c = 1 & 0 = 0\n  • d = a | b    →  d = 1 | 0 = 1\n  • e = a ^ b    →  e = 1 ^ 0 = 1\n  • print(c + d + e)    →  prints '2'\n        · 0 + 1 = 1\n        · 1 + 1 = 2\n  → output: '2'\n❌ B — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '2'.\n❌ C — the executed trace above ends with '2' — this is not what the code produces.\n❌ D — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '2'.",
   "explsrc": "execution-verified"
  },
  {
@@ -1664,7 +1664,7 @@
    0
   ],
   "concept": "Variables & Types",
-  "expl": "✅ A — walk through it line by line:\n  • def fun(x):\n  • x = 2    →  x = 2\n  • x = fun(x + 1)    →  x = <function fun at 0x0000020F16319F30>(2 + 1) = 4\n  • [in fun()] x += 1    →  x = 3 + (1) = 4\n  • [in fun()] return x    →  returns 4\n  • print(x)    →  prints '4'\n  → output: '4'\n❌ B — the executed trace above ends with '4' — this is not what the code produces.\n❌ C — this value appears as an INTERMEDIATE state around step 4, but the program keeps running and ends at '4'.\n❌ D — the executed trace above ends with '4' — this is not what the code produces.",
+  "expl": "✅ A — walk through it line by line:\n  • def fun(x):\n  • x = 2    →  x = 2\n  • x = fun(x + 1)    →  x = <function fun at 0x000002EBFAB4B690>(2 + 1) = 4\n  • [in fun()] x += 1    →  x = 3 + (1) = 4\n  • [in fun()] return x    →  returns 4\n  • print(x)    →  prints '4'\n  → output: '4'\n❌ B — the executed trace above ends with '4' — this is not what the code produces.\n❌ C — this value appears as an INTERMEDIATE state around step 4, but the program keeps running and ends at '4'.\n❌ D — the executed trace above ends with '4' — this is not what the code produces.",
   "explsrc": "execution-verified"
  },
  {
@@ -1715,7 +1715,7 @@
    0
   ],
   "concept": "Functions",
-  "expl": "✅ A — walk through it line by line:\n  • def fun(x, y, z):\n  • print(fun(0, z=1, y=3))    →  prints '9'\n  • [in fun()] return x + 2 * y + 3 * z    →  returns 0 + 2 * 3 + 3 * 1\n  → output: '9'\n❌ B — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '9'.\n❌ C — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '9'.\n❌ D — the executed trace above ends with '9' — this is not what the code produces.",
+  "expl": "✅ A — walk through it line by line:\n  • def fun(x, y, z):\n  • print(fun(0, z=1, y=3))    →  prints '9'\n  • [in fun()] return x + 2 * y + 3 * z    →  returns 0 + 2 * 3 + 3 * 1\n        · 2 * 3 = 6\n        · 3 * 1 = 3\n        · 0 + 6 = 6\n        · 6 + 3 = 9\n  → output: '9'\n❌ B — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '9'.\n❌ C — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '9'.\n❌ D — the executed trace above ends with '9' — this is not what the code produces.",
   "explsrc": "execution-verified"
  },
  {
@@ -2063,7 +2063,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • x = float(input())    →  float(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000020F163A5590>())\n  • y = float(input())    →  float(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000020F163A5590>())\n  • print(y ** (1 / x))    →  prints '2.0'\n  → output: '2.0'\n❌ B — the executed trace above ends with '2.0' — this is not what the code produces.\n❌ C — the executed trace above ends with '2.0' — this is not what the code produces.\n❌ D — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '2.0'.",
+  "expl": "✅ A — walk through it line by line:\n  • x = float(input())    →  float(<function run_trace.<locals>.worker.<locals>.mock_input at 0x000002EBFAB6EAE0>())\n  • y = float(input())    →  float(<function run_trace.<locals>.worker.<locals>.mock_input at 0x000002EBFAB6EAE0>())\n  • print(y ** (1 / x))    →  prints '2.0'\n        · 1 / 2.0 = 0.5\n        · 4.0 ** 0.5 = 2.0\n  → output: '2.0'\n❌ B — the executed trace above ends with '2.0' — this is not what the code produces.\n❌ C — the executed trace above ends with '2.0' — this is not what the code produces.\n❌ D — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '2.0'.",
   "explsrc": "execution-verified"
  },
  {
@@ -2168,7 +2168,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • 1 // 5 + 1 / 5    →  evaluates to 0.2  [type promotion: int + float → float]\n❌ B — does not match the traced execution.\n❌ C — does not match the traced execution.\n❌ D — does not match the traced execution.",
+  "expl": "✅ A — walk through it line by line:\n  • 1 // 5 + 1 / 5    →  evaluates to 0.2\n        · 1 // 5 = 0\n        · 1 / 5 = 0.2\n        · 0 + 0.2 = 0.2\n❌ B — does not match the traced execution.\n❌ C — does not match the traced execution.\n❌ D — does not match the traced execution.",
   "explsrc": "execution-verified"
  },
  {
@@ -2443,7 +2443,7 @@
    0
   ],
   "concept": "Operators & Math",
-  "expl": "✅ A — walk through it line by line:\n  • x = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000020F163A6C40>())\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x0000020F163A6C40>())\n  • x = x % y    →  x = 3 % 2 = 1\n  • x = x % y    →  x = 1 % 2 = 1\n  • y = y % x    →  y = 2 % 1 = 0\n  • print(y)    →  prints '0'\n  → output: '0'\n❌ B — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '0'.\n❌ C — this value appears as an INTERMEDIATE state around step 5, but the program keeps running and ends at '0'.\n❌ D — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '0'.",
+  "expl": "✅ A — walk through it line by line:\n  • x = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x000002EBFAB6FA00>())\n  • y = int(input())    →  int(<function run_trace.<locals>.worker.<locals>.mock_input at 0x000002EBFAB6FA00>())\n  • x = x % y    →  x = 3 % 2 = 1\n  • x = x % y    →  x = 1 % 2 = 1\n  • y = y % x    →  y = 2 % 1 = 0\n  • print(y)    →  prints '0'\n  → output: '0'\n❌ B — this value appears as an INTERMEDIATE state around step 6, but the program keeps running and ends at '0'.\n❌ C — this value appears as an INTERMEDIATE state around step 5, but the program keeps running and ends at '0'.\n❌ D — this value appears as an INTERMEDIATE state around step 3, but the program keeps running and ends at '0'.",
   "explsrc": "execution-verified"
  },
  {

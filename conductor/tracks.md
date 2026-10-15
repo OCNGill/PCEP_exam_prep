@@ -1,6 +1,9 @@
 # Tracks — PCEP_exam_prep
 
 ## Active
+- v2.3.1 shipped: arithmetic chains in all 58 walkthroughs (operand-by-operand
+  intermediate values, dependency-safe + precedence-first PEMDAS emission) —
+  70/70 green.
 - v2.3.0 shipped: 58 WHY-walkthroughs restored (v2.2.0 regression), home
   blind-spot trends, universal Home nav, resumable drills — 68/68 green.
 

@@ -17,12 +17,21 @@ Format: Keep-a-Changelog-ish, newest first.
 - **Version stamp on Home** — `PCEP Trainer v2.4.0 · bank 148 · cards 100 ·
   stats format v1` under the sync controls so both ends of a sync can be
   matched by eye before importing.
+- **Single-file packager (`build_singlefile.py`, built by the Geordi
+  delegation)** — inlines `bank.js` (and any local script/link/img) into
+  ONE self-contained **`PCEP_Trainer_v2.4.0.html`** (202,383 B,
+  deterministic: sha256 `41822e0c…` stable across runs and builders,
+  `APP_VER="2.4.0"` inline, **zero external refs**). Offline proof:
+  `node verify_singlefile.js PCEP_Trainer_v2.4.0.html` = **15/15** (bank
+  148, cards 100, exam timer 40:00, answer feedback, flashcards, stats).
+  Rebuild: `python build_singlefile.py --output PCEP_Trainer_v2.4.0.html`.
 
 ### Verified
 - Tests **85/85** (+5: import mount, hidden file input, version stamp,
   merge per-question-max semantics, history/log dedupe).
 - Gate chain green: regen 58/58 0 failures → rebuild 100 cards →
   validate2 58/58 0 mismatches → tests 85/85.
+- Single-file artifact green: verify_singlefile.js **15/15**, external refs `[]`.
 
 > *"Two are better than one, because they have a good reward for their
 > toil."* — Ecclesiastes 4:9 (ESV)

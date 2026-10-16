@@ -30,6 +30,7 @@ browser (localStorage).
 | 🃏 Flashcard Drill | 100 PCEP-only cards mapped to official PCEP-30-02 objectives (reveal, know/again, re-queue) |
 | 📊 Statistics & Blind-Spot Analysis | Per-question + per-concept accuracy, run history, 90% readiness |
 | 📤 Export / 📥 Import Stats (JSON) (Home) | One click dumps your full history to `pcep_stats_*.json`; Import loads one back (source date shown) with MERGE default — per-question highest count wins, history/log deduped — or explicit REPLACE. Phone Export → Drive → laptop Import = carry-across devices |
+| 📱 **Single-file `PCEP_Trainer_v2.4.0.html`** | Everything (app + 148 bank + 100 cards) inlined into ONE 202 KB file that runs from `file://` with zero sibling files — the Android/Google-Drive delivery artifact. Rebuild: `python build_singlefile.py --output PCEP_Trainer_v2.4.0.html` · verify: `node verify_singlefile.js PCEP_Trainer_v2.4.0.html` |
 | 📈 Blind-spot trends (Home) | Run-accuracy sparkline, momentum (last 20 vs prior 20), concept drift (⚠ worsening / ✓ improving), newly-blind question count |
 | ▶️ Continue / 🆕 New Full Run / ⚠️ Reset ALL (Home) | Drills persist after every answer — kill the tab, reopen, and Continue at the exact question, order and answers you left. New Full Run reshuffles a fresh 148 that ADDS to your stats; Reset ALL (wipe) sits last as the explicit last resort |
 

@@ -27,6 +27,7 @@
     "export stats (JSON) for analysis + cross-device sync",
     "import stats (JSON): merge default (per-question max, history/log dedupe) or replace, with source-date confirm",
     "version stamp on Home (v2.4.0 · bank 148 · cards 100 · stats format v1)",
+    "single-file packager build_singlefile.py -> PCEP_Trainer_v2.4.0.html (202 KB, offline file://, verify 15/15)",
     "explain panels (correct + incorrect options)",
     "arithmetic-chain explanations (every operand + intermediate value, PEMDAS-ordered)",
     "per-question + per-concept statistics",

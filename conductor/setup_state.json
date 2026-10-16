@@ -1,6 +1,6 @@
 {
-  "version": "2.3.1",
-  "date": "2026-10-14",
+  "version": "2.3.2",
+  "date": "2026-10-15",
   "status": "OPERATIONAL",
   "bank": {"questions": 148, "unique_sources": 169, "multi_select": 14, "concepts": 12},
   "validation": {
@@ -9,9 +9,10 @@
     "pass2_mismatches": 0,
     "expert_reviewed": 90,
     "external_key_check": "Q104 confirmed vs official PE1 key",
-    "walkthroughs": "58/58 line-by-line with WHY annotations + operand-by-operand arithmetic chains (dependency-safe, precedence-first), 0 fallback phrases"
+    "walkthroughs": "58/58 line-by-line with WHY annotations + operand-by-operand arithmetic chains (dependency-safe, precedence-first), 0 fallback phrases",
+    "determinism": "regen byte-identical across runs (memory-address reprs stripped)"
   },
-  "tests": {"suite": "test_practice.js", "checks": 70, "passing": 70},
+  "tests": {"suite": "test_practice.js", "checks": 80, "passing": 80},
   "features": [
     "exam sim 30Q/40min",
     "drill all",
@@ -21,14 +22,15 @@
     "flashcard drill (100 PCEP-only cards mapped to official objectives)",
     "home blind-spot trends (sparkline, momentum, concept drift, new misses)",
     "universal top-nav Home on every screen",
-    "resumable drills (kill tab → Continue at saved question / Restart)",
+    "run-controls triad: Continue (paused run) / New Full Run (fresh 148, stats additive) / Reset ALL (wipe, last resort)",
+    "results-screen New Full Run chain button",
+    "export stats (JSON) for analysis + cross-device sync",
     "explain panels (correct + incorrect options)",
     "arithmetic-chain explanations (every operand + intermediate value, PEMDAS-ordered)",
     "per-question + per-concept statistics",
     "run history",
     "readiness rolling metric (last 50)",
     "flag checkbox persistence",
-    "back button",
-    "reset progress"
+    "back button"
   ]
 }

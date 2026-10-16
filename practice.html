@@ -138,10 +138,6 @@
     📊 Statistics &amp; Blind-Spot Analysis
     <div class="desc">Per-question and per-concept accuracy, your flags, run history, 90% readiness</div>
   </button>
-  <button class="menu-btn" onclick="resetStats()">
-    ♻ Reset Progress
-    <div class="desc">Wipe all stats, flags and history</div>
-  </button>
 </div>
 
 <!-- ============ QUIZ ============ -->
@@ -179,7 +175,7 @@
 
 <!-- ============ RESULTS ============ -->
 <div id="results" class="hidden">
-  <div class="bar"><button class="btn secondary small" onclick="goHome()">← Back</button></div>
+  <div class="bar"><button class="btn secondary small" onclick="goHome()">← Back</button> <button class="btn small" onclick="newFullRun()">🆕 New Full Run — 148</button></div>
   <div class="result-big" id="resultBig"></div>
   <div class="result-sub" id="resultSub"></div>
   <div class="card" id="resultBreakdown"></div>
@@ -354,17 +350,21 @@ function loadResume() {
 
 function clearResume() { try { localStorage.removeItem(RKEY); } catch (e) {} }
 
-function resumeButtonsHTML() {
+function runControlsHTML() {
   const r = loadResume();
-  if (!r) return "";
-  const label = r.mode === "all" ? "Full Drill" : r.mode === "flagged" ? "Flagged Drill" :
-                r.mode === "multi" ? "Multi-Select Drill" : "Blank-Spot Drill";
-  const pos = (r.idx | 0) + 1, total = r.ids.length;
-  const answered = Object.keys(r.answers || {}).length;
-  return `<button class="menu-btn" onclick="resumeDrill()">▶️ Continue ${label} — Question ${pos}/${total}
-    <div class="desc">Picked up where you left off · ${answered} answered so far · order &amp; answers saved in this browser</div></button>
-  <button class="menu-btn" onclick="restartDrill()">🔁 Restart ${label}
-    <div class="desc">Throw away saved progress and start over from question 1</div></button>`;
+  let cont = "";
+  if (r) {
+    const label = r.mode === "all" ? "Full Drill" : r.mode === "flagged" ? "Flagged Drill" :
+                  r.mode === "multi" ? "Multi-Select Drill" : "Blank-Spot Drill";
+    const pos = (r.idx | 0) + 1, total = r.ids.length;
+    const answered = Object.keys(r.answers || {}).length;
+    cont = `<button class="menu-btn" onclick="resumeDrill()">▶️ Continue ${label} — Question ${pos}/${total}
+      <div class="desc">Picked up where you left off · ${answered} answered so far · order &amp; answers saved in this browser</div></button>`;
+  }
+  return cont + `<button class="menu-btn" onclick="newFullRun()">🆕 New Full Run — 148 fresh questions
+    <div class="desc">New random order — every answer ADDS to your ongoing stats, nothing is wiped</div></button>
+  <button class="menu-btn" onclick="resetStats()">⚠️ Reset ALL — blow away stats, flags &amp; history
+    <div class="desc">Last resort only — your runs keep counting unless you choose this</div></button>`;
 }
 
 function resumeDrill() {
@@ -382,11 +382,9 @@ function resumeDrill() {
   show("quiz"); renderQ();
 }
 
-function restartDrill() {
-  const r = loadResume();
-  const kind = r ? r.mode : "all";
+function newFullRun() {
   clearResume();
-  startDrill(kind);
+  startDrill("all");
 }
 
 function renderHome() {
@@ -402,7 +400,7 @@ function renderHome() {
     <div class="stat"><div class="num ${rd===null?'muted':rd>=90?'green':rd>=75?'yellow':'red'}">${rd===null?"—":rd+"%"}</div><div class="lbl">Readiness (last 50)</div></div>
     <div class="stat"><div class="num ${Object.keys(s.flagged).length?'yellow':'muted'}">${Object.keys(s.flagged).length}</div><div class="lbl">Flagged</div></div>`;
   document.getElementById("trendsBody").innerHTML = trendsHTML();
-  document.getElementById("resumeSlot").innerHTML = resumeButtonsHTML();
+  document.getElementById("resumeSlot").innerHTML = runControlsHTML();
 }
 
 function shuffle(a) { const r=[...a]; for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];} return r; }
@@ -802,6 +800,40 @@ function rateCard(ok) {
 }
 
 renderHome();
+
+/* === Hermes v2.3.2 — stats export: dumps localStorage practice history to a JSON file === */
+(function () {
+  function exportStats() {
+    try {
+      const raw = localStorage.getItem(STORE);
+      if (raw === null) { alert("No stats saved yet."); return; }
+      const blob = new Blob([raw], { type: "application/json" });
+      const a = document.createElement("a");
+      a.href = URL.createObjectURL(blob);
+      const ts = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
+      a.download = "pcep_stats_" + ts + ".json";
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+    } catch (e) { alert("Export failed: " + e.message); }
+  }
+  function mount() {
+    const home = document.getElementById("home");
+    if (!home || document.getElementById("exportStatsBtn")) return;
+    const b = document.createElement("button");
+    b.className = "menu-btn";
+    b.id = "exportStatsBtn";
+    b.innerHTML = "📤 Export Stats (JSON)" +
+      "<div class=\"desc\">Dumps your full practice history to a file — attempts, flags, per-question accuracy</div>";
+    b.onclick = exportStats;
+    home.appendChild(b);
+  }
+  mount();
+  const homeEl = document.getElementById("home");
+  if (homeEl && window.MutationObserver) {
+    new MutationObserver(mount).observe(homeEl, { childList: true });
+  }
+})();
 </script>
 </body>
 </html>

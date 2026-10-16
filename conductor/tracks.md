@@ -1,6 +1,11 @@
 # Tracks — PCEP_exam_prep
 
 ## Active
+- v2.3.2 shipped: run-controls triad (Continue / New Full Run with ADDITIVE
+  stats / Reset ALL last), results-screen New Full Run chain button, stats
+  Export JSON button (committed from session 1130ac's explicit handoff),
+  regen determinism fix (memory-address reprs stripped — byte-identical
+  regens) — 80/80 green.
 - v2.3.1 shipped: arithmetic chains in all 58 walkthroughs (operand-by-operand
   intermediate values, dependency-safe + precedence-first PEMDAS emission) —
   70/70 green.

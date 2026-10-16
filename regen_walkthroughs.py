@@ -155,7 +155,7 @@ def main():
             wt = build_walkthrough(q, steps, output)
             for note in wrong_notes(q, steps, output):
                 wt += "\n" + note
-        q["expl"] = wt
+        q["expl"] = re.sub(r" at 0x[0-9A-Fa-f]+", "", wt)
         changed += 1
     json.dump(bank, open(os.path.join(HERE, "pcep_bank.json"), "w", encoding="utf-8"),
               indent=1, ensure_ascii=False)

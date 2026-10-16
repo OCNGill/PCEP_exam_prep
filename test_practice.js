@@ -191,6 +191,23 @@ setTimeout(() => {
     check("flashcard stats persisted", fcstats && Object.keys(fcstats.again).length === 1 && Object.keys(fcstats.known).length === 1);
     w.eval('goHome()');
 
+    // ---- run controls triad on fresh home (no resume): New + Reset ALL, menu reset deduped ----
+    w.localStorage.removeItem("pcep_drill_resume_v1");
+    w.eval("renderHome()");
+    const slot0 = [...doc.querySelectorAll("#resumeSlot .menu-btn")];
+    const st0 = slot0.map(b => b.textContent).join(" | ");
+    check("fresh home triad: no Continue without resume", !st0.includes("Continue"));
+    check("fresh home triad: New Full Run present", st0.includes("New Full Run"));
+    check("fresh home triad: Reset ALL present", st0.includes("Reset ALL"));
+    check("fresh home triad: New before Reset ALL (wipe last)", st0.indexOf("New Full Run") < st0.indexOf("Reset ALL"));
+    check("menu duplicate Reset Progress removed", ![...doc.querySelectorAll("#home .menu-btn")].some(b => b.textContent.includes("Reset Progress")));
+    check("results screen offers New Full Run chain button", !!doc.querySelector("#results .bar button[onclick='newFullRun()']"));
+    const seen0 = Object.keys(JSON.parse(w.localStorage.getItem("pcep_practice_stats_v1")).seen).length;
+    [...doc.querySelectorAll("#resumeSlot .menu-btn")].find(b => b.textContent.includes("New Full Run")).click();
+    check("fresh-home New starts a 148 run immediately", w.eval("state.mode") === "all" && w.eval("state.qs.length") === 148);
+    check("fresh-home New preserves stats", Object.keys(JSON.parse(w.localStorage.getItem("pcep_practice_stats_v1")).seen).length === seen0);
+    w.eval("clearResume(); goHome()");
+
     // ---- universal top-nav Home ----
     w.eval('startExam()');
     check("topnav visible in quiz", !doc.getElementById("topnav").classList.contains("hidden"));
@@ -233,7 +250,9 @@ setTimeout(() => {
     w.eval("goHome()");
     const btns = [...doc.querySelectorAll("#resumeSlot .menu-btn")];
     check("home shows Continue at Question 7/148", btns.some(b => b.textContent.includes("Continue") && b.textContent.includes("Question 7/148")));
-    check("home shows Restart option", btns.some(b => b.textContent.includes("Restart")));
+    const slotText1 = btns.map(b => b.textContent).join(" | ");
+    check("home shows New Full Run option", slotText1.includes("New Full Run"));
+    check("triad order: Continue, New, Reset ALL", slotText1.indexOf("Continue") < slotText1.indexOf("New Full Run") && slotText1.indexOf("New Full Run") < slotText1.indexOf("Reset ALL"));
     const seenBeforeResume = Object.keys(JSON.parse(w.localStorage.getItem("pcep_practice_stats_v1")).seen).length;
 
     // FRESH JSDOM over the SAME store = kill the tab and reopen it
@@ -251,13 +270,16 @@ setTimeout(() => {
         const seenAfter = Object.keys(JSON.parse(w2.localStorage.getItem("pcep_practice_stats_v1")).seen).length;
         check("resume does not double-count stats", seenAfter === seenBeforeResume);
         w2.eval("goHome()");
-        const rb = [...doc2.querySelectorAll("#resumeSlot .menu-btn")].find(b => b.textContent.includes("Restart"));
-        check("restart button present after reopen", !!rb);
-        if (rb) rb.click();
-        check("restart begins at question 1", w2.eval("state.idx") === 0 && w2.eval("state.mode") === "all");
+        const nb = [...doc2.querySelectorAll("#resumeSlot .menu-btn")].find(b => b.textContent.includes("New Full Run"));
+        check("New Full Run button present after reopen", !!nb);
+        const seenBeforeNew = Object.keys(JSON.parse(w2.localStorage.getItem("pcep_practice_stats_v1")).seen).length;
+        if (nb) nb.click();
+        check("New Full Run begins a fresh 148 run", w2.eval("state.idx") === 0 && w2.eval("state.mode") === "all" && w2.eval("state.qs.length") === 148);
+        const seenAfterNew = Object.keys(JSON.parse(w2.localStorage.getItem("pcep_practice_stats_v1")).seen).length;
+        check("New Full Run does NOT wipe stats (adds to ongoing data)", seenAfterNew === seenBeforeNew);
         w2.eval("goHome()");
         const cont1 = [...doc2.querySelectorAll("#resumeSlot .menu-btn")].find(b => b.textContent.includes("Continue"));
-        check("after restart, Continue shows Question 1/148", !!cont1 && cont1.textContent.includes("Question 1/148"));
+        check("after New run, Continue shows Question 1/148", !!cont1 && cont1.textContent.includes("Question 1/148"));
         dom2.window.close();
       } catch (e2) {
         console.log("TEST CRASH (instance 2):", e2.message);

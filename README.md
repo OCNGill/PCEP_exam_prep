@@ -8,7 +8,7 @@ train to **> 90% knowledge** through repeated, targeted run-throughs that cement
 the right answers.
 
 **Status: OPERATIONAL.** 148-question verified bank · 100-card PCEP-only flashcard
-deck · every answer dual-validated · 70/70 functional regression tests green.
+deck · every answer dual-validated · 80/80 functional regression tests green.
 
 ---
 
@@ -30,7 +30,7 @@ browser (localStorage).
 | 🃏 Flashcard Drill | 100 PCEP-only cards mapped to official PCEP-30-02 objectives (reveal, know/again, re-queue) |
 | 📊 Statistics & Blind-Spot Analysis | Per-question + per-concept accuracy, run history, 90% readiness |
 | 📈 Blind-spot trends (Home) | Run-accuracy sparkline, momentum (last 20 vs prior 20), concept drift (⚠ worsening / ✓ improving), newly-blind question count |
-| ▶️ Continue / 🔁 Restart (Home) | Drills persist after every answer — kill the tab, reopen, and continue at the exact question, order and answers you left |
+| ▶️ Continue / 🆕 New Full Run / ⚠️ Reset ALL (Home) | Drills persist after every answer — kill the tab, reopen, and Continue at the exact question, order and answers you left. New Full Run reshuffles a fresh 148 that ADDS to your stats; Reset ALL (wipe) sits last as the explicit last resort |
 
 **Universal nav:** a 🏠 Home button sits on every screen (quiz, flashcards,
 results, statistics). Exam-sim abandonment still asks for confirmation.

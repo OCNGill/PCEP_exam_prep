@@ -3,6 +3,40 @@
 All notable changes to the PCEP Rapid Practice system.
 Format: Keep-a-Changelog-ish, newest first.
 
+## [2.3.2] — 2026-10-15
+
+### Added
+- **Run-controls triad (Commander directive)** — Home now offers, in order:
+  `▶️ Continue` (while a run is paused) → `🆕 New Full Run — 148 fresh
+  questions` → `⚠️ Reset ALL` (wipe last, always). A new run ALWAYS adds to
+  the ongoing stats — wiping is a deliberate last option, never a
+  prerequisite. The duplicate `♻ Reset Progress` menu tile was removed so
+  there is exactly one wipe path: the explicit, last-place one.
+- **Results-screen `🆕 New Full Run — 148`** button — chain runs straight
+  from a finished run without going Home first.
+- **Export Stats (JSON) button** — built by session 1130ac
+  (Electrons_to_Dollars) on the Commander's performance-analysis ask and
+  handed to this lane for commit (their note: *"that repo's commits belong
+  to session 20260912_143608_a88fd7, so I left the commit to that lane"*).
+  Downloads `pcep_stats_*.json` for analysis and cross-device sync.
+
+### Fixed
+- **Nondeterministic walkthrough output** — `int(input())` traces embedded
+  Python memory addresses (`<function …mock_input at 0x000002EBFAB…>`) that
+  changed every process run, dirtying `pcep_bank.json`/`bank.js` on every
+  regen. Addresses are now stripped at `fmt()` and at the regen write
+  boundary. Proven: two consecutive regens produce byte-identical banks
+  (matching sha256), ` at 0x` leak count 0.
+
+### Verified
+- Tests **80/80** (was 70; +10 triad/export assertions, Restart assertions
+  replaced by New-Run and stats-preservation proofs).
+- Gate chain green: regen 58/58 0 failures → rebuild 100 cards →
+  validate2 58/58 0 mismatches → tests 80/80.
+
+> *"But let each one test his own work, and then his reason for boasting will
+> be in himself and not in his neighbor."* — Galatians 6:4 (ESV)
+
 ## [2.3.1] — 2026-10-14
 
 ### Fixed

@@ -17,7 +17,9 @@ def fmt(v):
             return "(" + ", ".join(fmt(x) for x in v) + ("," if len(v) == 1 else "") + ")"
     except Exception:
         pass
-    return repr(v)
+    # Strip memory addresses from object reprs (e.g. '<function ... at 0x7f...>'):
+    # addresses differ every process run and made regen output nondeterministic.
+    return re.sub(r" at 0x[0-9A-Fa-f]+", "", repr(v))
 
 def run_trace(code, stdin_lines=(), max_events=400, timeout=3.0):
     """Return (steps, printed). steps = [{'src': line, 'before': {var: val}}]"""

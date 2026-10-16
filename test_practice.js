@@ -202,6 +202,12 @@ setTimeout(() => {
     check("fresh home triad: New before Reset ALL (wipe last)", st0.indexOf("New Full Run") < st0.indexOf("Reset ALL"));
     check("menu duplicate Reset Progress removed", ![...doc.querySelectorAll("#home .menu-btn")].some(b => b.textContent.includes("Reset Progress")));
     check("results screen offers New Full Run chain button", !!doc.querySelector("#results .bar button[onclick='newFullRun()']"));
+    check("import button mounted (Phase 1 sync)", !!doc.getElementById("importStatsBtn"));
+    check("import hidden file input ready", !!doc.getElementById("importStatsFile"));
+    check("version stamp on Home shows v2.4.0", ((doc.getElementById("appVersion") || {}).textContent || "").includes("v2.4.0"));
+    const mg = w.eval('__pcepMergeStats({seen:{a:1,b:3},correct:{a:1},wrong:{},flagged:{},history:[{r:1}],log:[{q:1}]},{seen:{a:5,c:1},correct:{a:2},wrong:{c:1},flagged:{b:1},history:[{r:1},{r:2}],log:[{q:1},{q:2}]})');
+    check("merge: per-question highest count wins", mg.seen.a === 5 && mg.seen.b === 3 && mg.seen.c === 1 && mg.correct.a === 2 && mg.flagged.b === 1 && mg.wrong.c === 1);
+    check("merge: history+log deduped, nothing lost", mg.history.length === 2 && mg.log.length === 2);
     const seen0 = Object.keys(JSON.parse(w.localStorage.getItem("pcep_practice_stats_v1")).seen).length;
     [...doc.querySelectorAll("#resumeSlot .menu-btn")].find(b => b.textContent.includes("New Full Run")).click();
     check("fresh-home New starts a 148 run immediately", w.eval("state.mode") === "all" && w.eval("state.qs.length") === 148);

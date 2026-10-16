@@ -1,6 +1,10 @@
 # Tracks — PCEP_exam_prep
 
 ## Active
+- v2.4.0 shipped: stats IMPORT (merge-default / replace-confirm with source
+  date) + Home version stamp — Phase 1 Android/Drive sync half; pairs with
+  1130ac's Export for phone <-> laptop carry-across — 85/85 green.
+  Single-file packager (build_singlefile.py) in flight via Geordi delegation.
 - v2.3.2 shipped: run-controls triad (Continue / New Full Run with ADDITIVE
   stats / Reset ALL last), results-screen New Full Run chain button, stats
   Export JSON button (committed from session 1130ac's explicit handoff),

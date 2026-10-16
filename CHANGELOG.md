@@ -3,6 +3,34 @@
 All notable changes to the PCEP Rapid Practice system.
 Format: Keep-a-Changelog-ish, newest first.
 
+## [2.4.0] — 2026-10-15
+
+### Added
+- **Stats Import (Phase 1 Android/Drive sync — Commander GO)** —
+  `📥 Import Stats (JSON)` on Home loads an exported `pcep_stats_*.json`
+  (e.g. saved from the phone into Drive), shows source date plus
+  incoming/local counts, then **MERGE (default — per-question highest
+  count wins, history/log deduped)** or, after cancel, an explicit
+  **REPLACE** confirm; a third cancel leaves everything untouched. Merge
+  logic is exposed as the `__pcepMergeStats` test seam. Pairs with the
+  Export button: phone Export → Drive → laptop Import = carry-across.
+- **Version stamp on Home** — `PCEP Trainer v2.4.0 · bank 148 · cards 100 ·
+  stats format v1` under the sync controls so both ends of a sync can be
+  matched by eye before importing.
+
+### Verified
+- Tests **85/85** (+5: import mount, hidden file input, version stamp,
+  merge per-question-max semantics, history/log dedupe).
+- Gate chain green: regen 58/58 0 failures → rebuild 100 cards →
+  validate2 58/58 0 mismatches → tests 85/85.
+
+> *"Two are better than one, because they have a good reward for their
+> toil."* — Ecclesiastes 4:9 (ESV)
+
+Chosen because Phase 1 is exactly that principle made mechanical: the phone
+and the laptop toil on the same record and the merge carries the reward
+between them.
+
 ## [2.3.2] — 2026-10-15
 
 ### Added

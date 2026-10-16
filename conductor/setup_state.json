@@ -1,5 +1,5 @@
 {
-  "version": "2.3.2",
+  "version": "2.4.0",
   "date": "2026-10-15",
   "status": "OPERATIONAL",
   "bank": {"questions": 148, "unique_sources": 169, "multi_select": 14, "concepts": 12},
@@ -12,7 +12,7 @@
     "walkthroughs": "58/58 line-by-line with WHY annotations + operand-by-operand arithmetic chains (dependency-safe, precedence-first), 0 fallback phrases",
     "determinism": "regen byte-identical across runs (memory-address reprs stripped)"
   },
-  "tests": {"suite": "test_practice.js", "checks": 80, "passing": 80},
+  "tests": {"suite": "test_practice.js", "checks": 85, "passing": 85},
   "features": [
     "exam sim 30Q/40min",
     "drill all",
@@ -25,6 +25,8 @@
     "run-controls triad: Continue (paused run) / New Full Run (fresh 148, stats additive) / Reset ALL (wipe, last resort)",
     "results-screen New Full Run chain button",
     "export stats (JSON) for analysis + cross-device sync",
+    "import stats (JSON): merge default (per-question max, history/log dedupe) or replace, with source-date confirm",
+    "version stamp on Home (v2.4.0 · bank 148 · cards 100 · stats format v1)",
     "explain panels (correct + incorrect options)",
     "arithmetic-chain explanations (every operand + intermediate value, PEMDAS-ordered)",
     "per-question + per-concept statistics",

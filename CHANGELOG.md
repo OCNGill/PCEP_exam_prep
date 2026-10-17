@@ -67,10 +67,8 @@ between them.
   there is exactly one wipe path: the explicit, last-place one.
 - **Results-screen `🆕 New Full Run — 148`** button — chain runs straight
   from a finished run without going Home first.
-- **Export Stats (JSON) button** — built by session 1130ac
-  (Electrons_to_Dollars) on the Commander's performance-analysis ask and
-  handed to this lane for commit (their note: *"that repo's commits belong
-  to session 20260912_143608_a88fd7, so I left the commit to that lane"*).
+- **Export Stats (JSON) button** — built on the Commander's
+  performance-analysis ask and handed off for commit.
   Downloads `pcep_stats_*.json` for analysis and cross-device sync.
 
 ### Fixed

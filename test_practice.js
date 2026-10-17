@@ -7,7 +7,7 @@ const fs = require("fs");
 const path = require("path");
 const { JSDOM } = require("jsdom"); /* repo node_modules — %TEMP% copy dies to temp sweeps */
 
-const SRC = "C:/Users/Gillsystems Laptop/source/repos/OCNGill/PCEP_exam_prep";
+const SRC = __dirname; /* portable — no filesystem usernames in the repo */
 const APPDIR = path.join(process.env.TEMP, "pcep_test");
 const APP = APPDIR.replace(/\\/g, "/") + "/practice.html";
 

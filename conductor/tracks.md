@@ -1,15 +1,22 @@
 # Tracks — PCEP_exam_prep
 
 ## Active
+- v2.5.0 shipped (2026-10-16): WiFi LAN sync (manual, same-home-WiFi,
+  backup-first two-way merge — pcep_sync_server.py port 8787, task
+  PCEPSyncServer at logon, firewall Private-only) + Gillsystems branding
+  (header logo, PayPal footer) + AMD-standard README + public hygiene
+  sweep. Tests 87 app / 11 sync / 15 single-file. Artifact
+  PCEP_Trainer_v2.5.0.html also delivered via Drive (in-place replace).
+  Next: phone smoke + first real sync + fleet README sweep (Scribe).
 - v2.4.0 shipped: stats IMPORT (merge-default / replace-confirm with source
   date) + Home version stamp — Phase 1 Android/Drive sync half; pairs with
-  1130ac's Export for phone <-> laptop carry-across — 85/85 green.
+  the Export feature for phone <-> laptop carry-across — 85/85 green.
   Single-file packager SHIPPED (Geordi): PCEP_Trainer_v2.4.0.html
   (202,383 B, sha256 41822e0c..., verify_singlefile.js 15/15,
   0 external refs) — the Drive/Droid artifact. Next: Drive push.
 - v2.3.2 shipped: run-controls triad (Continue / New Full Run with ADDITIVE
   stats / Reset ALL last), results-screen New Full Run chain button, stats
-  Export JSON button (committed from session 1130ac's explicit handoff),
+  Export JSON button (committed from an explicit handoff),
   regen determinism fix (memory-address reprs stripped — byte-identical
   regens) — 80/80 green.
 - v2.3.1 shipped: arithmetic chains in all 58 walkthroughs (operand-by-operand

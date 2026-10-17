@@ -1,6 +1,6 @@
 # Shared-Drive Ingestion Report — 2026-09-17
 
-Source: `G:\Shared drives\AI-Powered Data Analytics Training\01_PCEP-PCAP-Python_Certification_Practice`
+Source: internal shared-drive folder "AI-Powered Data Analytics Training/01_PCEP-PCAP-Python_Certification_Practice" (local copy).
 Window: last 2 years (2024-09 → present). 2022 material excluded.
 
 ## Ingested (23 files staged to raw_data_v2/)

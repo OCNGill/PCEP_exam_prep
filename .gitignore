@@ -10,3 +10,6 @@ __pycache__/
 # LAN sync server data — personal stats, NEVER pushed (Commander: gitignored always)
 sync_server/
 assets/*.bak
+node_modules/
+package.json
+package-lock.json

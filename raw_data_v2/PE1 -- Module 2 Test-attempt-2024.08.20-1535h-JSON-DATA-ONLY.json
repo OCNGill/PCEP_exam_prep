@@ -1395,7 +1395,7 @@
     "token": null,
     "lastStableState": [
     ],
-    "launchPresentationReturnUrl": "https://lms.netacad.com/mod/lti/return.php?course=2280461&launch_container=4&instanceid=47587159&sesskey=hZyOh245oO",
+    "launchPresentationReturnUrl":null,
     "fullScreenExitLimit": null,
     "windowExitLimit": null,
     "noInternetLimit": null,

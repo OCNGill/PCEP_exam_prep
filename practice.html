@@ -90,11 +90,24 @@
   .badge.unseen { background: var(--card); color: var(--muted); border: 1px solid var(--border); }
   details summary { cursor: pointer; color: var(--accent); font-size: 0.85rem; padding: 8px 0; }
   .histline { display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--muted); padding: 4px 0; border-bottom: 1px solid var(--border); }
+  .hdr { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+  .hdr-logo { height: 56px; width: auto; max-width: 46%; object-fit: contain; }
+  .hdr .sub { margin-bottom: 0; }
+  @media (max-width: 560px) { .hdr { gap: 10px; } .hdr-logo { height: 40px; } }
+  .gill-footer { margin-top: 26px; padding-top: 14px; border-top: 1px solid var(--border);
+    font-size: 0.78rem; color: var(--muted); text-align: center; line-height: 1.7; }
+  .gill-footer a { color: var(--accent); text-decoration: none; }
+  .gill-footer .pay-ico { height: 16px; vertical-align: -3px; margin-right: 4px; }
 </style>
 </head>
 <body>
-<h1>PCEP <span>Rapid Practice</span></h1>
-<div class="sub">Mission: pass the real PCEP (30 questions / 40 min) &ge; 75% — train to &gt; 90% &middot; 148-question verified bank &middot; 100-card PCEP-only flashcard deck</div>
+<header class="hdr">
+  <img class="hdr-logo" src="assets/gillsystems_logo.png" alt="Gillsystems">
+  <div>
+    <h1>PCEP <span>Rapid Practice</span></h1>
+    <div class="sub">Mission: pass the real PCEP (30 questions / 40 min) &ge; 75% — train to &gt; 90% &middot; 148-question verified bank &middot; 100-card PCEP-only flashcard deck</div>
+  </div>
+</header>
 <nav id="topnav" class="topnav hidden">
   <button class="btn secondary small" onclick="backOut()">🏠 Home</button>
   <span class="muted" id="navHint" style="font-size:0.78rem"></span>
@@ -801,141 +814,61 @@ function rateCard(ok) {
 
 renderHome();
 
-/* === Hermes v2.3.2 — stats export: dumps localStorage practice history to a JSON file === */
+/* === Hermes v2.5.0 — WiFi LAN sync (Commander directive 2026-10-16: MANUAL,
+   same home WiFi, laptop sees the incoming request, ONE backup kept BEFORE every
+   merge, two-way — whichever device is behind gets added). Export/Import-over-Drive
+   RETIRED for stats; Drive now distributes app updates only. Server: pcep_sync_server.py === */
 (function () {
-  function exportStats() {
+  const APP_VER = "2.5.0";
+  const HOST_KEY = "pcep_sync_host";
+  const DEFAULT_HOST = ""; /* no baked-in address: public repo ships NO private IPs; typed once per device, then persisted */
+  function syncHost() { return localStorage.getItem(HOST_KEY) || DEFAULT_HOST; }
+  async function runSync() {
+    let h = window.prompt("Laptop sync address (same WiFi, host:port — e.g. 192.168.1.10:8787):", syncHost());
+    if (h === null) return;
+    h = String(h).trim().replace(/^https?:\/\//, "").replace(/\/+$/, "");
+    if (!h) { alert("No address entered — sync cancelled."); return; }
+    localStorage.setItem(HOST_KEY, h);
+    let rec;
+    try { rec = JSON.parse(localStorage.getItem(STORE) || "null") || blankStats(); }
+    catch (e) { rec = blankStats(); }
     try {
-      const raw = localStorage.getItem(STORE);
-      if (raw === null) { alert("No stats saved yet."); return; }
-      const blob = new Blob([raw], { type: "application/json" });
-      const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
-      const ts = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
-      a.download = "pcep_stats_" + ts + ".json";
-      document.body.appendChild(a);
-      a.click();
-      setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
-    } catch (e) { alert("Export failed: " + e.message); }
+      const pr = await fetch("http://" + h + "/ping");
+      const pj = await pr.json();
+      if (!pj || !pj.ok) throw new Error("server said no");
+      const sr = await fetch("http://" + h + "/sync", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(rec)
+      });
+      const out = await sr.json();
+      if (!out || !out.ok || !out.merged) throw new Error("bad sync reply");
+      localStorage.setItem(STORE, JSON.stringify(out.merged));
+      renderHome();
+      alert("Synced with " + h + "\n" + out.direction +
+        "\nRecord: " + out.questions + " questions / " + out.answers + " answers" +
+        "\nServer backup kept: " + (out.backup || "first sync \u2014 nothing to back up") +
+        "\n\nSame record on phone and laptop \u2014 keep going on either.");
+    } catch (e) {
+      alert("Sync FAILED: " + e.message +
+        "\n\nBoth devices must be on the SAME WiFi and the\nPCEP Sync Server must be running on the laptop.\nTried: " + h);
+    }
   }
+  window.__pcepSyncHostDefault = DEFAULT_HOST;
   function mount() {
     const home = document.getElementById("home");
-    if (!home || document.getElementById("exportStatsBtn")) return;
+    if (!home || document.getElementById("syncBtn")) return;
     const b = document.createElement("button");
     b.className = "menu-btn";
-    b.id = "exportStatsBtn";
-    b.innerHTML = "📤 Export Stats (JSON)" +
-      "<div class=\"desc\">Dumps your full practice history to a file — attempts, flags, per-question accuracy</div>";
-    b.onclick = exportStats;
-    home.appendChild(b);
-  }
-  mount();
-  const homeEl = document.getElementById("home");
-  if (homeEl && window.MutationObserver) {
-    new MutationObserver(mount).observe(homeEl, { childList: true });
-  }
-})();
-
-/* === Hermes v2.4.0 — stats import (Phase 1 sync): loads an exported pcep_stats_*.json,
-   MERGE by default (per-question highest count wins, history/log deduped) or REPLACE
-   after a second explicit confirm. Pairs with the Export button above for
-   phone <-> laptop carry-across via Google Drive. === */
-(function () {
-  const APP_VER = "2.4.0";
-  function pickCounts(a, b) {
-    const out = Object.assign({}, a || {});
-    for (const k of Object.keys(b || {})) out[k] = Math.max(Number(out[k]) || 0, Number(b[k]) || 0);
-    return out;
-  }
-  function dedupeArr(a, b) {
-    const seen = new Set(), out = [];
-    for (const item of [].concat(Array.isArray(a) ? a : [], Array.isArray(b) ? b : [])) {
-      const key = JSON.stringify(item);
-      if (!seen.has(key)) { seen.add(key); out.push(item); }
-    }
-    return out;
-  }
-  function mergeStats(local, inc) {
-    return {
-      seen: pickCounts(local.seen, inc.seen),
-      correct: pickCounts(local.correct, inc.correct),
-      wrong: pickCounts(local.wrong, inc.wrong),
-      flagged: pickCounts(local.flagged, inc.flagged),
-      history: dedupeArr(local.history, inc.history),
-      log: dedupeArr(local.log, inc.log)
-    };
-  }
-  window.__pcepMergeStats = mergeStats; /* test seam */
-  function sourceDate(name) {
-    const m = /pcep_stats_(\d{4})-(\d\d)-(\d\d)/.exec(name || "");
-    return m ? m[1] + "-" + m[2] + "-" + m[3] : "date unknown";
-  }
-  function apply(inc, name) {
-    const local = loadStats();
-    const lq = Object.keys(local.seen || {}).length;
-    const iq = Object.keys(inc.seen || {}).length;
-    const head = "Import " + (name || "stats file") + "\nSource date: " + sourceDate(name) +
-      "\nIncoming: " + iq + " questions · " + (inc.log || []).length + " log entries" +
-      "\nLocal: " + lq + " questions · " + (local.log || []).length + " log entries";
-    if (confirm(head + "\n\nOK = MERGE (recommended — keeps everything; per-question highest count wins)\nCancel = next step")) {
-      const merged = mergeStats(local, inc);
-      saveStats(merged);
-      renderHome();
-      alert("Merged — " + Object.keys(merged.seen).length + " questions on record.");
-      return true;
-    }
-    if (confirm(head + "\n\nREPLACE all local stats with the imported file?\n(local attempts will be discarded)")) {
-      saveStats(inc);
-      renderHome();
-      alert("Replaced — " + iq + " questions on record.");
-      return true;
-    }
-    alert("Import cancelled — nothing changed.");
-    return false;
-  }
-  function handleFile(f) {
-    const r = new FileReader();
-    r.onload = function () {
-      try {
-        const obj = JSON.parse(String(r.result));
-        if (!obj || typeof obj !== "object" || (!obj.seen && !obj.correct)) {
-          alert("Not a PCEP stats file (missing seen/correct keys).");
-          return;
-        }
-        apply({
-          seen: obj.seen || {}, correct: obj.correct || {}, wrong: obj.wrong || {},
-          flagged: obj.flagged || {},
-          history: Array.isArray(obj.history) ? obj.history : [],
-          log: Array.isArray(obj.log) ? obj.log : []
-        }, f.name);
-      } catch (e) { alert("Import failed: " + e.message); }
-    };
-    r.readAsText(f);
-  }
-  function mount() {
-    const home = document.getElementById("home");
-    if (!home || document.getElementById("importStatsBtn")) return;
-    const inp = document.createElement("input");
-    inp.type = "file";
-    inp.accept = ".json,application/json";
-    inp.style.display = "none";
-    inp.id = "importStatsFile";
-    inp.onchange = function () {
-      if (inp.files && inp.files[0]) handleFile(inp.files[0]);
-      inp.value = "";
-    };
-    const b = document.createElement("button");
-    b.className = "menu-btn";
-    b.id = "importStatsBtn";
-    b.innerHTML = "📥 Import Stats (JSON)" +
-      "<div class=\"desc\">Load a pcep_stats file from Drive — merge (default) or replace, so runs carry across devices</div>";
-    b.onclick = function () { inp.click(); };
+    b.id = "syncBtn";
+    b.innerHTML = "\ud83d\udcef Sync (WiFi)" +
+      "<div class=\"desc\">Manual two-way sync with the laptop over home WiFi \u2014 one backup kept every time; whichever device is behind gets added</div>";
+    b.onclick = runSync;
     const stamp = document.createElement("div");
     stamp.id = "appVersion";
     stamp.className = "sub";
     stamp.style.marginTop = "10px";
     stamp.style.opacity = ".75";
-    stamp.textContent = "PCEP Trainer v" + APP_VER + " · bank 148 · cards 100 · stats format v1";
-    home.appendChild(inp);
+    stamp.textContent = "PCEP Trainer v" + APP_VER + " \u00b7 bank 148 \u00b7 cards 100 \u00b7 Gillsystems \u00b7 stats format v1";
     home.appendChild(b);
     home.appendChild(stamp);
   }
@@ -946,5 +879,9 @@ renderHome();
   }
 })();
 </script>
+<footer class="gill-footer">
+  <a href="https://paypal.me/gillsystems" target="_blank" rel="noopener"><img class="pay-ico" src="assets/paypal_icon.png" alt="PayPal">Support free Gillsystems tools — paypal.me/gillsystems</a><br>
+  Gillsystems · MIT License · <a href="https://github.com/OCNGill/PCEP_exam_prep" target="_blank" rel="noopener">GitHub</a> · one artifact, two devices, one record
+</footer>
 </body>
 </html>

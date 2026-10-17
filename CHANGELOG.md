@@ -3,6 +3,22 @@
 All notable changes to the PCEP Rapid Practice system.
 Format: Keep-a-Changelog-ish, newest first.
 
+## [2.5.0] — 2026-10-16
+### Changed
+- **WiFi LAN sync replaces Export/Import over Drive for stats (Commander directive):** manual, same-home-WiFi-only sync — phone taps 📶 Sync → `pcep_sync_server.py` on the laptop sees and logs the request → **backs up its record first** (`sync_server/backups/`, last 10 kept) → **two-way merge, whichever device is behind gets added** (per-question max, history/log deduped) → both devices end identical.
+- **Branding:** Gillsystems logo on the app header (left, title line fits at any width); donation footer (PayPal) at the bottom of every screen.
+- **Public hygiene:** removed `dispatch_local_infer.py` + `local_verify.py` (private fleet IPs) from the public repo; app/artifact contain **zero private IPs** (sync host typed once per device, persisted).
+- Version stamp → `v2.5.0`; artifact `PCEP_Trainer_v2.5.0.html` (356,229 B, sha256 `a4c8ef2d…`, zero external refs, offline-verified).
+### Fixed
+- Backup rotation filenames now ns-resolution (`time.time_ns()`) — same-second syncs can no longer overwrite the previous backup.
+- `test_practice.js` requires jsdom from repo `node_modules` (the old `%TEMP%` copy is destroyed by temp sweeps).
+### Tests
+- App suite **87/87** (sync surface, removed Export/Import, logo, footer, no-baked-IP). New `test_sync_server.py` **11/11**. Single-file verify **15/15**. validate2 58/58, 0 mismatches.
+### Docs
+- README rewritten in the Gillsystems standard format (logo, badge row, TOC, sync guide, privacy policy, donation section) — modeled on Gillsystems-AMD-Radeon-llama-cpp-Update-AI-Stack.
+
+> _"Iron sharpens iron, and one man sharpens another."_ — **Proverbs 27:17 (ESV)** — two devices, one record: each manual sync sharpens the same record on both sides.
+
 ## [2.4.0] — 2026-10-15
 
 ### Added

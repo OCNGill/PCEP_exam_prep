@@ -6,3 +6,7 @@ local_infer_*.txt
 .DS_Store
 __pycache__/
 *.pyc
+
+# LAN sync server data — personal stats, NEVER pushed (Commander: gitignored always)
+sync_server/
+assets/*.bak

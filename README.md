@@ -1,143 +1,138 @@
-# PCEP Exam Prep — Rapid Practice System
+![Gillsystems Logo](assets/gillsystems_logo.png)
 
-**Mission (per Rich Lysakowski, Ph.D. — Network Technology Academy Institute):**
-raw data → passed PCEP certification exam in 30 days or less.
+# Gillsystems PCEP Rapid Practice
+> _"30 questions. 40 minutes. Train to >90% — one artifact, two devices, one record."_
 
-**Target:** pass the real PCEP (30 questions / 40 minutes, 70% to pass) — and
-train to **> 90% knowledge** through repeated, targeted run-throughs that cement
-the right answers.
+![PCEP-30-02](https://img.shields.io/badge/Python%20Institute-PCEP--30--02-3776AB?logo=python)
+![Bank](https://img.shields.io/badge/bank-148%20verified%20questions-4B8BBE)
+![Flashcards](https://img.shields.io/badge/cards-100%20PCEP--only-4CAF50)
+![Tests](https://img.shields.io/badge/tests-87%20app%20%C2%B7%2011%20sync%20%C2%B7%2015%20offline-brightgreen)
+![Sync](https://img.shields.io/badge/sync-WiFi%20LAN%20%C2%B7%20manual%20%C2%B7%20backed%20up-FF9800)
+![License](https://img.shields.io/badge/license-MIT-yellow)
+[![Version](https://img.shields.io/badge/version-2.5.0-blue)](CHANGELOG.md)
 
-**Status: OPERATIONAL.** 148-question verified bank · 100-card PCEP-only flashcard
-deck · every answer dual-validated · 85/85 functional regression tests green.
+**Gillsystems PCEP Rapid Practice** is a fully offline, single-file trainer for the Python Institute **PCEP-30-02** certification: a **148-question multiple-choice bank** whose code answers are verified by actual execution (58 with line-by-line walkthroughs and operand-by-operand arithmetic chains), a **100-card PCEP-only flashcard deck**, a real-format exam simulator (**30 questions / 40 minutes**), weak-spot analytics — and **manual two-way stats sync with your computer over home WiFi**: one backup of the record is always kept, and whichever device is behind gets added to.
+
+**Status:** v2.5.0 — WiFi LAN sync live, single-file artifact verified offline (zero external references), 87 app checks + 11 sync-server checks + 15 single-file checks green. See [`CHANGELOG.md`](CHANGELOG.md).
+
+## Contents
+* [Overview](#overview)
+* [Key Features](#key-features)
+* [Quick Start](#quick-start)
+* [WiFi Sync (manual, two-way, backed up)](#wifi-sync-manual-two-way-backed-up)
+* [Stats, Drills & Readiness](#stats-drills--readiness)
+* [Flashcards](#flashcards)
+* [Testing](#testing)
+* [Project Layout](#project-layout)
+* [Privacy & Public Repo Policy](#privacy--public-repo-policy)
+* [Support / Donate](#support--donate)
 
 ---
 
-## How to launch
+## Overview
+Passing the real PCEP exam (30 questions, 40 minutes, official pass mark 70%) takes more than reading — it takes repeated, spaced, honest practice against the official syllabus. This trainer:
 
-Double-click **`start_practice.bat`** (opens the trainer in your default browser),
-or open `practice.html` directly. Nothing to install; progress persists in the
-browser (localStorage).
+1. Presents the **official-syllabus 148-question bank** (12 concept areas) in drill or real-format exam mode.
+2. Explains **every** answer — why the correct option is correct, why each distractor is wrong, with executed traces and step-by-step arithmetic for code output questions.
+3. Measures exactly **where you are weak** (per-question, per-concept, trends, rolling last-50 readiness) and routes you to the right follow-up drill.
+4. Keeps the record **synchronized between phone and computer** with a manual WiFi sync that never loses data: the server backs up before it writes, and the merge is add-only.
 
-## Training modes
-
-| Mode | What it does |
+## Key Features
+| Feature | Detail |
 |---|---|
-| ⏱ Exam Simulation | **30 questions / 40 minutes** — mirrors the real PCEP sitting; pass bar 75% (above the real 70%) |
-| 🔁 Drill All | All 148 questions, instant feedback + explanations, reshuffled every run |
-| 🎯 Blank-Spot Drill (algorithmic) | Questions the engine flagged: accuracy < 70% or any miss |
-| ⚑ Flagged Drill (your blind spots) | Every question YOU ticked with the ⚑ checkbox |
-| ☑ Multi-Select Focus | The 14 "Select two answers" questions — the classic PCEP trap |
-| 🃏 Flashcard Drill | 100 PCEP-only cards mapped to official PCEP-30-02 objectives (reveal, know/again, re-queue) |
-| 📊 Statistics & Blind-Spot Analysis | Per-question + per-concept accuracy, run history, 90% readiness |
-| 📤 Export / 📥 Import Stats (JSON) (Home) | One click dumps your full history to `pcep_stats_*.json`; Import loads one back (source date shown) with MERGE default — per-question highest count wins, history/log deduped — or explicit REPLACE. Phone Export → Drive → laptop Import = carry-across devices |
-| 📱 **Single-file `PCEP_Trainer_v2.4.0.html`** | Everything (app + 148 bank + 100 cards) inlined into ONE 202 KB file that runs from `file://` with zero sibling files — the Android/Google-Drive delivery artifact. Rebuild: `python build_singlefile.py --output PCEP_Trainer_v2.4.0.html` · verify: `node verify_singlefile.js PCEP_Trainer_v2.4.0.html` |
-| 📈 Blind-spot trends (Home) | Run-accuracy sparkline, momentum (last 20 vs prior 20), concept drift (⚠ worsening / ✓ improving), newly-blind question count |
-| ▶️ Continue / 🆕 New Full Run / ⚠️ Reset ALL (Home) | Drills persist after every answer — kill the tab, reopen, and Continue at the exact question, order and answers you left. New Full Run reshuffles a fresh 148 that ADDS to your stats; Reset ALL (wipe) sits last as the explicit last resort |
+| **Execution-verified bank** | 148 questions; 58 code answers confirmed by running them (validate2.py: 58 confirmed, 0 mismatches) |
+| **Deep walkthroughs** | Line-by-line WHY + operand-by-operand arithmetic chains (e.g. `4 ** 2 = 16 → 1 / 2 = 0.5 → 3 // 3 = 1 → 0.5 + 1 + 16 = 17.5`) |
+| **Real exam format** | Exam Sim = 30 questions / 40 min countdown / 75% trainer bar (official pass = 70%) |
+| **Run-controls triad** | ▶️ Continue (resume) · 🆕 New Full Run (additive) · ⚠️ Reset ALL (explicit, last) — stats are cumulative by default |
+| **Weak-spot engine** | Per-question + per-concept stats, 🎯 Blank-Spot Drill, ⚑ Flagged Drill, blind-spot trends, rolling last-50 readiness |
+| **WiFi LAN sync** | Manual, same-home-WiFi, two-way merge (whichever device is behind gets added), one backup always kept first |
+| **Fully offline** | `file://` operation — single HTML file with everything inlined (zero external references) |
+| **Flashcards** | 100 PCEP-only cards mapped to official objectives (25 per block), rate/re-queue persistence |
+| **Branded** | Gillsystems header logo + donation footer — MIT licensed |
 
-**Universal nav:** a 🏠 Home button sits on every screen (quiz, flashcards,
-results, statistics). Exam-sim abandonment still asks for confirmation.
+## Quick Start
+**Just train (phone or computer):**
+1. Grab `PCEP_Trainer_v2.5.0.html` (repo, or the shared Drive copy) — it is completely self-contained.
+2. Open it in any modern browser. Add to Home Screen for an app-like icon. Works with no network at all.
 
-## Answer quality engine
+**Develop / run the suite:**
+```bash
+git clone https://github.com/OCNGill/PCEP_exam_prep.git
+cd PCEP_exam_prep
+npm install jsdom          # test-only dependency (lives in repo node_modules)
+python build_singlefile.py --output PCEP_Trainer_v2.5.0.html
+node verify_singlefile.js PCEP_Trainer_v2.5.0.html
+node test_practice.js
+```
 
-- **⚑ Flag for review** — during any drill, tick the checkbox on questions you
-  doubt. Flagged questions aggregate into concept-level blind spots and get
-  their own drill. Your perception + the algorithm, combined.
-- **▼ Explain** — every question has an expandable explanation covering the
-  correct answer AND each wrong option. Code questions get a line-by-line
-  execution walkthrough with WHY annotations (operator semantics, lengths
-  adding, type promotion) and arithmetic chains that show every operand and
-  intermediate value in precedence order — `4 ** 2 = 16 → 1 / 2 = 0.5 →
-  3 // 3 = 1 → 0.5 + 1 = 1.5 → 1.5 + 16 = 17.5` — not just the final output.
-- **Readiness (last 50)** — rolling accuracy over your 50 most recent answers;
-  ≥ 90% = exam-ready zone.
-- **Concept analysis** — all 148 questions tagged into 12 concepts (Lists,
-  Functions, Operators & Math, Exceptions, …), each scored and statused:
-  BLANK SPOT / WEAK / SOLID / UNSEEN.
+## WiFi Sync (manual, two-way, backed up)
+Design rule: sync is **manual and only over the same home WiFi** — the phone can only sync when the laptop is present to see the request. No cloud sync path for stats; no hidden background traffic. It stays hands-on so you stay engaged with the learning process.
 
-## Flashcard deck (PCEP-only)
+1. **Laptop:** start the server (port 8787 — never port 80):
+   ```bash
+   python pcep_sync_server.py
+   ```
+   Each incoming sync is logged to the console and `sync_server/sync.log`.
+2. **Phone (same WiFi):** open the trainer → tap **📶 Sync (WiFi)** → enter the laptop address once (e.g. `192.168.1.10:8787`) — it is remembered per device.
+3. The server then, in order: **backs up its current record** (`sync_server/backups/`, last 10 kept — a bad sync can never lose the record), **merges** (per-question highest count wins; history/log de-duplicated — whichever device is behind is added to), stores the master, and returns the merged record to the phone.
+4. Both devices now hold the identical record — continue on either.
 
-- **100 cards**, 25 per official PCEP-30-02 block: Python fundamentals, control
-  flow, data collections, and functions/exceptions.[1]
-- Every card carries its objective ID, topic, source URL, and verification
-  status, so an off-scope or unverified card cannot hide in the deck.
-- Code cards are executed in an isolated subprocess by `build_flashcards_v2.py`;
-  the build fails if any expected output or exception does not match.
-- Non-PCEP material (SciPy, pandas, NumPy, data science, CSV tooling) is
-  rejected by the deck validator and is not present in the shipped deck.
-- Practice cross-reference: the w3resource PCEP preparation guide.[2]
+Stats never travel via Drive anymore; app updates ship as the new single-file artifact.
 
-## Answer key integrity (dual validation)
+## Stats, Drills & Readiness
+* Home card: totals, last-run line, trends sparkline + worsening-blind-spot flag.
+* **🎯 Blank-Spot Drill** and **⚑ Flagged Drill** — the ranked follow-ups after a full 148 run.
+* Rolling **last-50 readiness** targets a sustained >90% (trainer bar on runs: 75%).
+* Everything persists in `localStorage` (stats format `pcep_practice_stats_v1`) — kill the tab, reopen, resume.
 
-1. **Pass 1 — construction:** answer key derived from PCEP domain knowledge;
-   94 code snippets executed in sandboxed subprocesses (`verify_snippets.py`).
-   Two provisional answers were corrected by live execution (Q91, Q122).
-2. **Pass 2 — independent verification** (`validate2.py`): every executable
-   snippet re-run in a fresh process, outputs auto-matched against option text
-   (direct, containment, numeric, word-number), compared to the key.
-   **Result: 58/58 executable answers machine-confirmed, 0 mismatches.**
-   Duplicate-question consistency: no conflicts. Multi-select structure: all 14
-   have exactly 2 correct answers.
-3. The remaining 90 questions are concept/definition items (no code to
-   execute); each was re-derived and documented with per-option explanations,
-   and cross-checked against duplicate phrasings and the official PE1 answer
-   key (e.g. the try-except "select two" item).
+## Flashcards
+100 cards, PCEP-30-02 objectives only (`PCEP-30-02 3.2` style IDs), 25 per block, Again/Known re-queue with persistence. Non-PCEP topics (pandas/NumPy/CSV) are excluded by the builder.
 
-**Honest disclosure:** the raw vendor exports contain **no answer keys**
-(verified by deep field scan — `showAnswers` false, no correct/answer fields
-anywhere). The key is derived, not extracted. Any answer that looks wrong in
-review: flag it and verify.
+## Testing
+Locked chain (run in order before any commit):
+```bash
+python regen_walkthroughs.py       # 58 walkthroughs, byte-deterministic, 0 failures
+python build_flashcards_v2.py      # 100 cards validated, bank.js rebuilt
+python validate2.py                # 58 execution-confirmed, 0 mismatches
+node test_practice.js              # 87 app checks
+python test_sync_server.py         # 11 sync/backup/merge checks
+python build_singlefile.py --output PCEP_Trainer_v2.5.0.html
+node verify_singlefile.js PCEP_Trainer_v2.5.0.html   # 15 offline checks, external refs []
+```
 
-## The 30-day plan (target: > 90% before exam day)
-
-1. **Days 1–7:** Drill All daily (two passes). Open every ▼ Explain on misses.
-2. **Days 8–14:** Blank-Spot Drill + Multi-Select Focus daily; one exam sim.
-3. **Days 15–21:** Daily exam sim; ⚑ flag anything you hesitate on; drill flags.
-4. **Days 22–29:** One exam sim per day until 5 consecutive sims ≥ 85% and
-   Readiness (last 50) holds ≥ 90%.
-5. **Day 30:** Sit the real exam (30Q / 40 min / 70% to pass) — over-prepared.
-
-## Repository layout
-
+## Project Layout
 ```
 PCEP_exam_prep/
-├── practice.html           # the trainer app (open in browser)
-├── bank.js                 # question bank + answers + explanations + flashcards (file://-safe)
-├── pcep_bank.json          # same data, JSON form
-├── flashcards.json         # 100 PCEP-only cards with objective + source metadata
-├── build_flashcards_v2.py  # flashcard deck builder + validator (executes code cards)
-├── start_practice.bat      # double-click launcher
-├── verify_snippets.py      # pass-1 answer verification harness
-├── validate2.py            # pass-2 independent dual-validation harness
-├── ingest_v2.py            # shared-drive ingestion (v3 sweep, dedupe vs library)
-├── build_bank.py           # pass-1 bank builder
-├── build_bank_v2.py        # v2 bank builder (key + explanations + concepts)
-├── bank_raw.json           # intermediate: deduped bank before keying
-├── exec_results.json       # pass-1 recorded outputs
-├── exec_answers_pass2.json # pass-2 exec-derived answer indices
-├── test_practice.js        # headless functional regression suite (50 checks)
-├── raw_data/               # untouched original NTAI exports (10 files)
-├── conductor/conductor.md  # 7D Conductor: product definition, state, tracks
-└── CHANGELOG.md
+├── practice.html                 # the app (source form; bank.js sibling required)
+├── PCEP_Trainer_v2.5.0.html      # single-file artifact — everything inlined
+├── bank.js                       # 148 questions + 100 cards (generated)
+├── pcep_bank.json                # bank source of truth
+├── pcep_sync_server.py           # LAN sync server (port 8787, stdlib only)
+├── assets/                       # Gillsystems logo + PayPal icon
+├── build_singlefile.py           # packager: practice.html -> one file
+├── verify_singlefile.js          # offline verification harness (15 checks)
+├── test_practice.js              # jsdom app suite (87 checks)
+├── test_sync_server.py           # sync/backup/merge unit tests (11 checks)
+├── regen_walkthroughs.py         # deterministic explanation generator
+├── build_flashcards_v2.py        # 100-card PCEP deck builder
+├── validate2.py                  # execution validator (58 code answers)
+├── trace_engine.py               # operand-by-operand arithmetic chains
+├── CHANGELOG.md                  # release history (Ecclesiasts verses per release)
+├── conductor/                    # 7D Conductor project tracking
+└── README.md                     # this file
 ```
 
-## Regenerating / extending the bank
+## Privacy & Public Repo Policy
+This repository is **public**. Standing rules:
+* **No personal data** — no home details, no private network addresses (`10.0.0.x` / public IPs banned; the sync host is typed once per device and never shipped).
+* **No credentials** — API keys, tokens, and passwords never appear in any committed file.
+* **Stats never committed** — `sync_server/` (masters, backups, logs) is gitignored; your record stays on your machines.
+* **Branded, unbranded content is unacceptable** — every public doc carries the Gillsystems identity.
 
-1. Add/drop exports in `raw_data/`, regenerate the raw bank (extraction preserves
-   `<code class="codep">` blocks for indentation fidelity)
-2. `python build_bank_v2.py` — fails loudly if any question lacks key or explanation
-3. **`python regen_walkthroughs.py` — MANDATORY after any `build_bank_v2.py`
-   run.** That builder resets execution-verified explanations to fallback text;
-   skipping this step is exactly what shipped the v2.2.0 regression.
-4. `python build_flashcards_v2.py` — validates the 100-card PCEP-only deck and
-   rebuilds both `flashcards.json` and `bank.js`
-5. `python validate2.py` — must report 0 mismatches
-6. `node test_practice.js` — must report all tests passed
+## Support / Donate
+If this trainer helps you pass, you can support ongoing work — thank you!
+
+**Donate:** [PayPal — paypal.me/gillsystems](https://paypal.me/gillsystems)
 
 ---
-
-*"All hard work brings a profit, but mere talk leads only to poverty." — Proverbs 14:23*
-
-## Sources
-
-[1] https://pythoninstitute.org/pcep-exam-syllabus — Python Institute PCEP-30-02 exam syllabus
-[2] https://www.w3resource.com/python/certificate/index.php — w3resource PCEP certification preparation guide
+_Gillsystems · MIT License · Built for the fleet, shared with the crew._

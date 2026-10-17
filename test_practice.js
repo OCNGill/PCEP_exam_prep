@@ -5,7 +5,7 @@
    run history, readiness. */
 const fs = require("fs");
 const path = require("path");
-const { JSDOM } = require(path.join(process.env.TEMP, "node_modules", "jsdom"));
+const { JSDOM } = require("jsdom"); /* repo node_modules — %TEMP% copy dies to temp sweeps */
 
 const SRC = "C:/Users/Gillsystems Laptop/source/repos/OCNGill/PCEP_exam_prep";
 const APPDIR = path.join(process.env.TEMP, "pcep_test");
@@ -202,12 +202,13 @@ setTimeout(() => {
     check("fresh home triad: New before Reset ALL (wipe last)", st0.indexOf("New Full Run") < st0.indexOf("Reset ALL"));
     check("menu duplicate Reset Progress removed", ![...doc.querySelectorAll("#home .menu-btn")].some(b => b.textContent.includes("Reset Progress")));
     check("results screen offers New Full Run chain button", !!doc.querySelector("#results .bar button[onclick='newFullRun()']"));
-    check("import button mounted (Phase 1 sync)", !!doc.getElementById("importStatsBtn"));
-    check("import hidden file input ready", !!doc.getElementById("importStatsFile"));
-    check("version stamp on Home shows v2.4.0", ((doc.getElementById("appVersion") || {}).textContent || "").includes("v2.4.0"));
-    const mg = w.eval('__pcepMergeStats({seen:{a:1,b:3},correct:{a:1},wrong:{},flagged:{},history:[{r:1}],log:[{q:1}]},{seen:{a:5,c:1},correct:{a:2},wrong:{c:1},flagged:{b:1},history:[{r:1},{r:2}],log:[{q:1},{q:2}]})');
-    check("merge: per-question highest count wins", mg.seen.a === 5 && mg.seen.b === 3 && mg.seen.c === 1 && mg.correct.a === 2 && mg.flagged.b === 1 && mg.wrong.c === 1);
-    check("merge: history+log deduped, nothing lost", mg.history.length === 2 && mg.log.length === 2);
+    check("WiFi sync button mounted", !!doc.getElementById("syncBtn"));
+    check("Export Stats removed (LAN sync only)", ![...doc.querySelectorAll("#home .menu-btn")].some(b => b.textContent.includes("Export Stats")));
+    check("Import Stats removed (LAN sync only)", !doc.getElementById("importStatsBtn"));
+    check("version stamp on Home shows v2.5.0", ((doc.getElementById("appVersion") || {}).textContent || "").includes("v2.5.0"));
+    check("brand header logo present", !!doc.querySelector(".hdr-logo"));
+    check("donation footer with PayPal link present", (doc.querySelector(".gill-footer") || {}).textContent.includes("paypal.me/gillsystems"));
+    check("no baked-in private IP; host typed once per device then persisted", w.__pcepSyncHostDefault === "" && !/10\.0\.0\./.test(doc.documentElement.innerHTML));
     const seen0 = Object.keys(JSON.parse(w.localStorage.getItem("pcep_practice_stats_v1")).seen).length;
     [...doc.querySelectorAll("#resumeSlot .menu-btn")].find(b => b.textContent.includes("New Full Run")).click();
     check("fresh-home New starts a 148 run immediately", w.eval("state.mode") === "all" && w.eval("state.qs.length") === 148);

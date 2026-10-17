@@ -1,0 +1,216 @@
+#!/usr/bin/env python3
+"""PCEP LAN Sync Server — manual phone <-> laptop stats sync over home WiFi.
+
+Design (Commander directive 2026-10-16):
+  * MANUAL: the phone app hits Sync while both devices are on the SAME WiFi.
+    The laptop sees the incoming request (logged here + logs/sync.log).
+  * TWO-WAY: phone sends its record; server merges with ITS master using
+    per-question HIGHEST-count wins + history/log dedupe — whichever side is
+    behind gets added to.
+  * BACKUP: BEFORE every merge, the current master is copied to
+    sync_server/backups/pcep_stats_backup_<epoch>.json (rotation keeps the
+    last 10) so a bad sync can never lose the record of record.
+  * CORS: the phone app runs from file:// (origin "null") — every response
+    carries Access-Control-Allow-Origin: * so Chrome accepts the fetch.
+
+Endpoints:
+  GET  /ping  -> {ok, version, questions}          (connectivity + summary)
+  POST /sync  <- raw stats JSON {seen,correct,wrong,flagged,history,log}
+              -> {merged, direction, backup, questions}
+
+Run (visible window, or via the PCEPSyncServer scheduled task):
+  python pcep_sync_server.py [--port 8787] [--host 0.0.0.0]
+
+NO port 80. NO secrets. LAN traffic only.
+"""
+import argparse
+import json
+import os
+import shutil
+import sys
+import threading
+import time
+from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+
+APP_VERSION = "2.5.0"
+RECORD_FILE = Path(__file__).with_name("sync_server") / "pcep_stats_master.json"
+BACKUP_DIR = Path(__file__).with_name("sync_server") / "backups"
+LOG_FILE = Path(__file__).with_name("sync_server") / "sync.log"
+BACKUP_KEEP = 10
+FIELDS = ("seen", "correct", "wrong", "flagged", "history", "log")
+
+
+def blank():
+    return {"seen": {}, "correct": {}, "wrong": {}, "flagged": {},
+            "history": [], "log": []}
+
+
+def load_record():
+    if RECORD_FILE.exists():
+        try:
+            obj = json.loads(RECORD_FILE.read_text(encoding="utf-8"))
+            if isinstance(obj, dict):
+                return obj
+        except (OSError, json.JSONDecodeError) as e:
+            log(f"WARN: master unreadable ({e}) — using blank; NOT deleting file")
+    return blank()
+
+
+def save_record(obj):
+    RECORD_FILE.parent.mkdir(parents=True, exist_ok=True)
+    tmp = RECORD_FILE.with_suffix(".json.tmp")
+    tmp.write_text(json.dumps(obj, indent=1, sort_keys=True), encoding="utf-8")
+    os.replace(tmp, RECORD_FILE)
+
+
+def backup_record():
+    """Copy the CURRENT master aside BEFORE overwriting. Rotation keeps 10."""
+    if not RECORD_FILE.exists():
+        return None
+    BACKUP_DIR.mkdir(parents=True, exist_ok=True)
+    dest = BACKUP_DIR / f"pcep_stats_backup_{time.time_ns()}.json"  # ns => unique even within one second
+    shutil.copy2(RECORD_FILE, dest)
+    old = sorted(BACKUP_DIR.glob("pcep_stats_backup_*.json"))[:-BACKUP_KEEP]
+    for f in old:
+        try:
+            f.unlink()
+        except OSError:
+            pass
+    return str(dest.name)
+
+
+def pick_counts(a, b):
+    out = dict(a or {})
+    for k, v in (b or {}).items():
+        try:
+            out[k] = max(int(out.get(k) or 0), int(v or 0))
+        except (TypeError, ValueError):
+            continue
+    return out
+
+
+def dedupe_list(a, b):
+    out, seen = [], set()
+    for item in (list(a) if isinstance(a, list) else []) + (list(b) if isinstance(b, list) else []):
+        key = json.dumps(item, sort_keys=True, default=str)
+        if key not in seen:
+            seen.add(key)
+            out.append(item)
+    return out
+
+
+def merge_stats(server, phone):
+    m = {}
+    for f in ("seen", "correct", "wrong", "flagged"):
+        m[f] = pick_counts(server.get(f), phone.get(f))
+    for f in ("history", "log"):
+        m[f] = dedupe_list(server.get(f), phone.get(f))
+    return m
+
+
+def side_size(rec):
+    return sum(int(v or 0) for v in (rec.get("seen") or {}).values())
+
+
+def log(msg):
+    line = f"{time.strftime('%Y-%m-%d %H:%M:%S')} {msg}"
+    print(line, flush=True)
+    try:
+        LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
+        with open(LOG_FILE, "a", encoding="utf-8") as fh:
+            fh.write(line + "\n")
+    except OSError:
+        pass
+
+
+class Handler(BaseHTTPRequestHandler):
+    server_version = "PCEPSync/2.5.0"
+
+    def _cors(self, ctype="application/json"):
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+
+    def _send(self, obj, code=200):
+        body = json.dumps(obj).encode("utf-8")
+        self.send_response(code)
+        self._cors()
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Content-Length", str(len(body)))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def do_OPTIONS(self):
+        self.send_response(204)
+        self._cors()
+        self.send_header("Content-Length", "0")
+        self.end_headers()
+
+    def do_GET(self):
+        if self.path.split("?")[0] == "/ping":
+            rec = load_record()
+            self._send({"ok": True, "version": APP_VERSION,
+                        "questions": len(rec.get("seen") or {}),
+                        "answers": side_size(rec)})
+        else:
+            self._send({"ok": False, "error": "unknown path"}, 404)
+
+    def do_POST(self):
+        if self.path.split("?")[0] != "/sync":
+            self._send({"ok": False, "error": "unknown path"}, 404)
+            return
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+            phone = json.loads(self.rfile.read(n).decode("utf-8") or "{}")
+            if not isinstance(phone, dict):
+                raise ValueError("payload not an object")
+        except (ValueError, json.JSONDecodeError) as e:
+            log(f"REJECTED sync from {self.client_address[0]}: bad payload ({e})")
+            self._send({"ok": False, "error": f"bad payload: {e}"}, 400)
+            return
+
+        client_ip = self.client_address[0]
+        server_rec = load_record()
+        s_n, p_n = side_size(server_rec), side_size(phone)
+        backup = backup_record()  # <-- ONE version of record kept, ALWAYS, BEFORE write
+        merged = merge_stats(server_rec, phone)
+        save_record(merged)
+        if s_n == p_n:
+            direction = "records were already equal — confirmed identical"
+        elif p_n > s_n:
+            direction = f"phone was ahead ({p_n} > {s_n} answers) — laptop updated"
+        else:
+            direction = f"laptop was ahead ({s_n} > {p_n} answers) — phone updated"
+        log(f"SYNC from {client_ip}: {p_n} phone answers vs {s_n} laptop answers "
+            f"-> {direction} | backup: {backup or 'none (first sync)'} | "
+            f"record now {side_size(merged)} answers / {len(merged.get('seen') or {})} questions")
+        self._send({"ok": True, "merged": merged, "direction": direction,
+                    "backup": backup,
+                    "questions": len(merged.get("seen") or {}),
+                    "answers": side_size(merged)})
+
+    def log_message(self, fmt, *args):  # silence default stderr access log
+        pass
+
+
+def main():
+    ap = argparse.ArgumentParser(description="PCEP LAN sync server (manual WiFi sync)")
+    ap.add_argument("--port", type=int, default=8787, help="listen port (default 8787, NEVER 80)")
+    ap.add_argument("--host", default="0.0.0.0", help="bind address (0.0.0.0 = whole LAN)")
+    args = ap.parse_args()
+
+    log(f"PCEP LAN Sync Server v{APP_VERSION} starting on {args.host}:{args.port}")
+    log(f"master: {RECORD_FILE}")
+    log(f"backup dir: {BACKUP_DIR} (keeps last {BACKUP_KEEP})")
+    log(f"phone app: hit 📶 Sync while on the SAME WiFi as this laptop")
+    srv = ThreadingHTTPServer((args.host, args.port), Handler)
+    try:
+        srv.serve_forever()
+    except KeyboardInterrupt:
+        log("stopped by user (Ctrl+C)")
+        srv.server_close()
+
+
+if __name__ == "__main__":
+    main()

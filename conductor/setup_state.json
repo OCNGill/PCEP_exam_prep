@@ -1,8 +1,13 @@
 {
-  "version": "2.4.0",
+  "version": "2.5.0",
   "date": "2026-10-15",
   "status": "OPERATIONAL",
-  "bank": {"questions": 148, "unique_sources": 169, "multi_select": 14, "concepts": 12},
+  "bank": {
+    "questions": 148,
+    "unique_sources": 169,
+    "multi_select": 14,
+    "concepts": 12
+  },
   "validation": {
     "pass1_execution_verified": 94,
     "pass2_machine_confirmed": 58,
@@ -12,28 +17,42 @@
     "walkthroughs": "58/58 line-by-line with WHY annotations + operand-by-operand arithmetic chains (dependency-safe, precedence-first), 0 fallback phrases",
     "determinism": "regen byte-identical across runs (memory-address reprs stripped)"
   },
-  "tests": {"suite": "test_practice.js", "checks": 85, "passing": 85},
+  "tests": {
+    "suite": "test_practice.js",
+    "checks": 87,
+    "passing": 87,
+    "app": 87,
+    "sync_server": 11,
+    "singlefile": 15,
+    "validate2": 58
+  },
   "features": [
-    "exam sim 30Q/40min",
-    "drill all",
+    "arithmetic-chain explanations (every operand + intermediate value, PEMDAS-ordered)",
+    "back button",
     "blank-spot drill (algorithmic)",
+    "donation-footer",
+    "drill all",
+    "exam sim 30Q/40min",
+    "explain panels (correct + incorrect options)",
+    "export stats (JSON) for analysis + cross-device sync",
+    "flag checkbox persistence",
     "flagged drill (user blind spots)",
-    "multi-select focus",
     "flashcard drill (100 PCEP-only cards mapped to official objectives)",
     "home blind-spot trends (sparkline, momentum, concept drift, new misses)",
-    "universal top-nav Home on every screen",
-    "run-controls triad: Continue (paused run) / New Full Run (fresh 148, stats additive) / Reset ALL (wipe, last resort)",
-    "results-screen New Full Run chain button",
-    "export stats (JSON) for analysis + cross-device sync",
     "import stats (JSON): merge default (per-question max, history/log dedupe) or replace, with source-date confirm",
-    "version stamp on Home (v2.4.0 · bank 148 · cards 100 · stats format v1)",
-    "single-file packager build_singlefile.py -> PCEP_Trainer_v2.4.0.html (202 KB, offline file://, verify 15/15)",
-    "explain panels (correct + incorrect options)",
-    "arithmetic-chain explanations (every operand + intermediate value, PEMDAS-ordered)",
+    "logo-branding",
+    "multi-select focus",
     "per-question + per-concept statistics",
-    "run history",
+    "public-hygiene-no-private-ips",
     "readiness rolling metric (last 50)",
-    "flag checkbox persistence",
-    "back button"
+    "readme-gillsystems-standard",
+    "results-screen New Full Run chain button",
+    "run history",
+    "run-controls triad: Continue (paused run) / New Full Run (fresh 148, stats additive) / Reset ALL (wipe, last resort)",
+    "single-file packager build_singlefile.py -> PCEP_Trainer_v2.4.0.html (202 KB, offline file://, verify 15/15)",
+    "sync-server-backup",
+    "universal top-nav Home on every screen",
+    "version stamp on Home (v2.4.0 · bank 148 · cards 100 · stats format v1)",
+    "wifi-lan-sync"
   ]
 }

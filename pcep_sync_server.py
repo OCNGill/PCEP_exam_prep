@@ -131,7 +131,13 @@ class Handler(BaseHTTPRequestHandler):
     def _cors(self, ctype="application/json"):
         self.send_header("Access-Control-Allow-Origin", "*")
         self.send_header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Request-Private-Network")
+        # Chrome sends a Private-Network-Access preflight (OPTIONS with
+        # Access-Control-Request-Private-Network: true) when a content:// or
+        # file:// page fetches a LAN IP. Without this response header the
+        # browser rejects the fetch as "Failed to fetch" BEFORE any real
+        # request is sent — sync from the Drive/file copy needs it (2026-10-18).
+        self.send_header("Access-Control-Allow-Private-Network", "true")
 
     def _send(self, obj, code=200):
         body = json.dumps(obj).encode("utf-8")

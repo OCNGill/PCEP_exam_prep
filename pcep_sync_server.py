@@ -34,6 +34,7 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 APP_VERSION = "2.5.0"
+TRAINER_FILE = Path(__file__).resolve().parent / "PCEP_Trainer_v2.5.0.html"
 RECORD_FILE = Path(__file__).with_name("sync_server") / "pcep_stats_master.json"
 BACKUP_DIR = Path(__file__).with_name("sync_server") / "backups"
 LOG_FILE = Path(__file__).with_name("sync_server") / "sync.log"
@@ -148,7 +149,23 @@ class Handler(BaseHTTPRequestHandler):
         self.end_headers()
 
     def do_GET(self):
-        if self.path.split("?")[0] == "/ping":
+        path = self.path.split("?")[0]
+        if path in ("/", "/index.html", "/trainer"):
+            # Serve the trainer itself: opening http://HOST:8787/ makes the page
+            # SAME-ORIGIN with /ping and /sync — mobile Chrome's local-network
+            # access gate does not apply to same-origin requests (fix for
+            # content:// / file:// fetch failures, 2026-10-18).
+            try:
+                data = TRAINER_FILE.read_bytes()
+                self.send_response(200)
+                self.send_header("Content-Type", "text/html; charset=utf-8")
+                self.send_header("Content-Length", str(len(data)))
+                self.end_headers()
+                self.wfile.write(data)
+            except OSError as e:
+                self._send({"ok": False, "error": f"trainer unavailable: {e}"}, 500)
+            return
+        if path == "/ping":
             rec = load_record()
             self._send({"ok": True, "version": APP_VERSION,
                         "questions": len(rec.get("seen") or {}),

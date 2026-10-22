@@ -14,6 +14,8 @@ Format: Keep-a-Changelog-ish, newest first.
 - Version stamp → `v2.5.1`; artifact `PCEP_Trainer_v2.5.1.html` (361,931 B, sha256 `9e78e559…`, zero external refs, offline-verified).
 - `syncHost()` self-configures from a numeric `window.location.host` when the trainer is served by the sync server (same-origin, no typing); `file://` origins keep the remembered host.
 - Sync server `APP_VERSION` → `2.5.1`; backup-before-write extended to the seed write.
+### Added
+- **Per-run seed lifecycle.** A shared seed means every device agrees on the order — but a *fixed* seed would repeat the same order forever. `newFullRun()` now mints a fresh seed marked `reason:"run"`, which **overrides** the server's on the next sync so the new order reaches the other device. A device that simply had no seed mints one marked `reason:"adopt"`, which **never** overrides the server — a fresh install cannot hijack the shared order.
 ### Fixed
 - `blank()` no longer mints a time-based seed on every read — the "shared order" seed is persisted once, so the server's order is stable instead of changing per request.
 - `conductor/CHANGELOG.md` is now a **relative** symlink (`../CHANGELOG.md`) and resolves on disk (`core.symlinks=true`), so it is one file on every machine and in CI.

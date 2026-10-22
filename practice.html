@@ -399,10 +399,10 @@ function runControlsHTML() {
     const pos = (r.idx | 0) + 1, total = r.ids.length;
     const answered = Object.keys(r.answers || {}).length;
     cont = `<button class="menu-btn" onclick="resumeDrill()">▶️ Continue ${label} — Question ${pos}/${total}
-      <div class="desc">Picked up where you left off · ${answered} answered so far · order &amp; answers saved in this browser</div></button>`;
+      <div class="desc">Picked up where you left off · ${answered} answered so far · order &amp; answers synced across your devices</div></button>`;
   }
   return cont + `<button class="menu-btn" onclick="newFullRun()">🆕 New Full Run — 148 fresh questions
-    <div class="desc">New random order — every answer ADDS to your ongoing stats, nothing is wiped</div></button>
+    <div class="desc">Fresh order (shared across your devices) — every answer ADDS to your ongoing stats, nothing is wiped</div></button>
   <button class="menu-btn" onclick="resetStats()">⚠️ Reset ALL — blow away stats, flags &amp; history
     <div class="desc">Last resort only — your runs keep counting unless you choose this</div></button>`;
 }
@@ -424,6 +424,7 @@ function resumeDrill() {
 
 function newFullRun() {
   clearResume();
+  mintRunSeed();          // fresh order for this run - syncs to the other device
   startDrill("all");
 }
 
@@ -472,7 +473,20 @@ function getSeed() {
      the server's seed into the record (see pullStats) — so by the time the user
      starts a drill, both devices already share one seed. If the pull has not
      landed yet (offline at work), we mint one and it wins on the next sync. */
-  const fresh = { value: (Math.floor(Math.random() * 2147483647)) >>> 0, savedAt: Date.now() };
+  /* This device had no seed (fresh install). Mark it "adopt" so it can never
+     hijack the server's shared order - the server's seed wins on merge. */
+  const fresh = { value: (Math.floor(Math.random() * 2147483647)) >>> 0,
+                  savedAt: Date.now(), reason: "adopt" };
+  try { s.seed = fresh; saveStats(s); } catch (e) {}
+  return fresh;
+}
+/* A NEW full run mints a NEW seed ("run"). Marked "run" so it DOES override the
+   server's seed on the next sync - that is how a fresh question order reaches
+   the other device while both stay in lockstep. */
+function mintRunSeed() {
+  const s = loadStats();
+  const fresh = { value: (Math.floor(Math.random() * 2147483647)) >>> 0,
+                  savedAt: Date.now(), reason: "run" };
   try { s.seed = fresh; saveStats(s); } catch (e) {}
   return fresh;
 }
@@ -921,10 +935,15 @@ renderHome();
     const drillTs = (r) => (r && typeof r.savedAt === "number") ? r.savedAt : -1;
     const da = (a && a.drill) || null, db = (b && b.drill) || null;
     out.drill = drillTs(db) >= drillTs(da) ? db : da;
-    /* The seed is canonical on the server — when pulling, the server's copy
-       wins so every device ends up with ONE shared drill order. */
+    /* Seed selection: the server's copy is canonical, EXCEPT when a device
+       started a NEW run ("run") — that fresh order must propagate to the peer.
+       An "adopt" seed (fresh device) never overrides the server. */
     const sa = (a && a.seed) || null, sb = (b && b.seed) || null;
-    out.seed = sb || sa;
+    const ts = (r) => (r && typeof r.savedAt === "number") ? r.savedAt : -1;
+    const isRun = (r) => r && r.reason === "run";
+    if (isRun(sb) && ts(sb) > ts(sa)) out.seed = sb;
+    else if (isRun(sa) && ts(sa) > ts(sb)) out.seed = sa;
+    else out.seed = sb || sa;
     return out;
   }
   /* PULL the laptop's record so BOTH devices show the same numbers. */

@@ -140,10 +140,18 @@ def merge_stats(server, phone):
     for f in ("history", "log"):
         m[f] = dedupe_list(server.get(f), phone.get(f))
     m["drill"] = merge_drill(server.get("drill"), phone.get("drill"))
-    # The SEED is canonical on the server: once the server has one, it wins, so
-    # every device on the fleet shuffles into the SAME order. A device that
-    # minted one offline (at work) adopts the server's on its next pull.
-    m["seed"] = server.get("seed") or phone.get("seed")
+    # The SEED is canonical on the server: the server's copy wins, so every
+    # device shuffles into the SAME order. EXCEPTION: a device that started a
+    # NEW run mints a seed marked reason="run" - that fresh order must
+    # propagate to the peer, so it wins when it is newer. A seed marked
+    # "adopt" (a fresh device that had none) never overrides the server.
+    srv_seed = server.get("seed")
+    ph_seed = phone.get("seed")
+    if (ph_seed and ph_seed.get("reason") == "run"
+            and ph_seed.get("savedAt", -1) > (srv_seed or {}).get("savedAt", -1)):
+        m["seed"] = ph_seed
+    else:
+        m["seed"] = srv_seed or ph_seed
     return m
 
 

@@ -943,7 +943,7 @@ renderHome();
     } catch (e) { return false; }
   }
   async function runSync() {
-    let h = window.prompt("Laptop sync address (same WiFi, host:port — e.g. 192.168.1.10:8787):", syncHost());
+    let h = window.prompt("Laptop sync address (same WiFi — your laptop hostname and port, e.g. my-laptop:8787):", syncHost());
     if (h === null) return;
     h = String(h).trim().replace(/^https?:\/\//, "").replace(/\/+$/, "");
     if (!h) { alert("No address entered — sync cancelled."); return; }

@@ -73,7 +73,7 @@ Design rule: sync is **manual and only over the same home WiFi** — the phone c
    python pcep_sync_server.py
    ```
    Each incoming sync is logged to the console and `sync_server/sync.log`.
-2. **Phone (same WiFi):** open the trainer → tap **📶 Sync (WiFi)** → enter the laptop address once (e.g. `192.168.1.10:8787`) — it is remembered per device.
+2. **Phone (same WiFi):** open the trainer → tap **📶 Sync (WiFi)** → enter the laptop address once (e.g. `my-laptop:8787`) — it is remembered per device.
 3. The server then, in order: **backs up its current record** (`sync_server/backups/`, last 10 kept — a bad sync can never lose the record), **merges** (per-question highest count wins; history/log de-duplicated — whichever device is behind is added to), stores the master, and returns the merged record to the phone.
 4. Both devices now hold the identical record — continue on either.
 
@@ -124,7 +124,7 @@ PCEP_exam_prep/
 
 ## Privacy & Public Repo Policy
 This repository is **public**. Standing rules:
-* **No personal data** — no home details, no private network addresses (`10.0.0.x` / public IPs banned; the sync host is typed once per device and never shipped).
+* **No personal data** — no home details, no private network addresses (no LAN IPs, no public IPs; the sync host is; the sync host is typed once per device and never shipped).
 * **No credentials** — API keys, tokens, and passwords never appear in any committed file.
 * **Stats never committed** — `sync_server/` (masters, backups, logs) is gitignored; your record stays on your machines.
 * **Branded, unbranded content is unacceptable** — every public doc carries the Gillsystems identity.

@@ -30,6 +30,7 @@ import argparse
 import json
 import os
 import shutil
+import socket
 import sys
 import threading
 import time
@@ -42,7 +43,36 @@ RECORD_FILE = Path(__file__).with_name("sync_server") / "pcep_stats_master.json"
 BACKUP_DIR = Path(__file__).with_name("sync_server") / "backups"
 LOG_FILE = Path(__file__).with_name("sync_server") / "sync.log"
 BACKUP_KEEP = 10
+# Drill-pointer writes happen often (every answered question) - they get their
+# OWN backup rotation so they can never evict the pre-sync backups, which are
+# the ones that protect the record of record.
+DRILL_BACKUP_DIR = Path(__file__).with_name("sync_server") / "backups_drill"
+DRILL_BACKUP_KEEP = 5
 FIELDS = ("seen", "correct", "wrong", "flagged", "history", "log")
+
+# One writer at a time: the phone's /sync and the laptop's /drill pointer can
+# land at the same instant. Without this, two read-modify-write cycles race
+# and one silently loses the other's data.
+WRITE_LOCK = threading.Lock()
+
+
+def local_ips():
+    """Every address this machine answers on. A request that arrives FROM one
+    of these is the laptop talking to its OWN sync server."""
+    ips = {"127.0.0.1", "::1", "localhost"}
+    try:
+        for ip in socket.gethostbyname_ex(socket.gethostname())[2]:
+            ips.add(ip)
+    except OSError:
+        pass
+    try:
+        probe = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        probe.connect(("8.8.8.8", 80))
+        ips.add(probe.getsockname()[0])
+        probe.close()
+    except OSError:
+        pass
+    return ips
 
 
 def blank():
@@ -133,6 +163,20 @@ def merge_drill(a, b):
     return b if ts(b) >= ts(a) else a
 
 
+def merge_seed(server, phone):
+    """The SEED is canonical on the server: the server's copy wins, so every
+    device shuffles into the SAME order. EXCEPTION: a device that started a
+    NEW run mints a seed marked reason="run" - that fresh order must
+    propagate to the peer, so it wins when it is newer. A seed marked
+    "adopt" (a fresh device that had none) never overrides the server."""
+    srv_seed = server.get("seed")
+    ph_seed = phone.get("seed")
+    if (ph_seed and ph_seed.get("reason") == "run"
+            and ph_seed.get("savedAt", -1) > (srv_seed or {}).get("savedAt", -1)):
+        return ph_seed
+    return srv_seed or ph_seed
+
+
 def merge_stats(server, phone):
     m = {}
     for f in ("seen", "correct", "wrong", "flagged"):
@@ -140,18 +184,7 @@ def merge_stats(server, phone):
     for f in ("history", "log"):
         m[f] = dedupe_list(server.get(f), phone.get(f))
     m["drill"] = merge_drill(server.get("drill"), phone.get("drill"))
-    # The SEED is canonical on the server: the server's copy wins, so every
-    # device shuffles into the SAME order. EXCEPTION: a device that started a
-    # NEW run mints a seed marked reason="run" - that fresh order must
-    # propagate to the peer, so it wins when it is newer. A seed marked
-    # "adopt" (a fresh device that had none) never overrides the server.
-    srv_seed = server.get("seed")
-    ph_seed = phone.get("seed")
-    if (ph_seed and ph_seed.get("reason") == "run"
-            and ph_seed.get("savedAt", -1) > (srv_seed or {}).get("savedAt", -1)):
-        m["seed"] = ph_seed
-    else:
-        m["seed"] = srv_seed or ph_seed
+    m["seed"] = merge_seed(server, phone)
     return m
 
 
@@ -240,8 +273,95 @@ class Handler(BaseHTTPRequestHandler):
         else:
             self._send({"ok": False, "error": "unknown path"}, 404)
 
+    def handle_drill(self):
+        """POST /drill - publish ONLY the drill pointer (order + position) and
+        the shared seed. This does NOT touch the counters, history or log:
+        those stay manual (one button, same WiFi). It exists because the
+        DRILL is a single shared session - if the laptop's new run is not on
+        the server, the phone's stale pointer wins the merge and the two
+        devices disagree about which question comes next."""
+        try:
+            n = int(self.headers.get("Content-Length") or 0)
+            body = json.loads(self.rfile.read(n).decode("utf-8") or "{}")
+            if not isinstance(body, dict):
+                raise ValueError("payload not an object")
+        except (ValueError, json.JSONDecodeError) as e:
+            log(f"REJECTED drill from {self.client_address[0]}: bad payload ({e})")
+            self._send({"ok": False, "error": f"bad payload: {e}"}, 400)
+            return
+
+        client_ip = self.client_address[0]
+        drill = body.get("drill")
+        seed = body.get("seed")
+
+        # Is this the LAPTOP talking to its OWN server (same machine)? The
+        # server lives on the laptop, so the laptop's trainer page reaches it
+        # over the loopback/LAN address. A request from this machine may carry
+        # counters too - that is the laptop persisting its own record to its
+        # own disk, not a cross-device sync. A request from any OTHER device
+        # is pointer-ONLY: counters/history/log still move only on the
+        # deliberate Sync press, so the learning stays the user's to merge.
+        is_local = client_ip in local_ips()
+        counters = body.get("counters") if is_local else None
+
+        with WRITE_LOCK:
+            server_rec = load_record()
+            merged_drill = merge_drill(server_rec.get("drill"), drill)
+            merged_seed = merge_seed(server_rec, {"seed": seed} if seed else {})
+
+            out = dict(server_rec)
+            out["drill"] = merged_drill
+            out["seed"] = merged_seed
+            if is_local and isinstance(counters, dict):
+                for f in ("seen", "correct", "wrong", "flagged"):
+                    out[f] = pick_counts(server_rec.get(f), counters.get(f))
+                for f in ("history", "log"):
+                    out[f] = dedupe_list(server_rec.get(f), counters.get(f))
+
+            # Write only if something actually changed.
+            if (merged_drill == server_rec.get("drill")
+                    and merged_seed == server_rec.get("seed")
+                    and not (is_local and isinstance(counters, dict))):
+                self._send({"ok": True, "drill": merged_drill, "seed": merged_seed,
+                            "changed": False,
+                            "questions": len(server_rec.get("seen") or {}),
+                            "answers": side_size(server_rec)})
+                return
+
+            # Backup BEFORE the write (drill backups live in their own rotation
+            # so they can never evict the pre-sync backups).
+            bk = None
+            try:
+                DRILL_BACKUP_DIR.mkdir(parents=True, exist_ok=True)
+                if RECORD_FILE.exists():
+                    bk = DRILL_BACKUP_DIR / f"pcep_drill_backup_{time.time_ns()}.json"
+                    shutil.copy2(RECORD_FILE, bk)
+                    olds = sorted(DRILL_BACKUP_DIR.glob("pcep_drill_backup_*.json"))
+                    for old in olds[:-DRILL_BACKUP_KEEP]:
+                        try:
+                            old.unlink()
+                        except OSError:
+                            pass
+            except OSError:
+                bk = None
+
+            save_record(out)
+            idx = merged_drill.get("idx") if isinstance(merged_drill, dict) else None
+            log(f"DRILL from {client_ip}{' (local)' if is_local else ' (remote)'}: "
+                f"pointer published (idx={idx}, "
+                f"seed={merged_seed.get('value') if isinstance(merged_seed, dict) else None}) "
+                f"| record now {side_size(out)} answers")
+        self._send({"ok": True, "drill": merged_drill, "seed": merged_seed,
+                    "changed": True,
+                    "questions": len(out.get("seen") or {}),
+                    "answers": side_size(out)})
+
     def do_POST(self):
-        if self.path.split("?")[0] != "/sync":
+        route = self.path.split("?")[0]
+        if route == "/drill":
+            self.handle_drill()
+            return
+        if route != "/sync":
             self._send({"ok": False, "error": "unknown path"}, 404)
             return
         try:
@@ -255,11 +375,12 @@ class Handler(BaseHTTPRequestHandler):
             return
 
         client_ip = self.client_address[0]
-        server_rec = load_record()
-        s_n, p_n = side_size(server_rec), side_size(phone)
-        backup = backup_record()  # <-- ONE version of record kept, ALWAYS, BEFORE write
-        merged = merge_stats(server_rec, phone)
-        save_record(merged)
+        with WRITE_LOCK:
+            server_rec = load_record()
+            s_n, p_n = side_size(server_rec), side_size(phone)
+            backup = backup_record()  # <-- ONE version of record kept, ALWAYS, BEFORE write
+            merged = merge_stats(server_rec, phone)
+            save_record(merged)
         if s_n == p_n:
             direction = "records were already equal — confirmed identical"
         elif p_n > s_n:

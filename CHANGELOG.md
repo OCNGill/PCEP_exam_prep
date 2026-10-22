@@ -16,7 +16,14 @@ Format: Keep-a-Changelog-ish, newest first.
 - Sync server `APP_VERSION` → `2.5.1`; backup-before-write extended to the seed write.
 ### Added
 - **Per-run seed lifecycle.** A shared seed means every device agrees on the order — but a *fixed* seed would repeat the same order forever. `newFullRun()` now mints a fresh seed marked `reason:"run"`, which **overrides** the server's on the next sync so the new order reaches the other device. A device that simply had no seed mints one marked `reason:"adopt"`, which **never** overrides the server — a fresh install cannot hijack the shared order.
+### Added
+- **`POST /drill` — the drill-pointer channel.** The in-progress drill (order, position, shared seed) is ONE session shared by both devices, but until now only a FULL stats sync carried it. The Commander's flow — restart all 148 on the laptop, then hit Sync on the phone — left the server's drill slot EMPTY, so the phone's stale 2-hour-old pointer won the last-writer-wins merge and the phone showed *"Continue — Question 21/148"* in the OLD order while the laptop was on question 1 of a NEW run. The drill pointer is now published to the server as it advances (debounced, max 8s staleness), so the server always knows which question the shared session is on.
+- **Local/remote split on `/drill`.** A request from the laptop's OWN machine may carry counters (the laptop persisting its own record to its own disk); a request from any other device is pointer-ONLY. The learning record — counters, history, log — still moves only when the user presses Sync, so the manual same-WiFi engagement is intact. The server enforces the split by source address, not by client claim.
+- **`WRITE_LOCK`** around every read-modify-write, so a `/drill` pointer publish landing at the same instant as a `/sync` can no longer race and silently lose one side's data.
+- **Drill backups in their own rotation** (`sync_server/backups_drill/`, keeps 5) so frequent pointer writes can never evict the pre-sync backups that protect the record of record.
 ### Fixed
+- **A publish that arrived while another was in flight was silently DROPPED** — the server kept a stale position (or a tombstone) until the next answer. Now a pending flag re-publishes the newer pointer the moment the in-flight one lands.
+- **The publish fetch could be killed by a cross-realm `AbortSignal`** (a signal built in one realm rejected by a fetch from another), silently discarding the pointer with no error. The timeout is now a `Promise.race` against a timer — realm-safe, and the request still goes out.
 - `blank()` no longer mints a time-based seed on every read — the "shared order" seed is persisted once, so the server's order is stable instead of changing per request.
 - `conductor/CHANGELOG.md` is now a **relative** symlink (`../CHANGELOG.md`) and resolves on disk (`core.symlinks=true`), so it is one file on every machine and in CI.
 ### Tests

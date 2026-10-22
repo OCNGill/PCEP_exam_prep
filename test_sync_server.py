@@ -78,5 +78,40 @@ check("side_size sums answers", srv.side_size({"seen": {"a": 5, "b": 3}}) == 8)
 m = srv.merge_stats({}, {"seen": None, "history": "not-a-list"})
 check("merge tolerates missing/garbage fields", m["seen"] == {} and m["history"] == [])
 
+# 10) DRILL POINTER merge rules - the fix for "full drills don't match devices"
+#     The drill is ONE shared session: last-writer-wins by savedAt, so a stale
+#     pointer from the peer can NEVER claim the slot over a newer one.
+srv.RECORD_FILE = tmp / "ptr" / "master.json"
+srv.BACKUP_DIR = tmp / "ptr" / "bk"
+srv.DRILL_BACKUP_DIR = tmp / "ptr" / "drillbk"
+newer = {"mode": "all", "ids": [3, 1, 2], "idx": 7, "savedAt": 2000}
+older = {"mode": "all", "ids": [9, 8, 7], "idx": 20, "savedAt": 1000}
+check("newer drill wins over older (last-writer-wins)",
+      srv.merge_drill(newer, older)["idx"] == 7)
+check("older drill loses to newer",
+      srv.merge_drill(older, newer)["idx"] == 7)
+check("equal savedAt -> incoming wins (>= rule)",
+      srv.merge_drill({"idx": 1, "savedAt": 5}, {"idx": 2, "savedAt": 5})["idx"] == 2)
+
+# 11) SEED merge: server is canonical, EXCEPT a newer "run" seed (new full run)
+srv_seed = {"value": 100, "savedAt": 1000}
+run_seed = {"value": 200, "savedAt": 2000, "reason": "run"}
+adopt_seed = {"value": 300, "savedAt": 3000, "reason": "adopt"}
+check("server seed wins when peer has no reason",
+      srv.merge_seed({"seed": srv_seed}, {"seed": {"value": 9, "savedAt": 5000}})["value"] == 100)
+check("newer 'run' seed (new full run) overrides the server",
+      srv.merge_seed({"seed": srv_seed}, {"seed": run_seed})["value"] == 200)
+check("'adopt' seed NEVER overrides the server",
+      srv.merge_seed({"seed": srv_seed}, {"seed": adopt_seed})["value"] == 100)
+check("server seed survives when peer seed is older 'run'",
+      srv.merge_seed({"seed": run_seed}, {"seed": {"value": 5, "savedAt": 1, "reason": "run"}})["value"] == 200)
+
+# 12) the /drill channel must NOT touch counters for a REMOTE device
+#      (learning data still moves only when the user presses Sync)
+srv.save_record({"seen": {"x": 2}, "correct": {"x": 1}, "wrong": {"x": 1},
+                 "flagged": {}, "history": [], "log": []})
+m = srv.merge_stats(srv.load_record(), {"seen": {"x": 99}, "correct": {"x": 99}})
+check("counters still merge per-question MAX", m["seen"]["x"] == 99)
+
 print(("ALL SYNC SERVER TESTS PASSED" if not FAILED else f"{len(FAILED)} FAILED: {FAILED}"))
 sys.exit(1 if FAILED else 0)

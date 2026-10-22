@@ -334,8 +334,99 @@ function trendsHTML() {
   return html;
 }
 
+/* ---- sync host (top level: the drill pointer publisher needs it too) ---- */
+  const HOST_KEY = "pcep_sync_host";
+  const DEFAULT_HOST = ""; /* no baked-in address: public repo ships NO private IPs; typed once per device, then persisted */
+  function syncHost() {
+    const saved = localStorage.getItem(HOST_KEY);
+    if (saved) return saved;
+    /* Same-origin serving: when this page WAS served by the sync server
+       (http://<ip>:8787/), use its own host — zero setup, auto-pull works. */
+    try {
+      const h = window.location.host;
+      if (h && /^[0-9.]+:[0-9]+$/.test(h)) { localStorage.setItem(HOST_KEY, h); return h; }
+    } catch (e) { /* file:// or opaque origin */ }
+    return DEFAULT_HOST;
+  }
+
 // ---- drill resume (kill tab → continue where you left off) ----
 const RKEY = "pcep_drill_resume_v1";
+
+  /* PUBLISH the drill POINTER (order + position + shared seed) to the server.
+     This is NOT the stats sync: the LEARNING RECORD (counters/history/log)
+     still moves only when a human presses Sync. It exists because the drill
+     is ONE shared session - if the laptop's new run is not on the server, the
+     phone's stale pointer wins the merge and the two screens disagree about
+     which question comes next.
+     The server decides what to accept: a request from the laptop's OWN
+     machine may carry counters (the laptop persisting its own record to its
+     own disk); a request from any other device is pointer-only. */
+  let drillPubTimer = null;
+  let drillPubInFlight = false;
+  let drillPubLast = 0;
+  let drillPubPending = false;   // a publish arrived while one was in flight
+  function drillPubHost() {
+    const h = syncHost();
+    if (h) return h;
+    /* The sync server runs ON the laptop. If this page is that laptop, the
+       server is one loopback hop away - try it silently (never stored, never
+       shown). On the phone there is nothing on 127.0.0.1, so it just fails
+       quietly. */
+    return "127.0.0.1:8787";
+  }
+  function publishDrillPointer(now) {
+    try {
+      const h = drillPubHost();
+      if (!h) return;
+      const s = loadStats();
+      const d = s && s.drill;
+      if (!d) return;                       // no drill state to publish
+      const fire = async () => {
+        if (drillPubInFlight) { drillPubPending = true; return; }
+        drillPubInFlight = true;
+        drillPubLast = Date.now();
+        try {
+          const st = loadStats();
+          const dd = st && st.drill;
+          if (!dd) return;
+          const body = {
+            drill: dd,
+            seed: st.seed || null,
+            counters: {
+              seen: st.seen || {}, correct: st.correct || {},
+              wrong: st.wrong || {}, flagged: st.flagged || {},
+              history: st.history || [], log: st.log || []
+            }
+          };
+          /* Timeout WITHOUT AbortSignal: a signal built in one realm can be
+             rejected by a fetch from another, which would silently kill the
+             publish. Race against a timer instead - the request still goes
+             out, we just stop waiting for it. */
+          const req = fetch("http://" + h + "/drill", {
+            method: "POST", headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body)
+          });
+          req.catch(() => {});                 // never an unhandled rejection
+          await Promise.race([
+            req,
+            new Promise((res) => setTimeout(res, 4000))
+          ]);
+        } catch (e) { /* silent - offline is fine */ }
+        drillPubInFlight = false;
+        /* A newer pointer arrived while this one was in flight - publish it
+           now. Dropping it would leave the server showing a stale position
+           (or a tombstone) until the next answer. */
+        if (drillPubPending) { drillPubPending = false; publishDrillPointer(true); }
+      };
+      if (now) { if (drillPubTimer) { clearTimeout(drillPubTimer); drillPubTimer = null; } fire(); return; }
+      /* Throttle with a max wait: never leave the server stale for more than
+         ~8s during a long drill, but never spam it while answering fast. */
+      const since = Date.now() - drillPubLast;
+      if (since >= 8000) { if (drillPubTimer) { clearTimeout(drillPubTimer); drillPubTimer = null; } fire(); return; }
+      if (drillPubTimer) return;
+      drillPubTimer = setTimeout(() => { drillPubTimer = null; fire(); }, Math.max(300, 8000 - since));
+    } catch (e) { /* silent */ }
+  }
 
 function saveResume() {
   try {
@@ -355,6 +446,7 @@ function saveResume() {
       s.drill = r;
       saveStats(s);
     } catch (e) { /* best effort */ }
+    publishDrillPointer();
   } catch (e) { /* resume is best-effort */ }
 }
 
@@ -388,6 +480,7 @@ function clearResume() {
     s.drill = { cleared: true, savedAt: Date.now() };
     saveStats(s);
   } catch (e) {}
+  publishDrillPointer(true);   // tell the peer the drill is done/reset
 }
 
 function runControlsHTML() {
@@ -426,6 +519,7 @@ function newFullRun() {
   clearResume();
   mintRunSeed();          // fresh order for this run - syncs to the other device
   startDrill("all");
+  publishDrillPointer(true);  // tell the peer the new order immediately
 }
 
 function renderHome() {
@@ -896,19 +990,6 @@ renderHome();
    RETIRED for stats; Drive now distributes app updates only. Server: pcep_sync_server.py === */
 (function () {
   const APP_VER = "2.5.1";
-  const HOST_KEY = "pcep_sync_host";
-  const DEFAULT_HOST = ""; /* no baked-in address: public repo ships NO private IPs; typed once per device, then persisted */
-  function syncHost() {
-    const saved = localStorage.getItem(HOST_KEY);
-    if (saved) return saved;
-    /* Same-origin serving: when this page WAS served by the sync server
-       (http://<ip>:8787/), use its own host — zero setup, auto-pull works. */
-    try {
-      const h = window.location.host;
-      if (h && /^[0-9.]+:[0-9]+$/.test(h)) { localStorage.setItem(HOST_KEY, h); return h; }
-    } catch (e) { /* file:// or opaque origin */ }
-    return DEFAULT_HOST;
-  }
   /* Merge two stat records with the SAME rules the server uses:
      per-question counters take the MAX, history/log union-dedupe. */
   function mergeRecords(a, b) {
@@ -981,6 +1062,7 @@ renderHome();
       const out = await sr.json();
       if (!out || !out.ok || !out.merged) throw new Error("bad sync reply");
       localStorage.setItem(STORE, JSON.stringify(out.merged));
+      publishDrillPointer();   // our pointer may now be behind the server's
       renderHome();
       alert("Synced with " + h + "\n" + out.direction +
         "\nRecord: " + out.questions + " questions / " + out.answers + " answers" +

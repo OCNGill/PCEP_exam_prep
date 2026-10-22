@@ -15,6 +15,9 @@ Design (Commander directive 2026-10-16):
 
 Endpoints:
   GET  /ping  -> {ok, version, questions}          (connectivity + summary)
+  GET  /stats -> {ok, version, questions, answers, record}
+             (PULL: a device fetches the merged record so BOTH devices show
+              identical numbers and resume the SAME drill)
   POST /sync  <- raw stats JSON {seen,correct,wrong,flagged,history,log}
               -> {merged, direction, backup, questions}
 
@@ -33,8 +36,8 @@ import time
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
-APP_VERSION = "2.5.0"
-TRAINER_FILE = Path(__file__).resolve().parent / "PCEP_Trainer_v2.5.0.html"
+APP_VERSION = "2.5.1"
+TRAINER_FILE = Path(__file__).resolve().parent / "PCEP_Trainer_v2.5.1.html"
 RECORD_FILE = Path(__file__).with_name("sync_server") / "pcep_stats_master.json"
 BACKUP_DIR = Path(__file__).with_name("sync_server") / "backups"
 LOG_FILE = Path(__file__).with_name("sync_server") / "sync.log"
@@ -43,6 +46,9 @@ FIELDS = ("seen", "correct", "wrong", "flagged", "history", "log")
 
 
 def blank():
+    # NO seed here: a time-based seed would differ on every read, so the
+    # "shared order" would never be stable. The seed is persisted once by
+    # ensure_seed() and lives in the record file from then on.
     return {"seen": {}, "correct": {}, "wrong": {}, "flagged": {},
             "history": [], "log": []}
 
@@ -56,6 +62,22 @@ def load_record():
         except (OSError, json.JSONDecodeError) as e:
             log(f"WARN: master unreadable ({e}) — using blank; NOT deleting file")
     return blank()
+
+
+def ensure_seed():
+    """The server OWNS the shared drill seed. Persist one on first run so every
+    device that pulls receives the same shuffle order."""
+    rec = load_record()
+    if not rec.get("seed"):
+        now = int(time.time() * 1000)
+        rec["seed"] = {"value": now % 2147483647, "savedAt": now}
+        try:
+            backup_record()          # same doctrine as every other write
+            save_record(rec)
+            log(f"seed established: {rec['seed']['value']}")
+        except OSError as e:
+            log(f"WARN: could not persist seed ({e})")
+    return rec
 
 
 def save_record(obj):
@@ -101,12 +123,27 @@ def dedupe_list(a, b):
     return out
 
 
+def merge_drill(a, b):
+    """In-progress drill state is ONE session, not an accumulation — so it is
+    last-writer-wins by savedAt (never a union, which would corrupt order)."""
+    def ts(r):
+        if isinstance(r, dict) and isinstance(r.get("savedAt"), (int, float)):
+            return int(r.get("savedAt") or 0)
+        return -1
+    return b if ts(b) >= ts(a) else a
+
+
 def merge_stats(server, phone):
     m = {}
     for f in ("seen", "correct", "wrong", "flagged"):
         m[f] = pick_counts(server.get(f), phone.get(f))
     for f in ("history", "log"):
         m[f] = dedupe_list(server.get(f), phone.get(f))
+    m["drill"] = merge_drill(server.get("drill"), phone.get("drill"))
+    # The SEED is canonical on the server: once the server has one, it wins, so
+    # every device on the fleet shuffles into the SAME order. A device that
+    # minted one offline (at work) adopts the server's on its next pull.
+    m["seed"] = server.get("seed") or phone.get("seed")
     return m
 
 
@@ -126,7 +163,7 @@ def log(msg):
 
 
 class Handler(BaseHTTPRequestHandler):
-    server_version = "PCEPSync/2.5.0"
+    server_version = "PCEPSync/2.5.1"
 
     def _cors(self, ctype="application/json"):
         self.send_header("Access-Control-Allow-Origin", "*")
@@ -149,6 +186,10 @@ class Handler(BaseHTTPRequestHandler):
         self.wfile.write(body)
 
     def do_OPTIONS(self):
+        log(f"OPTIONS {self.path} from {self.client_address[0]} | origin={self.headers.get('Origin')} | "
+            f"ACRM={self.headers.get('Access-Control-Request-Method')} | "
+            f"ACRH={self.headers.get('Access-Control-Request-Headers')} | "
+            f"ACRPN={self.headers.get('Access-Control-Request-Private-Network')}")
         self.send_response(204)
         self._cors()
         self.send_header("Content-Length", "0")
@@ -156,6 +197,10 @@ class Handler(BaseHTTPRequestHandler):
 
     def do_GET(self):
         path = self.path.split("?")[0]
+        if path == "/ping":
+            log(f"GET /ping from {self.client_address[0]} | origin={self.headers.get('Origin')}")
+        elif path != "/" and path not in ("/index.html", "/trainer"):
+            log(f"GET {path} from {self.client_address[0]} (unknown) | origin={self.headers.get('Origin')}")
         if path in ("/", "/index.html", "/trainer"):
             # Serve the trainer itself: opening http://HOST:8787/ makes the page
             # SAME-ORIGIN with /ping and /sync — mobile Chrome's local-network
@@ -176,6 +221,14 @@ class Handler(BaseHTTPRequestHandler):
             self._send({"ok": True, "version": APP_VERSION,
                         "questions": len(rec.get("seen") or {}),
                         "answers": side_size(rec)})
+        elif path == "/stats":
+            # PULL route: a device asks for the laptop's merged record so BOTH
+            # sides show identical numbers without a manual button press.
+            rec = load_record()
+            self._send({"ok": True, "version": APP_VERSION,
+                        "questions": len(rec.get("seen") or {}),
+                        "answers": side_size(rec),
+                        "record": rec})
         else:
             self._send({"ok": False, "error": "unknown path"}, 404)
 
@@ -227,6 +280,7 @@ def main():
     log(f"master: {RECORD_FILE}")
     log(f"backup dir: {BACKUP_DIR} (keeps last {BACKUP_KEEP})")
     log(f"phone app: hit 📶 Sync while on the SAME WiFi as this laptop")
+    ensure_seed()
     srv = ThreadingHTTPServer((args.host, args.port), Handler)
     try:
         srv.serve_forever()

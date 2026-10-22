@@ -3,6 +3,27 @@
 All notable changes to the PCEP Rapid Practice system.
 Format: Keep-a-Changelog-ish, newest first.
 
+## [2.5.1] — 2026-10-21
+### Added
+- **`GET /stats` — the pull half of sync.** A device fetches the merged record from the server, so BOTH devices show identical numbers. Previously upload alone left the laptop rendering stale local state (the phone could be ahead by 43 and the laptop still read 0/148).
+- **Auto-pull on page load** (silent, non-blocking, offline-safe): the trainer fetches `/stats` on open/refresh, merges with the local record using the SAME semantics as the server, persists, and re-renders. Failure is silent — work-from-the-file offline still works.
+- **Shared drill seed (`seed` in the record) — the fix for "full drills don't match devices."** A full run previously used `shuffle(bank)` (Math.random), so the phone and laptop each got a *different* question order from the same 148 questions. The seed now lives in the synced record, is owned by the server (established once at startup, persisted, and it wins over any client copy), and drives a seeded PRNG (mulberry32) — **both devices now produce the identical drill order.**
+- **Resumable drill across devices.** The in-progress drill (`mode`, ordered `ids`, `idx`, `answers`, `revealed`, `multiPicks`, `t0`, `savedAt`) travels in the record, so the other device shows **Continue — Question N/148** at the same position, in the same order, with the same answered questions.
+- **Drill tombstone.** A finished or reset drill writes `{cleared:true}` so a stale copy on the other device cannot resurrect a phantom "Continue" (newest `savedAt` wins the merge).
+### Changed
+- Version stamp → `v2.5.1`; artifact `PCEP_Trainer_v2.5.1.html` (361,931 B, sha256 `9e78e559…`, zero external refs, offline-verified).
+- `syncHost()` self-configures from a numeric `window.location.host` when the trainer is served by the sync server (same-origin, no typing); `file://` origins keep the remembered host.
+- Sync server `APP_VERSION` → `2.5.1`; backup-before-write extended to the seed write.
+### Fixed
+- `blank()` no longer mints a time-based seed on every read — the "shared order" seed is persisted once, so the server's order is stable instead of changing per request.
+- `conductor/CHANGELOG.md` is now a **relative** symlink (`../CHANGELOG.md`) and resolves on disk (`core.symlinks=true`), so it is one file on every machine and in CI.
+### Tests
+- App suite **87/87**; sync-server suite **11/11**; single-file verify **15/15**; validate2 **58/58 confirmed, 0 mismatches**. New two-device proof (real client code, real server): seeds match → **identical 148-question order** → laptop resumes the phone's drill at the same index with the same ordering → tombstone prevents resurrection → backup present.
+### Docs
+- Sync protocol documented: upload-only was half a sync; the record is now pushed **and** pulled.
+
+> _"Let all things be done decently and in order."_ — **1 Corinthians 14:40 (ESV)** — two devices, one record, one drill: the answer arrived out of order because only one side was ever asked.
+
 ## [2.5.0] — 2026-10-16
 ### Changed
 - **WiFi LAN sync replaces Export/Import over Drive for stats (Commander directive):** manual, same-home-WiFi-only sync — phone taps 📶 Sync → `pcep_sync_server.py` on the laptop sees and logs the request → **backs up its record first** (`sync_server/backups/`, last 10 kept) → **two-way merge, whichever device is behind gets added** (per-question max, history/log deduped) → both devices end identical.

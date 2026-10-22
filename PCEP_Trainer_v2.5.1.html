@@ -209,12 +209,14 @@ const PCEP_FLASHCARDS = [{"q": "What does a Python interpreter do with source co
 let bank = PCEP_BANK, state = null, timerInt = null;
 
 const STORE = "pcep_practice_stats_v1";
-function blankStats() { return {seen:{}, correct:{}, wrong:{}, history:[], flagged:{}, log:[]}; }
+function blankStats() { return {seen:{}, correct:{}, wrong:{}, history:[], flagged:{}, log:[], drill:null, seed:null}; }
 function loadStats() {
   try {
     const s = JSON.parse(localStorage.getItem(STORE));
     if (!s) return blankStats();
     for (const k of ["flagged","log","history"]) if (!s[k]) s[k] = (k === "log" ? [] : {});
+    if (!("drill" in s)) s.drill = null;
+    if (!("seed" in s)) s.seed = null;
     return s;
   } catch(e) { return blankStats(); }
 }
@@ -348,13 +350,29 @@ function saveResume() {
     };
     for (const k in state.multiPicks) r.multiPicks[k] = [...state.multiPicks[k]];
     localStorage.setItem(RKEY, JSON.stringify(r));
+    /* Also carry it in the STATS RECORD so it can sync to the other device —
+       both sides then resume the SAME drill in the SAME order. */
+    try {
+      const s = loadStats();
+      s.drill = r;
+      saveStats(s);
+    } catch (e) { /* best effort */ }
   } catch (e) { /* resume is best-effort */ }
 }
 
 function loadResume() {
   try {
-    const r = JSON.parse(localStorage.getItem(RKEY));
-    if (!r || r.mode === "exam" || !Array.isArray(r.ids) || !r.ids.length) return null;
+    let r = null;
+    try { r = JSON.parse(localStorage.getItem(RKEY)); } catch (e) { r = null; }
+    /* The synced copy may be newer than this browser's copy — take the newer. */
+    let synced = null;
+    try { const s = loadStats(); synced = (s && s.drill) || null; } catch (e) { synced = null; }
+    if (synced && (!r || (Number(synced.savedAt) || 0) > (Number(r.savedAt) || 0))) {
+      r = synced;
+      try { localStorage.setItem(RKEY, JSON.stringify(r)); } catch (e) {}
+    }
+    if (!r || r.cleared) return null;
+    if (r.mode === "exam" || !Array.isArray(r.ids) || !r.ids.length) return null;
     if (r.idx == null || r.idx >= r.ids.length) return null;
     const qs = r.ids.map(id => bank.find(q => q.id === id)).filter(Boolean);
     if (qs.length !== r.ids.length) return null;
@@ -363,7 +381,16 @@ function loadResume() {
   } catch (e) { return null; }
 }
 
-function clearResume() { try { localStorage.removeItem(RKEY); } catch (e) {} }
+function clearResume() {
+  try { localStorage.removeItem(RKEY); } catch (e) {}
+  /* Tombstone the SHARED drill: a finished/reset drill must not come back when
+     the other device pushes an older copy. Newest savedAt wins the merge. */
+  try {
+    const s = loadStats();
+    s.drill = { cleared: true, savedAt: Date.now() };
+    saveStats(s);
+  } catch (e) {}
+}
 
 function runControlsHTML() {
   const r = loadResume();
@@ -418,7 +445,39 @@ function renderHome() {
   document.getElementById("resumeSlot").innerHTML = runControlsHTML();
 }
 
-function shuffle(a) { const r=[...a]; for(let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];} return r; }
+/* Seeded PRNG (mulberry32) — a SHARED seed produces the SAME question order on
+   every device, so a "Full Run" started on the phone is the same drill on the
+   laptop. Unseeded calls keep the old random behaviour. */
+function mulberry32(seed) {
+  let a = seed >>> 0;
+  return function () {
+    a |= 0; a = (a + 0x6D2B79F5) | 0;
+    let t = Math.imul(a ^ (a >>> 15), 1 | a);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+function shuffle(a, seed) {
+  const r = [...a];
+  if (seed == null) { for (let i=r.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[r[i],r[j]]=[r[j],r[i]];} return r; }
+  const rnd = mulberry32(seed);
+  for (let i=r.length-1;i>0;i--){const j=Math.floor(rnd()*(i+1));[r[i],r[j]]=[r[j],r[i]];}
+  return r;
+}
+/* The shared drill seed lives in the stats record so it syncs. Last writer
+   wins by savedAt — one drill identity across the fleet, not two. */
+function getSeed() {
+  const s = loadStats();
+  const rec = s && s.seed;
+  if (rec && typeof rec.value === "number" && typeof rec.savedAt === "number") return rec;
+  /* A fresh device has no seed of its own. The auto-pull on page load brings
+     the server's seed into the record (see pullStats) — so by the time the user
+     starts a drill, both devices already share one seed. If the pull has not
+     landed yet (offline at work), we mint one and it wins on the next sync. */
+  const fresh = { value: (Math.floor(Math.random() * 2147483647)) >>> 0, savedAt: Date.now() };
+  try { s.seed = fresh; saveStats(s); } catch (e) {}
+  return fresh;
+}
 
 function blankSpotIds() {
   const s = loadStats();
@@ -439,15 +498,17 @@ function startExam() {
 function startDrill(kind) {
   let qs;
   const s = loadStats();
-  if (kind === "all") qs = shuffle(bank);
-  else if (kind === "multi") qs = shuffle(bank.filter(b => b.type === "Multiple Choice"));
+  const seedRec = getSeed();
+  const seed = seedRec.value;
+  if (kind === "all") qs = shuffle(bank, seed);
+  else if (kind === "multi") qs = shuffle(bank.filter(b => b.type === "Multiple Choice"), seed);
   else if (kind === "blank") {
     const ids = new Set(blankSpotIds());
-    qs = shuffle(bank.filter(b => ids.has(b.id)));
+    qs = shuffle(bank.filter(b => ids.has(b.id)), seed);
     if (!qs.length) { alert("No blank spots — the engine sees no weak questions. Keep drilling."); return; }
   }
   else if (kind === "flagged") {
-    qs = shuffle(bank.filter(b => s.flagged[b.id]));
+    qs = shuffle(bank.filter(b => s.flagged[b.id]), seed);
     if (!qs.length) { alert("No flagged questions yet — use the ⚑ checkbox during drills to build your personal blind-spot list."); return; }
   }
   state = { mode: kind, qs, idx: 0, answers: {}, t0: Date.now(), revealed: {}, multiPicks: {}, finished: false };
@@ -634,6 +695,7 @@ function finishExam(timedOut) {
 }
 
 function showResults() {
+  state.finished = true;
   clearResume();
   const s = loadStats();
   let correct = 0;
@@ -816,15 +878,72 @@ function rateCard(ok) {
 
 renderHome();
 
-/* === Hermes v2.5.0 — WiFi LAN sync (Commander directive 2026-10-16: MANUAL,
+/* === Hermes v2.5.1 — WiFi LAN sync (Commander directive 2026-10-16: MANUAL,
    same home WiFi, laptop sees the incoming request, ONE backup kept BEFORE every
    merge, two-way — whichever device is behind gets added). Export/Import-over-Drive
    RETIRED for stats; Drive now distributes app updates only. Server: pcep_sync_server.py === */
 (function () {
-  const APP_VER = "2.5.0";
+  const APP_VER = "2.5.1";
   const HOST_KEY = "pcep_sync_host";
   const DEFAULT_HOST = ""; /* no baked-in address: public repo ships NO private IPs; typed once per device, then persisted */
-  function syncHost() { return localStorage.getItem(HOST_KEY) || DEFAULT_HOST; }
+  function syncHost() {
+    const saved = localStorage.getItem(HOST_KEY);
+    if (saved) return saved;
+    /* Same-origin serving: when this page WAS served by the sync server
+       (http://<ip>:8787/), use its own host — zero setup, auto-pull works. */
+    try {
+      const h = window.location.host;
+      if (h && /^[0-9.]+:[0-9]+$/.test(h)) { localStorage.setItem(HOST_KEY, h); return h; }
+    } catch (e) { /* file:// or opaque origin */ }
+    return DEFAULT_HOST;
+  }
+  /* Merge two stat records with the SAME rules the server uses:
+     per-question counters take the MAX, history/log union-dedupe. */
+  function mergeRecords(a, b) {
+    const out = { seen: {}, correct: {}, wrong: {}, flagged: {}, history: [], log: [] };
+    for (const f of ["seen", "correct", "wrong", "flagged"]) {
+      const x = (a && a[f]) || {}, y = (b && b[f]) || {};
+      for (const k of Object.keys(x)) out[f][k] = x[k];
+      for (const k of Object.keys(y)) {
+        const v = Number(y[k]) || 0, cur = Number(out[f][k]) || 0;
+        if (v > cur) out[f][k] = v;
+      }
+    }
+    for (const f of ["history", "log"]) {
+      const seenK = new Set(), merged = [];
+      const items = [].concat((a && a[f]) || [], (b && b[f]) || []);
+      for (const item of items) {
+        const key = JSON.stringify(item);
+        if (!seenK.has(key)) { seenK.add(key); merged.push(item); }
+      }
+      out[f] = merged;
+    }
+    /* The in-progress drill is ONE session, not an accumulation — last-writer-wins
+       by savedAt, so both devices resume the SAME drill in the SAME order. */
+    const drillTs = (r) => (r && typeof r.savedAt === "number") ? r.savedAt : -1;
+    const da = (a && a.drill) || null, db = (b && b.drill) || null;
+    out.drill = drillTs(db) >= drillTs(da) ? db : da;
+    /* The seed is canonical on the server — when pulling, the server's copy
+       wins so every device ends up with ONE shared drill order. */
+    const sa = (a && a.seed) || null, sb = (b && b.seed) || null;
+    out.seed = sb || sa;
+    return out;
+  }
+  /* PULL the laptop's record so BOTH devices show the same numbers. */
+  async function pullStats() {
+    const h = syncHost();
+    if (!h) return false;
+    try {
+      const r = await fetch("http://" + h + "/stats");
+      const j = await r.json();
+      if (!j || !j.ok || !j.record) return false;
+      const cur = (function () { try { return JSON.parse(localStorage.getItem(STORE) || "null") || blankStats(); } catch (e) { return blankStats(); } })();
+      const merged = mergeRecords(cur, j.record);
+      localStorage.setItem(STORE, JSON.stringify(merged));
+      if (typeof renderHome === "function") renderHome();
+      return true;
+    } catch (e) { return false; }
+  }
   async function runSync() {
     let h = window.prompt("Laptop sync address (same WiFi, host:port — e.g. 192.168.1.10:8787):", syncHost());
     if (h === null) return;
@@ -875,6 +994,14 @@ renderHome();
     home.appendChild(stamp);
   }
   mount();
+  /* AUTO-PULL: on load, fetch the laptop's merged record so BOTH devices show
+     the same numbers without anyone pressing a button. Silent on failure
+     (offline at work, or no host known yet) — never blocks, never prompts. */
+  (function autoPull() {
+    const h = syncHost();
+    if (!h) return;
+    pullStats().then(ok => { if (ok && typeof mount === "function") mount(); });
+  })();
   const homeEl = document.getElementById("home");
   if (homeEl && window.MutationObserver) {
     new MutationObserver(mount).observe(homeEl, { childList: true });

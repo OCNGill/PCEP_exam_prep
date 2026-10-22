@@ -193,6 +193,13 @@ setTimeout(() => {
 
     // ---- run controls triad on fresh home (no resume): New + Reset ALL, menu reset deduped ----
     w.localStorage.removeItem("pcep_drill_resume_v1");
+    /* Fresh home = no drill ANYWHERE: the shared record's drill must be
+       tombstoned too, else the synced copy would resurrect a Continue. */
+    (function () {
+      const s = JSON.parse(w.localStorage.getItem("pcep_practice_stats_v1"));
+      s.drill = { cleared: true, savedAt: Date.now() };
+      w.localStorage.setItem("pcep_practice_stats_v1", JSON.stringify(s));
+    })();
     w.eval("renderHome()");
     const slot0 = [...doc.querySelectorAll("#resumeSlot .menu-btn")];
     const st0 = slot0.map(b => b.textContent).join(" | ");
@@ -205,7 +212,7 @@ setTimeout(() => {
     check("WiFi sync button mounted", !!doc.getElementById("syncBtn"));
     check("Export Stats removed (LAN sync only)", ![...doc.querySelectorAll("#home .menu-btn")].some(b => b.textContent.includes("Export Stats")));
     check("Import Stats removed (LAN sync only)", !doc.getElementById("importStatsBtn"));
-    check("version stamp on Home shows v2.5.0", ((doc.getElementById("appVersion") || {}).textContent || "").includes("v2.5.0"));
+    check("version stamp on Home shows v2.5.1", ((doc.getElementById("appVersion") || {}).textContent || "").includes("v2.5.1"));
     check("brand header logo present", !!doc.querySelector(".hdr-logo"));
     check("donation footer with PayPal link present", (doc.querySelector(".gill-footer") || {}).textContent.includes("paypal.me/gillsystems"));
     check("no baked-in private IP; host typed once per device then persisted", w.__pcepSyncHostDefault === "" && !/10\.0\.0\./.test(doc.documentElement.innerHTML));
